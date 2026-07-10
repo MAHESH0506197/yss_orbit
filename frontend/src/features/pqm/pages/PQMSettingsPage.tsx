@@ -3,7 +3,7 @@ import { usePqmStore } from "../store/usePqmStore";
 import { pqmService } from "../api/pqmService";
 import { PageHeader } from "@/components/ui/PageHeader";
 import { SectionCard } from "@/components/platform/SectionCard";
-import { Settings, Plus, Trash2, Edit2, X, CornerDownRight } from "lucide-react";
+import { Settings, Plus, Trash2, Edit2, X, CornerDownRight, FolderPlus } from "lucide-react";
 import { InfoTooltip } from "@/components/ui/InfoTooltip";
 import { PQMDropdownOption } from "../types";
 
@@ -140,6 +140,70 @@ export default function PQMSettingsPage() {
     setDdForm({ name: "", display_order: "0" });
   };
 
+  // ── Unified Category Creation State ───────────────────────────────────────
+  type SubCategoryDraft = { id: string, name: string, display_order: string };
+  const [categoryDraft, setCategoryDraft] = useState<{name: string, display_order: string, subCategories: SubCategoryDraft[]}>({
+    name: "",
+    display_order: "0",
+    subCategories: []
+  });
+  const [categorySubmitting, setCategorySubmitting] = useState(false);
+
+  const handleAddDraftSubCategory = () => {
+    setCategoryDraft(prev => ({
+      ...prev,
+      subCategories: [...prev.subCategories, { id: crypto.randomUUID(), name: "", display_order: "0" }]
+    }));
+  };
+
+  const handleRemoveDraftSubCategory = (id: string) => {
+    setCategoryDraft(prev => ({
+      ...prev,
+      subCategories: prev.subCategories.filter(sc => sc.id !== id)
+    }));
+  };
+
+  const handleDraftSubCategoryChange = (id: string, field: keyof SubCategoryDraft, value: string) => {
+    setCategoryDraft(prev => ({
+      ...prev,
+      subCategories: prev.subCategories.map(sc => sc.id === id ? { ...sc, [field]: value } : sc)
+    }));
+  };
+
+  const handleSaveCategoryStructure = async () => {
+    if (!categoryDraft.name.trim()) return;
+    setCategorySubmitting(true);
+    try {
+      const newCat = await pqmService.createDropdownOption({
+        name: categoryDraft.name,
+        field_type: "CATEGORY",
+        display_order: parseInt(categoryDraft.display_order) || 0,
+        is_active: true
+      });
+
+      const validSubCats = categoryDraft.subCategories.filter(sc => sc.name.trim());
+      if (validSubCats.length > 0) {
+        await Promise.all(validSubCats.map(sc => 
+          pqmService.createDropdownOption({
+            name: sc.name.trim(),
+            field_type: "SUB_CATEGORY",
+            display_order: parseInt(sc.display_order) || 0,
+            system_mapping: newCat.id,
+            is_active: true
+          })
+        ));
+      }
+
+      setCategoryDraft({ name: "", display_order: "0", subCategories: [] });
+      await fetchDropdownConfig();
+    } catch (e) {
+      console.error("Failed to create category structure");
+      alert("Failed to create category structure.");
+    } finally {
+      setCategorySubmitting(false);
+    }
+  };
+
   const [editingSubCategoryId, setEditingSubCategoryId] = useState<string | null>(null);
 
   const handleUpdateSubCategory = async (id: string) => {
@@ -221,38 +285,116 @@ export default function PQMSettingsPage() {
                 <InfoTooltip content={getDropdownTooltip(activeDropdownTab)} />
               </div>
 
-            <div className="flex flex-wrap items-center gap-3 mb-6">
-              <input 
-                className="flex-1 min-w-[200px] h-10 px-3 py-2 bg-white dark:bg-gray-900 border border-gray-300 dark:border-gray-700 rounded-md text-sm shadow-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-violet-500 focus:border-violet-500" 
-                placeholder={activeDropdownTab === 'category' ? "Category name" : "Option name"}
-                value={ddForm.name} 
-                onChange={e => setDdForm(f => ({ ...f, name: e.target.value }))} 
-              />
-              <input 
-                className="w-24 h-10 px-3 py-2 bg-white dark:bg-gray-900 border border-gray-300 dark:border-gray-700 rounded-md text-sm shadow-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-violet-500 focus:border-violet-500" 
-                placeholder="Order" 
-                type="number"
-                value={ddForm.display_order} 
-                onChange={e => setDdForm(f => ({ ...f, display_order: e.target.value }))} 
-              />
-              <button 
-                className="h-10 px-4 inline-flex items-center justify-center gap-2 bg-violet-600 text-white text-sm font-semibold rounded-md hover:bg-violet-700 transition-colors shadow-sm disabled:opacity-50" 
-                onClick={handleDropdownSubmit} 
-                disabled={ddSubmitting}
-              >
-                <Plus className="w-4 h-4" />
-                {ddSubmitting ? "Saving…" : (editingDdId ? "Update Option" : (activeDropdownTab === 'category' ? "Add Category" : "Add Option"))}
-              </button>
-              {editingDdId && (
+            {activeDropdownTab === 'category' && !editingDdId ? (
+              <div className="mb-8 p-5 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl shadow-sm">
+                <h3 className="text-sm font-semibold text-gray-900 dark:text-white mb-4 flex items-center gap-2">
+                  <FolderPlus className="w-5 h-5 text-violet-500" />
+                  Create New Category Structure
+                </h3>
+                
+                {/* Category Details */}
+                <div className="flex flex-wrap gap-4 mb-4">
+                  <div className="flex-1 min-w-[250px]">
+                    <label className="block text-xs font-medium text-gray-700 dark:text-gray-300 mb-1">Category Name</label>
+                    <input 
+                      className="w-full h-10 px-3 py-2 bg-gray-50 dark:bg-gray-900 border border-gray-300 dark:border-gray-600 rounded-md text-sm shadow-sm focus:ring-2 focus:ring-violet-500 focus:border-violet-500 outline-none"
+                      placeholder="e.g. Civil Works"
+                      value={categoryDraft.name}
+                      onChange={e => setCategoryDraft(prev => ({ ...prev, name: e.target.value }))}
+                    />
+                  </div>
+                  <div className="w-24">
+                    <label className="block text-xs font-medium text-gray-700 dark:text-gray-300 mb-1">Order</label>
+                    <input 
+                      type="number"
+                      className="w-full h-10 px-3 py-2 bg-gray-50 dark:bg-gray-900 border border-gray-300 dark:border-gray-600 rounded-md text-sm shadow-sm focus:ring-2 focus:ring-violet-500 focus:border-violet-500 outline-none"
+                      value={categoryDraft.display_order}
+                      onChange={e => setCategoryDraft(prev => ({ ...prev, display_order: e.target.value }))}
+                    />
+                  </div>
+                </div>
+
+                {/* Sub-categories list */}
+                <div className="space-y-3 mb-5 pl-2 border-l-2 border-violet-100 dark:border-violet-900/30 ml-2">
+                  {categoryDraft.subCategories.map((sc, index) => (
+                    <div key={sc.id} className="flex items-center gap-3">
+                      <CornerDownRight className="w-4 h-4 text-gray-400 shrink-0" />
+                      <input 
+                        className="flex-1 h-9 px-3 py-2 bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-md text-sm shadow-sm focus:ring-1 focus:ring-violet-500 outline-none"
+                        placeholder={`Sub-category ${index + 1}`}
+                        value={sc.name}
+                        onChange={e => handleDraftSubCategoryChange(sc.id, 'name', e.target.value)}
+                        autoFocus
+                      />
+                      <input 
+                        type="number"
+                        className="w-20 h-9 px-3 py-2 bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-md text-sm shadow-sm outline-none"
+                        placeholder="Order"
+                        value={sc.display_order}
+                        onChange={e => handleDraftSubCategoryChange(sc.id, 'display_order', e.target.value)}
+                      />
+                      <button 
+                        className="text-gray-400 hover:text-red-500 transition-colors"
+                        onClick={() => handleRemoveDraftSubCategory(sc.id)}
+                        title="Remove Sub-category"
+                      >
+                        <X className="w-4 h-4" />
+                      </button>
+                    </div>
+                  ))}
+                  <button 
+                    className="text-sm text-violet-600 hover:text-violet-700 dark:text-violet-400 dark:hover:text-violet-300 font-medium inline-flex items-center gap-1 mt-2 pl-7"
+                    onClick={handleAddDraftSubCategory}
+                  >
+                    <Plus className="w-3.5 h-3.5" />
+                    Add Sub-category
+                  </button>
+                </div>
+
+                <div className="flex justify-end border-t border-gray-100 dark:border-gray-700 pt-4 mt-2">
+                  <button 
+                    className="h-10 px-5 inline-flex items-center justify-center gap-2 bg-violet-600 text-white text-sm font-semibold rounded-md hover:bg-violet-700 transition-colors shadow-sm disabled:opacity-50"
+                    onClick={handleSaveCategoryStructure}
+                    disabled={categorySubmitting || !categoryDraft.name.trim()}
+                  >
+                    {categorySubmitting ? "Saving..." : "Save Category Structure"}
+                  </button>
+                </div>
+              </div>
+            ) : (
+              <div className="flex flex-wrap items-center gap-3 mb-6">
+                <input 
+                  className="flex-1 min-w-[200px] h-10 px-3 py-2 bg-white dark:bg-gray-900 border border-gray-300 dark:border-gray-700 rounded-md text-sm shadow-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-violet-500 focus:border-violet-500" 
+                  placeholder={activeDropdownTab === 'category' ? "Category name" : "Option name"}
+                  value={ddForm.name} 
+                  onChange={e => setDdForm(f => ({ ...f, name: e.target.value }))} 
+                />
+                <input 
+                  className="w-24 h-10 px-3 py-2 bg-white dark:bg-gray-900 border border-gray-300 dark:border-gray-700 rounded-md text-sm shadow-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-violet-500 focus:border-violet-500" 
+                  placeholder="Order" 
+                  type="number"
+                  value={ddForm.display_order} 
+                  onChange={e => setDdForm(f => ({ ...f, display_order: e.target.value }))} 
+                />
                 <button 
-                  className="h-10 px-4 inline-flex items-center justify-center gap-2 bg-gray-200 text-gray-700 text-sm font-semibold rounded-md hover:bg-gray-300 transition-colors shadow-sm" 
-                  onClick={cancelDdEdit} 
+                  className="h-10 px-4 inline-flex items-center justify-center gap-2 bg-violet-600 text-white text-sm font-semibold rounded-md hover:bg-violet-700 transition-colors shadow-sm disabled:opacity-50" 
+                  onClick={handleDropdownSubmit} 
+                  disabled={ddSubmitting}
                 >
-                  <X className="w-4 h-4" />
-                  Cancel
+                  <Plus className="w-4 h-4" />
+                  {ddSubmitting ? "Saving…" : (editingDdId ? "Update Option" : "Add Option")}
                 </button>
-              )}
-            </div>
+                {editingDdId && (
+                  <button 
+                    className="h-10 px-4 inline-flex items-center justify-center gap-2 bg-gray-200 text-gray-700 text-sm font-semibold rounded-md hover:bg-gray-300 transition-colors shadow-sm" 
+                    onClick={cancelDdEdit} 
+                  >
+                    <X className="w-4 h-4" />
+                    Cancel
+                  </button>
+                )}
+              </div>
+            )}
             
             <div className="overflow-hidden border border-gray-200 dark:border-gray-700 rounded-lg">
               <table className="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
