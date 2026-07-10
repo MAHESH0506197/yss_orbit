@@ -479,6 +479,7 @@ function DetailField({
   value,
   wide,
   className = "",
+  tooltip,
 }: {
   label: string;
   value: any;

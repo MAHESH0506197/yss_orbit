@@ -14,6 +14,7 @@ import { PageHeader } from '@/components/ui/PageHeader';
 import { SectionCard } from '@/components/platform/SectionCard';
 import { InfoTooltip } from '@/components/ui/InfoTooltip';
 import { AttachmentGallery } from '../components/AttachmentGallery';
+import { PQMAttachment } from '../types';
 
 
 
@@ -44,9 +45,10 @@ export default function NCEditPage() {
   const { selectedNc, fetchNcDetail, priorities, severities, referenceTypes, areas, categories, subCategories, fetchDropdownConfig } = usePqmStore();
 
   const [submitting, setSubmitting] = useState(false);
+  const [attachments, setAttachments] = useState<PQMAttachment[]>([]);
   const backUrl = projectId ? `/pqm/nc-management/${projectId}/nc/${id}` : `/pqm/nc-management/nc/${id}`;
 
-  const { register, handleSubmit, formState: { errors, isDirty }, reset } = useForm<EditNCFormValues>({
+  const { register, handleSubmit, watch, formState: { errors, isDirty }, reset } = useForm<EditNCFormValues>({
     resolver: zodResolver(editNCSchema),
     defaultValues: {
       title: "",
@@ -76,6 +78,7 @@ export default function NCEditPage() {
   useEffect(() => {
     if (id) {
       fetchNcDetail(id);
+      pqmService.listAttachments(id).then(setAttachments).catch(() => {});
     }
     fetchDropdownConfig();
   }, [id, fetchNcDetail]);
@@ -388,7 +391,15 @@ export default function NCEditPage() {
 
           <SectionCard title="Attachments" icon={FileText} iconColor="text-pink-500" animDelay="delay-250">
             <div className="p-4 bg-white dark:bg-gray-800/50 rounded-xl border border-gray-200 dark:border-gray-700">
-              <AttachmentGallery ncId={id} readonly={false} />
+              <AttachmentGallery 
+                attachments={attachments}
+                onUpload={async () => {
+                  if (id) {
+                    const updated = await pqmService.listAttachments(id);
+                    setAttachments(updated);
+                  }
+                }}
+              />
             </div>
           </SectionCard>
 

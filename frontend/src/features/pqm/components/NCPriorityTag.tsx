@@ -44,6 +44,7 @@ interface NCPriorityTagProps {
 
 export function NCPriorityTag({ priority, size = 'md' }: NCPriorityTagProps) {
   const cfg = PRIORITY_CONFIG[priority] ?? PRIORITY_CONFIG['Low'];
+  if (!cfg) return null;
   return (
     <span
       style={{

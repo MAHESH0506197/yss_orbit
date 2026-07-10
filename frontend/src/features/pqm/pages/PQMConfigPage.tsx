@@ -25,7 +25,7 @@ export default function PQMConfigPage() {
     if (!catForm.name.trim()) return;
     setCatSubmitting(true);
     try {
-      await pqmService.createCategory({ name: catForm.name, display_order: parseInt(catForm.display_order) });
+      await pqmService.createDropdownOption({ name: catForm.name, display_order: parseInt(catForm.display_order), field_type: "category", is_active: true });
       setCatForm({ name: "", display_order: "0" });
       await fetchConfig();
     } finally { setCatSubmitting(false); }
