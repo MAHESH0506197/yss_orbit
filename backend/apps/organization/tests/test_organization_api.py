@@ -80,7 +80,6 @@ class TestOrganizationListAPI:
     def test_list_filter_is_active_false(self, super_admin_user, business_domain):
         inactive = Organization.objects.create(
             name="Inactive Corp",
-            slug=f"inactive-{uuid.uuid4().hex[:6]}",
             is_active=False,
             business_domain=business_domain,
         )
@@ -113,7 +112,7 @@ class TestOrganizationCreateAPI:
 
     def test_create_organization_success(self, admin_user, business_domain):
         self.client.force_authenticate(user=admin_user)
-        payload = {"name": "API Test Corp", "slug": "api-test-corp", "business_domain_id": business_domain.id}
+        payload = {"name": "API Test Corp", "business_domain_id": business_domain.id}
         response = self.client.post("/api/v1/organizations/", payload)
         assert response.status_code == 201
         data = response.data.get("data") or response.data
@@ -126,56 +125,26 @@ class TestOrganizationCreateAPI:
         self.client.force_authenticate(user=admin_user)
         response = self.client.post(
             "/api/v1/organizations/",
-            {"name": "Settings Test", "slug": f"settings-test-{uuid.uuid4().hex[:6]}", "business_domain_id": business_domain.id},
+            {"name": "Settings Test", "business_domain_id": business_domain.id},
         )
         assert response.status_code == 201
         org_id = (response.data.get("data") or response.data)["id"]
         assert OrganizationSettings.objects.filter(organization_id=org_id).exists()
 
-    def test_create_duplicate_slug_rejected(self, admin_user, organization, business_domain):
-        self.client.force_authenticate(user=admin_user)
-        payload = {"name": "Duplicate Slug Co", "slug": organization.slug, "business_domain_id": business_domain.id}
-        response = self.client.post("/api/v1/organizations/", payload)
-        assert response.status_code in (400, 422)
-
-    def test_create_invalid_slug_format_rejected(self, admin_user, business_domain):
-        self.client.force_authenticate(user=admin_user)
-        payload = {"name": "Bad Slug Corp", "slug": "UPPER_CASE_INVALID", "business_domain_id": business_domain.id}
-        response = self.client.post("/api/v1/organizations/", payload)
-        assert response.status_code in (400, 422)
-
     def test_create_missing_name_rejected(self, admin_user, business_domain):
         self.client.force_authenticate(user=admin_user)
-        response = self.client.post("/api/v1/organizations/", {"slug": "no-name", "business_domain_id": business_domain.id})
+        response = self.client.post("/api/v1/organizations/", {"business_domain_id": business_domain.id})
         assert response.status_code in (400, 422)
 
     def test_create_invalid_email_rejected(self, admin_user, business_domain):
         self.client.force_authenticate(user=admin_user)
         payload = {
             "name": "Email Test Corp",
-            "slug": f"email-test-{uuid.uuid4().hex[:6]}",
             "email": "not-an-email",
             "business_domain_id": business_domain.id,
         }
         response = self.client.post("/api/v1/organizations/", payload)
         assert response.status_code in (400, 422)
-
-    def test_create_auto_generates_slug_from_name(self, admin_user, business_domain):
-        """When slug is omitted, the serializer/service should auto-generate it."""
-        self.client.force_authenticate(user=admin_user)
-        response = self.client.post(
-            "/api/v1/organizations/",
-            {"name": "Auto Slug Corporation", "business_domain_id": business_domain.id},
-        )
-        # The serializer auto-generates slug when absent
-        assert response.status_code in (201, 400)  # 400 if slug still required
-
-
-# ─── UPDATE ─────────────────────────────────────────────────────────────────────
-@pytest.mark.django_db
-class TestOrganizationUpdateAPI:
-    def setup_method(self):
-        self.client = APIClient()
 
     def test_partial_update_name(self, admin_user, organization):
         self.client.force_authenticate(user=admin_user)
@@ -204,24 +173,6 @@ class TestOrganizationUpdateAPI:
             {"name": "Ghost"},
         )
         assert response.status_code == 404
-
-    def test_slug_uniqueness_on_update(self, super_admin_user, business_domain):
-        """Cannot update slug to one already taken by another org."""
-        org_a = Organization.objects.create(name="Corp A", slug=f"corp-a-{uuid.uuid4().hex[:6]}", business_domain=business_domain)
-        org_b = Organization.objects.create(name="Corp B", slug=f"corp-b-{uuid.uuid4().hex[:6]}", business_domain=business_domain)
-        self.client.force_authenticate(user=super_admin_user)
-        response = self.client.patch(
-            f"/api/v1/organizations/{org_b.id}/",
-            {"slug": org_a.slug},
-        )
-        assert response.status_code in (400, 422)
-
-
-# ─── SOFT-DELETE & RESTORE ────────────────────────────────────────────────────
-@pytest.mark.django_db
-class TestOrganizationDeleteRestoreAPI:
-    def setup_method(self):
-        self.client = APIClient()
 
     def test_delete_is_soft_delete(self, admin_user, organization):
         self.client.force_authenticate(user=admin_user)
@@ -316,10 +267,3 @@ class TestOrganizationMetaAPI:
         response = self.client.get("/api/v1/organizations/meta/")
         assert response.status_code == 401
 
-    def test_meta_returns_slug_regex(self, admin_user):
-        self.client.force_authenticate(user=admin_user)
-        response = self.client.get("/api/v1/organizations/meta/")
-        assert response.status_code == 200
-        data = response.data.get("data") or response.data
-        assert "validation" in data
-        assert "slug_regex" in data["validation"]

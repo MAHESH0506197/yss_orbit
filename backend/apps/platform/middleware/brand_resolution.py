@@ -49,8 +49,8 @@ class BrandResolutionMiddleware(MiddlewareMixin):
                 parts = host.split('.')
                 if len(parts) >= 3:
                     subdomain = parts[0]
-                    # We only match by Organization slug. 
-                    org = Organization.objects.filter(slug=subdomain, is_deleted=False).first()
+                    # We only match by Organization name now since slug was removed. 
+                    org = Organization.objects.filter(name__iexact=subdomain, is_deleted=False).first()
                     if org:
                         # Find org-level config
                         org_config = BrandConfiguration.objects.filter(

@@ -11,12 +11,6 @@ class TestOrganizationService:
     def test_create_organization(self, org_data):
         org = self.service.create_organization(org_data)
         assert org.name == org_data["name"]
-        assert org.slug == org_data["slug"]
-
-    def test_duplicate_slug_raises(self, org_data):
-        self.service.create_organization(org_data)
-        with pytest.raises(ValidationException):
-            self.service.create_organization(org_data)
 
     def test_soft_delete(self, organization):
         self.service.delete_organization(organization.id)

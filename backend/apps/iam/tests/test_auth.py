@@ -36,7 +36,7 @@ class TestUserAuthFlows:
         from apps.organization.models import BusinessUnit
         from apps.organization.models.user_business_unit_model import UserBusinessUnitModel
         
-        org = Organization.objects.create(name="Test Org", slug=f"test-org-{uuid.uuid4().hex[:6]}", business_domain=__import__('apps.organization.models.business_domain_model', fromlist=['BusinessDomain']).BusinessDomain.objects.get_or_create(name='Test Domain ' + __import__('uuid').uuid4().hex[:8], code='TEST' + __import__('uuid').uuid4().hex[:4])[0])
+        org = Organization.objects.create(name="Test Org", business_domain=__import__('apps.organization.models.business_domain_model', fromlist=['BusinessDomain']).BusinessDomain.objects.get_or_create(name='Test Domain ' + __import__('uuid').uuid4().hex[:8], code='TEST' + __import__('uuid').uuid4().hex[:4])[0])
         bu = BusinessUnit.objects.create(name="Test BU", code=f"TB-{uuid.uuid4().hex[:6]}", organization=org)
         UserBusinessUnitModel.objects.create(user=self.user, business_unit=bu)
 

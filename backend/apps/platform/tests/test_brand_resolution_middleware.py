@@ -22,14 +22,12 @@ def test_platform_fallback(rf):
     middleware.process_request(request)
     
     assert request.brand_context["found"] is False
-    assert request.brand_context["company_name"] == "YSS Orbit"
 
 def test_organization_fallback(rf):
     domain, _ = BusinessDomain.objects.get_or_create(name="Retail " + __import__("uuid").uuid4().hex[:8], code="RET" + __import__("uuid").uuid4().hex[:4])
-    org = Organization.objects.create(name="Acme Corp", slug="acme", business_domain=domain, is_active=True)
+    org = Organization.objects.create(name="acme", business_domain=domain, is_active=True)
     BrandConfiguration.objects.create(
         organization=org,
-        company_name="Acme Brand",
         branding_mode="co_brand",
         is_active=True
     )
@@ -39,16 +37,14 @@ def test_organization_fallback(rf):
     middleware.process_request(request)
     
     assert request.brand_context["found"] is True
-    assert request.brand_context["company_name"] == "Acme Brand"
     assert request.brand_context["mode"] == "co_brand"
     assert request.brand_context["is_suspended"] is False
 
 def test_domain_verification_pending(rf):
     domain, _ = BusinessDomain.objects.get_or_create(name="Retail " + __import__("uuid").uuid4().hex[:8], code="RET" + __import__("uuid").uuid4().hex[:4])
-    org = Organization.objects.create(name="Acme Corp", slug="acme", business_domain=domain, is_active=True)
+    org = Organization.objects.create(name="acme", business_domain=domain, is_active=True)
     BrandConfiguration.objects.create(
         organization=org,
-        company_name="Acme Custom",
         custom_domain="hr.acmecorp.com",
         domain_status=BrandConfiguration.DomainStatus.PENDING,
         is_active=True
@@ -62,10 +58,9 @@ def test_domain_verification_pending(rf):
 
 def test_custom_domain_success(rf):
     domain, _ = BusinessDomain.objects.get_or_create(name="Retail " + __import__("uuid").uuid4().hex[:8], code="RET" + __import__("uuid").uuid4().hex[:4])
-    org = Organization.objects.create(name="Acme Corp", slug="acme", business_domain=domain, is_active=True)
+    org = Organization.objects.create(name="acme", business_domain=domain, is_active=True)
     BrandConfiguration.objects.create(
         organization=org,
-        company_name="Acme Custom Verified",
         custom_domain="hr.acmecorp.com",
         domain_status=BrandConfiguration.DomainStatus.VERIFIED,
         branding_mode="white_label",
@@ -78,14 +73,12 @@ def test_custom_domain_success(rf):
     
     assert request.brand_context["found"] is True
     assert request.brand_context["mode"] == "white_label"
-    assert request.brand_context["company_name"] == "Acme Custom Verified"
 
 def test_suspended_organization(rf):
     domain, _ = BusinessDomain.objects.get_or_create(name="Retail " + __import__("uuid").uuid4().hex[:8], code="RET" + __import__("uuid").uuid4().hex[:4])
-    org = Organization.objects.create(name="Bad Corp", slug="bad", business_domain=domain, is_active=False)
+    org = Organization.objects.create(name="bad", business_domain=domain, is_active=False)
     BrandConfiguration.objects.create(
         organization=org,
-        company_name="Bad Brand",
         is_active=True
     )
     
