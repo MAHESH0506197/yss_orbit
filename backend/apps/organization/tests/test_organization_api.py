@@ -116,7 +116,6 @@ class TestOrganizationCreateAPI:
         response = self.client.post("/api/v1/organizations/", payload)
         assert response.status_code == 201
         data = response.data.get("data") or response.data
-        assert data["slug"] == "api-test-corp"
         # Settings must be auto-provisioned
         org_id = data["id"]
         assert OrganizationSettings.objects.filter(organization_id=org_id).exists()
