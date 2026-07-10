@@ -103,7 +103,7 @@ export default function PQMSettingsPage() {
       } else {
         await pqmService.createDropdownOption({ 
           name: ddForm.name, 
-          field_type: activeDropdownTab,
+          field_type: activeDropdownTab.toUpperCase(),
           display_order: parseInt(ddForm.display_order) || 0,
           is_active: true
         });
@@ -118,7 +118,7 @@ export default function PQMSettingsPage() {
     try {
       await pqmService.createDropdownOption({
         name: subCategoryForm.name,
-        field_type: "sub_category",
+        field_type: "SUB_CATEGORY",
         display_order: parseInt(subCategoryForm.display_order) || 0,
         system_mapping: parentId,
         is_active: true
@@ -177,7 +177,7 @@ export default function PQMSettingsPage() {
     try {
       const newCat = await pqmService.createDropdownOption({
         name: categoryDraft.name,
-        field_type: "category",
+        field_type: "CATEGORY",
         display_order: parseInt(categoryDraft.display_order) || 0,
         is_active: true
       });
@@ -187,7 +187,7 @@ export default function PQMSettingsPage() {
         await Promise.all(validSubCats.map(sc => 
           pqmService.createDropdownOption({
             name: sc.name.trim(),
-            field_type: "sub_category",
+            field_type: "SUB_CATEGORY",
             display_order: parseInt(sc.display_order) || 0,
             system_mapping: newCat.id,
             is_active: true

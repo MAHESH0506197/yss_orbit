@@ -24,7 +24,7 @@ export type ReferenceType = string;
 export interface PQMDropdownOption {
   id: string;
   name: string;
-  field_type: 'priority' | 'severity' | 'reference_type' | 'area' | 'category' | 'sub_category';
+  field_type: 'PRIORITY' | 'SEVERITY' | 'REFERENCE_TYPE' | 'AREA' | 'CATEGORY' | 'SUB_CATEGORY';
   system_mapping: string | null;
   is_active: boolean;
   display_order: number;

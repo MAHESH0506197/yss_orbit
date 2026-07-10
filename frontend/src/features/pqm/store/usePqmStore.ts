@@ -232,12 +232,12 @@ export const usePqmStore = create<PqmState & PqmActions>()(
         try {
           const options = await pqmService.listDropdownOptions();
           set({
-            priorities: options.filter(o => o.field_type === 'priority'),
-            severities: options.filter(o => o.field_type === 'severity'),
-            referenceTypes: options.filter(o => o.field_type === 'reference_type'),
-            areas: options.filter(o => o.field_type === 'area'),
-            categories: options.filter(o => o.field_type === 'category'),
-            subCategories: options.filter(o => o.field_type === 'sub_category'),
+            priorities: options.filter(o => o.field_type === 'PRIORITY'),
+            severities: options.filter(o => o.field_type === 'SEVERITY'),
+            referenceTypes: options.filter(o => o.field_type === 'REFERENCE_TYPE'),
+            areas: options.filter(o => o.field_type === 'AREA'),
+            categories: options.filter(o => o.field_type === 'CATEGORY'),
+            subCategories: options.filter(o => o.field_type === 'SUB_CATEGORY'),
           });
         } catch (e) {
           console.error("Failed to fetch dropdown config", e);
