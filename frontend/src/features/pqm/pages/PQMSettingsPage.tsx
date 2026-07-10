@@ -3,7 +3,7 @@ import { usePqmStore } from "../store/usePqmStore";
 import { pqmService } from "../api/pqmService";
 import { PageHeader } from "@/components/ui/PageHeader";
 import { SectionCard } from "@/components/platform/SectionCard";
-import { Settings, Plus, Trash2, Edit2, X, CornerDownRight, FolderPlus } from "lucide-react";
+import { Settings, Plus, Trash2, Edit2, X, CornerDownRight, FolderPlus, ChevronDown, ChevronRight } from "lucide-react";
 import { InfoTooltip } from "@/components/ui/InfoTooltip";
 import { Badge } from "@/components/ui/Badge";
 import { PQMDropdownOption } from "../types";
@@ -79,6 +79,19 @@ export default function PQMSettingsPage() {
 
   const [addingSubCategoryTo, setAddingSubCategoryTo] = useState<string | null>(null);
   const [subCategoryForm, setSubCategoryForm] = useState({ name: "", display_order: "0" });
+  const [expandedCategories, setExpandedCategories] = useState<Set<string>>(new Set());
+
+  const toggleCategory = (id: string) => {
+    setExpandedCategories(prev => {
+      const newSet = new Set(prev);
+      if (newSet.has(id)) {
+        newSet.delete(id);
+      } else {
+        newSet.add(id);
+      }
+      return newSet;
+    });
+  };
 
   const getActiveDropdownList = () => {
     switch(activeDropdownTab) {
@@ -413,8 +426,16 @@ export default function PQMSettingsPage() {
                   getActiveDropdownList().map((opt: PQMDropdownOption) => (
                     <div key={opt.id} className="flex flex-col bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-xl shadow-sm hover:shadow-md transition-shadow">
                       {/* Main Row */}
-                      <div className="flex items-center justify-between p-4 group">
+                      <div 
+                        className={`flex items-center justify-between p-4 group ${activeDropdownTab === 'category' ? 'cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-800/50' : ''}`}
+                        onClick={() => activeDropdownTab === 'category' && toggleCategory(opt.id)}
+                      >
                         <div className="flex items-center gap-4">
+                          {activeDropdownTab === 'category' && (
+                            <div className="text-gray-400">
+                              {expandedCategories.has(opt.id) ? <ChevronDown className="w-5 h-5" /> : <ChevronRight className="w-5 h-5" />}
+                            </div>
+                          )}
                           <Badge variant="secondary" className="w-8 h-8 flex items-center justify-center font-bold text-gray-700 dark:text-gray-300">
                             {opt.display_order}
                           </Badge>
@@ -422,11 +443,17 @@ export default function PQMSettingsPage() {
                             {opt.name}
                           </span>
                         </div>
-                        <div className="flex items-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+                        <div 
+                          className="flex items-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity"
+                          onClick={e => e.stopPropagation()}
+                        >
                           {activeDropdownTab === 'category' && (
                             <button 
                               className="p-2 text-violet-600 hover:text-violet-700 hover:bg-violet-50 dark:text-violet-400 dark:hover:bg-violet-900/20 rounded-lg transition-colors"
-                              onClick={() => setAddingSubCategoryTo(opt.id)}
+                              onClick={() => {
+                                setAddingSubCategoryTo(opt.id);
+                                setExpandedCategories(prev => new Set(prev).add(opt.id));
+                              }}
                               title="Add Sub-category"
                             >
                               <Plus className="w-4 h-4" />
@@ -450,7 +477,7 @@ export default function PQMSettingsPage() {
                       </div>
                       
                       {/* Sub-categories block (only for category tab) */}
-                      {activeDropdownTab === 'category' && (
+                      {activeDropdownTab === 'category' && expandedCategories.has(opt.id) && (
                         <div className="flex flex-col bg-gray-50/50 dark:bg-gray-950/50 border-t border-gray-100 dark:border-gray-800 rounded-b-xl overflow-hidden">
                           {subCategories.filter(sc => sc.system_mapping === opt.id).map(sc => (
                             <div key={sc.id} className="flex items-center justify-between p-3 pl-14 group border-b border-gray-100 dark:border-gray-800 last:border-0 hover:bg-gray-100/50 dark:hover:bg-gray-900/50 transition-colors">
