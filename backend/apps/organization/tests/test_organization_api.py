@@ -77,13 +77,13 @@ class TestOrganizationListAPI:
         for r in results:
             assert r["is_active"] is True
 
-    def test_list_filter_is_active_false(self, super_admin_user, business_domain):
+    def test_list_filter_is_active_false(self, admin_user, business_domain):
         inactive = Organization.objects.create(
             name="Inactive Corp",
             is_active=False,
             business_domain=business_domain,
         )
-        self.client.force_authenticate(user=super_admin_user)
+        self.client.force_authenticate(user=admin_user)
         response = self.client.get("/api/v1/organizations/", {"is_active": "false"})
         assert response.status_code == 200
         results = _extract_results(response.json())
