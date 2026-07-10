@@ -1,0 +1,44 @@
+<!-- yss_orbit\frontend\index.html -->
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <!-- SEO -->
+    <title>YSS Orbit — Enterprise SaaS Platform</title>
+    <meta name="description" content="YSS Orbit — All-in-one enterprise management platform for retail, HRMS, inventory, billing, and more." />
+    <meta name="robots" content="noindex, nofollow" />
+
+    <!-- Security -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://checkout.razorpay.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob: https:; connect-src 'self' https://api.razorpay.com http://localhost:8000;" />
+    <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin" />
+    <meta http-equiv="X-Content-Type-Options" content="nosniff" />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="/assets/images/favicon.png" />
+    <link rel="apple-touch-icon" href="/assets/images/apple-touch-icon.png" />
+
+    <!-- Fonts — preload critical fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="preload"
+      as="style"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap"
+    />
+
+    <!-- Theme color -->
+    <meta name="theme-color" content="#1a56db" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#1e293b" media="(prefers-color-scheme: dark)" />
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

@@ -1,0 +1,8 @@
+# yss_orbit\frontend\type-check-errors2.txt
+
+> yss-orbit-frontend@1.0.0 type-check
+> tsc --noEmit
+
+src/modules/featureFlags/pages/featureFlagsListPage.tsx(8,17): error TS1180: Property destructuring pattern expected.
+src/modules/moduleRegistry/pages/moduleRegistryListPage.tsx(7,17): error TS1180: Property destructuring pattern expected.
+src/modules/notification/pages/notificationListPage.tsx(7,17): error TS1180: Property destructuring pattern expected.

@@ -1,0 +1,29 @@
+# yss_orbit\infra\kubernetes\overlays\production\kustomization.yaml
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+namespace: yss-orbit-production
+
+resources:
+  - ../../base
+
+replicas:
+  - name: yss-orbit-api
+    count: 3
+  - name: yss-orbit-celery
+    count: 3
+
+patches:
+  - patch: |-
+      - op: replace
+        path: /spec/template/spec/containers/0/resources/limits/memory
+        value: 1Gi
+    target:
+      kind: Deployment
+      name: yss-orbit-api
+
+configMapGenerator:
+  - name: app-config
+    literals:
+      - ENVIRONMENT=production
+      - LOG_LEVEL=WARNING

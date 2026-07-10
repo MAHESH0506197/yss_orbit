@@ -1,0 +1,30 @@
+# yss_orbit\.github\ISSUE_TEMPLATE\bug_report.yml
+name: Bug Report
+description: Report a reproducible bug
+title: "[BUG] "
+labels: ["bug", "needs-triage"]
+body:
+  - type: markdown
+    attributes:
+      value: "Please fill in all fields to help us reproduce the issue."
+  - type: input
+    id: description
+    attributes:
+      label: Bug Description
+      placeholder: What happened?
+    validations:
+      required: true
+  - type: input
+    id: reproduction
+    attributes:
+      label: Steps to Reproduce
+      placeholder: "1. ... 2. ... 3. ..."
+    validations:
+      required: true
+  - type: dropdown
+    id: severity
+    attributes:
+      label: Severity
+      options: [Critical, High, Medium, Low]
+    validations:
+      required: true

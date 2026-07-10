@@ -1,0 +1,231 @@
+src/api/apiConfig.ts(3,1): error TS2578: Unused '@ts-expect-error' directive.
+src/api/client.ts(15,1): error TS2578: Unused '@ts-expect-error' directive.
+src/App.tsx(6,1): error TS2578: Unused '@ts-expect-error' directive.
+src/components/background/PrivateBackground.tsx(223,7): error TS18047: 'ctx' is possibly 'null'.
+src/components/background/PrivateBackground.tsx(226,18): error TS18047: 'ctx' is possibly 'null'.
+src/components/background/PrivateBackground.tsx(230,7): error TS18047: 'ctx' is possibly 'null'.
+src/components/background/PrivateBackground.tsx(231,7): error TS18047: 'ctx' is possibly 'null'.
+src/components/background/PrivateBackground.tsx(234,7): error TS18047: 'ctx' is possibly 'null'.
+src/components/background/PrivateBackground.tsx(235,7): error TS18047: 'ctx' is possibly 'null'.
+src/components/background/PrivateBackground.tsx(250,26): error TS18047: 'ctx' is possibly 'null'.
+src/components/background/PrivateBackground.tsx(263,9): error TS18047: 'ctx' is possibly 'null'.
+src/components/background/PrivateBackground.tsx(264,9): error TS18047: 'ctx' is possibly 'null'.
+src/components/background/PrivateBackground.tsx(265,9): error TS18047: 'ctx' is possibly 'null'.
+src/components/background/PrivateBackground.tsx(266,9): error TS18047: 'ctx' is possibly 'null'.
+src/components/background/PrivateBackground.tsx(269,7): error TS18047: 'ctx' is possibly 'null'.
+src/components/background/PrivateBackground.tsx(287,20): error TS18047: 'ctx' is possibly 'null'.
+src/components/background/PrivateBackground.tsx(292,9): error TS18047: 'ctx' is possibly 'null'.
+src/components/background/PrivateBackground.tsx(293,9): error TS18047: 'ctx' is possibly 'null'.
+src/components/background/PrivateBackground.tsx(294,9): error TS18047: 'ctx' is possibly 'null'.
+src/components/background/PrivateBackground.tsx(295,9): error TS18047: 'ctx' is possibly 'null'.
+src/components/background/PrivateBackground.tsx(300,9): error TS18047: 'ctx' is possibly 'null'.
+src/components/background/PrivateBackground.tsx(301,9): error TS18047: 'ctx' is possibly 'null'.
+src/components/background/PrivateBackground.tsx(302,9): error TS18047: 'ctx' is possibly 'null'.
+src/components/background/PrivateBackground.tsx(303,9): error TS18047: 'ctx' is possibly 'null'.
+src/components/background/PrivateBackground.tsx(304,9): error TS18047: 'ctx' is possibly 'null'.
+src/components/background/PrivateBackground.tsx(311,26): error TS18047: 'ctx' is possibly 'null'.
+src/components/background/PrivateBackground.tsx(318,9): error TS18047: 'ctx' is possibly 'null'.
+src/components/background/PrivateBackground.tsx(319,9): error TS18047: 'ctx' is possibly 'null'.
+src/components/background/PublicBackground.tsx(282,7): error TS18047: 'ctx' is possibly 'null'.
+src/components/background/PublicBackground.tsx(285,18): error TS18047: 'ctx' is possibly 'null'.
+src/components/background/PublicBackground.tsx(290,7): error TS18047: 'ctx' is possibly 'null'.
+src/components/background/PublicBackground.tsx(291,7): error TS18047: 'ctx' is possibly 'null'.
+src/components/background/PublicBackground.tsx(299,7): error TS18047: 'ctx' is possibly 'null'.
+src/components/background/PublicBackground.tsx(300,7): error TS18047: 'ctx' is possibly 'null'.
+src/components/background/PublicBackground.tsx(322,26): error TS18047: 'ctx' is possibly 'null'.
+src/components/background/PublicBackground.tsx(335,9): error TS18047: 'ctx' is possibly 'null'.
+src/components/background/PublicBackground.tsx(336,9): error TS18047: 'ctx' is possibly 'null'.
+src/components/background/PublicBackground.tsx(337,9): error TS18047: 'ctx' is possibly 'null'.
+src/components/background/PublicBackground.tsx(338,9): error TS18047: 'ctx' is possibly 'null'.
+src/components/background/PublicBackground.tsx(341,7): error TS18047: 'ctx' is possibly 'null'.
+src/components/background/PublicBackground.tsx(362,20): error TS18047: 'ctx' is possibly 'null'.
+src/components/background/PublicBackground.tsx(367,9): error TS18047: 'ctx' is possibly 'null'.
+src/components/background/PublicBackground.tsx(368,9): error TS18047: 'ctx' is possibly 'null'.
+src/components/background/PublicBackground.tsx(369,9): error TS18047: 'ctx' is possibly 'null'.
+src/components/background/PublicBackground.tsx(370,9): error TS18047: 'ctx' is possibly 'null'.
+src/components/background/PublicBackground.tsx(376,21): error TS18047: 'ctx' is possibly 'null'.
+src/components/background/PublicBackground.tsx(382,9): error TS18047: 'ctx' is possibly 'null'.
+src/components/background/PublicBackground.tsx(383,9): error TS18047: 'ctx' is possibly 'null'.
+src/components/background/PublicBackground.tsx(388,9): error TS18047: 'ctx' is possibly 'null'.
+src/components/background/PublicBackground.tsx(389,9): error TS18047: 'ctx' is possibly 'null'.
+src/components/background/PublicBackground.tsx(390,9): error TS18047: 'ctx' is possibly 'null'.
+src/components/background/PublicBackground.tsx(391,9): error TS18047: 'ctx' is possibly 'null'.
+src/components/background/PublicBackground.tsx(392,9): error TS18047: 'ctx' is possibly 'null'.
+src/components/background/PublicBackground.tsx(400,26): error TS18047: 'ctx' is possibly 'null'.
+src/components/background/PublicBackground.tsx(407,9): error TS18047: 'ctx' is possibly 'null'.
+src/components/background/PublicBackground.tsx(408,9): error TS18047: 'ctx' is possibly 'null'.
+src/components/layouts/auth/AuthLayout.tsx(5,1): error TS2578: Unused '@ts-expect-error' directive.
+src/components/layouts/auth/AuthLayout.tsx(7,1): error TS2578: Unused '@ts-expect-error' directive.
+src/components/layouts/header/Header.tsx(6,1): error TS2578: Unused '@ts-expect-error' directive.
+src/components/layouts/sidebar/Sidebar.tsx(6,1): error TS2578: Unused '@ts-expect-error' directive.
+src/components/overlay/ModalWizard.tsx(109,52): error TS18048: 'currentStep' is possibly 'undefined'.
+src/components/overlay/ModalWizard.tsx(111,16): error TS18048: 'currentStep' is possibly 'undefined'.
+src/components/overlay/ModalWizard.tsx(113,63): error TS18048: 'currentStep' is possibly 'undefined'.
+src/components/overlay/ModalWizard.tsx(117,14): error TS18048: 'currentStep' is possibly 'undefined'.
+src/features/attendance/api/attendanceApi.ts(2,1): error TS2578: Unused '@ts-expect-error' directive.
+src/features/attendance/components/attendanceCard.tsx(19,26): error TS2345: Argument of type 'string | undefined' is not assignable to parameter of type 'string'.
+  Type 'undefined' is not assignable to type 'string'.
+src/features/attendance/components/attendanceCard.tsx(24,26): error TS2345: Argument of type 'string | undefined' is not assignable to parameter of type 'string'.
+  Type 'undefined' is not assignable to type 'string'.
+src/features/attendance/hooks/useattendance.ts(4,1): error TS2578: Unused '@ts-expect-error' directive.
+src/features/audit/api/auditApi.ts(2,1): error TS2578: Unused '@ts-expect-error' directive.
+src/features/audit/hooks/useaudit.ts(4,1): error TS2578: Unused '@ts-expect-error' directive.
+src/features/errorLog/api/errorLogApi.ts(2,1): error TS2578: Unused '@ts-expect-error' directive.
+src/features/errorLog/hooks/useerrorLog.ts(4,1): error TS2578: Unused '@ts-expect-error' directive.
+src/features/featureFlags/api/featureFlagsApi.ts(2,1): error TS2578: Unused '@ts-expect-error' directive.
+src/features/featureFlags/hooks/usefeatureFlags.ts(4,1): error TS2578: Unused '@ts-expect-error' directive.
+src/features/hrms/components/EmployeeForm.tsx(4,10): error TS2305: Module '"../api"' has no exported member 'createEmployee'.
+src/features/hrms/components/EmployeeForm.tsx(5,10): error TS2305: Module '"../types"' has no exported member 'CreateEmployeePayload'.
+src/features/hrms/components/EmployeeForm.tsx(6,1): error TS2578: Unused '@ts-expect-error' directive.
+src/features/hrms/components/EmployeeForm.tsx(34,17): error TS7006: Parameter 'prev' implicitly has an 'any' type.
+src/features/inventory/components/StockTable.tsx(21,27): error TS2339: Property 'id' does not exist on type 'InventoryItem'.
+src/features/inventory/hooks/useinventory.ts(4,1): error TS2578: Unused '@ts-expect-error' directive.
+src/features/moduleRegistry/api/moduleRegistryApi.ts(2,1): error TS2578: Unused '@ts-expect-error' directive.
+src/features/moduleRegistry/hooks/usemoduleRegistry.ts(4,1): error TS2578: Unused '@ts-expect-error' directive.
+src/features/payroll/api/payrollApi.ts(2,1): error TS2578: Unused '@ts-expect-error' directive.
+src/features/payroll/components/PayrollRunTable.tsx(20,26): error TS2339: Property 'id' does not exist on type 'PayrollRun'.
+src/features/payroll/components/PayslipModal.tsx(31,33): error TS2339: Property 'id' does not exist on type 'never'.
+src/features/payroll/components/PayslipModal.tsx(35,93): error TS2339: Property 'employeeName' does not exist on type 'never'.
+src/features/payroll/components/PayslipModal.tsx(37,92): error TS2339: Property 'employeeId' does not exist on type 'never'.
+src/features/payroll/components/PayslipModal.tsx(42,92): error TS2339: Property 'netPay' does not exist on type 'never'.
+src/features/payroll/components/PayslipModal.tsx(49,91): error TS2339: Property 'basicSalary' does not exist on type 'never'.
+src/features/payroll/components/PayslipModal.tsx(54,87): error TS2339: Property 'allowances' does not exist on type 'never'.
+src/features/payroll/components/PayslipModal.tsx(59,85): error TS2339: Property 'deductions' does not exist on type 'never'.
+src/features/payroll/hooks/usepayroll.ts(4,1): error TS2578: Unused '@ts-expect-error' directive.
+src/features/rbac/api/rbacApi.ts(2,1): error TS2578: Unused '@ts-expect-error' directive.
+src/features/rbac/hooks/userbac.ts(4,1): error TS2578: Unused '@ts-expect-error' directive.
+src/features/subscription/api/subscriptionApi.ts(2,1): error TS2578: Unused '@ts-expect-error' directive.
+src/features/tenantModule/api/tenantModuleApi.ts(2,1): error TS2578: Unused '@ts-expect-error' directive.
+src/features/tenantModule/hooks/usetenantModule.ts(4,1): error TS2578: Unused '@ts-expect-error' directive.
+src/features/tenantSettings/api/tenantSettingsApi.ts(2,1): error TS2578: Unused '@ts-expect-error' directive.
+src/features/tenantSettings/hooks/usetenantSettings.ts(4,1): error TS2578: Unused '@ts-expect-error' directive.
+src/main.tsx(9,1): error TS2578: Unused '@ts-expect-error' directive.
+src/main.tsx(11,1): error TS2578: Unused '@ts-expect-error' directive.
+src/pages/admin/audit/pages/AuditLogPage.tsx(5,1): error TS2578: Unused '@ts-expect-error' directive.
+src/pages/admin/roles/pages/RolesPage.tsx(6,1): error TS2578: Unused '@ts-expect-error' directive.
+src/pages/admin/users/pages/UserListPage.tsx(6,1): error TS2578: Unused '@ts-expect-error' directive.
+src/pages/appraisal/api/appraisalApi.ts(2,1): error TS2578: Unused '@ts-expect-error' directive.
+src/pages/appraisal/hooks/useappraisal.ts(4,1): error TS2578: Unused '@ts-expect-error' directive.
+src/pages/attendance/AttendancePage.tsx(6,1): error TS2578: Unused '@ts-expect-error' directive.
+src/pages/auth/ForgotPasswordOTPPage.tsx(7,1): error TS2578: Unused '@ts-expect-error' directive.
+src/pages/auth/ForgotPasswordPage.tsx(7,1): error TS2578: Unused '@ts-expect-error' directive.
+src/pages/auth/LoginPage.tsx(9,1): error TS2578: Unused '@ts-expect-error' directive.
+src/pages/auth/OTPVerifyPage.tsx(8,1): error TS2578: Unused '@ts-expect-error' directive.
+src/pages/auth/ResetPasswordPage.tsx(8,1): error TS2578: Unused '@ts-expect-error' directive.
+src/pages/authentication/api/authenticationApi.ts(2,1): error TS2578: Unused '@ts-expect-error' directive.
+src/pages/authentication/hooks/useauthentication.ts(4,1): error TS2578: Unused '@ts-expect-error' directive.
+src/pages/authentication/services/authenticationService.ts(18,72): error TS2552: Cannot find name 'data'. Did you mean 'edata'?
+src/pages/batchTracking/api/batchTrackingApi.ts(2,1): error TS2578: Unused '@ts-expect-error' directive.
+src/pages/batchTracking/hooks/usebatchTracking.ts(4,1): error TS2578: Unused '@ts-expect-error' directive.
+src/pages/billing/api/billingApi.ts(2,1): error TS2578: Unused '@ts-expect-error' directive.
+src/pages/billing/components/InvoiceTable.tsx(22,26): error TS2339: Property 'id' does not exist on type 'Invoice'.
+src/pages/billing/hooks/usebilling.ts(4,1): error TS2578: Unused '@ts-expect-error' directive.
+src/pages/branding/api/brandingApi.ts(2,1): error TS2578: Unused '@ts-expect-error' directive.
+src/pages/branding/hooks/usebranding.ts(4,1): error TS2578: Unused '@ts-expect-error' directive.
+src/pages/branding/services/brandingService.ts(18,66): error TS2552: Cannot find name 'data'. Did you mean 'edata'?
+src/pages/businessUnit/businessUnitListPage.tsx(6,1): error TS2578: Unused '@ts-expect-error' directive.
+src/pages/businessUnit/businessUnitListPage.tsx(8,1): error TS2578: Unused '@ts-expect-error' directive.
+src/pages/businessUnit/businessUnitListPage.tsx(11,1): error TS2578: Unused '@ts-expect-error' directive.
+src/pages/dashboard/api/dashboardApi.ts(2,1): error TS2578: Unused '@ts-expect-error' directive.
+src/pages/dashboard/hooks/usedashboard.ts(4,1): error TS2578: Unused '@ts-expect-error' directive.
+src/pages/dashboard/widgets/RecentActivityWidget.tsx(3,1): error TS2578: Unused '@ts-expect-error' directive.
+src/pages/dashboard/widgets/RecentActivityWidget.tsx(5,1): error TS2578: Unused '@ts-expect-error' directive.
+src/pages/dashboard/widgets/StatsOverviewWidget.tsx(3,1): error TS2578: Unused '@ts-expect-error' directive.
+src/pages/dashboard/widgets/StatsOverviewWidget.tsx(5,1): error TS2578: Unused '@ts-expect-error' directive.
+src/pages/dashboard/widgets/SystemHealthWidget.tsx(3,1): error TS2578: Unused '@ts-expect-error' directive.
+src/pages/drugRegister/api/drugRegisterApi.ts(2,1): error TS2578: Unused '@ts-expect-error' directive.
+src/pages/drugRegister/components/ScheduleHTable.tsx(21,28): error TS2339: Property 'id' does not exist on type 'DrugRegisterEntry'.
+src/pages/drugRegister/hooks/usedrugRegister.ts(4,1): error TS2578: Unused '@ts-expect-error' directive.
+src/pages/expiryTracking/api/expiryTrackingApi.ts(2,1): error TS2578: Unused '@ts-expect-error' directive.
+src/pages/expiryTracking/components/FifoTable.tsx(22,27): error TS2339: Property 'id' does not exist on type 'ExpiryItem'.
+src/pages/expiryTracking/hooks/useexpiryTracking.ts(4,1): error TS2578: Unused '@ts-expect-error' directive.
+src/pages/fileStorage/api/fileStorageApi.ts(2,1): error TS2578: Unused '@ts-expect-error' directive.
+src/pages/fileStorage/components/FileTable.tsx(23,27): error TS2339: Property 'id' does not exist on type 'StoredFile'.
+src/pages/fileStorage/components/FileTable.tsx(26,48): error TS2339: Property 'id' does not exist on type 'StoredFile'.
+src/pages/fileStorage/hooks/usefileStorage.ts(4,1): error TS2578: Unused '@ts-expect-error' directive.
+src/pages/health/api/healthApi.ts(2,1): error TS2578: Unused '@ts-expect-error' directive.
+src/pages/health/hooks/usehealth.ts(4,1): error TS2578: Unused '@ts-expect-error' directive.
+src/pages/hrmsCore/api/hrmsCoreApi.ts(2,1): error TS2578: Unused '@ts-expect-error' directive.
+src/pages/hrmsCore/components/DepartmentTree.tsx(12,25): error TS2339: Property 'id' does not exist on type 'Department'.
+src/pages/hrmsCore/DepartmentPage.tsx(3,1): error TS2578: Unused '@ts-expect-error' directive.
+src/pages/hrmsCore/DesignationPage.tsx(3,1): error TS2578: Unused '@ts-expect-error' directive.
+src/pages/hrmsCore/EmployeeCreatePage.tsx(3,1): error TS2578: Unused '@ts-expect-error' directive.
+src/pages/hrmsCore/EmployeeEditPage.tsx(3,1): error TS2578: Unused '@ts-expect-error' directive.
+src/pages/hrmsCore/EmployeeTerminatePage.tsx(3,1): error TS2578: Unused '@ts-expect-error' directive.
+src/pages/hrmsCore/hooks/usehrmsCore.ts(4,1): error TS2578: Unused '@ts-expect-error' directive.
+src/pages/hrmsCore/hrmsCoreDetailPage.tsx(3,1): error TS2578: Unused '@ts-expect-error' directive.
+src/pages/hrmsCore/hrmsCoreListPage.tsx(3,1): error TS2578: Unused '@ts-expect-error' directive.
+src/pages/integration/api/integrationApi.ts(2,1): error TS2578: Unused '@ts-expect-error' directive.
+src/pages/integration/hooks/useintegration.ts(4,1): error TS2578: Unused '@ts-expect-error' directive.
+src/pages/inventory/InventoryAdjustmentPage.tsx(3,1): error TS2578: Unused '@ts-expect-error' directive.
+src/pages/inventory/InventoryBatchPage.tsx(3,1): error TS2578: Unused '@ts-expect-error' directive.
+src/pages/inventory/InventoryDetailPage.tsx(3,1): error TS2578: Unused '@ts-expect-error' directive.
+src/pages/inventory/InventoryListPage.tsx(3,1): error TS2578: Unused '@ts-expect-error' directive.
+src/pages/inventory/InventoryReorderPage.tsx(3,1): error TS2578: Unused '@ts-expect-error' directive.
+src/pages/inventory/InventoryStockPage.tsx(3,1): error TS2578: Unused '@ts-expect-error' directive.
+src/pages/leaveManagement/api/leaveManagementApi.ts(2,1): error TS2578: Unused '@ts-expect-error' directive.
+src/pages/leaveManagement/components/leaveManagementCard.tsx(15,73): error TS2339: Property 'id' does not exist on type 'LeaveRequest'.
+src/pages/leaveManagement/hooks/useleaveManagement.ts(4,1): error TS2578: Unused '@ts-expect-error' directive.
+src/pages/notification/api/notificationApi.ts(2,1): error TS2578: Unused '@ts-expect-error' directive.
+src/pages/notification/components/NotificationItem.tsx(12,83): error TS2339: Property 'createdAt' does not exist on type 'Notification'.
+src/pages/notification/components/NotificationItem.tsx(16,52): error TS2339: Property 'id' does not exist on type 'Notification'.
+src/pages/notification/components/NotificationList.tsx(15,34): error TS2339: Property 'id' does not exist on type 'Notification'.
+src/pages/notification/hooks/usenotification.ts(4,1): error TS2578: Unused '@ts-expect-error' directive.
+src/pages/observability/api/observabilityApi.ts(2,1): error TS2578: Unused '@ts-expect-error' directive.
+src/pages/observability/hooks/useobservability.ts(4,1): error TS2578: Unused '@ts-expect-error' directive.
+src/pages/organization/organizationDetailPage.tsx(18,1): error TS2578: Unused '@ts-expect-error' directive.
+src/pages/organization/organizationListPage.tsx(8,1): error TS2578: Unused '@ts-expect-error' directive.
+src/pages/pharmacyBilling/api/pharmacyBillingApi.ts(2,1): error TS2578: Unused '@ts-expect-error' directive.
+src/pages/pharmacyBilling/components/pharmacyBillingCard.tsx(13,70): error TS2339: Property 'createdAt' does not exist on type 'PharmacyBill'.
+src/pages/pharmacyBilling/hooks/usepharmacyBilling.ts(4,1): error TS2578: Unused '@ts-expect-error' directive.
+src/pages/pharmacyBilling/InsurancePage.tsx(3,1): error TS2578: Unused '@ts-expect-error' directive.
+src/pages/pharmacyBilling/pharmacyBillingDetailPage.tsx(3,1): error TS2578: Unused '@ts-expect-error' directive.
+src/pages/pharmacyBilling/pharmacyBillingListPage.tsx(3,1): error TS2578: Unused '@ts-expect-error' directive.
+src/pages/pharmacyBilling/PrescriptionPage.tsx(3,1): error TS2578: Unused '@ts-expect-error' directive.
+src/pages/platformAdmin/api/platformAdminApi.ts(2,1): error TS2578: Unused '@ts-expect-error' directive.
+src/pages/platformAdmin/components/TenantTable.tsx(20,24): error TS2339: Property 'id' does not exist on type 'Tenant'.
+src/pages/platformAdmin/hooks/useplatformAdmin.ts(4,1): error TS2578: Unused '@ts-expect-error' directive.
+src/pages/pos/api/posApi.ts(2,1): error TS2578: Unused '@ts-expect-error' directive.
+src/pages/pos/components/CartPanel.tsx(6,10): error TS2305: Module '"../api/posApi"' has no exported member 'submitTransaction'.
+src/pages/pos/hooks/usepos.ts(4,1): error TS2578: Unused '@ts-expect-error' directive.
+src/pages/pos/POSPage.tsx(9,10): error TS2305: Module '"./api/posApi"' has no exported member 'searchProducts'.
+src/pages/recruitment/api/recruitmentApi.ts(2,1): error TS2578: Unused '@ts-expect-error' directive.
+src/pages/recruitment/hooks/userecruitment.ts(4,1): error TS2578: Unused '@ts-expect-error' directive.
+src/pages/reporting/api/analyticsApi.ts(2,1): error TS2578: Unused '@ts-expect-error' directive.
+src/pages/reporting/hooks/usereporting.ts(4,1): error TS2578: Unused '@ts-expect-error' directive.
+src/pages/retailBilling/api/retailBillingApi.ts(2,1): error TS2578: Unused '@ts-expect-error' directive.
+src/pages/retailBilling/CreditNotePage.tsx(3,1): error TS2578: Unused '@ts-expect-error' directive.
+src/pages/retailBilling/CustomerStatementPage.tsx(3,1): error TS2578: Unused '@ts-expect-error' directive.
+src/pages/retailBilling/hooks/useretailBilling.ts(4,1): error TS2578: Unused '@ts-expect-error' directive.
+src/pages/retailBilling/InvoicePage.tsx(3,1): error TS2578: Unused '@ts-expect-error' directive.
+src/pages/retailBilling/PaymentPage.tsx(3,1): error TS2578: Unused '@ts-expect-error' directive.
+src/pages/retailBilling/retailBillingDetailPage.tsx(3,1): error TS2578: Unused '@ts-expect-error' directive.
+src/pages/retailBilling/retailBillingListPage.tsx(3,1): error TS2578: Unused '@ts-expect-error' directive.
+src/pages/stockTransfer/api/stockTransferApi.ts(2,1): error TS2578: Unused '@ts-expect-error' directive.
+src/pages/stockTransfer/hooks/usestockTransfer.ts(4,1): error TS2578: Unused '@ts-expect-error' directive.
+src/pages/subscription/index.ts(2,15): error TS2307: Cannot find module './routes/subscriptionRoutes' or its corresponding type declarations.
+src/pages/subscription/SubscriptionStatusPage.tsx(10,1): error TS2578: Unused '@ts-expect-error' directive.
+src/pages/support/api/supportApi.ts(2,1): error TS2578: Unused '@ts-expect-error' directive.
+src/pages/user/api/userApi.ts(2,1): error TS2578: Unused '@ts-expect-error' directive.
+src/pages/user/hooks/useuser.ts(4,1): error TS2578: Unused '@ts-expect-error' directive.
+src/pages/userBusinessUnit/api/userBusinessUnitApi.ts(2,1): error TS2578: Unused '@ts-expect-error' directive.
+src/pages/userBusinessUnit/userBusinessUnitListPage.tsx(16,1): error TS2578: Unused '@ts-expect-error' directive.
+src/pages/userBusinessUnit/userBusinessUnitListPage.tsx(18,1): error TS2578: Unused '@ts-expect-error' directive.
+src/pages/vendorManagement/api/vendorManagementApi.ts(2,1): error TS2578: Unused '@ts-expect-error' directive.
+src/pages/vendorManagement/hooks/usevendorManagement.ts(4,1): error TS2578: Unused '@ts-expect-error' directive.
+src/pages/welcome/hooks/useToast.ts(4,5): error TS7034: Variable '_globalDispatch' implicitly has type 'any' in some locations where its type cannot be determined.
+src/pages/welcome/hooks/useToast.ts(7,21): error TS2304: Cannot find name 'fn'.
+src/pages/welcome/hooks/useToast.ts(11,7): error TS7005: Variable '_globalDispatch' implicitly has an 'any' type.
+src/pages/welcome/hooks/useToast.ts(12,21): error TS2552: Cannot find name 'toast'. Did you mean 'ttoast'?
+src/pages/welcome/hooks/useToast.ts(44,3): error TS2552: Cannot find name '_registerDispatch'. Did you mean '_registerDispatc'?
+src/pages/welcome/hooks/useToast.ts(51,5): error TS2552: Cannot find name 'showToast'. Did you mean 'showToas'?
+src/pages/welcome/WelcomePage.tsx(26,1): error TS2578: Unused '@ts-expect-error' directive.
+src/routes/providers/FeatureFlagProvider.tsx(3,1): error TS2578: Unused '@ts-expect-error' directive.
+src/store/usePharmacyStore.ts(3,1): error TS2578: Unused '@ts-expect-error' directive.
+src/tests/integration/hrmsPortal.test.tsx(9,29): error TS2307: Cannot find module '@/api/services/hrmsService' or its corresponding type declarations.
+src/utils/core/http/requestManager.ts(10,22): error TS2551: Property 'addRequest' does not exist on type 'RequestQueue'. Did you mean 'addReques'?
+src/utils/core/http/requestManager.ts(10,35): error TS18004: No value exists in scope for the shorthand property 'config'. Either declare one or provide an initializer.
+src/utils/core/http/requestManager.ts(13,30): error TS2304: Cannot find name 'config'.
+src/utils/core/http/requestQueue.ts(10,21): error TS2304: Cannot find name 'request'.
+src/utils/core/validation/schemas/businessUnitSchemas.ts(15,1): error TS2578: Unused '@ts-expect-error' directive.
+src/utils/platform/auth/authService.ts(18,62): error TS2304: Cannot find name 'data'.

@@ -1,0 +1,6 @@
+// yss_orbit\frontend\.dockerignore
+node_modules
+dist
+.env
+.env.*
+.DS_Store

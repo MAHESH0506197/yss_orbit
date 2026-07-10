@@ -1,0 +1,525 @@
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+.app{font-family:var(--font-sans);max-width:900px}
+.screen{display:none}
+.screen.active{display:block}
+
+.topbar{display:flex;align-items:center;gap:10px;padding:14px 0 12px;border-bottom:0.5px solid var(--color-border-tertiary);margin-bottom:0}
+.topbar-back{display:flex;align-items:center;justify-content:center;width:32px;height:32px;border-radius:var(--border-radius-md);border:0.5px solid var(--color-border-secondary);background:transparent;cursor:pointer;color:var(--color-text-secondary);font-size:16px;flex-shrink:0}
+.topbar-back:hover{background:var(--color-background-secondary)}
+.topbar-crumbs{display:flex;align-items:center;gap:6px;flex:1;min-width:0;overflow:hidden}
+.crumb{font-size:12px;color:var(--color-text-tertiary);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.crumb.active{color:var(--color-text-primary);font-weight:500}
+.crumb-sep{font-size:12px;color:var(--color-border-primary);flex-shrink:0}
+.topbar-actions{display:flex;gap:8px;flex-shrink:0}
+
+.page-heading{padding:16px 0 14px;display:flex;align-items:flex-start;justify-content:space-between;gap:12px}
+.page-heading-left .page-title{font-size:18px;font-weight:500;color:var(--color-text-primary)}
+.page-heading-left .page-sub{font-size:13px;color:var(--color-text-secondary);margin-top:3px}
+.btn-primary{display:inline-flex;align-items:center;gap:6px;padding:8px 14px;border-radius:var(--border-radius-md);border:0.5px solid var(--color-border-secondary);background:var(--color-background-primary);color:var(--color-text-primary);font-size:13px;cursor:pointer;white-space:nowrap}
+.btn-primary:hover{background:var(--color-background-secondary)}
+.btn-primary i{font-size:15px}
+
+.search-row{display:flex;align-items:center;gap:8px;margin-bottom:12px}
+.search-row input{flex:1;height:36px;font-size:13px;padding:0 12px;border-radius:var(--border-radius-md);border:0.5px solid var(--color-border-secondary);background:var(--color-background-secondary);color:var(--color-text-primary)}
+
+.grid-cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:10px;padding-bottom:24px}
+.bu-card{background:var(--color-background-primary);border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);padding:16px;cursor:pointer;display:flex;align-items:center;gap:14px}
+.bu-card:hover{border-color:var(--color-border-secondary);background:var(--color-background-secondary)}
+.bu-icon{width:42px;height:42px;border-radius:var(--border-radius-md);display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0}
+.bu-info .bu-name{font-size:14px;font-weight:500;color:var(--color-text-primary)}
+.bu-info .bu-domain{font-size:12px;color:var(--color-text-secondary);margin-top:2px}
+.bu-info .bu-stats{display:flex;gap:10px;margin-top:6px}
+.stat-pill{font-size:11px;padding:2px 8px;border-radius:10px;font-weight:500}
+.bu-arrow{margin-left:auto;color:var(--color-text-tertiary);font-size:16px;flex-shrink:0}
+
+.list-section{border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);overflow:hidden;margin-bottom:24px}
+.list-header{display:flex;align-items:center;justify-content:space-between;padding:10px 16px;background:var(--color-background-secondary);border-bottom:0.5px solid var(--color-border-tertiary)}
+.list-header-label{font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:0.06em;color:var(--color-text-tertiary)}
+.list-row{display:flex;align-items:center;gap:12px;padding:13px 16px;border-bottom:0.5px solid var(--color-border-tertiary);cursor:pointer}
+.list-row:last-child{border-bottom:none}
+.list-row:hover{background:var(--color-background-secondary)}
+.role-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+.role-info{flex:1;min-width:0}
+.role-name{font-size:14px;font-weight:500;color:var(--color-text-primary)}
+.role-meta{font-size:12px;color:var(--color-text-secondary);margin-top:2px}
+.role-tags{display:flex;gap:6px;margin-top:5px;flex-wrap:wrap}
+.tag{font-size:10px;font-weight:500;padding:2px 8px;border-radius:10px}
+.tag-custom{background:#EEEDFE;color:#3C3489}
+.tag-system{background:#EAF3DE;color:#27500A}
+.tag-users{background:var(--color-background-secondary);color:var(--color-text-secondary);border:0.5px solid var(--color-border-tertiary)}
+.row-actions{display:flex;gap:6px;flex-shrink:0}
+.icon-btn{width:30px;height:30px;border-radius:var(--border-radius-md);border:0.5px solid var(--color-border-tertiary);background:transparent;display:flex;align-items:center;justify-content:center;cursor:pointer;color:var(--color-text-secondary);font-size:15px}
+.icon-btn:hover{background:var(--color-background-secondary);border-color:var(--color-border-secondary)}
+.list-row-chevron{color:var(--color-text-tertiary);font-size:16px;flex-shrink:0}
+
+.scope-bar{display:flex;align-items:center;gap:10px;padding:10px 14px;border-radius:var(--border-radius-md);border:0.5px solid #FAC775;background:#FAEEDA;margin-bottom:16px}
+.scope-bar i{color:#854F0B;font-size:16px;flex-shrink:0}
+.scope-bar-text{font-size:12px;color:#633806}
+.scope-bar-text strong{font-weight:500;color:#412402}
+
+.perm-toolbar{display:flex;align-items:center;gap:8px;margin-bottom:14px;flex-wrap:wrap}
+.perm-toolbar input{flex:1;min-width:140px;height:34px;font-size:12px;padding:0 10px;border-radius:var(--border-radius-md);border:0.5px solid var(--color-border-secondary);background:var(--color-background-secondary);color:var(--color-text-primary)}
+.chip{padding:5px 12px;border-radius:20px;font-size:12px;font-weight:500;cursor:pointer;border:0.5px solid var(--color-border-secondary);background:transparent;color:var(--color-text-secondary)}
+.chip.on{background:#E6F1FB;color:#0C447C;border-color:#B5D4F4}
+
+.perm-section{margin-bottom:20px}
+.perm-section-head{display:flex;align-items:center;gap:10px;margin-bottom:8px}
+.perm-section-label{font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:0.07em;color:var(--color-text-tertiary);white-space:nowrap}
+.perm-section-line{flex:1;height:0.5px;background:var(--color-border-tertiary)}
+.perm-section-toggle{font-size:11px;color:var(--color-text-tertiary);cursor:pointer;white-space:nowrap;padding:2px 6px;border-radius:4px}
+.perm-section-toggle:hover{color:var(--color-text-secondary);background:var(--color-background-secondary)}
+.perm-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:7px}
+.perm-row{display:flex;align-items:center;gap:10px;padding:9px 12px;border-radius:var(--border-radius-md);border:0.5px solid var(--color-border-tertiary);background:var(--color-background-primary);cursor:pointer;user-select:none}
+.perm-row:hover{border-color:var(--color-border-secondary)}
+.perm-row.granted{background:#EEEDFE;border-color:#AFA9EC}
+.perm-row.granted .perm-key{color:#3C3489}
+.perm-desc{font-size:11px;color:var(--color-text-tertiary);margin-top:1px}
+.perm-row.granted .perm-desc{color:#534AB7}
+.perm-key{font-size:12px;font-weight:500;color:var(--color-text-primary);font-family:var(--font-mono)}
+.toggle{width:32px;height:18px;border-radius:9px;background:var(--color-border-secondary);position:relative;flex-shrink:0;transition:background 0.15s}
+.toggle.on{background:#7F77DD}
+.toggle::after{content:'';position:absolute;top:2px;left:2px;width:14px;height:14px;border-radius:50%;background:#fff;transition:left 0.15s}
+.toggle.on::after{left:16px}
+
+.users-panel{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:8px;margin-bottom:24px}
+.user-card{display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:var(--border-radius-md);border:0.5px solid var(--color-border-tertiary);background:var(--color-background-primary)}
+.avatar{width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:500;flex-shrink:0}
+.uname{font-size:13px;font-weight:500;color:var(--color-text-primary)}
+.udept{font-size:11px;color:var(--color-text-secondary);margin-top:1px}
+.remove-user{margin-left:auto;cursor:pointer;color:var(--color-text-tertiary);font-size:14px;flex-shrink:0}
+.remove-user:hover{color:var(--color-text-danger)}
+
+.empty-section{display:flex;flex-direction:column;align-items:center;gap:8px;padding:40px 20px;color:var(--color-text-tertiary);text-align:center}
+.empty-section i{font-size:32px;opacity:0.35}
+.empty-section p{font-size:13px}
+.save-bar{display:flex;align-items:center;justify-content:space-between;padding:12px 0;border-top:0.5px solid var(--color-border-tertiary);margin-top:8px}
+.save-bar-left{font-size:12px;color:var(--color-text-secondary)}
+.save-bar-right{display:flex;gap:8px}
+.btn-ghost{padding:7px 14px;border-radius:var(--border-radius-md);border:0.5px solid var(--color-border-secondary);background:transparent;color:var(--color-text-secondary);font-size:13px;cursor:pointer}
+.btn-ghost:hover{background:var(--color-background-secondary)}
+.btn-save{padding:7px 16px;border-radius:var(--border-radius-md);border:0.5px solid #AFA9EC;background:#EEEDFE;color:#3C3489;font-size:13px;font-weight:500;cursor:pointer}
+.btn-save:hover{background:#CECBF6}
+
+@media(max-width:600px){
+  .grid-cards{grid-template-columns:1fr}
+  .perm-grid{grid-template-columns:1fr}
+  .users-panel{grid-template-columns:1fr}
+  .page-heading{flex-direction:column;gap:8px}
+  .perm-toolbar{gap:6px}
+}
+</style>
+
+<h2 class="sr-only">YSS Orbit RBAC — Business Unit scoped access management with drill-down navigation</h2>
+
+<div class="app">
+
+<!-- SCREEN 1: BU List -->
+<div class="screen active" id="s-bu">
+  <div class="topbar">
+    <div class="topbar-crumbs">
+      <span class="crumb active">Access management</span>
+    </div>
+  </div>
+  <div class="page-heading">
+    <div class="page-heading-left">
+      <div class="page-title">Business units</div>
+      <div class="page-sub">Select a business unit to manage its roles and permissions</div>
+    </div>
+  </div>
+  <div class="search-row">
+    <input type="text" placeholder="Search business units…" id="bu-search" oninput="filterBUs()" />
+  </div>
+  <div class="grid-cards" id="bu-grid"></div>
+</div>
+
+<!-- SCREEN 2: Role List -->
+<div class="screen" id="s-roles">
+  <div class="topbar">
+    <button class="topbar-back" onclick="go('s-bu')" aria-label="Back to business units"><i class="ti ti-arrow-left" aria-hidden="true"></i></button>
+    <div class="topbar-crumbs">
+      <span class="crumb" id="bc-bu-name">—</span>
+      <span class="crumb-sep">›</span>
+      <span class="crumb active">Roles</span>
+    </div>
+    <div class="topbar-actions">
+      <button class="btn-primary" onclick="go('s-users')"><i class="ti ti-users" aria-hidden="true"></i> Users</button>
+    </div>
+  </div>
+  <div class="page-heading">
+    <div class="page-heading-left">
+      <div class="page-title" id="roles-title">Roles</div>
+      <div class="page-sub" id="roles-sub">Roles are isolated to this business unit only</div>
+    </div>
+    <button class="btn-primary" onclick="promptAddRole()"><i class="ti ti-plus" aria-hidden="true"></i> Add role</button>
+  </div>
+  <div class="scope-bar">
+    <i class="ti ti-shield-lock" aria-hidden="true"></i>
+    <div class="scope-bar-text">All roles below belong exclusively to <strong id="scope-bu-name">—</strong>. They do not apply to any other business unit.</div>
+  </div>
+  <div class="search-row">
+    <input type="text" placeholder="Search roles…" id="role-search" oninput="filterRoles()" />
+  </div>
+  <div class="list-section" id="role-list-wrap">
+    <div class="list-header">
+      <span class="list-header-label">Role name</span>
+      <span class="list-header-label">Type / users</span>
+    </div>
+    <div id="role-list-body"></div>
+  </div>
+</div>
+
+<!-- SCREEN 3: Permission Editor -->
+<div class="screen" id="s-perms">
+  <div class="topbar">
+    <button class="topbar-back" onclick="go('s-roles')" aria-label="Back to roles"><i class="ti ti-arrow-left" aria-hidden="true"></i></button>
+    <div class="topbar-crumbs">
+      <span class="crumb" id="bc-bu2">—</span>
+      <span class="crumb-sep">›</span>
+      <span class="crumb" onclick="go('s-roles')" style="cursor:pointer" id="bc-role-list">Roles</span>
+      <span class="crumb-sep">›</span>
+      <span class="crumb active" id="bc-role-name">—</span>
+    </div>
+  </div>
+  <div class="page-heading">
+    <div class="page-heading-left">
+      <div class="page-title" id="perm-title">Permissions</div>
+      <div class="page-sub" id="perm-sub">Toggle permissions granted to this role</div>
+    </div>
+    <button class="btn-primary" onclick="promptAssignUser()"><i class="ti ti-user-plus" aria-hidden="true"></i> Assign user</button>
+  </div>
+  <div class="scope-bar">
+    <i class="ti ti-building" aria-hidden="true"></i>
+    <div class="scope-bar-text">Permissions apply only within <strong id="scope-bu2">—</strong>. Users with this role have no access outside this unit.</div>
+  </div>
+  <div class="perm-toolbar">
+    <input type="text" placeholder="Search permissions…" id="perm-search" oninput="renderPerms()" />
+    <button class="chip on" id="chip-all" onclick="setChip('all')">All</button>
+    <button class="chip" id="chip-granted" onclick="setChip('granted')">Granted</button>
+    <button class="chip" id="chip-denied" onclick="setChip('denied')">Denied</button>
+  </div>
+  <div id="perm-sections"></div>
+  <div class="save-bar">
+    <span class="save-bar-left" id="perm-count-label">0 of 0 permissions granted</span>
+    <div class="save-bar-right">
+      <button class="btn-ghost" onclick="go('s-roles')">Cancel</button>
+      <button class="btn-save" onclick="savePerms()"><i class="ti ti-check" aria-hidden="true" style="font-size:13px;margin-right:4px"></i>Save changes</button>
+    </div>
+  </div>
+</div>
+
+<!-- SCREEN 4: Users in BU -->
+<div class="screen" id="s-users">
+  <div class="topbar">
+    <button class="topbar-back" onclick="go('s-roles')" aria-label="Back to roles"><i class="ti ti-arrow-left" aria-hidden="true"></i></button>
+    <div class="topbar-crumbs">
+      <span class="crumb" id="bc-bu3">—</span>
+      <span class="crumb-sep">›</span>
+      <span class="crumb active">Users</span>
+    </div>
+    <div class="topbar-actions">
+      <button class="btn-primary" onclick="promptAssignUser()"><i class="ti ti-user-plus" aria-hidden="true"></i> Add user</button>
+    </div>
+  </div>
+  <div class="page-heading">
+    <div class="page-heading-left">
+      <div class="page-title" id="users-title">Users</div>
+      <div class="page-sub" id="users-sub">All users assigned to roles in this business unit</div>
+    </div>
+  </div>
+  <div id="users-by-role"></div>
+</div>
+
+</div>
+
+<script>
+const BUS=[
+  {id:'bu1',name:'Central Pharmacy',domain:'Pharmacy',icon:'ti-pill',bg:'#EEEDFE',fg:'#3C3489',dotColor:'#7F77DD'},
+  {id:'bu2',name:'Metro Retail',domain:'Retail',icon:'ti-shopping-cart',bg:'#E1F5EE',fg:'#085041',dotColor:'#1D9E75'},
+  {id:'bu3',name:'HQ HR Division',domain:'HRMS',icon:'ti-users',bg:'#E6F1FB',fg:'#0C447C',dotColor:'#378ADD'},
+  {id:'bu4',name:'North POS Hub',domain:'Point of Sale',icon:'ti-credit-card',bg:'#FAECE7',fg:'#712B13',dotColor:'#D85A30'},
+  {id:'bu5',name:'South Warehouse',domain:'Inventory',icon:'ti-building-warehouse',bg:'#EAF3DE',fg:'#27500A',dotColor:'#639922'},
+];
+
+const ROLES={
+  bu1:[
+    {id:'r1',name:'Pharmacist Lead',type:'custom',desc:'Full pharmacy operations access',users:['u1','u2']},
+    {id:'r2',name:'Dispenser',type:'custom',desc:'Dispense drugs and view patient info',users:['u3']},
+    {id:'r3',name:'Inventory Clerk',type:'system',desc:'Manage pharmacy stock only',users:['u4','u5']},
+  ],
+  bu2:[
+    {id:'r4',name:'Store Manager',type:'custom',desc:'Full retail store control',users:['u6']},
+    {id:'r5',name:'Cashier',type:'system',desc:'Process sales and view products',users:['u7','u8','u9']},
+    {id:'r6',name:'Stock Associate',type:'system',desc:'Receive and update stock',users:[]},
+  ],
+  bu3:[
+    {id:'r7',name:'HR Administrator',type:'custom',desc:'Full HR module access',users:['u10']},
+    {id:'r8',name:'Payroll Operator',type:'custom',desc:'Run and view payroll',users:['u11','u12']},
+    {id:'r9',name:'Recruiter',type:'system',desc:'Manage recruitment pipeline',users:['u13']},
+  ],
+  bu4:[
+    {id:'r10',name:'POS Supervisor',type:'custom',desc:'Oversee POS terminals and cash',users:['u14']},
+    {id:'r11',name:'Sales Associate',type:'system',desc:'Operate POS terminal',users:['u15','u16','u17']},
+  ],
+  bu5:[
+    {id:'r12',name:'Warehouse Manager',type:'custom',desc:'Full warehouse control',users:['u18']},
+    {id:'r13',name:'Stock Picker',type:'system',desc:'Pick and pack orders',users:['u19','u20']},
+  ],
+};
+
+const PERM_GROUPS={
+  bu1:{'Dispensing':[{k:'drug.dispense',d:'Dispense medications'},{k:'drug.view',d:'View drug catalogue'},{k:'drug.approve',d:'Approve prescriptions'},{k:'drug.return',d:'Process drug returns'}],'Patient records':[{k:'patients.view',d:'View patient profiles'},{k:'patients.edit',d:'Edit patient records'},{k:'patients.create',d:'Register new patient'}],'Inventory':[{k:'inventory.view',d:'View stock levels'},{k:'inventory.edit',d:'Edit stock records'},{k:'inventory.order',d:'Raise purchase orders'}],'Billing':[{k:'billing.view',d:'View billing records'},{k:'billing.create',d:'Create invoices'},{k:'billing.refund',d:'Issue refunds'}],'Reports':[{k:'reports.view',d:'View reports'},{k:'reports.export',d:'Export report data'}],'Admin':[{k:'staff.manage',d:'Manage staff accounts'},{k:'settings.edit',d:'Edit BU settings'}]},
+  bu2:{'Products':[{k:'products.view',d:'Browse product catalogue'},{k:'products.create',d:'Add new products'},{k:'products.edit',d:'Edit product details'},{k:'products.delete',d:'Remove products'}],'Sales':[{k:'sales.create',d:'Create new sale'},{k:'sales.view',d:'View all sales'},{k:'sales.refund',d:'Process refunds'},{k:'sales.void',d:'Void transactions'}],'Pricing & Promotions':[{k:'pricing.view',d:'View pricing rules'},{k:'pricing.edit',d:'Edit prices and margins'},{k:'promotions.manage',d:'Create promotions'}],'Stock':[{k:'stock.receive',d:'Receive deliveries'},{k:'stock.adjust',d:'Adjust stock counts'}],'Admin':[{k:'staff.manage',d:'Manage staff'},{k:'reports.view',d:'View reports'},{k:'reports.export',d:'Export report data'}]},
+  bu3:{'Employees':[{k:'employees.view',d:'View employee records'},{k:'employees.edit',d:'Edit employee data'},{k:'employees.terminate',d:'Terminate employment'},{k:'employees.create',d:'Onboard new employee'}],'Payroll':[{k:'payroll.view',d:'View payroll data'},{k:'payroll.run',d:'Process payroll'},{k:'payroll.approve',d:'Approve payroll run'}],'Leave':[{k:'leave.view',d:'View leave requests'},{k:'leave.approve',d:'Approve/reject leave'}],'Recruitment':[{k:'recruitment.view',d:'View job postings'},{k:'recruitment.manage',d:'Manage hiring pipeline'}],'Admin':[{k:'reports.view',d:'View reports'},{k:'reports.export',d:'Export data'},{k:'org.settings',d:'Edit organisation settings'}]},
+  bu4:{'POS Terminal':[{k:'pos.open',d:'Open a POS session'},{k:'pos.close',d:'Close a POS session'},{k:'pos.override',d:'Override POS restrictions'}],'Transactions':[{k:'transactions.view',d:'View transaction history'},{k:'transactions.void',d:'Void a transaction'},{k:'transactions.refund',d:'Process refund'}],'Commerce':[{k:'discounts.apply',d:'Apply discounts'},{k:'discounts.create',d:'Create discount rules'},{k:'cash.manage',d:'Manage cash drawer'}],'Admin':[{k:'reports.view',d:'View reports'},{k:'reports.export',d:'Export data'},{k:'staff.manage',d:'Manage staff'}]},
+  bu5:{'Warehouse':[{k:'warehouse.view',d:'View warehouse layout'},{k:'warehouse.manage',d:'Manage locations'},{k:'goods.receive',d:'Receive incoming goods'},{k:'goods.dispatch',d:'Dispatch outbound orders'}],'Stock':[{k:'stock.view',d:'View stock levels'},{k:'stock.adjust',d:'Make stock adjustments'},{k:'stock.transfer',d:'Transfer stock between locations'}],'Orders':[{k:'orders.view',d:'View orders queue'},{k:'orders.pick',d:'Pick orders'},{k:'orders.pack',d:'Pack and label orders'}],'Admin':[{k:'reports.view',d:'View reports'},{k:'reports.export',d:'Export data'},{k:'settings.edit',d:'Edit BU settings'}]},
+};
+
+const DEFAULT_PERMS={
+  r1:{'drug.dispense':true,'drug.view':true,'drug.approve':true,'drug.return':true,'patients.view':true,'patients.edit':true,'patients.create':false,'inventory.view':true,'inventory.edit':false,'inventory.order':false,'billing.view':true,'billing.create':false,'billing.refund':false,'reports.view':true,'reports.export':false,'staff.manage':true,'settings.edit':false},
+  r2:{'drug.dispense':true,'drug.view':true,'drug.approve':false,'drug.return':false,'patients.view':true,'patients.edit':false,'patients.create':false,'inventory.view':true,'inventory.edit':false,'inventory.order':false,'billing.view':false,'billing.create':false,'billing.refund':false,'reports.view':false,'reports.export':false,'staff.manage':false,'settings.edit':false},
+  r3:{'drug.dispense':false,'drug.view':true,'drug.approve':false,'drug.return':false,'patients.view':false,'patients.edit':false,'patients.create':false,'inventory.view':true,'inventory.edit':true,'inventory.order':true,'billing.view':false,'billing.create':false,'billing.refund':false,'reports.view':true,'reports.export':false,'staff.manage':false,'settings.edit':false},
+  r4:{'products.view':true,'products.create':true,'products.edit':true,'products.delete':true,'sales.create':true,'sales.view':true,'sales.refund':true,'sales.void':true,'pricing.view':true,'pricing.edit':true,'promotions.manage':true,'stock.receive':true,'stock.adjust':true,'staff.manage':true,'reports.view':true,'reports.export':true},
+  r5:{'products.view':true,'products.create':false,'products.edit':false,'products.delete':false,'sales.create':true,'sales.view':true,'sales.refund':false,'sales.void':false,'pricing.view':false,'pricing.edit':false,'promotions.manage':false,'stock.receive':false,'stock.adjust':false,'staff.manage':false,'reports.view':false,'reports.export':false},
+  r6:{'products.view':true,'products.create':false,'products.edit':false,'products.delete':false,'sales.create':false,'sales.view':false,'sales.refund':false,'sales.void':false,'pricing.view':false,'pricing.edit':false,'promotions.manage':false,'stock.receive':true,'stock.adjust':true,'staff.manage':false,'reports.view':false,'reports.export':false},
+  r7:{'employees.view':true,'employees.edit':true,'employees.terminate':true,'employees.create':true,'payroll.view':true,'payroll.run':false,'payroll.approve':true,'leave.view':true,'leave.approve':true,'recruitment.view':true,'recruitment.manage':true,'reports.view':true,'reports.export':true,'org.settings':true},
+  r8:{'employees.view':true,'employees.edit':false,'employees.terminate':false,'employees.create':false,'payroll.view':true,'payroll.run':true,'payroll.approve':false,'leave.view':false,'leave.approve':false,'recruitment.view':false,'recruitment.manage':false,'reports.view':true,'reports.export':true,'org.settings':false},
+  r9:{'employees.view':true,'employees.edit':false,'employees.terminate':false,'employees.create':true,'payroll.view':false,'payroll.run':false,'payroll.approve':false,'leave.view':false,'leave.approve':false,'recruitment.view':true,'recruitment.manage':true,'reports.view':true,'reports.export':false,'org.settings':false},
+  r10:{'pos.open':true,'pos.close':true,'pos.override':true,'transactions.view':true,'transactions.void':true,'transactions.refund':true,'discounts.apply':true,'discounts.create':true,'cash.manage':true,'reports.view':true,'reports.export':true,'staff.manage':true},
+  r11:{'pos.open':true,'pos.close':false,'pos.override':false,'transactions.view':true,'transactions.void':false,'transactions.refund':false,'discounts.apply':false,'discounts.create':false,'cash.manage':false,'reports.view':false,'reports.export':false,'staff.manage':false},
+  r12:{'warehouse.view':true,'warehouse.manage':true,'goods.receive':true,'goods.dispatch':true,'stock.view':true,'stock.adjust':true,'stock.transfer':true,'orders.view':true,'orders.pick':true,'orders.pack':true,'reports.view':true,'reports.export':true,'settings.edit':true},
+  r13:{'warehouse.view':true,'warehouse.manage':false,'goods.receive':true,'goods.dispatch':true,'stock.view':true,'stock.adjust':false,'stock.transfer':false,'orders.view':true,'orders.pick':true,'orders.pack':true,'reports.view':false,'reports.export':false,'settings.edit':false},
+};
+
+const USERS={
+  u1:{name:'Arjun Sharma',dept:'Pharmacy Ops',bg:'#EEEDFE',fg:'#3C3489'},
+  u2:{name:'Priya Reddy',dept:'Pharmacy Ops',bg:'#EEEDFE',fg:'#3C3489'},
+  u3:{name:'Kiran Rao',dept:'Dispensary',bg:'#EEEDFE',fg:'#3C3489'},
+  u4:{name:'Meera Iyer',dept:'Stores',bg:'#EEEDFE',fg:'#3C3489'},
+  u5:{name:'Suresh Nair',dept:'Stores',bg:'#EEEDFE',fg:'#3C3489'},
+  u6:{name:'Deepa Pillai',dept:'Retail Mgmt',bg:'#E1F5EE',fg:'#085041'},
+  u7:{name:'Ravi Kumar',dept:'Sales Floor',bg:'#E1F5EE',fg:'#085041'},
+  u8:{name:'Anita George',dept:'Sales Floor',bg:'#E1F5EE',fg:'#085041'},
+  u9:{name:'Vijay Menon',dept:'Sales Floor',bg:'#E1F5EE',fg:'#085041'},
+  u10:{name:'Lakshmi Das',dept:'HR',bg:'#E6F1FB',fg:'#0C447C'},
+  u11:{name:'Sanjay Bhat',dept:'Finance',bg:'#E6F1FB',fg:'#0C447C'},
+  u12:{name:'Nandita Roy',dept:'Finance',bg:'#E6F1FB',fg:'#0C447C'},
+  u13:{name:'Anil Tiwari',dept:'HR',bg:'#E6F1FB',fg:'#0C447C'},
+  u14:{name:'Kavitha Singh',dept:'POS Admin',bg:'#FAECE7',fg:'#712B13'},
+  u15:{name:'Mohan Verma',dept:'Sales',bg:'#FAECE7',fg:'#712B13'},
+  u16:{name:'Rekha Joshi',dept:'Sales',bg:'#FAECE7',fg:'#712B13'},
+  u17:{name:'Tarun Gupta',dept:'Sales',bg:'#FAECE7',fg:'#712B13'},
+  u18:{name:'Ramesh Pillai',dept:'Warehouse',bg:'#EAF3DE',fg:'#27500A'},
+  u19:{name:'Sunita Bhatt',dept:'Ops',bg:'#EAF3DE',fg:'#27500A'},
+  u20:{name:'Dinesh Rao',dept:'Ops',bg:'#EAF3DE',fg:'#27500A'},
+};
+
+let perms=JSON.parse(JSON.stringify(DEFAULT_PERMS));
+let selBU=null,selRole=null,permFilter='all';
+
+function initials(name){return name.split(' ').map(w=>w[0]).join('').slice(0,2).toUpperCase()}
+
+function go(screen){
+  document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
+  document.getElementById(screen).classList.add('active');
+}
+
+function filterBUs(){
+  const q=document.getElementById('bu-search').value.toLowerCase();
+  document.querySelectorAll('.bu-card').forEach(c=>{
+    c.style.display=c.dataset.name.includes(q)?'':'none';
+  });
+}
+
+function filterRoles(){
+  const q=document.getElementById('role-search').value.toLowerCase();
+  document.querySelectorAll('.list-row[data-role]').forEach(r=>{
+    r.style.display=r.dataset.role.includes(q)?'':'none';
+  });
+}
+
+function renderBUs(){
+  const grid=document.getElementById('bu-grid');
+  grid.innerHTML=BUS.map(bu=>{
+    const roles=ROLES[bu.id]||[];
+    const userCount=[...new Set(roles.flatMap(r=>r.users))].length;
+    return `<div class="bu-card" onclick="openBU('${bu.id}')" data-name="${bu.name.toLowerCase()} ${bu.domain.toLowerCase()}">
+      <div class="bu-icon" style="background:${bu.bg}"><i class="ti ${bu.icon}" style="color:${bu.fg};font-size:20px" aria-hidden="true"></i></div>
+      <div class="bu-info">
+        <div class="bu-name">${bu.name}</div>
+        <div class="bu-domain">${bu.domain}</div>
+        <div class="bu-stats">
+          <span class="stat-pill" style="background:${bu.bg};color:${bu.fg}">${roles.length} roles</span>
+          <span class="stat-pill tag-users">${userCount} users</span>
+        </div>
+      </div>
+      <i class="ti ti-chevron-right bu-arrow" aria-hidden="true"></i>
+    </div>`;
+  }).join('');
+}
+
+function openBU(id){
+  selBU=id; selRole=null;
+  const bu=BUS.find(b=>b.id===id);
+  document.getElementById('bc-bu-name').textContent=bu.name;
+  document.getElementById('bc-bu3').textContent=bu.name;
+  document.getElementById('scope-bu-name').textContent=bu.name;
+  document.getElementById('roles-title').textContent=bu.name+' — roles';
+  document.getElementById('roles-sub').textContent='These roles are isolated to '+bu.name+' only';
+  document.getElementById('users-title').textContent=bu.name+' — users';
+  renderRoleList();
+  go('s-roles');
+}
+
+function renderRoleList(){
+  const roles=ROLES[selBU]||[];
+  const body=document.getElementById('role-list-body');
+  if(!roles.length){body.innerHTML='<div class="empty-section"><i class="ti ti-shield-off" aria-hidden="true"></i><p>No roles yet. Add the first role for this business unit.</p></div>';return;}
+  body.innerHTML=roles.map(r=>`
+    <div class="list-row" onclick="openRole('${r.id}')" data-role="${r.name.toLowerCase()}">
+      <div class="role-dot" style="background:${BUS.find(b=>b.id===selBU).dotColor}"></div>
+      <div class="role-info">
+        <div class="role-name">${r.name}</div>
+        <div class="role-meta">${r.desc}</div>
+        <div class="role-tags">
+          <span class="tag ${r.type==='custom'?'tag-custom':'tag-system'}">${r.type}</span>
+          <span class="tag tag-users"><i class="ti ti-user" style="font-size:10px;margin-right:3px" aria-hidden="true"></i>${r.users.length} user${r.users.length!==1?'s':''}</span>
+        </div>
+      </div>
+      <div class="row-actions" onclick="event.stopPropagation()">
+        <div class="icon-btn" title="Edit role name"><i class="ti ti-edit" aria-hidden="true"></i></div>
+        <div class="icon-btn" title="Delete role"><i class="ti ti-trash" aria-hidden="true"></i></div>
+      </div>
+      <i class="ti ti-chevron-right list-row-chevron" aria-hidden="true"></i>
+    </div>
+  `).join('');
+}
+
+function openRole(id){
+  selRole=id; permFilter='all';
+  const bu=BUS.find(b=>b.id===selBU);
+  const role=(ROLES[selBU]||[]).find(r=>r.id===id);
+  document.getElementById('bc-bu2').textContent=bu.name;
+  document.getElementById('bc-role-name').textContent=role.name;
+  document.getElementById('perm-title').textContent=role.name+' — permissions';
+  document.getElementById('perm-sub').textContent=role.users.length+' user'+(role.users.length!==1?'s':'')+' assigned · scope: '+bu.name;
+  document.getElementById('scope-bu2').textContent=bu.name;
+  setChip('all');
+  go('s-perms');
+}
+
+function setChip(f){
+  permFilter=f;
+  ['all','granted','denied'].forEach(c=>{
+    document.getElementById('chip-'+c).classList.toggle('on',c===f);
+  });
+  renderPerms();
+}
+
+function renderPerms(){
+  if(!selRole) return;
+  const groups=PERM_GROUPS[selBU]||{};
+  const p=perms[selRole]||{};
+  const q=(document.getElementById('perm-search').value||'').toLowerCase();
+  let html='';
+  let totalGranted=0,totalAll=0;
+  for(const[grp,items] of Object.entries(groups)){
+    const filtered=items.filter(item=>{
+      if(q&&!item.k.includes(q)&&!item.d.toLowerCase().includes(q)) return false;
+      if(permFilter==='granted'&&!p[item.k]) return false;
+      if(permFilter==='denied'&&p[item.k]) return false;
+      return true;
+    });
+    items.forEach(item=>{totalAll++;if(p[item.k])totalGranted++;});
+    if(!filtered.length) continue;
+    const groupGranted=filtered.filter(i=>p[i.k]).length;
+    html+=`<div class="perm-section">
+      <div class="perm-section-head">
+        <span class="perm-section-label">${grp}</span>
+        <span class="perm-section-line"></span>
+        <span class="perm-section-toggle" onclick="toggleGroup('${grp}')">${groupGranted}/${filtered.length} granted · toggle all</span>
+      </div>
+      <div class="perm-grid">
+        ${filtered.map(item=>`
+          <div class="perm-row ${p[item.k]?'granted':''}" onclick="togglePerm('${item.k}')" role="switch" aria-checked="${p[item.k]?'true':'false'}" tabindex="0" onkeydown="if(event.key===' '||event.key==='Enter'){event.preventDefault();togglePerm('${item.k}')}">
+            <div class="toggle ${p[item.k]?'on':''}" aria-hidden="true"></div>
+            <div>
+              <div class="perm-key">${item.k}</div>
+              <div class="perm-desc">${item.d}</div>
+            </div>
+          </div>
+        `).join('')}
+      </div>
+    </div>`;
+  }
+  document.getElementById('perm-sections').innerHTML=html||'<div class="empty-section"><i class="ti ti-search" aria-hidden="true"></i><p>No permissions match your filter</p></div>';
+  document.getElementById('perm-count-label').textContent=totalGranted+' of '+totalAll+' permissions granted';
+}
+
+function togglePerm(key){
+  if(!perms[selRole]) perms[selRole]={};
+  perms[selRole][key]=!perms[selRole][key];
+  renderPerms();
+}
+
+function toggleGroup(grpName){
+  const groups=PERM_GROUPS[selBU]||{};
+  const items=groups[grpName]||[];
+  const p=perms[selRole]||{};
+  const allOn=items.every(i=>p[i.k]);
+  items.forEach(i=>{p[i.k]=!allOn;});
+  perms[selRole]=p;
+  renderPerms();
+}
+
+function savePerms(){
+  const bu=BUS.find(b=>b.id===selBU);
+  const role=(ROLES[selBU]||[]).find(r=>r.id===selRole);
+  sendPrompt('Permissions saved for role "'+role.name+'" in "'+bu.name+'". Now show me the Django backend API endpoint and serializer needed to save these permissions to the database.');
+}
+
+function renderUsersScreen(){
+  const bu=BUS.find(b=>b.id===selBU);
+  const roles=ROLES[selBU]||[];
+  let html='';
+  roles.forEach(role=>{
+    if(!role.users.length) return;
+    html+=`<div style="margin-bottom:20px">
+      <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px">
+        <div class="role-dot" style="background:${bu.dotColor}"></div>
+        <span style="font-size:13px;font-weight:500;color:var(--color-text-primary)">${role.name}</span>
+        <span class="tag tag-${role.type}">${role.type}</span>
+        <button class="icon-btn" style="margin-left:auto" title="Assign user to this role" onclick="promptAssignUser()"><i class="ti ti-user-plus" aria-hidden="true"></i></button>
+      </div>
+      <div class="users-panel">
+        ${role.users.map(uid=>{const u=USERS[uid];return`<div class="user-card">
+          <div class="avatar" style="background:${u.bg};color:${u.fg}">${initials(u.name)}</div>
+          <div><div class="uname">${u.name}</div><div class="udept">${u.dept}</div></div>
+          <i class="ti ti-x remove-user" title="Remove from role" aria-hidden="true"></i>
+        </div>`;}).join('')}
+      </div>
+    </div>`;
+  });
+  if(!html) html='<div class="empty-section"><i class="ti ti-users" aria-hidden="true"></i><p>No users assigned to any role in this business unit yet.</p></div>';
+  document.getElementById('users-by-role').innerHTML=html;
+}
+
+document.getElementById('s-users').addEventListener('click',()=>{});
+const origGo=go;
+window.go=function(screen){
+  origGo(screen);
+  if(screen==='s-users') renderUsersScreen();
+};
+
+function promptAddRole(){
+  const bu=BUS.find(b=>b.id===selBU);
+  sendPrompt('Show me the backend API (DRF ViewSet + serializer + service layer) and frontend form to create a new custom role for the "'+bu.name+'" business unit in YSS Orbit RBAC.');
+}
+function promptAssignUser(){
+  const bu=BUS.find(b=>b.id===selBU);
+  sendPrompt('Show me the backend API and frontend flow to assign a user to a role inside "'+bu.name+'" business unit in YSS Orbit RBAC, enforcing BU-scope isolation.');
+}
+
+renderBUs();
+</script>

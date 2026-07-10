@@ -1,0 +1,34 @@
+groups:
+  - name: yss_orbit_critical
+    rules:
+      - alert: APIHighErrorRate
+        expr: rate(http_requests_total{status=~"5.."}[5m]) > 0.05
+        for: 2m
+        labels:
+          severity: critical
+        annotations:
+          summary: "API error rate above 5 percent"
+
+      - alert: CeleryQueueDepthHigh
+        expr: celery_queue_length > 5000
+        for: 2m
+        labels:
+          severity: warning
+        annotations:
+          summary: "Celery queue depth exceeds 5000"
+
+      - alert: DeadLetterEventsPresent
+        expr: yss_dead_letter_events_total > 0
+        for: 1m
+        labels:
+          severity: critical
+        annotations:
+          summary: "Dead-letter events detected — requires on-call review within 24h"
+
+      - alert: DatabaseConnectionsHigh
+        expr: pg_stat_database_numbackends / pg_settings_max_connections > 0.8
+        for: 1m
+        labels:
+          severity: warning
+        annotations:
+          summary: "DB connections above 80 percent of max"

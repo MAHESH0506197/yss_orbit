@@ -1,0 +1,1 @@
+{"title":"Platform Overview","panels":[{"title":"API Request Rate","type":"stat"},{"title":"Error Rate","type":"gauge"},{"title":"Active Tenants","type":"stat"},{"title":"API P99 Latency","type":"timeseries"}]}

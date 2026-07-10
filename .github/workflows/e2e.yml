@@ -1,0 +1,51 @@
+# yss_orbit\.github\workflows\e2e.yml
+name: E2E Tests
+
+on:
+  push:
+    branches: [main, staging]
+  pull_request:
+    branches: [main]
+
+jobs:
+  e2e-backend:
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:15
+        env:
+          POSTGRES_DB: yss_orbit_test
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+        options: --health-cmd pg_isready
+      redis:
+        image: redis:7
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install dependencies
+        run: |
+          cd backend
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          pip install -r requirements/testing.txt
+      - name: Run E2E tests
+        run: cd backend && pytest tests/e2e/ -v
+
+  e2e-frontend:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install dependencies
+        run: cd frontend && npm ci --legacy-peer-deps
+      - name: Install Playwright
+        run: cd frontend && npx playwright install --with-deps
+      - name: Run E2E tests
+        run: cd frontend && npx playwright test

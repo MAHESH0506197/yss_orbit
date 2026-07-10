@@ -1,0 +1,47 @@
+# yss_orbit\frontend\type-check-errors4.txt
+
+> yss-orbit-frontend@1.0.0 type-check
+> tsc --noEmit
+
+src/features/payroll/api.ts(1,10): error TS2614: Module '"../../core/api/apiClient"' has no exported member 'apiClient'. Did you mean to use 'import apiClient from "../../core/api/apiClient"' instead?
+src/features/payroll/components/PayslipModal.tsx(3,10): error TS2305: Module '"../api"' has no exported member 'usePayslips'.
+src/features/payroll/components/RunPayrollModal.tsx(3,10): error TS2305: Module '"../api"' has no exported member 'useRunPayroll'.
+src/features/payroll/pages/PayrollPage.tsx(2,10): error TS2305: Module '"../api"' has no exported member 'usePayrollRuns'.
+src/modules/attendance/components/attendanceCard.tsx(3,10): error TS2305: Module '"../utils/attendanceHelpers"' has no exported member 'formatTime'.
+src/modules/billing/components/billingCard.tsx(3,10): error TS2305: Module '"../utils/billingHelpers"' has no exported member 'formatCurrency'.
+src/modules/billing/components/InvoiceTable.tsx(3,10): error TS2305: Module '"../utils/billingHelpers"' has no exported member 'formatCurrency'.
+src/modules/errorLog/components/errorLogCard.tsx(3,10): error TS2305: Module '"../utils/errorLogHelpers"' has no exported member 'getSeverityColor'.
+src/modules/errorLog/components/ErrorTable.tsx(3,10): error TS2305: Module '"../utils/errorLogHelpers"' has no exported member 'getSeverityColor'.
+src/modules/expiryTracking/components/ExpiryBadge.tsx(2,10): error TS2305: Module '"../utils/expiryTrackingHelpers"' has no exported member 'getExpiryStatus'.
+src/modules/expiryTracking/pages/expiryTrackingListPage.tsx(11,5): error TS2304: Cannot find name 'fetchItems'.
+src/modules/expiryTracking/pages/expiryTrackingListPage.tsx(11,23): error TS2304: Cannot find name 'setItems'.
+src/modules/featureFlags/components/featureFlagsCard.tsx(14,84): error TS2345: Argument of type 'ID' is not assignable to parameter of type 'number'.
+  Type 'string' is not assignable to type 'number'.
+src/modules/featureFlags/components/FlagTable.tsx(24,92): error TS2345: Argument of type 'ID' is not assignable to parameter of type 'number'.
+  Type 'string' is not assignable to type 'number'.
+src/modules/fileStorage/components/fileStorageCard.tsx(3,10): error TS2305: Module '"../utils/fileStorageHelpers"' has no exported member 'formatFileSize'.
+src/modules/fileStorage/components/FileTable.tsx(3,10): error TS2305: Module '"../utils/fileStorageHelpers"' has no exported member 'formatFileSize'.
+src/modules/fileStorage/components/UploadDropzone.tsx(5,11): error TS2339: Property 'uploadFile' does not exist on type '{ data: FilestorageDto[]; loading: boolean; error: Error; refetch: () => Promise<void>; }'.
+src/modules/fileStorage/components/UploadDropzone.tsx(5,23): error TS2339: Property 'uploading' does not exist on type '{ data: FilestorageDto[]; loading: boolean; error: Error; refetch: () => Promise<void>; }'.
+src/modules/health/pages/healthListPage.tsx(12,5): error TS2304: Cannot find name 'fetchHealth'.
+src/modules/health/pages/healthListPage.tsx(13,40): error TS2304: Cannot find name 'fetchHealth'.
+src/modules/inventory/hooks/useinventory.ts(2,10): error TS2305: Module '"../api/inventoryApi"' has no exported member 'inventoryApi'.
+src/modules/inventory/hooks/useinventory.ts(2,24): error TS2305: Module '"../api/inventoryApi"' has no exported member 'InventoryDto'.
+src/modules/moduleRegistry/components/ModuleCard.tsx(19,35): error TS2345: Argument of type 'ID' is not assignable to parameter of type 'number'.
+  Type 'string' is not assignable to type 'number'.
+src/modules/notification/components/NotificationItem.tsx(13,39): error TS2345: Argument of type 'ID' is not assignable to parameter of type 'number'.
+  Type 'string' is not assignable to type 'number'.
+src/modules/platformAdmin/pages/PlatformStatsPage.tsx(6,11): error TS2339: Property 'getMetrics' does not exist on type '{ data: PlatformadminDto[]; loading: boolean; error: Error; refetch: () => Promise<void>; }'.
+src/modules/reporting/hooks/usereporting.ts(2,10): error TS2305: Module '"../api/reportingApi"' has no exported member 'reportingApi'.
+src/modules/reporting/hooks/usereporting.ts(2,24): error TS2305: Module '"../api/reportingApi"' has no exported member 'ReportingDto'.
+src/modules/retailBilling/routes/retailBillingRoutes.tsx(3,10): error TS2614: Module '"../pages/retailBillingListPage"' has no exported member 'RetailBillingListPage'. Did you mean to use 'import RetailBillingListPage from "../pages/retailBillingListPage"' instead?
+src/modules/retailBilling/routes/retailBillingRoutes.tsx(4,10): error TS2614: Module '"../pages/InvoicePage"' has no exported member 'InvoicePage'. Did you mean to use 'import InvoicePage from "../pages/InvoicePage"' instead?
+src/modules/retailBilling/routes/retailBillingRoutes.tsx(5,10): error TS2614: Module '"../pages/PaymentPage"' has no exported member 'PaymentPage'. Did you mean to use 'import PaymentPage from "../pages/PaymentPage"' instead?
+src/modules/retailBilling/routes/retailBillingRoutes.tsx(6,10): error TS2614: Module '"../pages/CreditNotePage"' has no exported member 'CreditNotePage'. Did you mean to use 'import CreditNotePage from "../pages/CreditNotePage"' instead?
+src/modules/retailBilling/routes/retailBillingRoutes.tsx(7,10): error TS2614: Module '"../pages/CustomerStatementPage"' has no exported member 'CustomerStatementPage'. Did you mean to use 'import CustomerStatementPage from "../pages/CustomerStatementPage"' instead?
+src/modules/retailBilling/routes/retailBillingRoutes.tsx(8,10): error TS2614: Module '"../pages/retailBillingDetailPage"' has no exported member 'RetailBillingDetailPage'. Did you mean to use 'import RetailBillingDetailPage from "../pages/retailBillingDetailPage"' instead?
+src/modules/stockTransfer/services/stockTransferService.ts(17,17): error TS2339: Property 'patch' does not exist on type 'StockTransferApiService'.
+src/modules/user/tests/userStore.test.ts(1,10): error TS2724: '"../state/userStore"' has no exported member named 'userStore'. Did you mean 'useUserStore'?
+src/modules/userBusinessUnit/tests/userBusinessUnitStore.test.ts(1,10): error TS2724: '"../state/userBusinessUnitStore"' has no exported member named 'userBusinessUnitStore'. Did you mean 'useUserBusinessUnitStore'?
+src/modules/vendorManagement/tests/vendorManagementStore.test.ts(1,10): error TS2724: '"../state/vendorManagementStore"' has no exported member named 'vendorManagementStore'. Did you mean 'useVendorManagementStore'?
+src/store/rootStore.ts(1,32): error TS2307: Cannot find module '@reduxjs/toolkit' or its corresponding type declarations.

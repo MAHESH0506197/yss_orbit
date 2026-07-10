@@ -1,0 +1,23 @@
+# yss_orbit\infra\monitoring\alerting\alertmanager.yml
+global:
+  smtp_smarthost: 'smtp.example.com:587'
+  smtp_from: 'alerts@yss-orbit.com'
+
+route:
+  group_by: ['alertname', 'severity']
+  group_wait: 30s
+  group_interval: 5m
+  repeat_interval: 4h
+  receiver: 'ops-team'
+  routes:
+    - match:
+        severity: critical
+      receiver: 'pagerduty-critical'
+
+receivers:
+  - name: 'ops-team'
+    email_configs:
+      - to: 'ops@yss-orbit.com'
+  - name: 'pagerduty-critical'
+    pagerduty_configs:
+      - service_key: 'PAGERDUTY_KEY'

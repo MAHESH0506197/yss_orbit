@@ -1,0 +1,27 @@
+# yss_orbit\infra\kubernetes\base\kustomization.yaml
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+resources:
+- api.yaml
+- celery-beat.yaml
+- celery.yaml
+- frontend.yaml
+- nginx.yaml
+- postgres.yaml
+- redis.yaml
+
+configMapGenerator:
+- name: app-config
+  literals:
+  - DEBUG="False"
+  - REDIS_URL="redis://redis:6379/0"
+  - CELERY_BROKER_URL="redis://redis:6379/0"
+
+secretGenerator:
+- name: app-secrets
+  literals:
+  - POSTGRES_USER="postgres"
+  - POSTGRES_PASSWORD="securepassword"
+  - POSTGRES_DB="yss_orbit"
+  - DATABASE_URL="postgresql://postgres:securepassword@postgres:5432/yss_orbit"

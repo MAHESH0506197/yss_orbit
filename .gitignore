@@ -1,0 +1,35 @@
+# Environment files
+.env
+.env.*
+!.env.example
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Django
+db.sqlite3
+
+# Node
+node_modules/
+
+# IDE
+.vscode/
+.idea/
+
+# Logs
+*.log
+
+allfiles.txt
+
+# Virtual environments
+.venv/
+venv/
+backend/.venv/
+backend/venv/
+
+# Build output
+dist/
+frontend/dist/

@@ -1,0 +1,567 @@
+{
+  "apps": {
+    "api_consumer_key": {
+      "models": [],
+      "views": [
+        "APIKeyListSerializer",
+        "APIKeyCreateSerializer",
+        "APIKeyListView",
+        "APIKeyDetailView"
+      ],
+      "urls": true,
+      "services": false,
+      "tests": true
+    },
+    "appraisal": {
+      "models": [
+        "AppraisalCycle",
+        "KPI",
+        "EmployeeAppraisal"
+      ],
+      "views": [
+        "AppraisalCycleViewSet",
+        "KPIViewSet",
+        "EmployeeAppraisalViewSet"
+      ],
+      "urls": true,
+      "services": true,
+      "tests": true
+    },
+    "attendance": {
+      "models": [
+        "Shift",
+        "AttendanceRecord",
+        "AttendanceStatus",
+        "Source",
+        "AttendanceLog",
+        "PunchType"
+      ],
+      "views": [],
+      "urls": true,
+      "services": false,
+      "tests": true
+    },
+    "audit": {
+      "models": [
+        "AuditLog",
+        "Action"
+      ],
+      "views": [
+        "AuditLogListView"
+      ],
+      "urls": true,
+      "services": false,
+      "tests": true
+    },
+    "batch_tracking": {
+      "models": [],
+      "views": [],
+      "urls": true,
+      "services": false,
+      "tests": true
+    },
+    "billing": {
+      "models": [
+        "Invoice",
+        "InvoiceType",
+        "InvoiceStatus",
+        "InvoiceLineItem",
+        "Payment",
+        "PaymentMethod",
+        "PaymentStatus"
+      ],
+      "views": [],
+      "urls": true,
+      "services": false,
+      "tests": true
+    },
+    "branding": {
+      "models": [],
+      "views": [],
+      "urls": true,
+      "services": false,
+      "tests": true
+    },
+    "business_unit": {
+      "models": [],
+      "views": [],
+      "urls": true,
+      "services": false,
+      "tests": true
+    },
+    "compliance": {
+      "models": [
+        "ConsentRecord",
+        "DataSubjectRequest"
+      ],
+      "views": [],
+      "urls": false,
+      "services": false,
+      "tests": false
+    },
+    "core": {
+      "models": [],
+      "views": [],
+      "urls": false,
+      "services": false,
+      "tests": false
+    },
+    "customers": {
+      "models": [],
+      "views": [],
+      "urls": true,
+      "services": false,
+      "tests": false
+    },
+    "dashboard": {
+      "models": [
+        "Dashboard",
+        "DashboardWidget",
+        "WidgetType"
+      ],
+      "views": [
+        "DashboardListView",
+        "DashboardDetailView",
+        "DashboardWidgetView",
+        "WidgetDataView"
+      ],
+      "urls": true,
+      "services": true,
+      "tests": true
+    },
+    "domain": {
+      "models": [],
+      "views": [],
+      "urls": true,
+      "services": false,
+      "tests": true
+    },
+    "drug_register": {
+      "models": [],
+      "views": [],
+      "urls": true,
+      "services": false,
+      "tests": true
+    },
+    "error_log": {
+      "models": [
+        "ErrorLog",
+        "Severity"
+      ],
+      "views": [
+        "ErrorLogListView",
+        "ErrorLogDetailView"
+      ],
+      "urls": true,
+      "services": false,
+      "tests": true
+    },
+    "events": {
+      "models": [
+        "EventStatus",
+        "EventOutbox",
+        "EventDeadLetter",
+        "ProcessedEvent"
+      ],
+      "views": [
+        "EventOutboxViewSet",
+        "EventDeadLetterViewSet",
+        "ProcessedEventViewSet"
+      ],
+      "urls": true,
+      "services": false,
+      "tests": false
+    },
+    "expiry_tracking": {
+      "models": [],
+      "views": [],
+      "urls": true,
+      "services": false,
+      "tests": true
+    },
+    "feature_flags": {
+      "models": [
+        "Models"
+      ],
+      "views": [
+        "FeatureFlagSerializer",
+        "FeatureFlagListView",
+        "FeatureFlagEvaluateView",
+        "FeatureFlagBulkEvaluateView"
+      ],
+      "urls": true,
+      "services": false,
+      "tests": true
+    },
+    "files": {
+      "models": [
+        "FileUpload",
+        "StorageBackend",
+        "ScanStatus",
+        "FileCategory"
+      ],
+      "views": [
+        "FileUploadSerializer",
+        "PresignRequestSerializer",
+        "FilePresignView",
+        "FileDetailView",
+        "FileConfirmView",
+        "FileDownloadView"
+      ],
+      "urls": true,
+      "services": false,
+      "tests": false
+    },
+    "file_storage": {
+      "models": [],
+      "views": [],
+      "urls": true,
+      "services": false,
+      "tests": true
+    },
+    "health": {
+      "models": [],
+      "views": [],
+      "urls": true,
+      "services": false,
+      "tests": true
+    },
+    "hrms": {
+      "models": [],
+      "views": [],
+      "urls": true,
+      "services": false,
+      "tests": true
+    },
+    "hrms_core": {
+      "models": [
+        "CompanyPolicy",
+        "Holiday"
+      ],
+      "views": [
+        "CompanyPolicyViewSet",
+        "HolidayViewSet"
+      ],
+      "urls": true,
+      "services": true,
+      "tests": true
+    },
+    "integration": {
+      "models": [],
+      "views": [],
+      "urls": true,
+      "services": false,
+      "tests": true
+    },
+    "inventory": {
+      "models": [],
+      "views": [],
+      "urls": false,
+      "services": false,
+      "tests": true
+    },
+    "jobs": {
+      "models": [
+        "JobStatus",
+        "BackgroundJob"
+      ],
+      "views": [
+        "BackgroundJobSerializer",
+        "JobDetailView",
+        "JobListView"
+      ],
+      "urls": true,
+      "services": false,
+      "tests": false
+    },
+    "leave": {
+      "models": [
+        "LeaveSetting"
+      ],
+      "views": [],
+      "urls": true,
+      "services": false,
+      "tests": false
+    },
+    "leave_management": {
+      "models": [],
+      "views": [],
+      "urls": true,
+      "services": false,
+      "tests": false
+    },
+    "module_registry": {
+      "models": [],
+      "views": [],
+      "urls": true,
+      "services": false,
+      "tests": true
+    },
+    "notification": {
+      "models": [
+        "Models"
+      ],
+      "views": [],
+      "urls": true,
+      "services": false,
+      "tests": true
+    },
+    "observability": {
+      "models": [],
+      "views": [],
+      "urls": true,
+      "services": false,
+      "tests": true
+    },
+    "orchestration": {
+      "models": [
+        "SagaStatus",
+        "SagaStepStatus",
+        "Saga",
+        "SagaStep"
+      ],
+      "views": [
+        "SagaViewSet"
+      ],
+      "urls": true,
+      "services": true,
+      "tests": false
+    },
+    "organization": {
+      "models": [],
+      "views": [],
+      "urls": true,
+      "services": false,
+      "tests": true
+    },
+    "outbox": {
+      "models": [],
+      "views": [],
+      "urls": true,
+      "services": false,
+      "tests": true
+    },
+    "payroll": {
+      "models": [],
+      "views": [
+        "SalaryStructureViewSet",
+        "PayslipViewSet"
+      ],
+      "urls": true,
+      "services": true,
+      "tests": true
+    },
+    "pharmacy": {
+      "models": [
+        "MedicineCategory",
+        "Medicine",
+        "StorageCondition",
+        "MedicineBatch",
+        "Prescription",
+        "PrescriptionItem",
+        "DrugInteractionAlert"
+      ],
+      "views": [],
+      "urls": true,
+      "services": false,
+      "tests": false
+    },
+    "pharmacy_billing": {
+      "models": [],
+      "views": [],
+      "urls": true,
+      "services": false,
+      "tests": true
+    },
+    "platform": {
+      "models": [],
+      "views": [],
+      "urls": false,
+      "services": false,
+      "tests": false
+    },
+    "platform_admin": {
+      "models": [],
+      "views": [],
+      "urls": true,
+      "services": false,
+      "tests": true
+    },
+    "pos": {
+      "models": [],
+      "views": [],
+      "urls": true,
+      "services": false,
+      "tests": true
+    },
+    "rbac": {
+      "models": [
+        "Permission",
+        "Role",
+        "RoleType",
+        "RolePermission",
+        "UserRole"
+      ],
+      "views": [],
+      "urls": true,
+      "services": false,
+      "tests": true
+    },
+    "recruitment": {
+      "models": [
+        "JobPosting",
+        "PostingStatus",
+        "WorkMode",
+        "JobApplication",
+        "ApplicationStatus",
+        "ApplicationSource",
+        "InterviewStage",
+        "Interview",
+        "InterviewResult",
+        "AppraisalCycle",
+        "CycleStatus",
+        "CycleType",
+        "KPI",
+        "MeasurementType",
+        "EmployeeAppraisal",
+        "AppraisalStatus"
+      ],
+      "views": [],
+      "urls": true,
+      "services": false,
+      "tests": true
+    },
+    "reporting": {
+      "models": [
+        "ReportTemplate",
+        "ReportExecution",
+        "Status"
+      ],
+      "views": [],
+      "urls": true,
+      "services": false,
+      "tests": true
+    },
+    "retail_billing": {
+      "models": [],
+      "views": [],
+      "urls": true,
+      "services": false,
+      "tests": true
+    },
+    "security": {
+      "models": [],
+      "views": [],
+      "urls": false,
+      "services": false,
+      "tests": false
+    },
+    "stock_transfer": {
+      "models": [],
+      "views": [],
+      "urls": true,
+      "services": false,
+      "tests": true
+    },
+    "subscription": {
+      "models": [
+        "PlatformModule",
+        "ModuleCategory",
+        "SubscriptionPlan",
+        "PlanModule",
+        "OrganizationSubscription",
+        "Status"
+      ],
+      "views": [],
+      "urls": true,
+      "services": false,
+      "tests": true
+    },
+    "support": {
+      "models": [
+        "TicketCategory",
+        "Ticket",
+        "Priority",
+        "Status",
+        "TicketComment",
+        "TicketAttachment"
+      ],
+      "views": [
+        "TicketListView",
+        "TicketDetailView",
+        "TicketCommentView",
+        "TicketCategoryListView"
+      ],
+      "urls": true,
+      "services": true,
+      "tests": true
+    },
+    "tenancy": {
+      "models": [],
+      "views": [],
+      "urls": false,
+      "services": false,
+      "tests": true
+    },
+    "tenant_module": {
+      "models": [],
+      "views": [],
+      "urls": true,
+      "services": false,
+      "tests": true
+    },
+    "tenant_settings": {
+      "models": [],
+      "views": [],
+      "urls": true,
+      "services": false,
+      "tests": true
+    },
+    "users": {
+      "models": [],
+      "views": [],
+      "urls": false,
+      "services": false,
+      "tests": true
+    },
+    "user_business_unit": {
+      "models": [],
+      "views": [],
+      "urls": true,
+      "services": false,
+      "tests": true
+    },
+    "vendor_management": {
+      "models": [],
+      "views": [],
+      "urls": true,
+      "services": false,
+      "tests": true
+    },
+    "webhook": {
+      "models": [
+        "WebhookEndpoint",
+        "Status",
+        "WebhookDelivery",
+        "DeliveryStatus"
+      ],
+      "views": [],
+      "urls": true,
+      "services": false,
+      "tests": true
+    }
+  },
+  "frontend": {
+    "pages": [
+      "analytics\\DashboardPage.tsx",
+      "analytics\\ReportsPage.tsx",
+      "hrms\\HRMSPortalPage.tsx",
+      "iam\\RolesPage.tsx",
+      "iam\\TenancyPage.tsx",
+      "iam\\UsersPage.tsx",
+      "pharmacy\\PharmacyDashboardPage.tsx",
+      "platform\\PlatformPage.tsx",
+      "pos\\POSTerminalPage.tsx"
+    ]
+  }
+}

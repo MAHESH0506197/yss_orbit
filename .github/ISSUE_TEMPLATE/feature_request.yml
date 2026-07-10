@@ -1,0 +1,25 @@
+# yss_orbit\.github\ISSUE_TEMPLATE\feature_request.yml
+name: Feature Request
+description: Propose a new feature or enhancement
+title: "[FEATURE] "
+labels: ["enhancement"]
+body:
+  - type: input
+    id: summary
+    attributes:
+      label: Feature Summary
+      placeholder: Brief description of the feature
+    validations:
+      required: true
+  - type: textarea
+    id: motivation
+    attributes:
+      label: Motivation
+      placeholder: Why is this needed? What problem does it solve?
+    validations:
+      required: true
+  - type: dropdown
+    id: module
+    attributes:
+      label: Affected Module
+      options: [hrms_core, attendance, payroll, leave_management, inventory, pos, pharmacy_billing, platform, auth, rbac, other]

@@ -1,0 +1,5 @@
+# yss_orbit\frontend\type-check-errors6.txt
+
+> yss-orbit-frontend@1.0.0 type-check
+> tsc --noEmit
+

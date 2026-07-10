@@ -1,0 +1,457 @@
+/* yss_orbit\frontend\src\styles\globals.css */
+/* ═══════════════════════════════════════════════════════════════
+   YSS Orbit — Global CSS
+   Font: Sora (display/body) + IBM Plex Mono (technical/mono)
+   Version: v4.0 ENTERPRISE FINAL
+═══════════════════════════════════════════════════════════════ */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500&display=swap');
+@import './animations.css';
+
+@import "tailwindcss";
+@config "../../tailwind.config.ts";
+
+@layer utilities {
+  /* Legacy animation classes (kept for backward compat) */
+  .animate-slide-in {
+    animation: slide-in 0.3s ease-out forwards;
+  }
+  .animate-fade-in {
+    animation: fade-in 0.2s ease-out forwards;
+  }
+  @keyframes slide-in {
+    from { transform: translateY(-10px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+  }
+  @keyframes fade-in {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  /* Enterprise animation classes (animations defined in animations.css) */
+  .animate-fade-in-up {
+    animation: fadeInUp 0.3s ease-out both;
+  }
+  .animate-slide-down {
+    animation: slideDown 0.2s ease-out both;
+  }
+  .animate-scale-in {
+    animation: scaleIn 0.15s ease-out both;
+  }
+
+  .glassmorphism {
+    @apply bg-white/80 dark:bg-gray-900/80 backdrop-blur-md border-b border-gray-200/50 dark:border-gray-800/50;
+  }
+
+  /* Scroll behaviour */
+  .scrollbar-thin {
+    scrollbar-width: thin;
+    scrollbar-color: theme('colors.gray.300') transparent;
+  }
+  .dark .scrollbar-thin {
+    scrollbar-color: theme('colors.gray.700') transparent;
+  }
+}
+
+/* ─────────────────────────────────────────
+   LIGHT MODE TOKENS
+───────────────────────────────────────── */
+@layer base {
+  :root {
+    /* ── Typography ── */
+    --font-sans:            'Inter', sans-serif;
+    --font-mono:            'IBM Plex Mono', monospace;
+
+    /* ── Core Backgrounds ── */
+    --background:           0 0% 98%;
+    --background-2:         0 0% 100%;
+    --background-3:         220 14% 96%;
+
+    --foreground:           220 30% 9%;
+
+    /* ── Card / Popover ── */
+    --card:                 0 0% 100%;
+    --card-foreground:      220 30% 9%;
+    --popover:              0 0% 100%;
+    --popover-foreground:   220 30% 9%;
+
+    /* ── Brand Primary: Blue #2563eb ── */
+    --primary:              221 83% 53%;
+    --primary-foreground:   0 0% 100%;
+    --primary-dim:          221 83% 96%;
+
+    /* ── Brand Accent: Purple #6d28d9 ── */
+    --accent:               262 80% 50%;
+    --accent-foreground:    0 0% 100%;
+
+    /* ── Brand Teal: #0d9488 ── */
+    --teal:                 174 75% 31%;
+    --teal-dim:             174 75% 94%;
+
+    /* ── Secondary / Muted ── */
+    --secondary:            220 14% 94%;
+    --secondary-foreground: 220 30% 20%;
+    --muted:                220 14% 94%;
+    --muted-foreground:     220 13% 45%;
+
+    /* ── Destructive ── */
+    --destructive:          0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    /* ── Success / Warning ── */
+    --success:              142 71% 40%;
+    --warning:              38 92% 50%;
+
+    /* ── Structural ── */
+    --border:               220 13% 91%;
+    --border-strong:        220 13% 82%;
+    --input:                220 13% 91%;
+    --ring:                 221 83% 53%;
+    --radius:               0.5rem;
+
+    /* ── Public Page Specific ── */
+    --public-bg:            220 20% 97%;
+    --public-surface:       0 0% 100%;
+    --public-hero-gradient: linear-gradient(135deg, #eef2ff 0%, #f8faff 40%, #fdf4ff 100%);
+
+    /* ── Private Page Specific ── */
+    --private-bg:           220 16% 96%;
+    --sidebar-bg:           0 0% 100%;
+    --sidebar-border:       220 13% 91%;
+    --header-bg:            0 0% 100%;
+
+    /* ── Typography ── */
+    --font-sans:            'Inter', ui-sans-serif, system-ui, sans-serif;
+    --font-mono:            'IBM Plex Mono', ui-monospace, monospace;
+  }
+
+  /* ─────────────────────────────────────────
+     DARK MODE TOKENS
+  ───────────────────────────────────────── */
+  .dark {
+    --background:           220 28% 7%;
+    --background-2:         220 26% 9%;
+    --background-3:         220 24% 11%;
+
+    --foreground:           210 40% 96%;
+
+    --card:                 220 26% 9%;
+    --card-foreground:      210 40% 96%;
+    --popover:              220 26% 9%;
+    --popover-foreground:   210 40% 96%;
+
+    --primary:              221 90% 65%;
+    --primary-foreground:   0 0% 100%;
+    --primary-dim:          221 83% 15%;
+
+    --accent:               262 75% 68%;
+    --accent-foreground:    0 0% 100%;
+
+    --teal:                 174 65% 48%;
+    --teal-dim:             174 65% 10%;
+
+    --secondary:            220 24% 14%;
+    --secondary-foreground: 210 40% 90%;
+    --muted:                220 24% 14%;
+    --muted-foreground:     215 20% 60%;
+
+    --destructive:          0 63% 48%;
+    --destructive-foreground: 210 40% 98%;
+
+    --success:              142 60% 50%;
+    --warning:              38 85% 60%;
+
+    --border:               220 20% 16%;
+    --border-strong:        220 20% 24%;
+    --input:                220 20% 16%;
+    --ring:                 221 90% 65%;
+
+    --public-bg:            220 28% 7%;
+    --public-surface:       220 26% 9%;
+    --public-hero-gradient: linear-gradient(135deg, #0f1629 0%, #0b0f1e 40%, #130a1f 100%);
+
+    --private-bg:           220 28% 6%;
+    --sidebar-bg:           220 26% 8%;
+    --sidebar-border:       220 20% 14%;
+    --header-bg:            220 28% 7%;
+  }
+}
+
+/* ─────────────────────────────────────────
+   BASE STYLES
+───────────────────────────────────────── */
+@layer base {
+  * {
+    border-color: hsl(var(--border));
+  }
+
+  html {
+    /* Eliminate all browser default gaps */
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    /* Prevent horizontal scroll from any overflowing element without breaking sticky */
+    overflow-x: clip;
+    scroll-behavior: smooth;
+    font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
+  }
+
+  body {
+    /* Reset browser default 8px margin that causes white border */
+    margin: 0;
+    padding: 0;
+    min-height: 100%;
+    width: 100%;
+    /* Prevent horizontal scroll without breaking sticky */
+    overflow-x: clip;
+    /* Do NOT set background-color here — let each layout/page control its own bg */
+    background-color:     transparent;
+    color:                hsl(var(--foreground));
+    font-family:          var(--font-sans);
+    font-size:            15px;
+    line-height:          1.7;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Root app container must fill full viewport */
+  #root {
+    min-height: 100vh;
+    width: 100%;
+    overflow-x: clip;
+    background-color: hsl(var(--background));
+  }
+
+  @keyframes tooltip-fade-in-center {
+    from {
+      opacity: 0;
+      transform: translateX(-50%) translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+    }
+  }
+
+  @keyframes tooltip-fade-in-left {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  code, pre, kbd, samp {
+    font-family: var(--font-mono);
+  }
+
+  ::selection {
+    background-color: hsl(var(--primary) / 0.15);
+    color: hsl(var(--foreground));
+  }
+}
+
+/* ─────────────────────────────────────────
+   SCROLL BAR
+───────────────────────────────────────── */
+::-webkit-scrollbar          { width: 5px; height: 5px; }
+::-webkit-scrollbar-track    { background: transparent; }
+::-webkit-scrollbar-thumb    { background: hsl(var(--border-strong)); border-radius: 9999px; }
+::-webkit-scrollbar-thumb:hover { background: hsl(var(--muted-foreground) / 0.5); }
+
+/* ─────────────────────────────────────────
+   ANIMATIONS
+───────────────────────────────────────── */
+@keyframes orbit-spin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+@keyframes orbit-spin-reverse {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(-360deg); }
+}
+
+@keyframes float-up {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-12px); }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { opacity: 0.6; transform: scale(1); }
+  50%       { opacity: 1;   transform: scale(1.05); }
+}
+
+@keyframes counter-up {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes shimmer {
+  0%   { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+/* RefetchBar top-loading indicator (used when isFetching && !isLoading) */
+@keyframes refetchProgress {
+  0%   { transform: translateX(-100%); }
+  50%  { transform: translateX(0%); }
+  100% { transform: translateX(100%); }
+}
+
+/* ─────────────────────────────────────────
+   TAILWIND UTILITIES
+───────────────────────────────────────── */
+@layer utilities {
+  .font-mono    { font-family: var(--font-mono); }
+  .font-display { font-family: var(--font-sans); }
+
+  .text-balance { text-wrap: balance; }
+
+  .animate-orbit {
+    animation: orbit-spin 18s linear infinite;
+  }
+  .animate-orbit-reverse {
+    animation: orbit-spin-reverse 12s linear infinite;
+  }
+  .animate-float {
+    animation: float-up 4s ease-in-out infinite;
+  }
+  .animate-pulse-glow {
+    animation: pulse-glow 3s ease-in-out infinite;
+  }
+
+  /* Public background mesh */
+  .public-mesh {
+    background: var(--public-hero-gradient);
+  }
+
+  /* Glass morphism */
+  .glass {
+    background:      hsl(var(--card) / 0.7);
+    backdrop-filter: blur(16px) saturate(150%);
+    -webkit-backdrop-filter: blur(16px) saturate(150%);
+    border:          1px solid hsl(var(--border));
+  }
+
+  .glass-strong {
+    background:      hsl(var(--card) / 0.9);
+    backdrop-filter: blur(24px) saturate(180%);
+    -webkit-backdrop-filter: blur(24px) saturate(180%);
+    border:          1px solid hsl(var(--border));
+  }
+
+  /* Tag / badge */
+  .badge-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
+    padding: 0.25rem 0.75rem;
+    border-radius: 9999px;
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    background: hsl(var(--primary) / 0.1);
+    border: 1px solid hsl(var(--primary) / 0.25);
+    color: hsl(var(--primary));
+    font-family: var(--font-mono);
+  }
+
+  /* Gradient text */
+  .gradient-text {
+    background: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--accent)) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .gradient-text-teal {
+    background: linear-gradient(135deg, hsl(var(--teal)) 0%, hsl(var(--primary)) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Section divider */
+  .section-divider {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, hsl(var(--border-strong)), transparent);
+    margin: 0;
+  }
+
+  /* Focus rings */
+  .focus-ring {
+    outline: 2px solid transparent;
+    outline-offset: 2px;
+  }
+  .focus-ring:focus-visible {
+    outline-color: hsl(var(--primary));
+  }
+
+  /* Font weight numeric aliases (used across public layout & sidebar) */
+  .font-500 { font-weight: 500; }
+  .font-600 { font-weight: 600; }
+  .font-700 { font-weight: 700; }
+  .font-800 { font-weight: 800; }
+
+  /* Header background alias */
+  .bg-header-bg { background-color: hsl(var(--header-bg)); }
+}
+
+/* ─────────────────────────────────────────
+   ADDITIONAL KEYFRAMES
+───────────────────────────────────────── */
+
+/* OTP success progress bar */
+@keyframes progress {
+  from { transform: translateX(-100%); }
+  to   { transform: translateX(0); }
+}
+
+/* Spin utility (for LoadingScreen) */
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+/* ─────────────────────────────────────────
+   CUSTOM PREMIUM SCROLLBAR
+───────────────────────────────────────── */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--primary) / 0.4);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--primary) / 0.7);
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background: hsl(var(--accent) / 0.4);
+}
+
+.dark ::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--accent) / 0.7);
+}
+
+/* For Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: hsl(var(--primary) / 0.4) transparent;
+}
+
+.dark * {
+  scrollbar-color: hsl(var(--accent) / 0.4) transparent;
+}

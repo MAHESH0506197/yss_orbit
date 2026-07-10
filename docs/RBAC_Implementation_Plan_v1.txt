@@ -1,0 +1,452 @@
+RBAC Drill-down
+Implementation Plan  —  RolesPage.tsx Refactor
+Module: 
+IAM / RBAC Frontend
+    Status: 
+Approved — ready to implement
+0. Approval & scope decision
+The plan is 
+approved
+ with the following confirmed decisions:
+Scope: Screens 1, 2 & 3 only in this iteration
+The Users screen (Screen 4) is deferred. User assignment will be handled via the User Management page (existing) or added as a sub-panel inside the Role detail screen (Screen 3) in a follow-up. Do not build a standalone Users screen in this iteration.
+Decision
+Resolution
+Users screen (Screen 4)
+Deferred. No dedicated Users screen this iteration.
+User assignment in Screen 3
+Add a compact "Assigned users" read-only section at the bottom of the Permission Editor. Clicking "Assign user" navigates to the existing User Management page with BU + role pre-filtered.
+URL-driven navigation
+Use React Router with 
+/rbac
+, 
+/rbac/:buId
+, 
+/rbac/:buId/roles/:roleId
+. This means breadcrumbs, browser back/forward, and direct deep-links all work without additional state management.
+Unsaved changes guard
+Block navigation away from Screen 3 if permissions have been toggled but not saved. Show a confirmation modal ("Discard changes?").
+Loading & error states
+Every screen must render a skeleton, an error boundary fallback, and an empty state — not just the happy path.
+1. Architecture — before & after
+1.1 Current state (dual-pane)
+The existing 
+RolesPage.tsx
+ renders a two-column layout: BU selector pane on the left, role/permission detail pane on the right. Problems identified:
+Four columns squeezed into a single view — unreadable on anything below 1280 px.
+Permissions list overflows its column and requires horizontal scroll, clipping permission keys mid-word.
+No URL routing — refreshing the page loses your position.
+No unsaved-changes protection when switching BUs or roles.
+BU scope isolation not visually enforced — easy to mistake which BU a role belongs to.
+1.2 New state (drill-down state machine)
+RolesPage.tsx
+ becomes a route-controlled state machine rendering one of three full-width screens:
+Screen
+Component
+Route
+Condition
+Screen 1
+BUGridScreen
+/rbac
+No BU selected
+Screen 2
+RoleListScreen
+/rbac/:buId
+BU selected, no role selected
+Screen 3
+PermissionEditorScreen
+/rbac/:buId/roles/:roleId
+BU + role both selected
+Why URL routing instead of component state?
+Using React Router means: (1) browser Back button works correctly across all screens, (2) users can bookmark or share a deep link to a specific role, (3) breadcrumbs always match the actual URL — no sync bugs between URL and displayed state, (4) page refresh does not drop you back to Screen 1.
+2. Component breakdown
+2.1 File structure
+All new components live under 
+src/modules/iam/rbac/
+:
+src/modules/iam/rbac/
+  RolesPage.tsx                  ← Route controller (thin wrapper)
+  screens/
+    BUGridScreen.tsx             ← Screen 1
+    RoleListScreen.tsx           ← Screen 2
+    PermissionEditorScreen.tsx   ← Screen 3
+  components/
+    BUCard.tsx                   ← Business unit card
+    RoleListRow.tsx              ← Single role row
+    PermissionToggle.tsx         ← Single permission toggle cell
+    PermissionGroup.tsx          ← Grouped toggles with "toggle all"
+    ScopeBanner.tsx              ← BU isolation warning banner
+    RBACBreadcrumb.tsx           ← Shared breadcrumb component
+    UnsavedGuard.tsx             ← Block navigation if dirty
+    AssignedUsersPanel.tsx       ← Read-only user list in Screen 3
+  hooks/
+    useRBACData.ts               ← Data fetching hook (BUs + roles)
+    usePermissions.ts            ← Permission state + dirty tracking
+  store/
+    rbacSlice.ts                 ← Redux slice (BU list, role list, perms)
+    rbacSelectors.ts             ← Memoised selectors
+  api/
+    rbacApi.ts                   ← RTK Query endpoints
+2.2 RolesPage.tsx — route controller
+This file is now a thin shell. Its only job is to read route params and render the correct screen. All data fetching and business logic moves into the screen components and hooks.
+// RolesPage.tsx
+// PURPOSE: Route controller — reads URL params, renders correct screen.
+// IMPORTANT: Contains NO data fetching, NO business logic.
+// IMPORTANT: Uses <Routes> nested inside the parent /rbac route.
+export const RolesPage: React.FC = () => (
+  <Routes>
+    <Route index                         element={<BUGridScreen />} />
+    <Route path=":buId"                  element={<RoleListScreen />} />
+    <Route path=":buId/roles/:roleId"    element={<PermissionEditorScreen />} />
+  </Routes>
+);
+3. Screen 1 — Business Unit grid
+3.1 Layout
+Full-width responsive card grid: 
+repeat(auto-fill, minmax(280px, 1fr))
+On mobile (< 600 px): single column.
+Each card shows: BU name, domain icon, domain label, role count badge, user count badge, chevron-right icon.
+Search input above the grid — filters cards client-side, no API call needed.
+Clicking a card navigates to 
+/rbac/:buId
+ via 
+useNavigate()
+3.2 BUCard component
+// BUCard.tsx
+// PROPS:
+//   bu: BusinessUnit  — id, name, domain, domainIcon, roleCount, userCount
+//   onClick: () => void
+// MUST show a domain-specific icon (ti-pill for Pharmacy, ti-shopping-cart for
+// Retail, etc.) using Tabler outline icons — never filled variants.
+// MUST show two stat badges:
+//   - Purple:  "{roleCount} roles"  (bg purple-50, text purple-800)
+//   - Neutral: "{userCount} users"  (bg gray-50,   text gray-600)
+// MUST be keyboard-accessible: role="button", tabIndex={0}, onKeyDown Enter/Space.
+// Domain-to-icon map (extend as domains grow):
+const DOMAIN_ICONS: Record<string, string> = {
+  Pharmacy:  "ti-pill",
+  Retail:    "ti-shopping-cart",
+  HRMS:      "ti-users",
+  POS:       "ti-credit-card",
+  Inventory: "ti-building-warehouse",
+  Payroll:   "ti-receipt",
+};
+3.3 Loading & empty states
+Loading: render 6 skeleton cards (use 
+Skeleton
+ from design system, same grid layout).
+Error: full-width error alert with retry button. Do not show partial data.
+Empty: "No business units found" with an icon and a prompt to check Organisation settings.
+RBAC gate — Screen 1
+Wrap BUGridScreen with PermissionGate permission="rbac.view". If the user lacks this permission, show the standard 403 empty state — not a blank page. Never silently hide the route.
+4. Screen 2 — Role list
+4.1 Layout
+Reads 
+buId
+ from 
+useParams()
+Fetches roles from 
+GET /api/v1/iam/business-units/{buId}/roles/
+ on mount.
+Full-width table (not a card grid): columns = Role name, Description, Type badge, User count, Actions.
+Action buttons per row: 
+Edit name
+ (pencil icon) and 
+Delete
+ (trash icon, with confirmation modal).
+"Create custom role" button in page header — opens the CreateRoleModal.
+4.2 Scope banner — non-negotiable
+This is the most important element on Screen 2. It must appear immediately below the breadcrumb, before any role data. It reinforces BU isolation visually so admins cannot make mistakes.
+// ScopeBanner.tsx
+// PROPS: buName: string
+//
+// Renders the amber warning banner:
+// "All roles below belong exclusively to {buName}.
+//  They do not apply to any other business unit."
+//
+// Uses amber-50 background, amber-800 text, thick amber left border.
+// NEVER remove or make this optional — it is a safety feature.
+4.3 Role type badges
+Type
+Badge style
+Behaviour notes
+custom
+Purple-50 bg, purple-800 text
+Created by admin for this BU. Can be edited and deleted.
+system
+Green-50 bg, green-800 text
+Created by platform/seed. Name is read-only. Permissions can still be edited. Delete button is disabled with tooltip: "System roles cannot be deleted."
+4.4 CreateRoleModal
+Fields: Role name (required), Description (optional).
+On submit: 
+POST /api/v1/iam/business-units/{buId}/roles/
+ with 
+{ name, description, type: "custom" }
+On success: invalidate RTK Query cache for 
+getRolesByBU(buId)
+, close modal, show toast "Role created".
+Do not navigate to Screen 3 automatically — let the admin click into the new role at their own pace.
+RBAC gate — Screen 2
+"Create custom role" and Delete/Edit actions must be gated with PermissionGate permission="rbac.manage". Read-only users (permission="rbac.view" only) see the role list but all action buttons are hidden — not disabled, hidden. Disabled buttons still need explanation; hidden buttons avoid confusion.
+5. Screen 3 — Permission editor
+5.1 Layout
+Reads 
+buId
+ and 
+roleId
+ from 
+useParams()
+Fetches permissions from 
+GET /api/v1/iam/business-units/{buId}/roles/{roleId}/permissions/
+Search input + filter chips (All / Granted / Denied) above the permission grid.
+Permissions grouped by resource category (e.g. Dispensing, Inventory, Billing). Each group has a "Toggle all" affordance.
+Sticky save bar at the bottom of the page (
+not
+ fixed position — use a flexbox column layout so the save bar is always the last element in flow).
+Assigned users panel at the very bottom (read-only, Section 5.4).
+5.2 PermissionToggle component
+// PermissionToggle.tsx
+// PROPS:
+//   permKey: string       — e.g. "drug.dispense"
+//   description: string   — e.g. "Dispense medications"
+//   granted: boolean
+//   onChange: (key: string, value: boolean) => void
+//   disabled?: boolean    — true when user lacks rbac.manage
+// MUST be keyboard-accessible:
+//   role="switch", aria-checked={granted}, tabIndex={0}
+//   onKeyDown: Space and Enter toggle the value
+// Visual states:
+//   granted=true:  purple-50 bg, purple-800 text, purple toggle thumb
+//   granted=false: default bg, secondary text, gray toggle thumb
+//   disabled:      50% opacity, cursor not-allowed, no interaction
+// The permission key uses font-mono so dots and underscores are legible.
+// The description text below the key is 12px secondary colour.
+5.3 Dirty state & unsaved changes guard
+This is the most important non-visual requirement for Screen 3. Without it, an admin can toggle 20 permissions, accidentally click the breadcrumb, and lose all their work silently.
+// usePermissions.ts
+// Manages local permission state and tracks whether it differs from server state.
+// STATE:
+//   serverPerms: Record<string, boolean>   — what the API returned
+//   localPerms:  Record<string, boolean>   — what the user has toggled
+//   isDirty: boolean                        — localPerms !== serverPerms
+// isDirty is computed by comparing localPerms to serverPerms key-by-key.
+// Revert button resets localPerms to serverPerms and clears isDirty.
+// UnsavedGuard.tsx:
+//   Uses useBlocker() from React Router v6.8+ to intercept navigation.
+//   When isDirty=true and user tries to navigate away:
+//     - Show confirmation modal: "Discard unsaved changes?"
+//     - "Stay" button: cancels navigation
+//     - "Discard" button: allows navigation, resets local state
+//   IMPORTANT: Blocker must be reset on successful save.
+// Save flow:
+//   1. User clicks "Save changes"
+//   2. PATCH /api/v1/iam/business-units/{buId}/roles/{roleId}/permissions/
+//      Body: { permissions: Record<string, boolean> }
+//   3. On success: update serverPerms = localPerms, isDirty = false, show toast
+//   4. On error: show error toast, keep localPerms unchanged, do NOT revert
+5.4 Assigned users panel (read-only)
+Position: below the permission sections, above the save bar.
+Fetches from 
+GET /api/v1/iam/business-units/{buId}/roles/{roleId}/users/
+Shows user avatar (initials circle), name, department. Max 6 visible, "+ N more" expands.
+"Assign user" button navigates to User Management page with query params 
+?buId={buId}&roleId={roleId}
+ pre-filled.
+This section is gated with 
+PermissionGate permission="rbac.manage"
+ — read-only users do not see the Assign button.
+5.5 Permission count label
+The save bar must show a live count: "
+12 of 17 permissions granted
+". This updates as the user toggles permissions — it is computed from 
+localPerms
+, not 
+serverPerms
+. It gives admins instant feedback on the current state of the role without having to count manually.
+RBAC gate — Screen 3
+If user has rbac.view but NOT rbac.manage: all toggles are disabled (not hidden), the save bar shows "View only — you do not have permission to edit" instead of the Save button, and the Assign user button is hidden. System roles: toggles are enabled (permissions can be changed), but role name is read-only.
+6. Navigation & breadcrumb
+6.1 Breadcrumb structure
+Screen
+Breadcrumb
+Screen 1
+Access management
+  ›  
+Business units
+Screen 2
+Access management  ›  
+Business units
+ (clickable)  ›  
+{BU Name}  ›  Roles
+Screen 3
+Access management  ›  
+Business units
+ (clickable)  ›  
+{BU Name}  ›  Roles
+ (clickable)  ›  
+{Role Name}
+Clickable crumbs use useNavigate() — never <a href> (would bypass UnsavedGuard).
+The back button in the topbar calls navigate(-1) so it respects browser history.
+On mobile, the breadcrumb truncates to show only the immediate parent + current page.
+6.2 Route registration
+Register the nested routes in the main router (
+src/router/AppRouter.tsx
+):
+// AppRouter.tsx addition
+// Add this inside your existing <Routes> block.
+// Ensure the parent /rbac route is protected by AuthGuard.
+<Route path="rbac" element={<AuthGuard><RolesPage /></AuthGuard>}>
+  {/* Screen 1 — index means /rbac exactly */
+  <Route index element={<BUGridScreen />} />
+  {/* Screen 2 — /rbac/:buId */
+  <Route path=":buId" element={<RoleListScreen />} />
+  {/* Screen 3 — /rbac/:buId/roles/:roleId */
+  <Route path=":buId/roles/:roleId" element={<PermissionEditorScreen />} />
+</Route>
+// IMPORTANT: RolesPage.tsx must render <Outlet /> (or use nested <Routes>).
+// Do NOT use a single switch statement inside RolesPage — use React Router.
+7. API contracts
+These endpoints must exist on the Django backend before the frontend can be completed. Confirm each one returns the shape shown before connecting RTK Query.
+Method
+Endpoint
+Purpose
+GET
+/api/v1/iam/business-units/
+List all BUs the current user can administer
+GET
+/api/v1/iam/business-units/{buId}/roles/
+List roles belonging to a specific BU
+POST
+/api/v1/iam/business-units/{buId}/roles/
+Create a new custom role in a BU
+PATCH
+/api/v1/iam/business-units/{buId}/roles/{roleId}/
+Edit role name / description
+DELETE
+/api/v1/iam/business-units/{buId}/roles/{roleId}/
+Delete a custom role (system roles return 403)
+GET
+/api/v1/iam/business-units/{buId}/roles/{roleId}/permissions/
+Get full permission map for a role
+PATCH
+/api/v1/iam/business-units/{buId}/roles/{roleId}/permissions/
+Save updated permission map
+GET
+/api/v1/iam/business-units/{buId}/roles/{roleId}/users/
+List users assigned to this role (for read-only panel)
+7.1 Permission map shape
+// GET /api/v1/iam/.../permissions/ response
+{
+  "role_id": "uuid",
+  "bu_id": "uuid",
+  "permissions": {
+    "drug.dispense": true,
+    "drug.view": true,
+    "drug.approve": false,
+    // ... all permissions for this BU, even if false
+  },
+  "permission_groups": [
+    {
+      "label": "Dispensing",
+      "keys": ["drug.dispense", "drug.view", "drug.approve"]
+    },
+    // ... other groups
+  ]
+}
+// IMPORTANT: The backend must return ALL possible permissions for the BU,
+// including those that are currently false. The frontend must not infer
+// "missing key = false" — it must receive every key explicitly.
+// IMPORTANT: permission_groups defines display order and grouping.
+// Do not hardcode groups in the frontend — read them from the API response.
+8. Transitions & animations
+Keep animations subtle and fast. This is an enterprise admin tool — transitions help orientation but must never feel slow or decorative.
+Event
+Animation
+Notes
+Screen enter (drill-down forward)
+fadeIn + slideInRight
+150 ms ease-out. New screen slides in from the right.
+Screen exit (back navigation)
+fadeOut + slideOutLeft
+150 ms ease-in. Old screen slides out to the left.
+Permission toggle
+toggle thumb slide
+150 ms CSS transition on transform. Background colour transitions 100 ms.
+Card hover (Screen 1)
+border-color transition
+100 ms. No scale, no shadow — flat design only.
+Scope banner
+No animation
+Always visible, always static. Animating a warning banner undermines trust.
+Save bar
+No animation
+Always in flow at bottom. Never sticky/fixed.
+Respect prefers-reduced-motion
+Wrap all CSS keyframe animations in @media (prefers-reduced-motion: no-preference) { ... }. When the user has reduced motion enabled, transitions should be instant (0 ms) — not slower or replaced with fades. Remove the animation entirely.
+9. Responsive breakpoints
+Breakpoint
+Target
+Changes
+≥ 1280 px
+Desktop
+BU grid: 3 columns. Permission grid: 3 columns. Breadcrumb: full path visible.
+≥ 1024 px
+Laptop
+BU grid: 2-3 columns (auto-fill). Permission grid: 2 columns. All elements full-size.
+≥ 768 px
+Tablet
+BU grid: 2 columns. Permission grid: 2 columns. Page heading stack (title above actions).
+< 768 px
+Mobile
+BU grid: 1 column. Permission grid: 1 column. Breadcrumb truncated to parent + current. Search input full-width. Save bar actions stack vertically.
+< 480 px
+Small mobile
+Role row: description hidden, show only name + badges. Permission key only (no description below). Count label hidden from save bar (space constraint).
+10. Verification checklist
+The implementation is complete when every item below is ticked. Use this as the acceptance criteria for PR review.
+10.1 Navigation & routing
+Navigating to /rbac renders BUGridScreen.
+Clicking a BU card navigates to /rbac/:buId and renders RoleListScreen.
+Clicking a role row navigates to /rbac/:buId/roles/:roleId and renders PermissionEditorScreen.
+Browser Back button returns to the previous screen correctly at every level.
+Refreshing the page at /rbac/:buId/roles/:roleId renders Screen 3 directly (no redirect to Screen 1).
+Bookmarking and revisiting a deep link works.
+10.2 Scope isolation
+ScopeBanner is visible on Screen 2 and Screen 3 at all viewport widths.
+ScopeBanner text correctly names the current BU.
+Roles from BU-A never appear on BU-B's Screen 2.
+Permissions from BU-A never appear on BU-B's Screen 3.
+10.3 Unsaved changes guard
+Toggling any permission sets isDirty = true.
+Clicking breadcrumb or Back while isDirty shows the "Discard changes?" modal.
+"Stay" cancels navigation, local state preserved.
+"Discard" navigates away, local state reset to server state.
+Successful save clears isDirty = false, blocker is released.
+10.4 Permissions & RBAC gates
+rbac.view only: all screens render, all toggles are disabled, Save button replaced with "View only" message, Assign button hidden.
+rbac.manage: all toggles enabled, Save button visible, Assign button visible.
+System roles: toggles enabled, role name read-only, Delete button disabled with tooltip.
+10.5 Loading, error & empty states
+Screen 1: skeleton cards while loading, error alert on failure, empty state when no BUs exist.
+Screen 2: skeleton rows while loading, error alert on failure, empty state when no roles exist with "Add first role" CTA.
+Screen 3: skeleton toggles while loading, error alert on failure.
+10.6 Accessibility
+All interactive elements (BU card, role row, permission toggle) are keyboard-reachable via Tab.
+Permission toggles have role="switch" and aria-checked.
+BU cards have role="button" and respond to Enter/Space.
+Breadcrumb uses <nav aria-label="Breadcrumb"> wrapping an <ol>.
+Scope banner has role="alert" so screen readers announce it on screen change.
+All icon-only buttons have aria-label.
+@media (prefers-reduced-motion: no-preference) applied to all animations.
+10.7 Responsive
+BU grid is 1 column on mobile, 2+ on tablet, 3+ on desktop.
+Permission grid is 1 column on mobile, 2+ on desktop.
+Breadcrumb truncates on < 768 px without overflow or horizontal scroll.
+Save bar does not overflow or clip on any viewport width.
+11. Out of scope — this iteration
+Screen 4 (dedicated Users screen): deferred to next sprint.
+Role cloning / duplication: future feature.
+Permission diff / audit log: future feature.
+Bulk-assign permissions across multiple roles: future feature.
+Role inheritance / role hierarchies: not part of the YSS Orbit model.
+Plan authored by: Claude (Anthropic)  ·  For: YSS Orbit Engineering  ·  Version 1.0

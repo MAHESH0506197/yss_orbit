@@ -1,0 +1,17 @@
+# yss_orbit\infra\docker\docker-compose.test.yml
+version: '3.8'
+services:
+  postgres:
+    environment:
+      POSTGRES_DB: yss_orbit_test
+
+  backend:
+    command: pytest
+    environment:
+      DATABASE_URL: postgresql://${POSTGRES_USER:-postgres}:${POSTGRES_PASSWORD:-postgres}@postgres:5432/yss_orbit_test
+      DEBUG: "True"
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy

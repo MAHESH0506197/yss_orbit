@@ -1,0 +1,31 @@
+# yss_orbit\infra\docker\docker-compose.dev.yml
+version: '3.8'
+services:
+  postgres:
+    ports:
+      - "5432:5432"
+
+  redis:
+    ports:
+      - "6379:6379"
+
+  backend:
+    volumes:
+      - ../../backend:/app
+    ports:
+      - "8000:8000"
+    command: uvicorn core.main:app --host 0.0.0.0 --port 8000 --reload
+    environment:
+      DEBUG: "True"
+
+  celery:
+    volumes:
+      - ../../backend:/app
+    environment:
+      DEBUG: "True"
+
+  frontend:
+    volumes:
+      - ../../frontend:/app
+      - /app/node_modules
+    command: npm run dev

@@ -1,0 +1,37 @@
+{
+  "profile": {
+    "title": "Mon Profil",
+    "subtitle": "Gérez vos informations personnelles, vos préférences et vos paramètres de sécurité.",
+    "personal_info": "Informations Personnelles",
+    "personal_info_desc": "Mettez à jour vos informations de profil et vos identifiants de base.",
+    "username": "Nom d'utilisateur (Clé primaire)",
+    "mfa": "Authentification Multifacteur",
+    "mfa_desc": "Activer la sécurité de connexion supplémentaire",
+    "first_name": "Prénom",
+    "last_name": "Nom de famille",
+    "timezone": "Fuseau horaire",
+    "language": "Langue",
+    "save": "Enregistrer les modifications",
+    "saving": "Enregistrement...",
+    "system_metadata": "Métadonnées du système (Verrouillé)",
+    "system_metadata_desc": "Ces champs sont en lecture seule et maintenus par le système.",
+    "email": "Adresse e-mail",
+    "member_since": "Membre depuis",
+    "last_login": "Dernières informations de connexion",
+    "never": "Jamais",
+    "assignments": "Affectations et adhésions",
+    "assignments_desc": "Unités commerciales et organisations auxquelles vous êtes autorisé à accéder.",
+    "no_assignments": "Vous n'êtes explicitement affecté à aucune unité commerciale. (Vous pouvez avoir un accès au niveau de la plateforme).",
+    "organization": "Organisation",
+    "domain": "Domaine"
+  },
+  "password": {
+    "title": "Changer le mot de passe",
+    "subtitle": "Mettez à jour le mot de passe de votre compte en toute sécurité.",
+    "current": "Mot de passe actuel",
+    "new": "Nouveau mot de passe",
+    "confirm": "Confirmer le nouveau mot de passe",
+    "update": "Mettre à jour le mot de passe",
+    "updating": "Mise à jour..."
+  }
+}

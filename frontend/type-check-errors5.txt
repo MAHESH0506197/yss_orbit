@@ -1,0 +1,22 @@
+# yss_orbit\frontend\type-check-errors5.txt
+
+> yss-orbit-frontend@1.0.0 type-check
+> tsc --noEmit
+
+src/features/payroll/components/PayslipModal.tsx(14,27): error TS2339: Property 'isLoading' does not exist on type '{ data: any[]; loading: boolean; error: any; }'.
+src/features/payroll/components/PayslipModal.tsx(14,45): error TS2339: Property 'refetch' does not exist on type '{ data: any[]; loading: boolean; error: any; }'.
+src/features/payroll/components/PayslipModal.tsx(14,69): error TS2554: Expected 0 arguments, but got 1.
+src/features/payroll/components/RunPayrollModal.tsx(17,31): error TS2339: Property 'isPending' does not exist on type '{ mutate: () => Promise<void>; }'.
+src/features/payroll/components/RunPayrollModal.tsx(23,7): error TS2554: Expected 0 arguments, but got 2.
+src/features/payroll/pages/PayrollPage.tsx(13,30): error TS2339: Property 'isLoading' does not exist on type '{ data: any[]; loading: boolean; error: any; }'.
+src/features/payroll/pages/PayrollPage.tsx(13,48): error TS2339: Property 'refetch' does not exist on type '{ data: any[]; loading: boolean; error: any; }'.
+src/features/payroll/pages/PayrollPage.tsx(13,75): error TS2554: Expected 0 arguments, but got 1.
+src/modules/featureFlags/components/featureFlagsCard.tsx(14,84): error TS2345: Argument of type 'ID' is not assignable to parameter of type 'number'.
+  Type 'string' is not assignable to type 'number'.
+src/modules/featureFlags/components/FlagTable.tsx(24,92): error TS2345: Argument of type 'ID' is not assignable to parameter of type 'number'.
+  Type 'string' is not assignable to type 'number'.
+src/modules/fileStorage/components/UploadDropzone.tsx(11,26): error TS2554: Expected 0 arguments, but got 1.
+src/modules/moduleRegistry/components/ModuleCard.tsx(19,35): error TS2345: Argument of type 'ID' is not assignable to parameter of type 'number'.
+  Type 'string' is not assignable to type 'number'.
+src/modules/notification/components/NotificationItem.tsx(13,39): error TS2345: Argument of type 'ID' is not assignable to parameter of type 'number'.
+  Type 'string' is not assignable to type 'number'.

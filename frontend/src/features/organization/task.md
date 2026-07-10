@@ -1,0 +1,9 @@
+- [x] Backend Organization Module Audit & Rebuild (Slug removal, restored_at, Settings UUID)
+- [x] Migrations created and applied successfully
+- [x] Backend queries and APIs fixed (BusinessUnit selectors, OrganizationViewSet)
+- [x] Frontend `organizationTypes.ts` updated to remove slug and use UUID settings
+- [x] Frontend `useOrganizations.ts` updated (Envelope unwrapping, permanent delete, restore)
+- [x] Created `OrganizationPermanentDeleteModal.tsx`
+- [x] Added Permanent Delete action, Sort options, and Refresh button to `organizationListPage.tsx`
+- [x] Review and update `OrganizationDetailPage.tsx` (Removed slug, added Perm Delete action)
+- [x] Review and update `OrganizationSettings` forms/pages (Removed slug and default domain visual)

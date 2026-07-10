@@ -1,0 +1,27 @@
+# yss_orbit\.github\ISSUE_TEMPLATE\architecture_change.yml
+name: Architecture Change Request
+description: Propose a structural or architectural change (requires ARB review per X04)
+title: "[ARCH] "
+labels: ["architecture", "arb-review"]
+body:
+  - type: input
+    id: change
+    attributes:
+      label: Proposed Change
+      placeholder: What is changing?
+    validations:
+      required: true
+  - type: textarea
+    id: rationale
+    attributes:
+      label: Rationale
+      placeholder: Why is this change needed? Which rulebooks are impacted?
+    validations:
+      required: true
+  - type: dropdown
+    id: risk
+    attributes:
+      label: Risk Level
+      options: [Low, Medium, High, Critical]
+    validations:
+      required: true

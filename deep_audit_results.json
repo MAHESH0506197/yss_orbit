@@ -1,0 +1,6761 @@
+{
+  "stats": {
+    "backend": {
+      "total": 2953,
+      "Complete": 2486,
+      "Partial": 9,
+      "Stub": 125,
+      "Placeholder": 12,
+      "Empty": 262,
+      "Broken": 59
+    },
+    "frontend": {
+      "total": 1283,
+      "Complete": 438,
+      "Partial": 0,
+      "Stub": 5,
+      "Placeholder": 14,
+      "Empty": 764,
+      "Broken": 62
+    },
+    "infrastructure": {
+      "total": 42,
+      "Complete": 38,
+      "Partial": 0,
+      "Stub": 0,
+      "Placeholder": 3,
+      "Empty": 0,
+      "Broken": 1
+    },
+    "shared": {
+      "total": 0,
+      "Complete": 0,
+      "Partial": 0,
+      "Stub": 0,
+      "Placeholder": 0,
+      "Empty": 0,
+      "Broken": 0
+    },
+    "other": {
+      "total": 47,
+      "Complete": 21,
+      "Partial": 0,
+      "Stub": 1,
+      "Placeholder": 6,
+      "Empty": 15,
+      "Broken": 4
+    }
+  },
+  "incomplete_files": [
+    {
+      "file": "deep_repo_scanner.py",
+      "status": "Placeholder",
+      "category": "other"
+    },
+    {
+      "file": "fill_empty.py",
+      "status": "Placeholder",
+      "category": "other"
+    },
+    {
+      "file": "fill_empty_files.py",
+      "status": "Placeholder",
+      "category": "other"
+    },
+    {
+      "file": "find_dummies.py",
+      "status": "Placeholder",
+      "category": "other"
+    },
+    {
+      "file": "generate_boilerplates.py",
+      "status": "Placeholder",
+      "category": "other"
+    },
+    {
+      "file": "script.js",
+      "status": "Stub",
+      "category": "other"
+    },
+    {
+      "file": "update_all_dummy.py",
+      "status": "Broken",
+      "category": "other"
+    },
+    {
+      "file": "update_tenant_rbac.py",
+      "status": "Broken",
+      "category": "other"
+    },
+    {
+      "file": "update_ubu.py",
+      "status": "Broken",
+      "category": "other"
+    },
+    {
+      "file": "upgrade_boilerplates.py",
+      "status": "Placeholder",
+      "category": "other"
+    },
+    {
+      "file": "backend\\.pre-commit-config.yaml",
+      "status": "Empty",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\generate_admin.py",
+      "status": "Broken",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\generate_apps.py",
+      "status": "Broken",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\generate_services.py",
+      "status": "Broken",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\generator.py",
+      "status": "Placeholder",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\healthcheck.py",
+      "status": "Empty",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\implement_empty_files_v4.py",
+      "status": "Placeholder",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\update_tests.py",
+      "status": "Placeholder",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\api\\v1\\schema.py",
+      "status": "Broken",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\implement_apps.py",
+      "status": "Empty",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\api_consumer_key\\authentication.py",
+      "status": "Placeholder",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\api_consumer_key\\api\\__init__.py",
+      "status": "Empty",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\api_consumer_key\\api\\serializers\\__init__.py",
+      "status": "Empty",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\api_consumer_key\\api\\views\\__init__.py",
+      "status": "Empty",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\api_consumer_key\\constants\\__init__.py",
+      "status": "Empty",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\api_consumer_key\\enums\\__init__.py",
+      "status": "Empty",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\api_consumer_key\\events\\__init__.py",
+      "status": "Empty",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\api_consumer_key\\management\\__init__.py",
+      "status": "Empty",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\api_consumer_key\\management\\commands\\__init__.py",
+      "status": "Empty",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\api_consumer_key\\migrations\\__init__.py",
+      "status": "Empty",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\api_consumer_key\\orchestrators\\__init__.py",
+      "status": "Empty",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\api_consumer_key\\permissions\\__init__.py",
+      "status": "Empty",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\api_consumer_key\\repositories\\__init__.py",
+      "status": "Empty",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\api_consumer_key\\selectors\\__init__.py",
+      "status": "Empty",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\api_consumer_key\\tasks\\__init__.py",
+      "status": "Empty",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\api_consumer_key\\tests\\__init__.py",
+      "status": "Empty",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\api_consumer_key\\validators\\__init__.py",
+      "status": "Empty",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\appraisal\\admin.py",
+      "status": "Broken",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\appraisal\\api\\urls.py",
+      "status": "Broken",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\appraisal\\orchestrators\\appraisal_orchestrator.py",
+      "status": "Stub",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\appraisal\\services\\appraisal_service.py",
+      "status": "Stub",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\appraisal\\services\\feedback_service.py",
+      "status": "Stub",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\appraisal\\services\\kpi_service.py",
+      "status": "Stub",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\appraisal\\services\\review_cycle_service.py",
+      "status": "Stub",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\appraisal\\tasks\\appraisal_tasks.py",
+      "status": "Stub",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\attendance\\admin.py",
+      "status": "Broken",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\attendance\\api\\serializers\\urls.py",
+      "status": "Broken",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\attendance\\api\\views\\urls.py",
+      "status": "Broken",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\attendance\\events\\event_handlers.py",
+      "status": "Broken",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\attendance\\orchestrators\\attendance_finalization_orchestrator.py",
+      "status": "Stub",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\attendance\\orchestrators\\attendance_orchestrator.py",
+      "status": "Stub",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\attendance\\repositories\\attendance_repository.py",
+      "status": "Stub",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\attendance\\selectors\\attendance_selectors.py",
+      "status": "Stub",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\attendance\\services\\attendance_service.py",
+      "status": "Stub",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\attendance\\services\\biometric_sync_service.py",
+      "status": "Stub",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\attendance\\services\\check_in_service.py",
+      "status": "Stub",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\attendance\\services\\overtime_service.py",
+      "status": "Stub",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\attendance\\services\\shift_service.py",
+      "status": "Stub",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\attendance\\tasks\\attendance_tasks.py",
+      "status": "Stub",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\attendance\\tests\\conftest.py",
+      "status": "Broken",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\attendance\\tests\\factories.py",
+      "status": "Broken",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\attendance\\tests\\test_attendance_events.py",
+      "status": "Broken",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\attendance\\tests\\test_attendance_model.py",
+      "status": "Broken",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\attendance\\validators\\validators.py",
+      "status": "Broken",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\audit\\events\\event_handlers.py",
+      "status": "Stub",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\audit\\repositories\\audit_repository.py",
+      "status": "Partial",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\audit\\tasks\\audit_tasks.py",
+      "status": "Stub",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\audit\\tests\\test_audit_api.py",
+      "status": "Stub",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\audit\\tests\\test_audit_events.py",
+      "status": "Stub",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\audit\\tests\\test_audit_model.py",
+      "status": "Stub",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\audit\\tests\\test_audit_orchestrator.py",
+      "status": "Stub",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\audit\\tests\\test_audit_repository.py",
+      "status": "Stub",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\audit\\tests\\test_audit_service.py",
+      "status": "Stub",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\batch_tracking\\orchestrators\\batch_tracking_orchestrator.py",
+      "status": "Stub",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\billing\\events\\event_handlers.py",
+      "status": "Stub",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\billing\\repositories\\billing_repository.py",
+      "status": "Partial",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\billing\\tasks\\billing_tasks.py",
+      "status": "Stub",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\billing\\tests\\test_billing_api.py",
+      "status": "Stub",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\billing\\tests\\test_billing_events.py",
+      "status": "Stub",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\billing\\tests\\test_billing_model.py",
+      "status": "Stub",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\billing\\tests\\test_billing_orchestrator.py",
+      "status": "Stub",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\billing\\tests\\test_billing_repository.py",
+      "status": "Stub",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\billing\\tests\\test_billing_service.py",
+      "status": "Stub",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\branding\\events\\event_handlers.py",
+      "status": "Stub",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\branding\\tasks\\branding_tasks.py",
+      "status": "Stub",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\branding\\tests\\test_branding_api.py",
+      "status": "Stub",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\branding\\tests\\test_branding_events.py",
+      "status": "Stub",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\branding\\tests\\test_branding_model.py",
+      "status": "Stub",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\branding\\tests\\test_branding_orchestrator.py",
+      "status": "Stub",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\branding\\tests\\test_branding_repository.py",
+      "status": "Stub",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\branding\\tests\\test_branding_service.py",
+      "status": "Stub",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\dashboard\\admin.py",
+      "status": "Broken",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\dashboard\\api\\urls.py",
+      "status": "Broken",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\dashboard\\api\\serializers\\dashboard_response_serializer.py",
+      "status": "Broken",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\dashboard\\api\\serializers\\dashboard_serializer.py",
+      "status": "Broken",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\dashboard\\api\\views\\dashboard_detail_view.py",
+      "status": "Broken",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\dashboard\\api\\views\\dashboard_list_view.py",
+      "status": "Broken",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\dashboard\\api\\views\\dashboard_view.py",
+      "status": "Broken",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\dashboard\\api\\views\\widget_view.py",
+      "status": "Broken",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\dashboard\\enums\\enums.py",
+      "status": "Broken",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\dashboard\\events\\events.py",
+      "status": "Broken",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\dashboard\\events\\event_handlers.py",
+      "status": "Broken",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\dashboard\\management\\commands\\sync_dashboard.py",
+      "status": "Broken",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\dashboard\\orchestrators\\dashboard_orchestrator.py",
+      "status": "Broken",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\dashboard\\permissions\\permissions.py",
+      "status": "Broken",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\dashboard\\repositories\\dashboard_repository.py",
+      "status": "Broken",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\dashboard\\selectors\\dashboard_selectors.py",
+      "status": "Broken",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\dashboard\\services\\dashboard_layout_service.py",
+      "status": "Stub",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\dashboard\\services\\dashboard_service.py",
+      "status": "Stub",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\dashboard\\services\\dashboard_widget_service.py",
+      "status": "Stub",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\dashboard\\tasks\\dashboard_tasks.py",
+      "status": "Stub",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\dashboard\\tests\\factories.py",
+      "status": "Broken",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\dashboard\\tests\\test_dashboard_events.py",
+      "status": "Broken",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\dashboard\\tests\\test_dashboard_selectors.py",
+      "status": "Broken",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\dashboard\\validators\\validators.py",
+      "status": "Broken",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\domain\\apps.py",
+      "status": "Empty",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\domain\\api\\serializers\\domain_response_serializer.py",
+      "status": "Empty",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\domain\\api\\serializers\\domain_serializer.py",
+      "status": "Empty",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\domain\\api\\views\\domain_detail_view.py",
+      "status": "Empty",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\domain\\api\\views\\domain_list_view.py",
+      "status": "Empty",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\domain\\api\\views\\domain_view.py",
+      "status": "Empty",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\domain\\management\\commands\\seed_domains.py",
+      "status": "Empty",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\domain\\management\\commands\\sync_domain.py",
+      "status": "Empty",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\domain\\models\\domain_model.py",
+      "status": "Empty",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\domain\\models\\domain_module_map_model.py",
+      "status": "Empty",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\domain\\orchestrators\\domain_orchestrator.py",
+      "status": "Empty",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\domain\\repositories\\domain_repository.py",
+      "status": "Empty",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\domain\\selectors\\domain_selectors.py",
+      "status": "Empty",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\domain\\services\\domain_module_service.py",
+      "status": "Empty",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\domain\\services\\domain_service.py",
+      "status": "Empty",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\domain\\tasks\\domain_tasks.py",
+      "status": "Empty",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\domain\\tests\\factories.py",
+      "status": "Empty",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\domain\\tests\\test_domain_api.py",
+      "status": "Empty",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\domain\\tests\\test_domain_events.py",
+      "status": "Empty",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\domain\\tests\\test_domain_model.py",
+      "status": "Empty",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\domain\\tests\\test_domain_orchestrator.py",
+      "status": "Empty",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\domain\\tests\\test_domain_repository.py",
+      "status": "Empty",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\domain\\tests\\test_domain_selectors.py",
+      "status": "Empty",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\domain\\tests\\test_domain_service.py",
+      "status": "Empty",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\drug_register\\api\\serializers\\drug_register_response_serializer.py",
+      "status": "Stub",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\drug_register\\tasks\\drug_register_tasks.py",
+      "status": "Stub",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\feature_flags\\events\\event_handlers.py",
+      "status": "Stub",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\feature_flags\\repositories\\feature_flags_repository.py",
+      "status": "Partial",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\feature_flags\\tasks\\feature_flags_tasks.py",
+      "status": "Stub",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\feature_flags\\tests\\test_feature_flags_api.py",
+      "status": "Stub",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\feature_flags\\tests\\test_feature_flags_events.py",
+      "status": "Stub",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\feature_flags\\tests\\test_feature_flags_model.py",
+      "status": "Stub",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\feature_flags\\tests\\test_feature_flags_orchestrator.py",
+      "status": "Stub",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\feature_flags\\tests\\test_feature_flags_repository.py",
+      "status": "Stub",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\feature_flags\\tests\\test_feature_flags_service.py",
+      "status": "Stub",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\file_storage\\apps.py",
+      "status": "Empty",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\file_storage\\api\\serializers\\file_storage_response_serializer.py",
+      "status": "Empty",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\file_storage\\api\\serializers\\file_storage_serializer.py",
+      "status": "Empty",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\file_storage\\api\\views\\download_view.py",
+      "status": "Empty",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\file_storage\\api\\views\\file_storage_detail_view.py",
+      "status": "Empty",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\file_storage\\api\\views\\file_storage_list_view.py",
+      "status": "Empty",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\file_storage\\api\\views\\file_storage_view.py",
+      "status": "Empty",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\file_storage\\api\\views\\upload_view.py",
+      "status": "Empty",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\file_storage\\management\\commands\\sync_file_storage.py",
+      "status": "Empty",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\file_storage\\models\\file_asset_model.py",
+      "status": "Empty",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\file_storage\\models\\file_model.py",
+      "status": "Empty",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\file_storage\\models\\file_storage_model.py",
+      "status": "Empty",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\file_storage\\orchestrators\\file_storage_orchestrator.py",
+      "status": "Empty",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\file_storage\\repositories\\file_storage_repository.py",
+      "status": "Empty",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\file_storage\\selectors\\file_storage_selectors.py",
+      "status": "Empty",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\file_storage\\services\\file_storage_service.py",
+      "status": "Empty",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\file_storage\\services\\signed_url_service.py",
+      "status": "Empty",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\file_storage\\services\\upload_service.py",
+      "status": "Empty",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\file_storage\\services\\virus_scan_service.py",
+      "status": "Empty",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\file_storage\\tasks\\file_storage_tasks.py",
+      "status": "Empty",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\file_storage\\tests\\factories.py",
+      "status": "Empty",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\file_storage\\tests\\test_file_storage_api.py",
+      "status": "Empty",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\file_storage\\tests\\test_file_storage_events.py",
+      "status": "Empty",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\file_storage\\tests\\test_file_storage_model.py",
+      "status": "Empty",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\file_storage\\tests\\test_file_storage_orchestrator.py",
+      "status": "Empty",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\file_storage\\tests\\test_file_storage_repository.py",
+      "status": "Empty",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\file_storage\\tests\\test_file_storage_selectors.py",
+      "status": "Empty",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\file_storage\\tests\\test_file_storage_service.py",
+      "status": "Empty",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\health\\api\\serializers\\health_response_serializer.py",
+      "status": "Empty",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\health\\api\\serializers\\health_serializer.py",
+      "status": "Empty",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\health\\api\\views\\health_detail_view.py",
+      "status": "Empty",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\health\\api\\views\\health_list_view.py",
+      "status": "Empty",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\health\\api\\views\\health_view.py",
+      "status": "Empty",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\health\\api\\views\\liveness_view.py",
+      "status": "Empty",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\health\\api\\views\\readiness_view.py",
+      "status": "Empty",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\health\\management\\commands\\sync_health.py",
+      "status": "Empty",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\health\\models\\health_model.py",
+      "status": "Empty",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\health\\orchestrators\\health_orchestrator.py",
+      "status": "Empty",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\health\\repositories\\health_repository.py",
+      "status": "Empty",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\health\\selectors\\health_selectors.py",
+      "status": "Empty",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\health\\services\\dependency_health_service.py",
+      "status": "Empty",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\health\\services\\health_service.py",
+      "status": "Empty",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\health\\services\\liveness_service.py",
+      "status": "Empty",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\health\\services\\readiness_service.py",
+      "status": "Empty",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\health\\tasks\\health_tasks.py",
+      "status": "Empty",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\health\\tests\\factories.py",
+      "status": "Empty",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\health\\tests\\test_health_api.py",
+      "status": "Empty",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\health\\tests\\test_health_events.py",
+      "status": "Empty",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\health\\tests\\test_health_model.py",
+      "status": "Empty",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\health\\tests\\test_health_orchestrator.py",
+      "status": "Empty",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\health\\tests\\test_health_repository.py",
+      "status": "Empty",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\health\\tests\\test_health_selectors.py",
+      "status": "Empty",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\health\\tests\\test_health_service.py",
+      "status": "Empty",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\hrms_core\\admin.py",
+      "status": "Broken",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\hrms_core\\api\\serializers\\urls.py",
+      "status": "Broken",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\hrms_core\\api\\views\\urls.py",
+      "status": "Broken",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\hrms_core\\events\\event_handlers.py",
+      "status": "Broken",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\hrms_core\\orchestrators\\hrms_core_orchestrator.py",
+      "status": "Stub",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\hrms_core\\repositories\\hrms_core_repository.py",
+      "status": "Stub",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\hrms_core\\selectors\\hrms_core_selectors.py",
+      "status": "Stub",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\hrms_core\\services\\department_service.py",
+      "status": "Stub",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\hrms_core\\services\\designation_service.py",
+      "status": "Stub",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\hrms_core\\services\\document_service.py",
+      "status": "Stub",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\hrms_core\\services\\employee_service.py",
+      "status": "Stub",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\hrms_core\\services\\hrms_core_service.py",
+      "status": "Stub",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\hrms_core\\services\\onboarding_service.py",
+      "status": "Stub",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\hrms_core\\services\\org_chart_service.py",
+      "status": "Stub",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\hrms_core\\tasks\\hrms_core_tasks.py",
+      "status": "Stub",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\hrms_core\\tests\\conftest.py",
+      "status": "Broken",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\hrms_core\\tests\\factories.py",
+      "status": "Broken",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\hrms_core\\tests\\test_hrms_core_events.py",
+      "status": "Broken",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\hrms_core\\tests\\test_hrms_core_model.py",
+      "status": "Broken",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\hrms_core\\validators\\validators.py",
+      "status": "Broken",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\integration\\services\\oauth_service.py",
+      "status": "Placeholder",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\inventory\\barcode\\barcode_service.py",
+      "status": "Stub",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\leave\\leave_serializer.py",
+      "status": "Partial",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\module_registry\\events\\event_handlers.py",
+      "status": "Stub",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\module_registry\\repositories\\module_registry_repository.py",
+      "status": "Partial",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\module_registry\\tasks\\module_registry_tasks.py",
+      "status": "Stub",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\module_registry\\tests\\test_module_registry_api.py",
+      "status": "Stub",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\module_registry\\tests\\test_module_registry_events.py",
+      "status": "Stub",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\module_registry\\tests\\test_module_registry_model.py",
+      "status": "Stub",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\module_registry\\tests\\test_module_registry_orchestrator.py",
+      "status": "Stub",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\module_registry\\tests\\test_module_registry_repository.py",
+      "status": "Stub",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\module_registry\\tests\\test_module_registry_service.py",
+      "status": "Stub",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\notification\\tasks.py",
+      "status": "Stub",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\notification\\api\\serializers\\notification_response_serializer.py",
+      "status": "Empty",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\notification\\api\\serializers\\notification_serializer.py",
+      "status": "Empty",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\notification\\api\\views\\notification_detail_view.py",
+      "status": "Empty",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\notification\\api\\views\\notification_list_view.py",
+      "status": "Empty",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\notification\\api\\views\\notification_preference_view.py",
+      "status": "Empty",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\notification\\api\\views\\notification_view.py",
+      "status": "Empty",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\notification\\management\\commands\\sync_notification.py",
+      "status": "Empty",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\notification\\models\\notification_model.py",
+      "status": "Empty",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\notification\\models\\notification_preference_model.py",
+      "status": "Empty",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\notification\\models\\notification_template_model.py",
+      "status": "Empty",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\notification\\orchestrators\\notification_orchestrator.py",
+      "status": "Empty",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\notification\\repositories\\notification_repository.py",
+      "status": "Empty",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\notification\\selectors\\notification_selectors.py",
+      "status": "Empty",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\notification\\services\\email_notification_service.py",
+      "status": "Empty",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\notification\\services\\notification_service.py",
+      "status": "Empty",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\notification\\services\\notification_template_service.py",
+      "status": "Empty",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\notification\\services\\push_notification_service.py",
+      "status": "Empty",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\notification\\services\\sms_notification_service.py",
+      "status": "Empty",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\notification\\services\\whatsapp_service.py",
+      "status": "Empty",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\notification\\tasks\\notification_tasks.py",
+      "status": "Empty",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\notification\\tests\\factories.py",
+      "status": "Empty",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\notification\\tests\\test_notification_api.py",
+      "status": "Empty",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\notification\\tests\\test_notification_events.py",
+      "status": "Empty",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\notification\\tests\\test_notification_model.py",
+      "status": "Empty",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\notification\\tests\\test_notification_orchestrator.py",
+      "status": "Empty",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\notification\\tests\\test_notification_repository.py",
+      "status": "Empty",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\notification\\tests\\test_notification_selectors.py",
+      "status": "Empty",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\notification\\tests\\test_notification_service.py",
+      "status": "Empty",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\observability\\api\\serializers\\observability_response_serializer.py",
+      "status": "Empty",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\observability\\api\\serializers\\observability_serializer.py",
+      "status": "Empty",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\observability\\api\\views\\metrics_view.py",
+      "status": "Empty",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\observability\\api\\views\\observability_detail_view.py",
+      "status": "Empty",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\observability\\api\\views\\observability_list_view.py",
+      "status": "Empty",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\observability\\api\\views\\observability_view.py",
+      "status": "Empty",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\observability\\api\\views\\trace_view.py",
+      "status": "Empty",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\observability\\management\\commands\\sync_observability.py",
+      "status": "Empty",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\observability\\models\\metrics_model.py",
+      "status": "Empty",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\observability\\models\\observability_model.py",
+      "status": "Empty",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\observability\\models\\trace_model.py",
+      "status": "Empty",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\observability\\orchestrators\\observability_orchestrator.py",
+      "status": "Empty",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\observability\\repositories\\observability_repository.py",
+      "status": "Empty",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\observability\\selectors\\observability_selectors.py",
+      "status": "Empty",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\observability\\services\\correlation_service.py",
+      "status": "Empty",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\observability\\services\\metrics_service.py",
+      "status": "Empty",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\observability\\services\\observability_service.py",
+      "status": "Empty",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\observability\\services\\slo_service.py",
+      "status": "Empty",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\observability\\services\\trace_service.py",
+      "status": "Empty",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\observability\\tasks\\observability_tasks.py",
+      "status": "Empty",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\observability\\tests\\factories.py",
+      "status": "Empty",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\observability\\tests\\test_observability_api.py",
+      "status": "Empty",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\observability\\tests\\test_observability_events.py",
+      "status": "Empty",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\observability\\tests\\test_observability_model.py",
+      "status": "Empty",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\observability\\tests\\test_observability_orchestrator.py",
+      "status": "Empty",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\observability\\tests\\test_observability_repository.py",
+      "status": "Empty",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\observability\\tests\\test_observability_selectors.py",
+      "status": "Empty",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\observability\\tests\\test_observability_service.py",
+      "status": "Empty",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\organization\\api\\serializers\\organization_response_serializer.py",
+      "status": "Empty",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\organization\\api\\serializers\\organization_serializer.py",
+      "status": "Empty",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\organization\\api\\views\\organization_detail_view.py",
+      "status": "Empty",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\organization\\api\\views\\organization_list_view.py",
+      "status": "Empty",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\organization\\api\\views\\organization_settings_view.py",
+      "status": "Empty",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\organization\\api\\views\\organization_view.py",
+      "status": "Empty",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\organization\\management\\commands\\sync_organization.py",
+      "status": "Empty",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\organization\\models\\organization_model.py",
+      "status": "Empty",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\organization\\models\\organization_settings_model.py",
+      "status": "Empty",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\organization\\orchestrators\\organization_orchestrator.py",
+      "status": "Empty",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\organization\\repositories\\organization_repository.py",
+      "status": "Empty",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\organization\\selectors\\organization_selectors.py",
+      "status": "Empty",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\organization\\services\\organization_onboarding_service.py",
+      "status": "Empty",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\organization\\services\\organization_service.py",
+      "status": "Empty",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\organization\\services\\organization_settings_service.py",
+      "status": "Empty",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\organization\\tasks\\organization_tasks.py",
+      "status": "Empty",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\organization\\tests\\factories.py",
+      "status": "Empty",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\organization\\tests\\test_organization_api.py",
+      "status": "Empty",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\organization\\tests\\test_organization_events.py",
+      "status": "Empty",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\organization\\tests\\test_organization_model.py",
+      "status": "Empty",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\organization\\tests\\test_organization_orchestrator.py",
+      "status": "Empty",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\organization\\tests\\test_organization_repository.py",
+      "status": "Empty",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\organization\\tests\\test_organization_selectors.py",
+      "status": "Empty",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\organization\\tests\\test_organization_service.py",
+      "status": "Empty",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\outbox\\tasks\\outbox_tasks.py",
+      "status": "Stub",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\payroll\\events\\event_handlers.py",
+      "status": "Placeholder",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\payroll\\orchestrators\\payroll_orchestrator.py",
+      "status": "Stub",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\payroll\\orchestrators\\payroll_run_orchestrator.py",
+      "status": "Stub",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\payroll\\services\\payroll_export_service.py",
+      "status": "Stub",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\payroll\\services\\payslip_service.py",
+      "status": "Stub",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\payroll\\services\\pf_esi_service.py",
+      "status": "Stub",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\payroll\\services\\salary_computation_service.py",
+      "status": "Stub",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\payroll\\services\\tds_service.py",
+      "status": "Stub",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\payroll\\tasks\\payroll_tasks.py",
+      "status": "Stub",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\payroll\\tests\\test_payroll_api.py",
+      "status": "Stub",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\pharmacy_billing\\tests\\test_pharmacy_billing_orchestrator.py",
+      "status": "Stub",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\platform\\api\\__init__.py",
+      "status": "Empty",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\platform\\api\\v1\\__init__.py",
+      "status": "Empty",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\platform\\catalogue\\domain_catalogue.py",
+      "status": "Empty",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\platform\\catalogue\\module_catalogue.py",
+      "status": "Empty",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\platform\\catalogue\\__init__.py",
+      "status": "Empty",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\platform\\diagnostics\\__init__.py",
+      "status": "Empty",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\platform\\governance\\platform_registry.py",
+      "status": "Empty",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\platform\\governance\\platform_settings.py",
+      "status": "Empty",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\platform\\governance\\__init__.py",
+      "status": "Empty",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\platform\\health\\__init__.py",
+      "status": "Empty",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\platform\\lifecycle\\__init__.py",
+      "status": "Empty",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\platform\\seed\\__init__.py",
+      "status": "Empty",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\platform\\services\\branding_service.py",
+      "status": "Empty",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\platform\\services\\dashboard_service.py",
+      "status": "Empty",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\platform\\services\\readiness_service.py",
+      "status": "Empty",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\platform\\services\\report_service.py",
+      "status": "Empty",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\platform\\services\\__init__.py",
+      "status": "Empty",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\platform_admin\\apps.py",
+      "status": "Empty",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\platform_admin\\api\\serializers\\break_glass_serializer.py",
+      "status": "Empty",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\platform_admin\\api\\serializers\\platform_admin_response_serializer.py",
+      "status": "Empty",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\platform_admin\\api\\serializers\\platform_admin_serializer.py",
+      "status": "Empty",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\platform_admin\\api\\views\\break_glass_view.py",
+      "status": "Empty",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\platform_admin\\api\\views\\platform_admin_detail_view.py",
+      "status": "Empty",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\platform_admin\\api\\views\\platform_admin_list_view.py",
+      "status": "Empty",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\platform_admin\\api\\views\\platform_admin_view.py",
+      "status": "Empty",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\platform_admin\\api\\views\\platform_stats_view.py",
+      "status": "Empty",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\platform_admin\\api\\views\\tenant_admin_view.py",
+      "status": "Empty",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\platform_admin\\management\\commands\\sync_platform_admin.py",
+      "status": "Empty",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\platform_admin\\models\\break_glass_log_model.py",
+      "status": "Empty",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\platform_admin\\models\\platform_admin_model.py",
+      "status": "Empty",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\platform_admin\\orchestrators\\platform_admin_orchestrator.py",
+      "status": "Empty",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\platform_admin\\repositories\\platform_admin_repository.py",
+      "status": "Empty",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\platform_admin\\selectors\\platform_admin_selectors.py",
+      "status": "Empty",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\platform_admin\\services\\break_glass_service.py",
+      "status": "Empty",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\platform_admin\\services\\platform_admin_service.py",
+      "status": "Empty",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\platform_admin\\services\\tenant_lifecycle_service.py",
+      "status": "Empty",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\platform_admin\\tasks\\platform_admin_tasks.py",
+      "status": "Empty",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\platform_admin\\tests\\factories.py",
+      "status": "Empty",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\platform_admin\\tests\\test_platform_admin_api.py",
+      "status": "Empty",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\platform_admin\\tests\\test_platform_admin_events.py",
+      "status": "Empty",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\platform_admin\\tests\\test_platform_admin_model.py",
+      "status": "Empty",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\platform_admin\\tests\\test_platform_admin_orchestrator.py",
+      "status": "Empty",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\platform_admin\\tests\\test_platform_admin_repository.py",
+      "status": "Empty",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\platform_admin\\tests\\test_platform_admin_selectors.py",
+      "status": "Empty",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\platform_admin\\tests\\test_platform_admin_service.py",
+      "status": "Empty",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\pos\\orchestrators\\pos_orchestrator.py",
+      "status": "Stub",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\pos\\orchestrators\\sale_orchestrator.py",
+      "status": "Stub",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\pos\\tests\\test_pos_orchestrator.py",
+      "status": "Placeholder",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\recruitment\\api\\urls.py",
+      "status": "Broken",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\recruitment\\orchestrators\\recruitment_orchestrator.py",
+      "status": "Stub",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\recruitment\\services\\applicant_service.py",
+      "status": "Stub",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\recruitment\\services\\interview_service.py",
+      "status": "Stub",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\recruitment\\services\\job_posting_service.py",
+      "status": "Stub",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\recruitment\\services\\offer_letter_service.py",
+      "status": "Stub",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\recruitment\\tasks\\recruitment_tasks.py",
+      "status": "Stub",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\reporting\\admin.py",
+      "status": "Broken",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\reporting\\orchestrators\\analytics_orchestrator.py",
+      "status": "Stub",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\reporting\\orchestrators\\reporting_orchestrator.py",
+      "status": "Stub",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\reporting\\services\\analytics_service.py",
+      "status": "Stub",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\reporting\\services\\reporting_service.py",
+      "status": "Stub",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\reporting\\services\\report_export_service.py",
+      "status": "Stub",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\reporting\\services\\report_query_service.py",
+      "status": "Stub",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\reporting\\services\\scheduled_report_service.py",
+      "status": "Stub",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\reporting\\tasks\\analytics_tasks.py",
+      "status": "Stub",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\reporting\\tasks\\reporting_tasks.py",
+      "status": "Stub",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\retail_billing\\api\\serializers\\retail_billing_response_serializer.py",
+      "status": "Stub",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\retail_billing\\tests\\test_retail_billing_api.py",
+      "status": "Placeholder",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\stock_transfer\\orchestrators\\stock_transfer_orchestrator.py",
+      "status": "Stub",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\subscription\\api\\__init__.py",
+      "status": "Empty",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\subscription\\api\\serializers\\__init__.py",
+      "status": "Empty",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\subscription\\api\\views\\__init__.py",
+      "status": "Empty",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\subscription\\constants\\__init__.py",
+      "status": "Empty",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\subscription\\enums\\__init__.py",
+      "status": "Empty",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\subscription\\events\\event_handlers.py",
+      "status": "Stub",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\subscription\\events\\__init__.py",
+      "status": "Empty",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\subscription\\management\\__init__.py",
+      "status": "Empty",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\subscription\\management\\commands\\__init__.py",
+      "status": "Empty",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\subscription\\migrations\\__init__.py",
+      "status": "Empty",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\subscription\\orchestrators\\__init__.py",
+      "status": "Empty",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\subscription\\permissions\\__init__.py",
+      "status": "Empty",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\subscription\\repositories\\subscription_repository.py",
+      "status": "Partial",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\subscription\\repositories\\__init__.py",
+      "status": "Empty",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\subscription\\selectors\\__init__.py",
+      "status": "Empty",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\subscription\\services\\__init__.py",
+      "status": "Empty",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\subscription\\tasks\\expiry_tasks.py",
+      "status": "Stub",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\subscription\\tasks\\grace_period_tasks.py",
+      "status": "Stub",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\subscription\\tasks\\renewal_tasks.py",
+      "status": "Stub",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\subscription\\tasks\\__init__.py",
+      "status": "Empty",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\subscription\\tests\\__init__.py",
+      "status": "Empty",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\subscription\\validators\\__init__.py",
+      "status": "Empty",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\support\\admin.py",
+      "status": "Broken",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\support\\models.py",
+      "status": "Partial",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\support\\enums\\support_enums.py",
+      "status": "Broken",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\support\\events\\events.py",
+      "status": "Broken",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\support\\events\\event_handlers.py",
+      "status": "Broken",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\support\\orchestrators\\impersonation_orchestrator.py",
+      "status": "Stub",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\support\\repositories\\impersonation_repository.py",
+      "status": "Stub",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\support\\services\\diagnostics_service.py",
+      "status": "Broken",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\support\\services\\impersonation_service.py",
+      "status": "Broken",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\support\\services\\tenant_health_service.py",
+      "status": "Broken",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\support\\tests\\factories.py",
+      "status": "Broken",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\tenant_settings\\events\\event_handlers.py",
+      "status": "Stub",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\tenant_settings\\repositories\\tenant_settings_repository.py",
+      "status": "Partial",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\tenant_settings\\tasks\\tenant_settings_tasks.py",
+      "status": "Stub",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\tenant_settings\\tests\\test_tenant_settings_api.py",
+      "status": "Stub",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\tenant_settings\\tests\\test_tenant_settings_events.py",
+      "status": "Stub",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\tenant_settings\\tests\\test_tenant_settings_model.py",
+      "status": "Stub",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\tenant_settings\\tests\\test_tenant_settings_orchestrator.py",
+      "status": "Stub",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\tenant_settings\\tests\\test_tenant_settings_repository.py",
+      "status": "Stub",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\tenant_settings\\tests\\test_tenant_settings_service.py",
+      "status": "Stub",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\users\\api\\urls\\__init__.py",
+      "status": "Empty",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\vendor_management\\orchestrators\\vendor_management_orchestrator.py",
+      "status": "Stub",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\webhook\\api\\__init__.py",
+      "status": "Empty",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\webhook\\api\\serializers\\__init__.py",
+      "status": "Empty",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\webhook\\api\\views\\__init__.py",
+      "status": "Empty",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\webhook\\constants\\__init__.py",
+      "status": "Empty",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\webhook\\enums\\__init__.py",
+      "status": "Empty",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\webhook\\events\\__init__.py",
+      "status": "Empty",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\webhook\\management\\__init__.py",
+      "status": "Empty",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\webhook\\management\\commands\\__init__.py",
+      "status": "Empty",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\webhook\\models\\__init__.py",
+      "status": "Empty",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\webhook\\orchestrators\\__init__.py",
+      "status": "Empty",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\webhook\\permissions\\__init__.py",
+      "status": "Empty",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\webhook\\repositories\\__init__.py",
+      "status": "Empty",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\webhook\\selectors\\__init__.py",
+      "status": "Empty",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\webhook\\services\\__init__.py",
+      "status": "Empty",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\webhook\\tasks\\__init__.py",
+      "status": "Empty",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\webhook\\tests\\__init__.py",
+      "status": "Empty",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\apps\\webhook\\validators\\__init__.py",
+      "status": "Empty",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\config\\settings\\development.py",
+      "status": "Placeholder",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\config\\settings\\testing.py",
+      "status": "Placeholder",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\core\\cache\\cache_warming.py",
+      "status": "Stub",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\core\\database\\db_router.py",
+      "status": "Stub",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\core\\events\\event_contracts.py",
+      "status": "Partial",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\core\\idempotency\\idempotency_store.py",
+      "status": "Broken",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\core\\rate_limiting\\rate_limit_constants.py",
+      "status": "Broken",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\core\\selectors\\base_selector.py",
+      "status": "Broken",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\core\\selectors\\cached_selector.py",
+      "status": "Broken",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\core\\selectors\\read_replica_selector.py",
+      "status": "Broken",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\core\\services\\notification_service.py",
+      "status": "Placeholder",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\core\\testing\\fixtures.py",
+      "status": "Placeholder",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\core\\validators\\__init__.py",
+      "status": "Stub",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\tests\\conftest.py",
+      "status": "Stub",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\tests\\e2e\\test_auth_flow.py",
+      "status": "Empty",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\tests\\e2e\\test_tenant_onboarding.py",
+      "status": "Empty",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\tests\\integration\\test_event_outbox.py",
+      "status": "Empty",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\tests\\integration\\test_module_subscription.py",
+      "status": "Empty",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\tests\\integration\\test_multi_tenant_isolation.py",
+      "status": "Empty",
+      "category": "backend"
+    },
+    {
+      "file": "backend\\tests\\load\\locustfile.py",
+      "status": "Empty",
+      "category": "backend"
+    },
+    {
+      "file": "frontend\\eslint.config.js",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\postcss.config.js",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\dist\\assets\\vendor-dates-l0sNRNKZ.js",
+      "status": "Stub",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\scripts\\generate_module.sh",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\scripts\\validate_module_structure.sh",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\env.d.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\vite-env.d.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\app\\bootstrap\\bootstrap.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\app\\config\\appConfig.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\app\\guards\\BusinessUnitGuard.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\app\\guards\\DomainGuard.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\app\\guards\\ModuleSubscriptionGuard.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\app\\guards\\PermissionGuard.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\app\\providers\\AppProviders.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\app\\providers\\BrandingProvider.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\app\\providers\\FeatureFlagProvider.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\app\\providers\\ObservabilityProvider.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\app\\providers\\SecurityContextProvider.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\app\\providers\\TenantContextProvider.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\app\\router\\lazyRoutes.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\app\\router\\moduleRoutes.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\app\\shell\\BusinessUnitSelector.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\app\\shell\\DomainBadge.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\app\\shell\\GlobalHeader.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\app\\shell\\GlobalSidebar.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\app\\shell\\ModuleNavigation.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\app\\shell\\NotificationBell.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\app\\shell\\PlatformShell.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\app\\shell\\UserAvatarMenu.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\app\\store\\appStore.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\components\\ui\\PermissionGate.tsx",
+      "status": "Placeholder",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\core\\accessibility\\colorContrast.ts",
+      "status": "Broken",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\core\\accessibility\\focusTrap.ts",
+      "status": "Broken",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\core\\accessibility\\FocusTrap.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\core\\accessibility\\SkipLink.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\core\\api\\apiClient.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\core\\api\\apiRegistry.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\core\\api\\baseService.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\core\\api\\interceptors.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\core\\branding\\brandingContext.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\core\\branding\\brandingEngine.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\core\\branding\\logoResolver.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\core\\branding\\themeEngine.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\core\\branding\\whitelabelMode.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\core\\config\\env.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\core\\constants\\apiEndpoints.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\core\\constants\\appConstants.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\core\\constants\\domainConstants.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\core\\constants\\moduleConstants.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\core\\constants\\routeConstants.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\core\\errors\\errorBoundary.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\core\\errors\\errorCodes.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\core\\errors\\errorHandler.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\core\\events\\eventBus.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\core\\feature_flags\\featureFlagClient.ts",
+      "status": "Broken",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\core\\feature_flags\\featureFlagConstants.ts",
+      "status": "Broken",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\core\\feature_flags\\featureFlags.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\core\\feature_flags\\flagEvaluator.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\core\\hooks\\useAsync.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\core\\hooks\\useCorrelationId.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\core\\http\\httpClient.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\core\\http\\httpErrors.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\core\\http\\httpStatus.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\core\\http\\requestManager.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\core\\http\\requestQueue.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\core\\notifications\\notificationStore.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\core\\notifications\\toastManager.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\core\\observability\\correlationId.ts",
+      "status": "Broken",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\core\\observability\\errorReporter.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\core\\observability\\frontendTracer.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\core\\observability\\performanceObserver.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\core\\performance\\cacheStrategy.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\core\\performance\\lazyLoad.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\core\\performance\\lazyLoader.ts",
+      "status": "Broken",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\core\\performance\\memoryMonitor.ts",
+      "status": "Broken",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\core\\performance\\performanceMonitor.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\core\\performance\\prefetchManager.ts",
+      "status": "Broken",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\core\\performance\\resourceHints.ts",
+      "status": "Broken",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\core\\rbac\\permissionCodes.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\core\\rbac\\PermissionGate.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\core\\rbac\\rbacSelectors.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\core\\rbac\\rbacUtils.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\core\\rbac\\roleMatrix.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\core\\rbac\\scopeConstants.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\core\\rbac\\ScopeGate.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\core\\rbac\\usePermissions.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\core\\rbac\\useRBAC.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\core\\security\\authGuard.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\core\\security\\csrf.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\core\\security\\mfaManager.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\core\\security\\permissionGuard.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\core\\security\\secureStorage.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\core\\security\\sessionManager.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\core\\security\\tokenManager.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\core\\store\\middleware.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\core\\store\\persistConfig.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\core\\store\\rootReducer.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\core\\store\\store.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\core\\telemetry\\logger.ts",
+      "status": "Broken",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\core\\telemetry\\telemetry.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\core\\types\\apiTypes.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\core\\types\\authTypes.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\core\\types\\commonTypes.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\core\\types\\rbacTypes.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\core\\types\\tenantTypes.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\core\\utils\\dateUtils.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\core\\utils\\helpers.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\core\\utils\\objectUtils.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\core\\utils\\stringUtils.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\core\\validation\\schemas\\authSchemas.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\core\\validation\\schemas\\businessUnitSchemas.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\core\\validation\\schemas\\commonSchemas.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\core\\validation\\schemas\\dashboardSchemas.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\core\\validation\\schemas\\organizationSchemas.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\core\\validation\\schemas\\rbacSchemas.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\core\\validation\\schemas\\userSchemas.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\core\\validation\\utils\\validationHelpers.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\core\\validation\\validators\\apiValidator.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\core\\validation\\validators\\formValidator.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\design_system\\index.ts",
+      "status": "Broken",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\design_system\\components\\index.ts",
+      "status": "Broken",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\design_system\\foundations\\colors.ts",
+      "status": "Broken",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\design_system\\foundations\\grid.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\design_system\\foundations\\index.ts",
+      "status": "Broken",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\design_system\\foundations\\layout.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\design_system\\icons\\index.ts",
+      "status": "Broken",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\design_system\\themes\\baseTheme.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\design_system\\themes\\tenantTheme.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\design_system\\themes\\themeEngine.ts",
+      "status": "Broken",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\design_system\\themes\\whitelabelTheme.ts",
+      "status": "Broken",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\design_system\\tokens\\brandTokens.ts",
+      "status": "Broken",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\design_system\\tokens\\breakpoints.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\design_system\\tokens\\colors.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\design_system\\tokens\\index.ts",
+      "status": "Broken",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\design_system\\tokens\\semanticTokens.ts",
+      "status": "Broken",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\design_system\\tokens\\shadows.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\design_system\\tokens\\spacing.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\design_system\\tokens\\typography.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\design_system\\tokens\\zIndex.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\features\\appraisal\\pages\\AppraisalPage.tsx",
+      "status": "Placeholder",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\features\\attendance\\api.ts",
+      "status": "Placeholder",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\features\\billing\\pages\\BillingPage.tsx",
+      "status": "Placeholder",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\features\\customers\\pages\\CustomerListPage.tsx",
+      "status": "Placeholder",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\features\\hrms\\api.ts",
+      "status": "Placeholder",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\features\\leave\\api.ts",
+      "status": "Placeholder",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\features\\payroll\\api.ts",
+      "status": "Placeholder",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\features\\pharmacy\\pages\\PharmacyPage.tsx",
+      "status": "Placeholder",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\features\\recruitment\\pages\\RecruitmentPage.tsx",
+      "status": "Placeholder",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\features\\settings\\pages\\APIKeysPage.tsx",
+      "status": "Placeholder",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\features\\settings\\pages\\WebhooksPage.tsx",
+      "status": "Placeholder",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\appraisal\\api\\appraisalApi.ts",
+      "status": "Broken",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\appraisal\\components\\appraisalCard.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\appraisal\\components\\AppraisalForm.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\appraisal\\components\\KpiTracker.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\appraisal\\hooks\\useappraisal.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\appraisal\\pages\\AppraisalCreatePage.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\appraisal\\pages\\appraisalDetailPage.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\appraisal\\pages\\appraisalListPage.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\appraisal\\pages\\KpiPage.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\appraisal\\pages\\ReviewCyclePage.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\appraisal\\routes\\appraisalRoutes.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\appraisal\\services\\appraisalService.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\appraisal\\state\\appraisalSlice.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\appraisal\\state\\appraisalStore.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\appraisal\\tests\\appraisalService.test.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\appraisal\\tests\\appraisalStore.test.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\appraisal\\types\\appraisalTypes.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\appraisal\\utils\\appraisalHelpers.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\attendance\\api\\attendanceApi.ts",
+      "status": "Broken",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\attendance\\components\\attendanceCard.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\attendance\\components\\CheckInButton.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\attendance\\components\\ShiftCalendar.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\attendance\\hooks\\useattendance.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\attendance\\pages\\AttendanceCheckInPage.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\attendance\\pages\\attendanceDetailPage.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\attendance\\pages\\attendanceListPage.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\attendance\\pages\\AttendanceOvertimePage.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\attendance\\pages\\AttendanceShiftPage.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\attendance\\routes\\attendanceRoutes.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\attendance\\services\\attendanceService.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\attendance\\state\\attendanceSlice.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\attendance\\state\\attendanceStore.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\attendance\\tests\\attendanceService.test.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\attendance\\tests\\attendanceStore.test.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\attendance\\types\\attendanceTypes.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\attendance\\utils\\attendanceHelpers.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\audit\\api\\auditApi.ts",
+      "status": "Broken",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\audit\\components\\auditCard.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\audit\\components\\AuditTimeline.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\audit\\hooks\\useaudit.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\audit\\pages\\auditDetailPage.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\audit\\pages\\AuditExportPage.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\audit\\pages\\auditListPage.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\audit\\routes\\auditRoutes.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\audit\\services\\auditService.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\audit\\state\\auditSlice.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\audit\\state\\auditStore.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\audit\\tests\\auditService.test.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\audit\\tests\\auditStore.test.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\audit\\types\\auditTypes.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\audit\\utils\\auditHelpers.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\authentication\\api\\authenticationApi.ts",
+      "status": "Broken",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\authentication\\components\\authenticationCard.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\authentication\\components\\LoginForm.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\authentication\\components\\OtpInput.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\authentication\\components\\PasswordResetForm.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\authentication\\hooks\\useauthentication.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\authentication\\pages\\authenticationDetailPage.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\authentication\\pages\\authenticationListPage.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\authentication\\pages\\LoginPage.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\authentication\\pages\\MfaPage.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\authentication\\pages\\OtpVerifyPage.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\authentication\\pages\\PasswordResetConfirmPage.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\authentication\\pages\\PasswordResetPage.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\authentication\\pages\\RegisterPage.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\authentication\\routes\\authenticationRoutes.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\authentication\\services\\authenticationService.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\authentication\\state\\authenticationSlice.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\authentication\\state\\authenticationStore.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\authentication\\tests\\authenticationService.test.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\authentication\\tests\\authenticationStore.test.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\authentication\\types\\authenticationTypes.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\authentication\\utils\\authenticationHelpers.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\batchTracking\\api\\batchTrackingApi.ts",
+      "status": "Broken",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\batchTracking\\components\\batchTrackingCard.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\batchTracking\\hooks\\usebatchTracking.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\batchTracking\\pages\\BatchTracePage.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\batchTracking\\pages\\batchTrackingDetailPage.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\batchTracking\\pages\\batchTrackingListPage.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\batchTracking\\routes\\batchTrackingRoutes.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\batchTracking\\services\\batchTrackingService.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\batchTracking\\state\\batchTrackingSlice.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\batchTracking\\state\\batchTrackingStore.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\batchTracking\\tests\\batchTrackingService.test.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\batchTracking\\tests\\batchTrackingStore.test.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\batchTracking\\types\\batchTrackingTypes.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\batchTracking\\utils\\batchTrackingHelpers.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\billing\\api\\billingApi.ts",
+      "status": "Broken",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\billing\\components\\billingCard.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\billing\\components\\InvoiceTable.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\billing\\components\\PaymentForm.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\billing\\hooks\\usebilling.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\billing\\pages\\billingDetailPage.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\billing\\pages\\billingListPage.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\billing\\pages\\InvoicePage.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\billing\\pages\\PaymentPage.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\billing\\routes\\billingRoutes.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\billing\\services\\billingService.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\billing\\state\\billingSlice.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\billing\\state\\billingStore.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\billing\\tests\\billingService.test.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\billing\\tests\\billingStore.test.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\billing\\types\\billingTypes.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\billing\\utils\\billingHelpers.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\branding\\api\\brandingApi.ts",
+      "status": "Broken",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\branding\\components\\brandingCard.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\branding\\components\\BrandPreview.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\branding\\components\\LogoUploader.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\branding\\components\\ThemeEditor.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\branding\\hooks\\usebranding.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\branding\\pages\\AssetUploadPage.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\branding\\pages\\BrandConfigPage.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\branding\\pages\\brandingDetailPage.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\branding\\pages\\brandingListPage.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\branding\\pages\\ThemePage.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\branding\\routes\\brandingRoutes.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\branding\\services\\brandingService.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\branding\\state\\brandingSlice.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\branding\\state\\brandingStore.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\branding\\tests\\brandingService.test.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\branding\\tests\\brandingStore.test.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\branding\\types\\brandingTypes.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\branding\\utils\\brandingHelpers.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\businessUnit\\api\\businessUnitApi.ts",
+      "status": "Broken",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\businessUnit\\components\\businessUnitCard.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\businessUnit\\components\\BusinessUnitForm.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\businessUnit\\components\\BusinessUnitHierarchy.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\businessUnit\\hooks\\usebusinessUnit.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\businessUnit\\pages\\BusinessUnitCreatePage.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\businessUnit\\pages\\businessUnitDetailPage.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\businessUnit\\pages\\BusinessUnitEditPage.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\businessUnit\\pages\\businessUnitListPage.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\businessUnit\\routes\\businessUnitRoutes.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\businessUnit\\services\\businessUnitService.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\businessUnit\\state\\businessUnitSlice.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\businessUnit\\state\\businessUnitStore.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\businessUnit\\tests\\businessUnitService.test.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\businessUnit\\tests\\businessUnitStore.test.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\businessUnit\\types\\businessUnitTypes.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\businessUnit\\utils\\businessUnitHelpers.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\dashboard\\api\\dashboardApi.ts",
+      "status": "Broken",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\dashboard\\components\\dashboardCard.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\dashboard\\components\\DashboardGrid.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\dashboard\\components\\DashboardWidget.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\dashboard\\components\\StatSummary.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\dashboard\\hooks\\usedashboard.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\dashboard\\pages\\DashboardCustomizePage.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\dashboard\\pages\\dashboardDetailPage.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\dashboard\\pages\\dashboardListPage.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\dashboard\\routes\\dashboardRoutes.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\dashboard\\services\\dashboardService.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\dashboard\\state\\dashboardSlice.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\dashboard\\state\\dashboardStore.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\dashboard\\tests\\dashboardService.test.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\dashboard\\tests\\dashboardStore.test.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\dashboard\\types\\dashboardTypes.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\dashboard\\utils\\dashboardHelpers.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\drugRegister\\api\\drugRegisterApi.ts",
+      "status": "Broken",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\drugRegister\\components\\drugRegisterCard.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\drugRegister\\components\\ScheduleHTable.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\drugRegister\\hooks\\usedrugRegister.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\drugRegister\\pages\\drugRegisterDetailPage.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\drugRegister\\pages\\drugRegisterListPage.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\drugRegister\\pages\\DrugRegisterReportPage.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\drugRegister\\routes\\drugRegisterRoutes.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\drugRegister\\services\\drugRegisterService.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\drugRegister\\state\\drugRegisterSlice.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\drugRegister\\state\\drugRegisterStore.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\drugRegister\\tests\\drugRegisterService.test.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\drugRegister\\tests\\drugRegisterStore.test.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\drugRegister\\types\\drugRegisterTypes.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\drugRegister\\utils\\drugRegisterHelpers.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\errorLog\\api\\errorLogApi.ts",
+      "status": "Broken",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\errorLog\\components\\ErrorFilter.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\errorLog\\components\\errorLogCard.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\errorLog\\components\\ErrorTable.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\errorLog\\hooks\\useerrorLog.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\errorLog\\pages\\errorLogDetailPage.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\errorLog\\pages\\errorLogListPage.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\errorLog\\routes\\errorLogRoutes.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\errorLog\\services\\errorLogService.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\errorLog\\state\\errorLogSlice.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\errorLog\\state\\errorLogStore.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\errorLog\\tests\\errorLogService.test.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\errorLog\\tests\\errorLogStore.test.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\errorLog\\types\\errorLogTypes.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\errorLog\\utils\\errorLogHelpers.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\expiryTracking\\api\\expiryTrackingApi.ts",
+      "status": "Broken",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\expiryTracking\\components\\ExpiryBadge.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\expiryTracking\\components\\expiryTrackingCard.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\expiryTracking\\components\\FifoTable.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\expiryTracking\\hooks\\useexpiryTracking.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\expiryTracking\\pages\\ExpiryAlertPage.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\expiryTracking\\pages\\expiryTrackingDetailPage.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\expiryTracking\\pages\\expiryTrackingListPage.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\expiryTracking\\routes\\expiryTrackingRoutes.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\expiryTracking\\services\\expiryTrackingService.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\expiryTracking\\state\\expiryTrackingSlice.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\expiryTracking\\state\\expiryTrackingStore.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\expiryTracking\\tests\\expiryTrackingService.test.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\expiryTracking\\tests\\expiryTrackingStore.test.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\expiryTracking\\types\\expiryTrackingTypes.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\expiryTracking\\utils\\expiryTrackingHelpers.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\featureFlags\\api\\featureFlagsApi.ts",
+      "status": "Broken",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\featureFlags\\components\\featureFlagsCard.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\featureFlags\\components\\FlagTable.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\featureFlags\\components\\FlagToggleSwitch.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\featureFlags\\hooks\\usefeatureFlags.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\featureFlags\\pages\\FeatureFlagCreatePage.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\featureFlags\\pages\\featureFlagsDetailPage.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\featureFlags\\pages\\featureFlagsListPage.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\featureFlags\\pages\\FeatureFlagTogglePage.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\featureFlags\\routes\\featureFlagsRoutes.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\featureFlags\\services\\featureFlagsService.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\featureFlags\\state\\featureFlagsSlice.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\featureFlags\\state\\featureFlagsStore.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\featureFlags\\tests\\featureFlagsService.test.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\featureFlags\\tests\\featureFlagsStore.test.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\featureFlags\\types\\featureFlagsTypes.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\featureFlags\\utils\\featureFlagsHelpers.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\fileStorage\\api\\fileStorageApi.ts",
+      "status": "Broken",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\fileStorage\\components\\fileStorageCard.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\fileStorage\\components\\FileTable.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\fileStorage\\components\\UploadDropzone.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\fileStorage\\hooks\\usefileStorage.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\fileStorage\\pages\\fileStorageDetailPage.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\fileStorage\\pages\\fileStorageListPage.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\fileStorage\\pages\\FileUploadPage.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\fileStorage\\pages\\FileViewPage.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\fileStorage\\routes\\fileStorageRoutes.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\fileStorage\\services\\fileStorageService.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\fileStorage\\state\\fileStorageSlice.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\fileStorage\\state\\fileStorageStore.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\fileStorage\\tests\\fileStorageService.test.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\fileStorage\\tests\\fileStorageStore.test.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\fileStorage\\types\\fileStorageTypes.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\fileStorage\\utils\\fileStorageHelpers.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\health\\api\\healthApi.ts",
+      "status": "Broken",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\health\\components\\DependencyGrid.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\health\\components\\healthCard.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\health\\components\\ServiceStatusIndicator.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\health\\hooks\\usehealth.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\health\\pages\\healthDetailPage.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\health\\pages\\healthListPage.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\health\\routes\\healthRoutes.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\health\\services\\healthService.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\health\\state\\healthSlice.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\health\\state\\healthStore.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\health\\tests\\healthService.test.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\health\\tests\\healthStore.test.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\health\\types\\healthTypes.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\health\\utils\\healthHelpers.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\hrmsCore\\api\\hrmsCoreApi.ts",
+      "status": "Broken",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\hrmsCore\\components\\DepartmentTree.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\hrmsCore\\components\\EmployeeForm.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\hrmsCore\\components\\hrmsCoreCard.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\hrmsCore\\components\\OrgChart.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\hrmsCore\\hooks\\usehrmsCore.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\hrmsCore\\routes\\hrmsCoreRoutes.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\hrmsCore\\services\\hrmsCoreService.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\hrmsCore\\state\\hrmsCoreSlice.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\hrmsCore\\state\\hrmsCoreStore.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\hrmsCore\\tests\\hrmsCoreService.test.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\hrmsCore\\tests\\hrmsCoreStore.test.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\hrmsCore\\types\\hrmsCoreTypes.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\hrmsCore\\utils\\hrmsCoreHelpers.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\integration\\api\\integrationApi.ts",
+      "status": "Broken",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\integration\\components\\integrationCard.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\integration\\components\\WebhookLog.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\integration\\hooks\\useintegration.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\integration\\pages\\integrationDetailPage.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\integration\\pages\\integrationListPage.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\integration\\pages\\OAuthPage.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\integration\\pages\\WebhookPage.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\integration\\routes\\integrationRoutes.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\integration\\services\\integrationService.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\integration\\state\\integrationSlice.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\integration\\state\\integrationStore.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\integration\\tests\\integrationService.test.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\integration\\tests\\integrationStore.test.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\integration\\types\\integrationTypes.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\integration\\utils\\integrationHelpers.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\inventory\\components\\AdjustmentForm.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\inventory\\components\\BarcodeScanner.tsx",
+      "status": "Broken",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\inventory\\components\\inventoryCard.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\inventory\\components\\ReorderAlert.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\inventory\\components\\StockTable.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\inventory\\hooks\\useinventory.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\inventory\\routes\\inventoryRoutes.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\inventory\\services\\inventoryService.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\inventory\\state\\inventorySlice.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\inventory\\state\\inventoryStore.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\inventory\\tests\\inventoryService.test.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\inventory\\tests\\inventoryStore.test.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\inventory\\types\\inventoryTypes.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\inventory\\utils\\inventoryHelpers.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\leaveManagement\\api\\leaveManagementApi.ts",
+      "status": "Broken",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\leaveManagement\\components\\LeaveApplyForm.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\leaveManagement\\components\\LeaveBalanceCard.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\leaveManagement\\components\\LeaveCalendar.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\leaveManagement\\components\\leaveManagementCard.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\leaveManagement\\hooks\\useleaveManagement.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\leaveManagement\\pages\\LeaveApplyPage.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\leaveManagement\\pages\\LeaveApprovePage.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\leaveManagement\\pages\\LeaveBalancePage.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\leaveManagement\\pages\\leaveManagementDetailPage.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\leaveManagement\\pages\\leaveManagementListPage.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\leaveManagement\\pages\\LeaveTypePage.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\leaveManagement\\routes\\leaveManagementRoutes.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\leaveManagement\\services\\leaveManagementService.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\leaveManagement\\state\\leaveManagementSlice.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\leaveManagement\\state\\leaveManagementStore.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\leaveManagement\\tests\\leaveManagementService.test.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\leaveManagement\\tests\\leaveManagementStore.test.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\leaveManagement\\types\\leaveManagementTypes.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\leaveManagement\\utils\\leaveManagementHelpers.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\moduleRegistry\\api\\moduleRegistryApi.ts",
+      "status": "Broken",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\moduleRegistry\\components\\DependencyGraph.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\moduleRegistry\\components\\ModuleCard.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\moduleRegistry\\components\\moduleRegistryCard.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\moduleRegistry\\hooks\\usemoduleRegistry.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\moduleRegistry\\pages\\ModuleActivatePage.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\moduleRegistry\\pages\\moduleRegistryDetailPage.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\moduleRegistry\\pages\\moduleRegistryListPage.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\moduleRegistry\\routes\\moduleRegistryRoutes.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\moduleRegistry\\services\\moduleRegistryService.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\moduleRegistry\\state\\moduleRegistrySlice.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\moduleRegistry\\state\\moduleRegistryStore.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\moduleRegistry\\tests\\moduleRegistryService.test.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\moduleRegistry\\tests\\moduleRegistryStore.test.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\moduleRegistry\\types\\moduleRegistryTypes.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\moduleRegistry\\utils\\moduleRegistryHelpers.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\notification\\api\\notificationApi.ts",
+      "status": "Broken",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\notification\\components\\ChannelSelector.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\notification\\components\\notificationCard.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\notification\\components\\NotificationItem.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\notification\\components\\NotificationList.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\notification\\hooks\\usenotification.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\notification\\pages\\notificationDetailPage.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\notification\\pages\\notificationListPage.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\notification\\pages\\NotificationPreferencePage.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\notification\\routes\\notificationRoutes.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\notification\\services\\notificationService.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\notification\\state\\notificationSlice.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\notification\\state\\notificationStore.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\notification\\tests\\notificationService.test.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\notification\\tests\\notificationStore.test.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\notification\\types\\notificationTypes.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\notification\\utils\\notificationHelpers.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\observability\\api\\observabilityApi.ts",
+      "status": "Broken",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\observability\\components\\CorrelationSearch.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\observability\\components\\MetricsChart.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\observability\\components\\observabilityCard.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\observability\\components\\TraceViewer.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\observability\\hooks\\useobservability.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\observability\\pages\\MetricsPage.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\observability\\pages\\observabilityDetailPage.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\observability\\pages\\observabilityListPage.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\observability\\pages\\TracesPage.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\observability\\routes\\observabilityRoutes.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\observability\\services\\observabilityService.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\observability\\state\\observabilitySlice.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\observability\\state\\observabilityStore.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\observability\\tests\\observabilityService.test.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\observability\\tests\\observabilityStore.test.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\observability\\types\\observabilityTypes.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\observability\\utils\\observabilityHelpers.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\organization\\api\\organizationApi.ts",
+      "status": "Broken",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\organization\\components\\organizationCard.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\organization\\components\\OrgSettingsForm.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\organization\\hooks\\useorganization.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\organization\\pages\\organizationDetailPage.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\organization\\pages\\organizationListPage.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\organization\\pages\\OrganizationSettingsPage.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\organization\\routes\\organizationRoutes.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\organization\\services\\organizationService.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\organization\\state\\organizationSlice.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\organization\\state\\organizationStore.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\organization\\tests\\organizationService.test.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\organization\\tests\\organizationStore.test.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\organization\\types\\organizationTypes.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\organization\\utils\\organizationHelpers.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\payroll\\api\\payrollApi.ts",
+      "status": "Broken",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\payroll\\components\\payrollCard.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\payroll\\components\\PayrollRunTable.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\payroll\\components\\PayslipViewer.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\payroll\\components\\SalaryBuilder.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\payroll\\hooks\\usepayroll.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\payroll\\pages\\payrollDetailPage.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\payroll\\pages\\PayrollExportPage.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\payroll\\pages\\payrollListPage.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\payroll\\pages\\PayrollRunPage.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\payroll\\pages\\PayslipPage.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\payroll\\pages\\SalaryStructurePage.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\payroll\\routes\\payrollRoutes.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\payroll\\services\\payrollService.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\payroll\\state\\payrollSlice.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\payroll\\state\\payrollStore.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\payroll\\tests\\payrollService.test.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\payroll\\tests\\payrollStore.test.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\payroll\\types\\payrollTypes.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\payroll\\utils\\payrollHelpers.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\pharmacyBilling\\api\\pharmacyBillingApi.ts",
+      "status": "Broken",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\pharmacyBilling\\components\\PharmaBillForm.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\pharmacyBilling\\components\\pharmacyBillingCard.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\pharmacyBilling\\components\\PrescriptionEntry.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\pharmacyBilling\\hooks\\usepharmacyBilling.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\pharmacyBilling\\routes\\pharmacyBillingRoutes.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\pharmacyBilling\\services\\pharmacyBillingService.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\pharmacyBilling\\state\\pharmacyBillingSlice.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\pharmacyBilling\\state\\pharmacyBillingStore.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\pharmacyBilling\\tests\\pharmacyBillingService.test.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\pharmacyBilling\\tests\\pharmacyBillingStore.test.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\pharmacyBilling\\types\\pharmacyBillingTypes.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\pharmacyBilling\\utils\\pharmacyBillingHelpers.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\platformAdmin\\api\\platformAdminApi.ts",
+      "status": "Broken",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\platformAdmin\\components\\BreakGlassConfirm.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\platformAdmin\\components\\platformAdminCard.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\platformAdmin\\components\\PlatformMetrics.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\platformAdmin\\components\\TenantTable.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\platformAdmin\\hooks\\useplatformAdmin.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\platformAdmin\\pages\\BreakGlassPage.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\platformAdmin\\pages\\platformAdminDetailPage.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\platformAdmin\\pages\\platformAdminListPage.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\platformAdmin\\pages\\PlatformStatsPage.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\platformAdmin\\pages\\TenantAdminPage.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\platformAdmin\\routes\\platformAdminRoutes.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\platformAdmin\\services\\platformAdminService.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\platformAdmin\\state\\platformAdminSlice.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\platformAdmin\\state\\platformAdminStore.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\platformAdmin\\tests\\platformAdminService.test.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\platformAdmin\\tests\\platformAdminStore.test.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\platformAdmin\\types\\platformAdminTypes.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\platformAdmin\\utils\\platformAdminHelpers.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\pos\\api\\posApi.ts",
+      "status": "Broken",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\pos\\components\\PaymentPanel.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\pos\\components\\posCard.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\pos\\components\\PosCart.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\pos\\components\\ReceiptPrinter.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\pos\\hooks\\usepos.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\pos\\pages\\CashDrawerPage.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\pos\\pages\\posDetailPage.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\pos\\pages\\posListPage.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\pos\\pages\\PosRefundPage.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\pos\\pages\\PosSessionPage.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\pos\\routes\\posRoutes.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\pos\\services\\posService.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\pos\\state\\posSlice.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\pos\\state\\posStore.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\pos\\tests\\posService.test.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\pos\\tests\\posStore.test.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\pos\\types\\posTypes.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\pos\\utils\\posHelpers.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\rbac\\api\\rbacApi.ts",
+      "status": "Broken",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\rbac\\components\\PermissionMatrix.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\rbac\\components\\rbacCard.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\rbac\\components\\RoleAssignmentTable.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\rbac\\components\\RoleForm.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\rbac\\hooks\\userbac.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\rbac\\pages\\PermissionPage.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\rbac\\pages\\rbacDetailPage.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\rbac\\pages\\rbacListPage.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\rbac\\pages\\RoleAssignPage.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\rbac\\pages\\RolePage.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\rbac\\routes\\rbacRoutes.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\rbac\\services\\rbacService.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\rbac\\state\\rbacSlice.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\rbac\\state\\rbacStore.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\rbac\\tests\\rbacService.test.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\rbac\\tests\\rbacStore.test.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\rbac\\types\\rbacTypes.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\rbac\\utils\\rbacHelpers.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\recruitment\\api\\recruitmentApi.ts",
+      "status": "Broken",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\recruitment\\components\\ApplicantPipeline.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\recruitment\\components\\InterviewScheduler.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\recruitment\\components\\JobPostingForm.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\recruitment\\components\\recruitmentCard.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\recruitment\\hooks\\userecruitment.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\recruitment\\pages\\ApplicantPage.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\recruitment\\pages\\InterviewPage.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\recruitment\\pages\\JobPostingPage.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\recruitment\\pages\\OfferPage.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\recruitment\\pages\\recruitmentDetailPage.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\recruitment\\pages\\recruitmentListPage.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\recruitment\\routes\\recruitmentRoutes.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\recruitment\\services\\recruitmentService.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\recruitment\\state\\recruitmentSlice.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\recruitment\\state\\recruitmentStore.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\recruitment\\tests\\recruitmentService.test.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\recruitment\\tests\\recruitmentStore.test.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\recruitment\\types\\recruitmentTypes.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\recruitment\\utils\\recruitmentHelpers.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\reporting\\api\\analyticsApi.ts",
+      "status": "Broken",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\reporting\\components\\AnalyticsDashboard.tsx",
+      "status": "Broken",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\reporting\\components\\ExportOptions.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\reporting\\components\\ReportBuilder.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\reporting\\components\\reportingCard.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\reporting\\components\\ScheduleForm.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\reporting\\hooks\\usereporting.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\reporting\\pages\\ReportDetailPage.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\reporting\\pages\\ReportExportPage.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\reporting\\pages\\reportingDetailPage.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\reporting\\pages\\reportingListPage.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\reporting\\pages\\ScheduledReportPage.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\reporting\\routes\\reportingRoutes.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\reporting\\services\\reportingService.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\reporting\\state\\reportingSlice.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\reporting\\state\\reportingStore.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\reporting\\tests\\reportingService.test.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\reporting\\tests\\reportingStore.test.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\reporting\\types\\reportingTypes.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\reporting\\utils\\reportingHelpers.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\retailBilling\\api\\retailBillingApi.ts",
+      "status": "Broken",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\retailBilling\\components\\CreditNoteForm.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\retailBilling\\components\\GstInvoice.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\retailBilling\\components\\PaymentTracker.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\retailBilling\\components\\retailBillingCard.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\retailBilling\\hooks\\useretailBilling.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\retailBilling\\routes\\retailBillingRoutes.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\retailBilling\\services\\retailBillingService.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\retailBilling\\state\\retailBillingSlice.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\retailBilling\\state\\retailBillingStore.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\retailBilling\\tests\\retailBillingService.test.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\retailBilling\\tests\\retailBillingStore.test.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\retailBilling\\types\\retailBillingTypes.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\retailBilling\\utils\\retailBillingHelpers.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\stockTransfer\\api\\stockTransferApi.ts",
+      "status": "Broken",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\stockTransfer\\components\\stockTransferCard.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\stockTransfer\\components\\TransferForm.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\stockTransfer\\components\\TransferStatusBadge.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\stockTransfer\\hooks\\usestockTransfer.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\stockTransfer\\pages\\stockTransferDetailPage.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\stockTransfer\\pages\\stockTransferListPage.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\stockTransfer\\pages\\TransferApprovePage.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\stockTransfer\\pages\\TransferLogPage.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\stockTransfer\\pages\\TransferRequestPage.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\stockTransfer\\routes\\stockTransferRoutes.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\stockTransfer\\services\\stockTransferService.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\stockTransfer\\state\\stockTransferSlice.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\stockTransfer\\state\\stockTransferStore.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\stockTransfer\\tests\\stockTransferService.test.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\stockTransfer\\tests\\stockTransferStore.test.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\stockTransfer\\types\\stockTransferTypes.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\stockTransfer\\utils\\stockTransferHelpers.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\subscription\\index.ts",
+      "status": "Broken",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\subscription\\api\\subscriptionApi.ts",
+      "status": "Broken",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\subscription\\tests\\subscriptionService.test.ts",
+      "status": "Stub",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\subscription\\tests\\subscriptionStore.test.ts",
+      "status": "Stub",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\support\\index.ts",
+      "status": "Broken",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\support\\api\\supportApi.ts",
+      "status": "Broken",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\support\\tests\\supportService.test.ts",
+      "status": "Stub",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\support\\tests\\supportStore.test.ts",
+      "status": "Stub",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\tenantModule\\api\\tenantModuleApi.ts",
+      "status": "Broken",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\tenantModule\\components\\PlanCard.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\tenantModule\\components\\SubscriptionStatus.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\tenantModule\\components\\tenantModuleCard.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\tenantModule\\hooks\\usetenantModule.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\tenantModule\\pages\\PlanPage.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\tenantModule\\pages\\SubscribePage.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\tenantModule\\pages\\tenantModuleDetailPage.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\tenantModule\\pages\\tenantModuleListPage.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\tenantModule\\pages\\UnsubscribePage.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\tenantModule\\routes\\tenantModuleRoutes.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\tenantModule\\services\\tenantModuleService.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\tenantModule\\state\\tenantModuleSlice.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\tenantModule\\state\\tenantModuleStore.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\tenantModule\\tests\\tenantModuleService.test.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\tenantModule\\tests\\tenantModuleStore.test.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\tenantModule\\types\\tenantModuleTypes.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\tenantModule\\utils\\tenantModuleHelpers.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\tenantSettings\\api\\tenantSettingsApi.ts",
+      "status": "Broken",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\tenantSettings\\components\\ChannelSettings.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\tenantSettings\\components\\SettingsForm.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\tenantSettings\\components\\tenantSettingsCard.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\tenantSettings\\hooks\\usetenantSettings.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\tenantSettings\\pages\\SettingsTemplatePage.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\tenantSettings\\pages\\tenantSettingsDetailPage.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\tenantSettings\\pages\\tenantSettingsListPage.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\tenantSettings\\routes\\tenantSettingsRoutes.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\tenantSettings\\services\\tenantSettingsService.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\tenantSettings\\state\\tenantSettingsSlice.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\tenantSettings\\state\\tenantSettingsStore.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\tenantSettings\\tests\\tenantSettingsService.test.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\tenantSettings\\tests\\tenantSettingsStore.test.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\tenantSettings\\types\\tenantSettingsTypes.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\tenantSettings\\utils\\tenantSettingsHelpers.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\user\\api\\userApi.ts",
+      "status": "Broken",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\user\\components\\UserAvatar.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\user\\components\\userCard.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\user\\components\\UserForm.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\user\\components\\UserRoleAssign.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\user\\hooks\\useuser.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\user\\pages\\UserCreatePage.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\user\\pages\\userDetailPage.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\user\\pages\\UserEditPage.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\user\\pages\\UserInvitePage.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\user\\pages\\userListPage.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\user\\pages\\UserProfilePage.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\user\\routes\\userRoutes.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\user\\services\\userService.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\user\\state\\userSlice.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\user\\state\\userStore.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\user\\tests\\userService.test.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\user\\tests\\userStore.test.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\user\\types\\userTypes.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\user\\utils\\userHelpers.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\userBusinessUnit\\api\\userBusinessUnitApi.ts",
+      "status": "Broken",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\userBusinessUnit\\components\\BuAssignForm.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\userBusinessUnit\\components\\MembershipTable.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\userBusinessUnit\\components\\userBusinessUnitCard.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\userBusinessUnit\\hooks\\useuserBusinessUnit.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\userBusinessUnit\\pages\\BusinessUnitMemberPage.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\userBusinessUnit\\pages\\userBusinessUnitDetailPage.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\userBusinessUnit\\pages\\userBusinessUnitListPage.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\userBusinessUnit\\routes\\userBusinessUnitRoutes.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\userBusinessUnit\\services\\userBusinessUnitService.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\userBusinessUnit\\state\\userBusinessUnitSlice.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\userBusinessUnit\\state\\userBusinessUnitStore.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\userBusinessUnit\\tests\\userBusinessUnitService.test.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\userBusinessUnit\\tests\\userBusinessUnitStore.test.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\userBusinessUnit\\types\\userBusinessUnitTypes.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\userBusinessUnit\\utils\\userBusinessUnitHelpers.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\vendorManagement\\api\\vendorManagementApi.ts",
+      "status": "Broken",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\vendorManagement\\components\\GrnConfirm.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\vendorManagement\\components\\PurchaseOrderTable.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\vendorManagement\\components\\VendorForm.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\vendorManagement\\components\\vendorManagementCard.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\vendorManagement\\hooks\\usevendorManagement.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\vendorManagement\\pages\\GrnPage.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\vendorManagement\\pages\\PurchaseOrderPage.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\vendorManagement\\pages\\vendorManagementDetailPage.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\vendorManagement\\pages\\vendorManagementListPage.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\vendorManagement\\pages\\VendorPage.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\vendorManagement\\pages\\VendorPaymentPage.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\vendorManagement\\routes\\vendorManagementRoutes.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\vendorManagement\\services\\vendorManagementService.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\vendorManagement\\state\\vendorManagementSlice.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\vendorManagement\\state\\vendorManagementStore.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\vendorManagement\\tests\\vendorManagementService.test.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\vendorManagement\\tests\\vendorManagementStore.test.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\vendorManagement\\types\\vendorManagementTypes.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\modules\\vendorManagement\\utils\\vendorManagementHelpers.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\pages\\iam\\UsersPage.tsx",
+      "status": "Placeholder",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\platform\\api\\apiConfig.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\platform\\api\\apiRegistry.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\platform\\auth\\authProvider.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\platform\\auth\\authService.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\platform\\auth\\authStorage.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\platform\\branding\\brandingModes.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\platform\\branding\\brandingProvider.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\platform\\branding\\whitelabelProvider.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\platform\\rbac\\permissionSync.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\platform\\rbac\\rbacProvider.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\platform\\security\\csrfProvider.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\platform\\security\\securityProvider.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\platform\\storage\\localStorageProvider.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\platform\\storage\\sessionStorageProvider.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\platform\\telemetry\\correlationProvider.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\platform\\telemetry\\logger.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\platform\\tenancy\\businessUnitContext.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\platform\\tenancy\\domainContext.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\platform\\tenancy\\tenancyProvider.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\routes\\moduleAccessRoutes.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\routes\\ModuleRoute.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\routes\\ProtectedRoute.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\routes\\PublicRoute.tsx",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\routes\\routeConstants.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\shared\\components\\PermissionGate.tsx",
+      "status": "Placeholder",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\shared\\constants\\appPermissions.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\shared\\constants\\appRoles.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\shared\\constants\\moduleConstants.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\shared\\constants\\planConstants.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\shared\\constants\\storageKeys.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\shared\\hooks\\useBrandingContext.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\shared\\hooks\\useBreakpoint.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\shared\\hooks\\useDebounce.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\shared\\hooks\\useModuleAccess.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\shared\\hooks\\usePagination.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\shared\\hooks\\usePermissions.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\shared\\hooks\\useTenantContext.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\shared\\utils\\currencyUtils.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\shared\\utils\\dateUtils.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\shared\\utils\\formatUtils.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\shared\\utils\\objectUtils.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\shared\\utils\\stringUtils.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\store\\persistConfig.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\store\\rootReducer.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\store\\rootStore.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\types\\global.d.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\types\\index.d.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\src\\types\\module.d.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\tests\\setupTests.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\tests\\e2e\\auth.spec.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\tests\\e2e\\playwright.config.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "frontend\\tests\\e2e\\tenant-flow.spec.ts",
+      "status": "Empty",
+      "category": "frontend"
+    },
+    {
+      "file": "infra\\monitoring\\prometheus\\rules\\alerts.yml",
+      "status": "Broken",
+      "category": "infrastructure"
+    },
+    {
+      "file": "infra\\terraform\\environments\\dev\\main.tf",
+      "status": "Placeholder",
+      "category": "infrastructure"
+    },
+    {
+      "file": "infra\\terraform\\environments\\prod\\main.tf",
+      "status": "Placeholder",
+      "category": "infrastructure"
+    },
+    {
+      "file": "infra\\terraform\\environments\\staging\\main.tf",
+      "status": "Placeholder",
+      "category": "infrastructure"
+    },
+    {
+      "file": "scripts\\backup_db.sh",
+      "status": "Empty",
+      "category": "other"
+    },
+    {
+      "file": "scripts\\check_health.sh",
+      "status": "Empty",
+      "category": "other"
+    },
+    {
+      "file": "scripts\\deploy.sh",
+      "status": "Empty",
+      "category": "other"
+    },
+    {
+      "file": "scripts\\migrate_all.sh",
+      "status": "Empty",
+      "category": "other"
+    },
+    {
+      "file": "scripts\\reset_dev.sh",
+      "status": "Empty",
+      "category": "other"
+    },
+    {
+      "file": "scripts\\run_tests.sh",
+      "status": "Empty",
+      "category": "other"
+    },
+    {
+      "file": "scripts\\seed_all.sh",
+      "status": "Empty",
+      "category": "other"
+    },
+    {
+      "file": "scripts\\setup.sh",
+      "status": "Empty",
+      "category": "other"
+    },
+    {
+      "file": "scripts\\validate_structure.sh",
+      "status": "Empty",
+      "category": "other"
+    },
+    {
+      "file": "tools\\audit_rbac_matrix.py",
+      "status": "Empty",
+      "category": "other"
+    },
+    {
+      "file": "tools\\check_event_contracts.py",
+      "status": "Empty",
+      "category": "other"
+    },
+    {
+      "file": "tools\\check_naming.py",
+      "status": "Empty",
+      "category": "other"
+    },
+    {
+      "file": "tools\\generate_app.py",
+      "status": "Empty",
+      "category": "other"
+    },
+    {
+      "file": "tools\\validate_boundaries.py",
+      "status": "Empty",
+      "category": "other"
+    },
+    {
+      "file": "tools\\validate_module_structure.py",
+      "status": "Empty",
+      "category": "other"
+    },
+    {
+      "file": "tools\\codegen\\new_module_scaffold.py",
+      "status": "Broken",
+      "category": "other"
+    }
+  ]
+}

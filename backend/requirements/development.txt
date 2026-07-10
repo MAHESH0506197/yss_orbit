@@ -1,0 +1,30 @@
+# yss_orbit\backend\requirements\development.txt
+-r base.txt
+
+# --- Development Tools ---
+django-debug-toolbar==4.4.6
+django-silk==5.1.0
+ipython==8.26.0
+ipdb==0.13.13
+
+# --- Linting ---
+flake8==7.1.1
+flake8-bugbear==24.4.26
+flake8-isort==6.1.1
+black==24.8.0
+isort==5.13.2
+
+# --- Type Checking ---
+mypy==1.11.2
+django-stubs==5.0.4
+djangorestframework-stubs==3.15.0
+
+# --- N+1 Detection ---
+nplusone==1.0.0
+
+# --- Dev SMTP ---
+# Uses console email backend — no extra package
+
+# --- Profiling ---
+django-extensions==3.2.3
+Werkzeug==3.0.4

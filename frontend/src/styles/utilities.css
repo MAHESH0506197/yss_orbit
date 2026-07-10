@@ -1,0 +1,79 @@
+/* src/styles/utilities.css
+   Supplemental utilities for YSS Orbit design system components.
+   Import after globals.css.
+========================================================================= */
+
+/* ── Shimmer animation (used by SkeletonLoader) ─────────────────────────── */
+@keyframes shimmer {
+  0%   { background-position: -200% 0; }
+  100% { background-position:  200% 0; }
+}
+
+/* Shimmer utility — applied via Tailwind arbitrary value in SkeletonLoader */
+.shimmer {
+  background: linear-gradient(
+    90deg,
+    hsl(var(--muted)) 0%,
+    hsl(var(--muted) / 0.6) 40%,
+    hsl(var(--muted)) 80%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.4s ease-in-out infinite;
+}
+
+/* ── Scrollbar-none utility ──────────────────────────────────────────────── */
+.scrollbar-none {
+  scrollbar-width: none;
+}
+.scrollbar-none::-webkit-scrollbar {
+  display: none;
+}
+
+/* ── Animate-in / out (for Tooltip, Drawer, Toast) ──────────────────────── */
+@keyframes fade-in-scale {
+  from { opacity: 0; transform: scale(0.95); }
+  to   { opacity: 1; transform: scale(1); }
+}
+@keyframes fade-out-scale {
+  from { opacity: 1; transform: scale(1); }
+  to   { opacity: 0; transform: scale(0.95); }
+}
+@keyframes slide-in-from-right {
+  from { transform: translateX(100%); }
+  to   { transform: translateX(0); }
+}
+@keyframes slide-in-from-left {
+  from { transform: translateX(-100%); }
+  to   { transform: translateX(0); }
+}
+@keyframes slide-in-from-bottom {
+  from { transform: translateY(100%); }
+  to   { transform: translateY(0); }
+}
+
+/* ── Border-radius inherit helper ────────────────────────────────────────── */
+.rounded-inherit {
+  border-radius: inherit;
+}
+
+/* ── Tabular number helper ───────────────────────────────────────────────── */
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
+}
+
+/* ── Focus ring suppression for mouse users ─────────────────────────────── */
+:focus:not(:focus-visible) {
+  outline: none;
+}
+
+/* ── Table sort chevron alignment ────────────────────────────────────────── */
+.datatable-sort-icon {
+  display: inline-flex;
+  align-items: center;
+  margin-left: 4px;
+  opacity: 0.5;
+}
+th:hover .datatable-sort-icon,
+th[aria-sort] .datatable-sort-icon {
+  opacity: 1;
+}

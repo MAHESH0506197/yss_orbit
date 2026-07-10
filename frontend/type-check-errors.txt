@@ -1,0 +1,129 @@
+# yss_orbit\frontend\type-check-errors.txt
+
+> yss-orbit-frontend@1.0.0 type-check
+> tsc --noEmit
+
+src/app/bootstrap/bootstrap.tsx(5,30): error TS2307: Cannot find module '../../routes/router' or its corresponding type declarations.
+src/app/providers/AppProviders.tsx(14,12): error TS2559: Type '{ children: Element; }' has no properties in common with type 'IntrinsicAttributes'.
+src/app/providers/AppProviders.tsx(16,16): error TS2559: Type '{ children: ReactNode; }' has no properties in common with type 'IntrinsicAttributes'.
+src/app/router/lazyRoutes.ts(4,57): error TS2307: Cannot find module '../../modules/platform_admin/pages/DashboardPage' or its corresponding type declarations.
+src/app/router/lazyRoutes.ts(7,55): error TS2307: Cannot find module '../../modules/organizations/pages/OrganizationSettingsPage' or its corresponding type declarations.
+src/app/router/lazyRoutes.ts(10,48): error TS2307: Cannot find module '../../modules/hrms/pages/HrmsDashboard' or its corresponding type declarations.
+src/app/router/lazyRoutes.ts(11,47): error TS2307: Cannot find module '../../modules/pos/pages/PosDashboard' or its corresponding type declarations.
+src/app/router/lazyRoutes.ts(12,52): error TS2307: Cannot find module '../../modules/pharmacy/pages/PharmacyDashboard' or its corresponding type declarations.
+src/app/router/lazyRoutes.ts(13,53): error TS2307: Cannot find module '../../modules/inventory/pages/InventoryDashboard' or its corresponding type declarations.
+src/app/router/lazyRoutes.ts(14,47): error TS2307: Cannot find module '../../modules/crm/pages/CrmDashboard' or its corresponding type declarations.
+src/core/validation/validators/apiValidator.ts(2,32): error TS2307: Cannot find module './utils/validationHelpers' or its corresponding type declarations.
+src/core/validation/validators/formValidator.ts(2,32): error TS2307: Cannot find module './utils/validationHelpers' or its corresponding type declarations.
+src/features/payroll/api.ts(1,10): error TS2614: Module '"../../core/api/apiClient"' has no exported member 'apiClient'. Did you mean to use 'import apiClient from "../../core/api/apiClient"' instead?
+src/features/payroll/components/PayslipModal.tsx(3,10): error TS2305: Module '"../api"' has no exported member 'usePayslips'.
+src/features/payroll/components/PayslipModal.tsx(28,27): error TS7006: Parameter 'payslip' implicitly has an 'any' type.
+src/features/payroll/components/RunPayrollModal.tsx(3,10): error TS2305: Module '"../api"' has no exported member 'useRunPayroll'.
+src/features/payroll/pages/PayrollPage.tsx(2,10): error TS2305: Module '"../api"' has no exported member 'usePayrollRuns'.
+src/modules/attendance/components/attendanceCard.tsx(3,10): error TS2305: Module '"../utils/attendanceHelpers"' has no exported member 'formatTime'.
+src/modules/attendance/pages/attendanceListPage.tsx(7,11): error TS2339: Property 'fetchRecords' does not exist on type '{ data: AttendanceDto[]; loading: boolean; error: Error | null; refetch: () => Promise<void>; }'.
+src/modules/audit/pages/auditListPage.tsx(7,11): error TS2339: Property 'fetchLogs' does not exist on type '{ data: AuditDto[]; loading: boolean; error: Error | null; refetch: () => Promise<void>; }'.
+src/modules/batchTracking/pages/batchTrackingListPage.tsx(3,10): error TS2724: '"../hooks/usebatchTracking"' has no exported member named 'useBatchTracking'. Did you mean 'useBatchtracking'?
+src/modules/billing/components/billingCard.tsx(3,10): error TS2305: Module '"../utils/billingHelpers"' has no exported member 'formatCurrency'.
+src/modules/billing/components/InvoiceTable.tsx(3,10): error TS2305: Module '"../utils/billingHelpers"' has no exported member 'formatCurrency'.
+src/modules/billing/pages/billingListPage.tsx(7,11): error TS2339: Property 'fetchInvoices' does not exist on type '{ data: BillingDto[]; loading: boolean; error: Error | null; refetch: () => Promise<void>; }'.
+src/modules/businessUnit/pages/businessUnitListPage.tsx(3,10): error TS2724: '"../hooks/usebusinessUnit"' has no exported member named 'useBusinessUnit'. Did you mean 'useBusinessunit'?
+src/modules/dashboard/pages/dashboardListPage.tsx(9,11): error TS2339: Property 'fetchDashboard' does not exist on type '{ data: DashboardDto[]; loading: boolean; error: Error | null; refetch: () => Promise<void>; }'.
+src/modules/drugRegister/pages/drugRegisterListPage.tsx(3,10): error TS2724: '"../hooks/usedrugRegister"' has no exported member named 'useDrugRegister'. Did you mean 'useDrugregister'?
+src/modules/errorLog/components/errorLogCard.tsx(3,10): error TS2305: Module '"../utils/errorLogHelpers"' has no exported member 'getSeverityColor'.
+src/modules/errorLog/components/ErrorTable.tsx(3,10): error TS2305: Module '"../utils/errorLogHelpers"' has no exported member 'getSeverityColor'.
+src/modules/errorLog/pages/errorLogListPage.tsx(4,10): error TS2724: '"../hooks/useerrorLog"' has no exported member named 'useErrorLog'. Did you mean 'useErrorlog'?
+src/modules/expiryTracking/components/ExpiryBadge.tsx(2,10): error TS2305: Module '"../utils/expiryTrackingHelpers"' has no exported member 'getExpiryStatus'.
+src/modules/expiryTracking/pages/ExpiryAlertPage.tsx(3,10): error TS2724: '"../hooks/useexpiryTracking"' has no exported member named 'useExpiryTracking'. Did you mean 'useExpirytracking'?
+src/modules/expiryTracking/pages/expiryTrackingListPage.tsx(3,10): error TS2724: '"../hooks/useexpiryTracking"' has no exported member named 'useExpiryTracking'. Did you mean 'useExpirytracking'?
+src/modules/featureFlags/components/featureFlagsCard.tsx(14,84): error TS2345: Argument of type 'ID' is not assignable to parameter of type 'number'.
+  Type 'string' is not assignable to type 'number'.
+src/modules/featureFlags/components/FlagTable.tsx(24,92): error TS2345: Argument of type 'ID' is not assignable to parameter of type 'number'.
+  Type 'string' is not assignable to type 'number'.
+src/modules/featureFlags/pages/featureFlagsListPage.tsx(3,10): error TS2724: '"../hooks/usefeatureFlags"' has no exported member named 'useFeatureFlags'. Did you mean 'useFeatureflags'?
+src/modules/fileStorage/components/fileStorageCard.tsx(3,10): error TS2305: Module '"../utils/fileStorageHelpers"' has no exported member 'formatFileSize'.
+src/modules/fileStorage/components/FileTable.tsx(3,10): error TS2305: Module '"../utils/fileStorageHelpers"' has no exported member 'formatFileSize'.
+src/modules/fileStorage/components/UploadDropzone.tsx(2,10): error TS2724: '"../hooks/usefileStorage"' has no exported member named 'useFileStorage'. Did you mean 'useFilestorage'?
+src/modules/fileStorage/pages/fileStorageListPage.tsx(3,10): error TS2724: '"../hooks/usefileStorage"' has no exported member named 'useFileStorage'. Did you mean 'useFilestorage'?
+src/modules/health/pages/healthListPage.tsx(8,11): error TS2339: Property 'fetchHealth' does not exist on type '{ data: HealthDto[]; loading: boolean; error: Error | null; refetch: () => Promise<void>; }'.
+src/modules/integration/pages/integrationListPage.tsx(7,11): error TS2339: Property 'fetchIntegrations' does not exist on type '{ data: IntegrationDto[]; loading: boolean; error: Error | null; refetch: () => Promise<void>; }'.
+src/modules/inventory/hooks/useinventory.ts(2,10): error TS2305: Module '"../api/inventoryApi"' has no exported member 'inventoryApi'.
+src/modules/inventory/hooks/useinventory.ts(2,24): error TS2305: Module '"../api/inventoryApi"' has no exported member 'InventoryDto'.
+src/modules/leaveManagement/pages/leaveManagementListPage.tsx(3,10): error TS2724: '"../hooks/useleaveManagement"' has no exported member named 'useLeaveManagement'. Did you mean 'useLeavemanagement'?
+src/modules/moduleRegistry/components/ModuleCard.tsx(19,35): error TS2345: Argument of type 'ID' is not assignable to parameter of type 'number'.
+  Type 'string' is not assignable to type 'number'.
+src/modules/moduleRegistry/pages/moduleRegistryListPage.tsx(3,10): error TS2724: '"../hooks/usemoduleRegistry"' has no exported member named 'useModuleRegistry'. Did you mean 'useModuleregistry'?
+src/modules/notification/components/NotificationItem.tsx(10,70): error TS2769: No overload matches this call.
+  Overload 1 of 4, '(value: string | number | Date): Date', gave the following error.
+    Argument of type 'string | undefined' is not assignable to parameter of type 'string | number | Date'.
+      Type 'undefined' is not assignable to type 'string | number | Date'.
+  Overload 2 of 4, '(value: string | number): Date', gave the following error.
+    Argument of type 'string | undefined' is not assignable to parameter of type 'string | number'.
+      Type 'undefined' is not assignable to type 'string | number'.
+src/modules/notification/components/NotificationItem.tsx(13,39): error TS2345: Argument of type 'ID' is not assignable to parameter of type 'number'.
+  Type 'string' is not assignable to type 'number'.
+src/modules/notification/pages/notificationListPage.tsx(7,11): error TS2339: Property 'fetchNotifications' does not exist on type '{ data: NotificationDto[]; loading: boolean; error: Error | null; refetch: () => Promise<void>; }'.
+src/modules/notification/pages/notificationListPage.tsx(7,31): error TS2339: Property 'markAsRead' does not exist on type '{ data: NotificationDto[]; loading: boolean; error: Error | null; refetch: () => Promise<void>; }'.
+src/modules/observability/pages/observabilityListPage.tsx(8,11): error TS2339: Property 'fetchMetrics' does not exist on type '{ data: ObservabilityDto[]; loading: boolean; error: Error | null; refetch: () => Promise<void>; }'.
+src/modules/organization/pages/organizationListPage.tsx(7,11): error TS2339: Property 'fetchOrganizations' does not exist on type '{ data: OrganizationDto[]; loading: boolean; error: Error | null; refetch: () => Promise<void>; }'.
+src/modules/payroll/pages/payrollListPage.tsx(8,11): error TS2339: Property 'fetchRuns' does not exist on type '{ data: PayrollDto[]; loading: boolean; error: Error | null; refetch: () => Promise<void>; }'.
+src/modules/pharmacyBilling/components/PharmaBillForm.tsx(24,15): error TS2532: Object is possibly 'undefined'.
+src/modules/pharmacyBilling/components/PharmaBillForm.tsx(29,15): error TS2532: Object is possibly 'undefined'.
+src/modules/pharmacyBilling/components/pharmacyBillingCard.tsx(11,65): error TS2769: No overload matches this call.
+  Overload 1 of 4, '(value: string | number | Date): Date', gave the following error.
+    Argument of type 'string | undefined' is not assignable to parameter of type 'string | number | Date'.
+      Type 'undefined' is not assignable to type 'string | number | Date'.
+  Overload 2 of 4, '(value: string | number): Date', gave the following error.
+    Argument of type 'string | undefined' is not assignable to parameter of type 'string | number'.
+      Type 'undefined' is not assignable to type 'string | number'.
+src/modules/platformAdmin/pages/PlatformStatsPage.tsx(3,10): error TS2724: '"../hooks/useplatformAdmin"' has no exported member named 'usePlatformAdmin'. Did you mean 'usePlatformadmin'?
+src/modules/platformAdmin/pages/TenantAdminPage.tsx(3,10): error TS2724: '"../hooks/useplatformAdmin"' has no exported member named 'usePlatformAdmin'. Did you mean 'usePlatformadmin'?
+src/modules/pos/pages/posListPage.tsx(8,11): error TS2339: Property 'fetchSessions' does not exist on type '{ data: PosDto[]; loading: boolean; error: Error | null; refetch: () => Promise<void>; }'.
+src/modules/recruitment/pages/recruitmentListPage.tsx(7,11): error TS2339: Property 'fetchJobs' does not exist on type '{ data: RecruitmentDto[]; loading: boolean; error: Error | null; refetch: () => Promise<void>; }'.
+src/modules/reporting/hooks/usereporting.ts(2,10): error TS2305: Module '"../api/reportingApi"' has no exported member 'reportingApi'.
+src/modules/reporting/hooks/usereporting.ts(2,24): error TS2305: Module '"../api/reportingApi"' has no exported member 'ReportingDto'.
+src/modules/reporting/pages/reportingListPage.tsx(7,11): error TS2339: Property 'fetchReports' does not exist on type '{ data: ReportingDto[]; loading: boolean; error: Error | null; refetch: () => Promise<void>; }'.
+src/modules/retailBilling/routes/retailBillingRoutes.tsx(3,10): error TS2614: Module '"../pages/retailBillingListPage"' has no exported member 'RetailBillingListPage'. Did you mean to use 'import RetailBillingListPage from "../pages/retailBillingListPage"' instead?
+src/modules/retailBilling/routes/retailBillingRoutes.tsx(4,10): error TS2614: Module '"../pages/InvoicePage"' has no exported member 'InvoicePage'. Did you mean to use 'import InvoicePage from "../pages/InvoicePage"' instead?
+src/modules/retailBilling/routes/retailBillingRoutes.tsx(5,10): error TS2614: Module '"../pages/PaymentPage"' has no exported member 'PaymentPage'. Did you mean to use 'import PaymentPage from "../pages/PaymentPage"' instead?
+src/modules/retailBilling/routes/retailBillingRoutes.tsx(6,10): error TS2614: Module '"../pages/CreditNotePage"' has no exported member 'CreditNotePage'. Did you mean to use 'import CreditNotePage from "../pages/CreditNotePage"' instead?
+src/modules/retailBilling/routes/retailBillingRoutes.tsx(7,10): error TS2614: Module '"../pages/CustomerStatementPage"' has no exported member 'CustomerStatementPage'. Did you mean to use 'import CustomerStatementPage from "../pages/CustomerStatementPage"' instead?
+src/modules/retailBilling/routes/retailBillingRoutes.tsx(8,10): error TS2614: Module '"../pages/retailBillingDetailPage"' has no exported member 'RetailBillingDetailPage'. Did you mean to use 'import RetailBillingDetailPage from "../pages/retailBillingDetailPage"' instead?
+src/modules/stockTransfer/pages/stockTransferListPage.tsx(3,10): error TS2724: '"../hooks/usestockTransfer"' has no exported member named 'useStockTransfer'. Did you mean 'useStocktransfer'?
+src/modules/stockTransfer/services/stockTransferService.ts(17,17): error TS2339: Property 'patch' does not exist on type 'StockTransferApiService'.
+src/modules/tenantModule/pages/tenantModuleListPage.tsx(4,10): error TS2724: '"../hooks/usetenantModule"' has no exported member named 'useTenantModule'. Did you mean 'useTenantmodule'?
+src/modules/user/tests/userService.test.ts(3,1): error TS2593: Cannot find name 'describe'. Do you need to install type definitions for a test runner? Try `npm i --save-dev @types/jest` or `npm i --save-dev @types/mocha` and then add 'jest' or 'mocha' to the types field in your tsconfig.
+src/modules/user/tests/userService.test.ts(4,3): error TS2593: Cannot find name 'it'. Do you need to install type definitions for a test runner? Try `npm i --save-dev @types/jest` or `npm i --save-dev @types/mocha` and then add 'jest' or 'mocha' to the types field in your tsconfig.
+src/modules/user/tests/userService.test.ts(5,5): error TS2304: Cannot find name 'expect'.
+src/modules/user/tests/userService.test.ts(8,3): error TS2593: Cannot find name 'it'. Do you need to install type definitions for a test runner? Try `npm i --save-dev @types/jest` or `npm i --save-dev @types/mocha` and then add 'jest' or 'mocha' to the types field in your tsconfig.
+src/modules/user/tests/userService.test.ts(9,5): error TS2304: Cannot find name 'expect'.
+src/modules/user/tests/userStore.test.ts(1,10): error TS2724: '"../state/userStore"' has no exported member named 'userStore'. Did you mean 'useUserStore'?
+src/modules/user/tests/userStore.test.ts(3,1): error TS2593: Cannot find name 'describe'. Do you need to install type definitions for a test runner? Try `npm i --save-dev @types/jest` or `npm i --save-dev @types/mocha` and then add 'jest' or 'mocha' to the types field in your tsconfig.
+src/modules/user/tests/userStore.test.ts(4,3): error TS2593: Cannot find name 'it'. Do you need to install type definitions for a test runner? Try `npm i --save-dev @types/jest` or `npm i --save-dev @types/mocha` and then add 'jest' or 'mocha' to the types field in your tsconfig.
+src/modules/user/tests/userStore.test.ts(5,5): error TS2304: Cannot find name 'expect'.
+src/modules/user/tests/userStore.test.ts(8,3): error TS2593: Cannot find name 'it'. Do you need to install type definitions for a test runner? Try `npm i --save-dev @types/jest` or `npm i --save-dev @types/mocha` and then add 'jest' or 'mocha' to the types field in your tsconfig.
+src/modules/user/tests/userStore.test.ts(9,5): error TS2304: Cannot find name 'expect'.
+src/modules/userBusinessUnit/tests/userBusinessUnitService.test.ts(3,1): error TS2593: Cannot find name 'describe'. Do you need to install type definitions for a test runner? Try `npm i --save-dev @types/jest` or `npm i --save-dev @types/mocha` and then add 'jest' or 'mocha' to the types field in your tsconfig.
+src/modules/userBusinessUnit/tests/userBusinessUnitService.test.ts(4,3): error TS2593: Cannot find name 'it'. Do you need to install type definitions for a test runner? Try `npm i --save-dev @types/jest` or `npm i --save-dev @types/mocha` and then add 'jest' or 'mocha' to the types field in your tsconfig.
+src/modules/userBusinessUnit/tests/userBusinessUnitService.test.ts(5,5): error TS2304: Cannot find name 'expect'.
+src/modules/userBusinessUnit/tests/userBusinessUnitService.test.ts(8,3): error TS2593: Cannot find name 'it'. Do you need to install type definitions for a test runner? Try `npm i --save-dev @types/jest` or `npm i --save-dev @types/mocha` and then add 'jest' or 'mocha' to the types field in your tsconfig.
+src/modules/userBusinessUnit/tests/userBusinessUnitService.test.ts(9,5): error TS2304: Cannot find name 'expect'.
+src/modules/userBusinessUnit/tests/userBusinessUnitStore.test.ts(1,10): error TS2724: '"../state/userBusinessUnitStore"' has no exported member named 'userBusinessUnitStore'. Did you mean 'useUserBusinessUnitStore'?
+src/modules/userBusinessUnit/tests/userBusinessUnitStore.test.ts(3,1): error TS2593: Cannot find name 'describe'. Do you need to install type definitions for a test runner? Try `npm i --save-dev @types/jest` or `npm i --save-dev @types/mocha` and then add 'jest' or 'mocha' to the types field in your tsconfig.
+src/modules/userBusinessUnit/tests/userBusinessUnitStore.test.ts(4,3): error TS2593: Cannot find name 'it'. Do you need to install type definitions for a test runner? Try `npm i --save-dev @types/jest` or `npm i --save-dev @types/mocha` and then add 'jest' or 'mocha' to the types field in your tsconfig.
+src/modules/userBusinessUnit/tests/userBusinessUnitStore.test.ts(5,5): error TS2304: Cannot find name 'expect'.
+src/modules/userBusinessUnit/tests/userBusinessUnitStore.test.ts(8,3): error TS2593: Cannot find name 'it'. Do you need to install type definitions for a test runner? Try `npm i --save-dev @types/jest` or `npm i --save-dev @types/mocha` and then add 'jest' or 'mocha' to the types field in your tsconfig.
+src/modules/userBusinessUnit/tests/userBusinessUnitStore.test.ts(9,5): error TS2304: Cannot find name 'expect'.
+src/modules/vendorManagement/tests/vendorManagementService.test.ts(3,1): error TS2593: Cannot find name 'describe'. Do you need to install type definitions for a test runner? Try `npm i --save-dev @types/jest` or `npm i --save-dev @types/mocha` and then add 'jest' or 'mocha' to the types field in your tsconfig.
+src/modules/vendorManagement/tests/vendorManagementService.test.ts(4,3): error TS2593: Cannot find name 'it'. Do you need to install type definitions for a test runner? Try `npm i --save-dev @types/jest` or `npm i --save-dev @types/mocha` and then add 'jest' or 'mocha' to the types field in your tsconfig.
+src/modules/vendorManagement/tests/vendorManagementService.test.ts(5,5): error TS2304: Cannot find name 'expect'.
+src/modules/vendorManagement/tests/vendorManagementService.test.ts(8,3): error TS2593: Cannot find name 'it'. Do you need to install type definitions for a test runner? Try `npm i --save-dev @types/jest` or `npm i --save-dev @types/mocha` and then add 'jest' or 'mocha' to the types field in your tsconfig.
+src/modules/vendorManagement/tests/vendorManagementService.test.ts(9,5): error TS2304: Cannot find name 'expect'.
+src/modules/vendorManagement/tests/vendorManagementStore.test.ts(1,10): error TS2724: '"../state/vendorManagementStore"' has no exported member named 'vendorManagementStore'. Did you mean 'useVendorManagementStore'?
+src/modules/vendorManagement/tests/vendorManagementStore.test.ts(3,1): error TS2593: Cannot find name 'describe'. Do you need to install type definitions for a test runner? Try `npm i --save-dev @types/jest` or `npm i --save-dev @types/mocha` and then add 'jest' or 'mocha' to the types field in your tsconfig.
+src/modules/vendorManagement/tests/vendorManagementStore.test.ts(4,3): error TS2593: Cannot find name 'it'. Do you need to install type definitions for a test runner? Try `npm i --save-dev @types/jest` or `npm i --save-dev @types/mocha` and then add 'jest' or 'mocha' to the types field in your tsconfig.
+src/modules/vendorManagement/tests/vendorManagementStore.test.ts(5,5): error TS2304: Cannot find name 'expect'.
+src/modules/vendorManagement/tests/vendorManagementStore.test.ts(8,3): error TS2593: Cannot find name 'it'. Do you need to install type definitions for a test runner? Try `npm i --save-dev @types/jest` or `npm i --save-dev @types/mocha` and then add 'jest' or 'mocha' to the types field in your tsconfig.
+src/modules/vendorManagement/tests/vendorManagementStore.test.ts(9,5): error TS2304: Cannot find name 'expect'.
+src/store/rootStore.ts(1,32): error TS2307: Cannot find module '@reduxjs/toolkit' or its corresponding type declarations.
+src/store/rootStore.ts(8,16): error TS7006: Parameter 'getDefaultMiddleware' implicitly has an 'any' type.

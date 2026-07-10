@@ -1,0 +1,37 @@
+{
+  "profile": {
+    "title": "Mi Perfil",
+    "subtitle": "Administre sus datos personales, preferencias y configuración de seguridad.",
+    "personal_info": "Información Personal",
+    "personal_info_desc": "Actualice sus detalles de perfil y credenciales básicos.",
+    "username": "Nombre de usuario (Clave principal)",
+    "mfa": "Autenticación Multifactor",
+    "mfa_desc": "Habilitar seguridad de inicio de sesión adicional",
+    "first_name": "Nombre",
+    "last_name": "Apellido",
+    "timezone": "Zona horaria",
+    "language": "Idioma",
+    "save": "Guardar cambios",
+    "saving": "Guardando...",
+    "system_metadata": "Metadatos del sistema (Bloqueado)",
+    "system_metadata_desc": "Estos campos son de solo lectura y los mantiene el sistema.",
+    "email": "Dirección de correo electrónico",
+    "member_since": "Miembro desde",
+    "last_login": "Última información de inicio de sesión",
+    "never": "Nunca",
+    "assignments": "Asignaciones y membresías",
+    "assignments_desc": "Unidades de negocio y organizaciones a las que está autorizado a acceder.",
+    "no_assignments": "No está asignado explícitamente a ninguna unidad de negocio. (Puede tener acceso a nivel de plataforma).",
+    "organization": "Organización",
+    "domain": "Dominio"
+  },
+  "password": {
+    "title": "Cambiar la contraseña",
+    "subtitle": "Actualice la contraseña de su cuenta de forma segura.",
+    "current": "Contraseña actual",
+    "new": "Nueva contraseña",
+    "confirm": "Confirmar nueva contraseña",
+    "update": "Actualizar contraseña",
+    "updating": "Actualizando..."
+  }
+}

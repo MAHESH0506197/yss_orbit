@@ -1,0 +1,61 @@
+# yss_orbit\infra\monitoring\prometheus\alert-rules.yml
+groups:
+  - name: api-alerts
+    rules:
+      - alert: HighApiLatency
+        expr: histogram_quantile(0.95, sum(rate(http_request_duration_seconds_bucket[5m])) by (le, service)) > 0.5
+        for: 2m
+        labels:
+          severity: warning
+        annotations:
+          summary: "High API Latency on {{ $labels.service }}"
+          description: "95th percentile latency is above 500ms for 2 minutes."
+          
+      - alert: HighApiErrorRate
+        expr: sum(rate(http_requests_total{status=~"5.."}[5m])) / sum(rate(http_requests_total[5m])) > 0.05
+        for: 2m
+        labels:
+          severity: critical
+        annotations:
+          summary: "High Error Rate on {{ $labels.service }}"
+          description: "More than 5% of requests are failing with 5xx status codes."
+
+  - name: celery-alerts
+    rules:
+      - alert: HighCeleryTaskFailures
+        expr: sum(rate(celery_task_failed_total[5m])) > 5
+        for: 2m
+        labels:
+          severity: critical
+        annotations:
+          summary: "High Celery Task Failures"
+          description: "Celery is experiencing more than 5 failed tasks per second over the last 5 minutes."
+          
+      - alert: CeleryQueueLengthTooHigh
+        expr: celery_queue_length > 1000
+        for: 5m
+        labels:
+          severity: warning
+        annotations:
+          summary: "Celery Queue Length too high"
+          description: "The Celery message queue has exceeded 1000 tasks for 5 minutes."
+          
+  - name: infra-alerts
+    rules:
+      - alert: HighCpuUsage
+        expr: 100 - (avg by (instance) (irate(node_cpu_seconds_total{mode="idle"}[5m])) * 100) > 85
+        for: 5m
+        labels:
+          severity: warning
+        annotations:
+          summary: "High CPU Usage on {{ $labels.instance }}"
+          description: "CPU usage has been above 85% for 5 minutes."
+          
+      - alert: HighMemoryUsage
+        expr: (node_memory_MemTotal_bytes - node_memory_MemAvailable_bytes) / node_memory_MemTotal_bytes * 100 > 90
+        for: 5m
+        labels:
+          severity: warning
+        annotations:
+          summary: "High Memory Usage on {{ $labels.instance }}"
+          description: "Memory usage has been above 90% for 5 minutes."

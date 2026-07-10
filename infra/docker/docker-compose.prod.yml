@@ -1,0 +1,17 @@
+# yss_orbit\infra\docker\docker-compose.prod.yml
+version: '3.8'
+services:
+  backend:
+    command: gunicorn core.main:app -w 4 -k uvicorn.workers.UvicornWorker -b 0.0.0.0:8000
+    restart: always
+    environment:
+      DEBUG: "False"
+
+  celery:
+    restart: always
+    environment:
+      DEBUG: "False"
+
+  frontend:
+    restart: always
+    command: npm run start

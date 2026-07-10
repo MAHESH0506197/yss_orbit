@@ -1,0 +1,58 @@
+{
+  "last_updated": "2026-06-18",
+  "overall_coverage_percentage": 5,
+  "modules": {
+    "global_layout": {
+      "status": "In Progress",
+      "coverage": 80,
+      "components": {
+        "sidebar": 100,
+        "header": 100,
+        "breadcrumbs": 100,
+        "footer": 0,
+        "notifications": 0,
+        "dialogs": 0
+      }
+    },
+    "pages": {
+      "status": "Not Started",
+      "coverage": 0,
+      "components": {
+        "dashboard": 0,
+        "organizations": 0,
+        "business_units": 100,
+        "users": 10,
+        "roles": 0,
+        "inventory": 100,
+        "pos": 100,
+        "billing": 100,
+        "pharmacy_billing": 100,
+        "retail_billing": 100,
+        "crm": 100,
+        "customers": 100,
+        "payroll": 0,
+        "leave": 0
+      },
+      "phases_completed": {
+        "phase1_foundation": true,
+        "phase2_shared_components": true,
+        "phase3_core_platform": false,
+        "phase4_hrms_bu": true,
+        "phase5_inventory": true,
+        "phase6_sales_and_billing": true,
+        "phase7_crm_and_customers": true
+      }
+    },
+    "shared_components": {
+      "status": "Completed",
+      "coverage": 100,
+      "components": {
+        "data_table": 100,
+        "filters": 100,
+        "pagination": 100,
+        "modal": 100,
+        "error_state": 100
+      }
+    }
+  }
+}

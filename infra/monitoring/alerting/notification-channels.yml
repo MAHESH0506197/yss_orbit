@@ -1,0 +1,4 @@
+# yss_orbit\infra\monitoring\alerting\notification-channels.yml
+# Notification channels configuration
+# Slack, PagerDuty, Email routing per severity level
+

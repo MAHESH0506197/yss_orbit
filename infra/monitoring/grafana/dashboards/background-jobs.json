@@ -1,0 +1,1 @@
+{"title":"Background Jobs","panels":[{"title":"Celery Queue Depth","type":"timeseries"},{"title":"Task Success Rate","type":"gauge"},{"title":"Dead-Letter Count","type":"stat"},{"title":"Task Duration P99","type":"timeseries"}]}

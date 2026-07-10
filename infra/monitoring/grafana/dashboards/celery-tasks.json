@@ -1,0 +1,63 @@
+{
+  "annotations": {
+    "list": []
+  },
+  "editable": true,
+  "panels": [
+    {
+      "title": "Celery Task Execution Rate",
+      "type": "timeseries",
+      "targets": [
+        {
+          "expr": "sum(rate(celery_task_received_total[5m])) by (task_name)",
+          "refId": "A"
+        }
+      ],
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "title": "Celery Task Failure Rate",
+      "type": "timeseries",
+      "targets": [
+        {
+          "expr": "sum(rate(celery_task_failed_total[5m])) by (task_name)",
+          "refId": "B"
+        }
+      ],
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 12,
+        "y": 0
+      }
+    },
+    {
+      "title": "Celery Queue Length",
+      "type": "gauge",
+      "targets": [
+        {
+          "expr": "celery_queue_length",
+          "refId": "C"
+        }
+      ],
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 0,
+        "y": 8
+      }
+    }
+  ],
+  "time": {
+    "from": "now-6h",
+    "to": "now"
+  },
+  "title": "Celery Tasks Monitoring",
+  "uid": "celery-tasks-dashboard",
+  "version": 1
+}

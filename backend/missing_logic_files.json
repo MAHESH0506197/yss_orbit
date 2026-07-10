@@ -1,0 +1,6 @@
+[
+    "c:/PROJECT/yss_orbit/backend/apps\\users\\api\\serializers\\token_serializers.py",
+    "c:/PROJECT/yss_orbit/backend/apps\\users\\api\\views\\auth_views.py",
+    "c:/PROJECT/yss_orbit/backend/apps\\users\\services\\otp_service.py",
+    "c:/PROJECT/yss_orbit/backend/apps\\users\\services\\user_service.py"
+]

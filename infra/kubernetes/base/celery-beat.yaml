@@ -1,0 +1,27 @@
+# yss_orbit\infra\kubernetes\base\celery-beat.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: celery-beat
+  labels:
+    app: celery-beat
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: celery-beat
+  template:
+    metadata:
+      labels:
+        app: celery-beat
+    spec:
+      containers:
+      - name: celery-beat
+        image: yss-orbit-backend:latest
+        imagePullPolicy: IfNotPresent
+        command: ["celery", "-A", "core.celery_app", "beat", "-l", "info"]
+        envFrom:
+        - configMapRef:
+            name: app-config
+        - secretRef:
+            name: app-secrets

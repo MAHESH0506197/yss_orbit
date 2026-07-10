@@ -1,0 +1,3254 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>YSS Orbit ��� PQM &amp; NC Management Module Specification (Renewable Energy Edition)</title>
+  <style>
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      background-color: #1a1a1a;
+      border: none;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+    /* CSS for syntax highlighting */
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      {   }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+    code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+    code span.at { color: #7d9029; } /* Attribute */
+    code span.bn { color: #40a070; } /* BaseN */
+    code span.bu { color: #008000; } /* BuiltIn */
+    code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #4070a0; } /* Char */
+    code span.cn { color: #880000; } /* Constant */
+    code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+    code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+    code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+    code span.dt { color: #902000; } /* DataType */
+    code span.dv { color: #40a070; } /* DecVal */
+    code span.er { color: #ff0000; font-weight: bold; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #40a070; } /* Float */
+    code span.fu { color: #06287e; } /* Function */
+    code span.im { color: #008000; font-weight: bold; } /* Import */
+    code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+    code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+    code span.op { color: #666666; } /* Operator */
+    code span.ot { color: #007020; } /* Other */
+    code span.pp { color: #bc7a00; } /* Preprocessor */
+    code span.sc { color: #4070a0; } /* SpecialChar */
+    code span.ss { color: #bb6688; } /* SpecialString */
+    code span.st { color: #4070a0; } /* String */
+    code span.va { color: #19177c; } /* Variable */
+    code span.vs { color: #4070a0; } /* VerbatimString */
+    code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+  <style>
+    :root {
+      --navy: #0C2340;
+      --navy-light: #1B3A5C;
+      --accent: #185FA5;
+      --border: #D8D5C8;
+      --bg-soft: #F7F6F1;
+      --text: #2C2C2A;
+      --text-soft: #55544E;
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: "Segoe UI", Arial, "Helvetica Neue", sans-serif;
+      color: var(--text);
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 48px 32px 96px;
+      line-height: 1.6;
+      font-size: 16px;
+      background: #ffffff;
+    }
+    h1 {
+      color: var(--navy);
+      font-size: 28px;
+      border-bottom: 3px solid var(--navy);
+      padding-bottom: 14px;
+      margin-top: 0;
+    }
+    h2 {
+      color: var(--navy);
+      font-size: 22px;
+      margin-top: 48px;
+      padding-bottom: 8px;
+      border-bottom: 2px solid var(--border);
+    }
+    h3 {
+      color: var(--navy-light);
+      font-size: 18px;
+      margin-top: 32px;
+    }
+    h4 { color: var(--navy-light); font-size: 15px; }
+    p { margin: 12px 0; }
+    strong { color: var(--navy); }
+    code {
+      background: var(--bg-soft);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 1px 5px;
+      font-family: "Consolas", "SFMono-Regular", Menlo, monospace;
+      font-size: 13.5px;
+      color: #7A3E9D;
+    }
+    pre {
+      background: #292A2E;
+      color: #E8E6DD;
+      border-radius: 8px;
+      padding: 16px 20px;
+      overflow-x: auto;
+      font-size: 13px;
+      line-height: 1.5;
+    }
+    pre code { background: none; border: none; color: inherit; padding: 0; }
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      margin: 20px 0;
+      font-size: 14px;
+    }
+    th, td {
+      border: 1px solid var(--border);
+      padding: 8px 12px;
+      text-align: left;
+      vertical-align: top;
+    }
+    th { background: var(--navy); color: #fff; }
+    tr:nth-child(even) td { background: var(--bg-soft); }
+    hr { border: none; border-top: 2px solid var(--border); margin: 40px 0; }
+    img {
+      max-width: 100%;
+      display: block;
+      margin: 20px auto;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      background: #fff;
+    }
+    ul, ol { padding-left: 28px; }
+    li { margin: 4px 0; }
+    a { color: var(--accent); }
+    blockquote {
+      border-left: 4px solid var(--accent);
+      margin: 16px 0;
+      padding: 4px 20px;
+      background: var(--bg-soft);
+      color: var(--text-soft);
+    }
+    #TOC {
+      background: var(--bg-soft);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 20px 32px;
+    }
+    #TOC ul { list-style: none; padding-left: 16px; }
+    #TOC > ul { padding-left: 0; }
+    #TOC a { text-decoration: none; color: var(--navy-light); }
+    #TOC a:hover { text-decoration: underline; }
+    input[type="checkbox"] { margin-right: 6px; }
+    @media print {
+      body { max-width: none; padding: 0 24px; }
+      h2 { page-break-before: auto; }
+    }
+  </style>
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">YSS Orbit ��� PQM &amp; NC Management Module
+Specification (Renewable Energy Edition)</h1>
+</header>
+<nav id="TOC" role="doc-toc">
+<ul>
+<li><a
+href="#yss-orbit-project-quality-management-pqm-non-conformance-nc-management-module"
+id="toc-yss-orbit-project-quality-management-pqm-non-conformance-nc-management-module">YSS
+Orbit — Project Quality Management (PQM) &amp; Non-Conformance (NC)
+Management Module</a>
+<ul>
+<li><a
+href="#renewable-energy-sector-edition-solar-ground-mounted-rooftop-and-wind-power-projects"
+id="toc-renewable-energy-sector-edition-solar-ground-mounted-rooftop-and-wind-power-projects">Renewable
+Energy Sector Edition — Solar (Ground-Mounted &amp; Rooftop) and Wind
+Power Projects</a></li>
+<li><a
+href="#final-consolidated-implementation-specification-v4.0-single-self-contained-master-document"
+id="toc-final-consolidated-implementation-specification-v4.0-single-self-contained-master-document">FINAL
+Consolidated Implementation Specification — v4.0 (Single self-contained
+Master Document)</a></li>
+<li><a href="#table-of-contents" id="toc-table-of-contents">Table of
+Contents</a></li>
+<li><a href="#module-purpose-objectives"
+id="toc-module-purpose-objectives">1. Module Purpose &amp;
+Objectives</a>
+<ul>
+<li><a href="#sector-context" id="toc-sector-context">1.0 Sector
+Context</a></li>
+<li><a href="#business-goal" id="toc-business-goal">1.1 Business
+Goal</a></li>
+<li><a href="#problems-it-solves" id="toc-problems-it-solves">1.2
+Problems It Solves</a></li>
+<li><a href="#expected-outcomes" id="toc-expected-outcomes">1.3 Expected
+Outcomes</a></li>
+</ul></li>
+<li><a href="#module-scope" id="toc-module-scope">2. Module Scope</a>
+<ul>
+<li><a href="#in-scope-phase-1" id="toc-in-scope-phase-1">2.1 In Scope
+(Phase 1)</a></li>
+<li><a href="#out-of-scope-phase-1-deferred"
+id="toc-out-of-scope-phase-1-deferred">2.2 Out of Scope (Phase 1) —
+Deferred</a></li>
+<li><a href="#future-roadmap" id="toc-future-roadmap">2.3 Future
+Roadmap</a></li>
+</ul></li>
+<li><a href="#multi-tenancy-organizational-model"
+id="toc-multi-tenancy-organizational-model">3. Multi-Tenancy &amp;
+Organizational Model</a></li>
+<li><a href="#real-world-case-study-full-lifecycle-walkthrough"
+id="toc-real-world-case-study-full-lifecycle-walkthrough">4. Real-World
+Case Study — Full Lifecycle Walkthrough</a>
+<ul>
+<li><a
+href="#supplementary-examples-rooftop-and-wind-for-cross-asset-type-qa-coverage"
+id="toc-supplementary-examples-rooftop-and-wind-for-cross-asset-type-qa-coverage">4.1
+Supplementary Examples — Rooftop and Wind (for cross-asset-type QA
+coverage)</a></li>
+</ul></li>
+<li><a href="#business-process-flow" id="toc-business-process-flow">5.
+Business Process Flow</a>
+<ul>
+<li><a href="#end-to-end-workflow" id="toc-end-to-end-workflow">5.1
+End-to-End Workflow</a></li>
+<li><a href="#escalation-flow" id="toc-escalation-flow">5.2 Escalation
+Flow</a></li>
+<li><a href="#weather-force-majeure-sla-extensions"
+id="toc-weather-force-majeure-sla-extensions">5.3 Weather /
+Force-Majeure SLA Extensions</a></li>
+</ul></li>
+<li><a href="#nc-data-model-business-fields"
+id="toc-nc-data-model-business-fields">6. NC Data Model (Business
+Fields)</a>
+<ul>
+<li><a href="#field-level-business-rules"
+id="toc-field-level-business-rules">6.1 Field-level Business
+Rules</a></li>
+<li><a
+href="#category-taxonomy-by-asset-type-tenant-configurable-starting-set"
+id="toc-category-taxonomy-by-asset-type-tenant-configurable-starting-set">6.2
+Category Taxonomy by Asset Type (tenant-configurable starting
+set)</a></li>
+</ul></li>
+<li><a href="#user-roles-rbac" id="toc-user-roles-rbac">7. User Roles
+&amp; RBAC</a></li>
+<li><a href="#database-design-full-schema"
+id="toc-database-design-full-schema">8. Database Design (Full
+Schema)</a>
+<ul>
+<li><a href="#shared-auditsoft-delete-columns-every-table"
+id="toc-shared-auditsoft-delete-columns-every-table">8.0 Shared
+audit/soft-delete columns (every table)</a></li>
+<li><a href="#pqm_non_conformance-core-table"
+id="toc-pqm_non_conformance-core-table">8.1
+<code>pqm_non_conformance</code> (core table)</a></li>
+<li><a href="#pqm_category-self-referential-tenant-configurable"
+id="toc-pqm_category-self-referential-tenant-configurable">8.2
+<code>pqm_category</code> (self-referential,
+tenant-configurable)</a></li>
+<li><a href="#pqm_contractor" id="toc-pqm_contractor">8.3
+<code>pqm_contractor</code></a></li>
+<li><a href="#pqm_attachment" id="toc-pqm_attachment">8.4
+<code>pqm_attachment</code></a></li>
+<li><a
+href="#pqm_approval_step-drives-the-verification-chain-generically"
+id="toc-pqm_approval_step-drives-the-verification-chain-generically">8.5
+<code>pqm_approval_step</code> (drives the verification chain
+generically)</a></li>
+<li><a href="#pqm_status_history" id="toc-pqm_status_history">8.6
+<code>pqm_status_history</code></a></li>
+<li><a href="#pqm_comment" id="toc-pqm_comment">8.7
+<code>pqm_comment</code></a></li>
+<li><a href="#pqm_notification_log" id="toc-pqm_notification_log">8.8
+<code>pqm_notification_log</code></a></li>
+<li><a href="#pqm_escalation_config-tenant-sla-configuration"
+id="toc-pqm_escalation_config-tenant-sla-configuration">8.9
+<code>pqm_escalation_config</code> (tenant SLA configuration)</a></li>
+<li><a href="#pqm_sequence_counter" id="toc-pqm_sequence_counter">8.10
+<code>pqm_sequence_counter</code></a></li>
+<li><a href="#pqm_extension_request" id="toc-pqm_extension_request">8.11
+<code>pqm_extension_request</code></a></li>
+<li><a href="#pqm_project_geofence" id="toc-pqm_project_geofence">8.12
+<code>pqm_project_geofence</code></a></li>
+<li><a href="#entity-relationship-summary"
+id="toc-entity-relationship-summary">8.13 Entity-Relationship
+Summary</a></li>
+</ul></li>
+<li><a href="#backend-architecture-django"
+id="toc-backend-architecture-django">9. Backend Architecture
+(Django)</a>
+<ul>
+<li><a href="#app-structure" id="toc-app-structure">9.1 App
+Structure</a></li>
+<li><a href="#key-business-rules-enforced-in-services"
+id="toc-key-business-rules-enforced-in-services">9.2 Key Business Rules
+Enforced in <code>services/</code></a></li>
+<li><a href="#example-model-sketch" id="toc-example-model-sketch">9.3
+Example Model Sketch</a></li>
+</ul></li>
+<li><a href="#api-design-endpoints-contracts"
+id="toc-api-design-endpoints-contracts">10. API Design (Endpoints &amp;
+Contracts)</a>
+<ul>
+<li><a href="#sample-payload-create-nc"
+id="toc-sample-payload-create-nc">10.1 Sample Payload — Create
+NC</a></li>
+</ul></li>
+<li><a href="#frontend-architecture-react"
+id="toc-frontend-architecture-react">11. Frontend Architecture
+(React)</a>
+<ul>
+<li><a href="#routes" id="toc-routes">11.1 Routes</a></li>
+<li><a href="#component-reuse-from-existing-design-system"
+id="toc-component-reuse-from-existing-design-system">11.2 Component
+Reuse (from existing design system)</a></li>
+<li><a href="#new-components" id="toc-new-components">11.3 New
+Components</a></li>
+<li><a href="#permission-gated-actions"
+id="toc-permission-gated-actions">11.4 Permission-gated Actions</a></li>
+<li><a href="#state-management" id="toc-state-management">11.5 State
+Management</a></li>
+</ul></li>
+<li><a href="#status-lifecycle-state-machine"
+id="toc-status-lifecycle-state-machine">12. Status Lifecycle / State
+Machine</a></li>
+<li><a href="#permissions-matrix" id="toc-permissions-matrix">13.
+Permissions Matrix</a></li>
+<li><a href="#notifications" id="toc-notifications">14.
+Notifications</a></li>
+<li><a href="#audit-activity-logs" id="toc-audit-activity-logs">15.
+Audit &amp; Activity Logs</a></li>
+<li><a href="#reports-analytics" id="toc-reports-analytics">16. Reports
+&amp; Analytics</a>
+<ul>
+<li><a href="#standard-reports" id="toc-standard-reports">16.1 Standard
+Reports</a></li>
+<li><a href="#export-formats" id="toc-export-formats">16.2 Export
+Formats</a></li>
+<li><a href="#kpi-calculation-notes" id="toc-kpi-calculation-notes">16.3
+KPI Calculation Notes</a></li>
+</ul></li>
+<li><a href="#dashboard" id="toc-dashboard">17. Dashboard</a>
+<ul>
+<li><a href="#kpi-tiles" id="toc-kpi-tiles">17.1 KPI Tiles</a></li>
+<li><a href="#charts" id="toc-charts">17.2 Charts</a></li>
+<li><a href="#scoping" id="toc-scoping">17.3 Scoping</a></li>
+</ul></li>
+<li><a href="#uiux-design-guidelines"
+id="toc-uiux-design-guidelines">18. UI/UX Design Guidelines</a></li>
+<li><a href="#integration-points" id="toc-integration-points">19.
+Integration Points</a></li>
+<li><a href="#practical-field-operations-considerations"
+id="toc-practical-field-operations-considerations">20. Practical Field
+&amp; Operations Considerations</a>
+<ul>
+<li><a href="#duplicate-nc-detection"
+id="toc-duplicate-nc-detection">20.1 Duplicate NC Detection</a></li>
+<li><a href="#recurring-issue-repeat-offender-linking"
+id="toc-recurring-issue-repeat-offender-linking">20.2 Recurring Issue /
+Repeat-Offender Linking</a></li>
+<li><a href="#contractor-accountability-backcharge-tracking"
+id="toc-contractor-accountability-backcharge-tracking">20.3 Contractor
+Accountability &amp; Backcharge Tracking</a></li>
+<li><a href="#safety-critical-fast-track"
+id="toc-safety-critical-fast-track">20.4 Safety-Critical
+Fast-Track</a></li>
+<li><a href="#weather-force-majeure-sla-extensions-1"
+id="toc-weather-force-majeure-sla-extensions-1">20.5 Weather /
+Force-Majeure SLA Extensions</a></li>
+<li><a href="#mid-workflow-reassignment"
+id="toc-mid-workflow-reassignment">20.6 Mid-Workflow
+Reassignment</a></li>
+<li><a href="#offline-capture-sync" id="toc-offline-capture-sync">20.7
+Offline Capture &amp; Sync</a></li>
+<li><a href="#photo-authenticity-for-audit-defensibility"
+id="toc-photo-authenticity-for-audit-defensibility">20.8 Photo
+Authenticity for Audit Defensibility</a></li>
+<li><a href="#legacy-data-migration-excel-pqm"
+id="toc-legacy-data-migration-excel-pqm">20.9 Legacy Data Migration
+(Excel → PQM)</a></li>
+<li><a href="#external-client-auditor-read-only-access"
+id="toc-external-client-auditor-read-only-access">20.10 External Client
+/ Auditor Read-Only Access</a></li>
+</ul></li>
+<li><a href="#ai-features-phase-2-optional"
+id="toc-ai-features-phase-2-optional">21. AI Features (Phase 2 —
+Optional)</a></li>
+<li><a href="#enterprise-standards-non-functional-requirements"
+id="toc-enterprise-standards-non-functional-requirements">22. Enterprise
+Standards &amp; Non-Functional Requirements</a></li>
+<li><a href="#test-scenarios-qa-verification-checklist"
+id="toc-test-scenarios-qa-verification-checklist">23. Test Scenarios
+&amp; QA Verification Checklist</a>
+<ul>
+<li><a href="#functional-happy-path" id="toc-functional-happy-path">23.1
+Functional — Happy Path</a></li>
+<li><a href="#functional-negative-edge-cases"
+id="toc-functional-negative-edge-cases">23.2 Functional — Negative /
+Edge Cases</a></li>
+<li><a href="#new-workflow-coverage-v2v3-additions"
+id="toc-new-workflow-coverage-v2v3-additions">23.3 New Workflow Coverage
+(v2/v3 additions)</a></li>
+<li><a href="#rbac-security" id="toc-rbac-security">23.4 RBAC /
+Security</a></li>
+<li><a href="#notifications-reporting-audit"
+id="toc-notifications-reporting-audit">23.5 Notifications / Reporting /
+Audit</a></li>
+</ul></li>
+<li><a href="#implementation-roadmap"
+id="toc-implementation-roadmap">24. Implementation Roadmap</a></li>
+<li><a href="#appendix-a.-rbac-full-specification"
+id="toc-appendix-a.-rbac-full-specification">Appendix A. RBAC — Full
+Specification</a>
+<ul>
+<li><a href="#a.1-full-permission-codename-list"
+id="toc-a.1-full-permission-codename-list">A.1 Full Permission Codename
+List</a></li>
+<li><a
+href="#a.2-role-hierarchy-explicit-decision-no-automatic-inheritance"
+id="toc-a.2-role-hierarchy-explicit-decision-no-automatic-inheritance">A.2
+Role Hierarchy — Explicit Decision: No Automatic Inheritance</a></li>
+<li><a href="#a.3-default-role-seeding-mechanism"
+id="toc-a.3-default-role-seeding-mechanism">A.3 Default Role Seeding
+Mechanism</a></li>
+<li><a href="#a.4-field-level-visibility-beyond-object-level-view_nc"
+id="toc-a.4-field-level-visibility-beyond-object-level-view_nc">A.4
+Field-Level Visibility (beyond object-level
+<code>view_nc</code>)</a></li>
+<li><a
+href="#a.5-scope-resolution-order-how-a-requests-visible-data-is-actually-computed"
+id="toc-a.5-scope-resolution-order-how-a-requests-visible-data-is-actually-computed">A.5
+Scope Resolution Order (how a request’s visible data is actually
+computed)</a></li>
+<li><a href="#a.6-rbac-specific-test-cases-extends-section-23.4"
+id="toc-a.6-rbac-specific-test-cases-extends-section-23.4">A.6
+RBAC-Specific Test Cases (extends Section 23.4)</a></li>
+</ul></li>
+<li><a
+href="#appendix-b.-completeness-gap-fill-database-backend-frontend-qaqc-production-readiness"
+id="toc-appendix-b.-completeness-gap-fill-database-backend-frontend-qaqc-production-readiness">Appendix
+B. Completeness Gap-Fill — Database, Backend, Frontend, QA/QC &amp;
+Production Readiness</a>
+<ul>
+<li><a href="#b.1-database-missing-tables-structural-gaps"
+id="toc-b.1-database-missing-tables-structural-gaps">B.1 Database —
+Missing Tables &amp; Structural Gaps</a></li>
+<li><a href="#b.2-backend-missing-operational-concerns"
+id="toc-b.2-backend-missing-operational-concerns">B.2 Backend — Missing
+Operational Concerns</a></li>
+<li><a href="#b.3-frontend-missing-ux-concerns"
+id="toc-b.3-frontend-missing-ux-concerns">B.3 Frontend — Missing UX
+Concerns</a></li>
+<li><a href="#b.4-qaqc-production-readiness-testing"
+id="toc-b.4-qaqc-production-readiness-testing">B.4 QA/QC &amp;
+Production-Readiness Testing</a></li>
+<li><a href="#b.5-summary-table-what-appendix-b-adds-by-area"
+id="toc-b.5-summary-table-what-appendix-b-adds-by-area">B.5 Summary
+Table — What Appendix B Adds, by Area</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+<h1
+id="yss-orbit-project-quality-management-pqm-non-conformance-nc-management-module">YSS
+Orbit — Project Quality Management (PQM) &amp; Non-Conformance (NC)
+Management Module</h1>
+<h3
+id="renewable-energy-sector-edition-solar-ground-mounted-rooftop-and-wind-power-projects">Renewable
+Energy Sector Edition — Solar (Ground-Mounted &amp; Rooftop) and Wind
+Power Projects</h3>
+<h3
+id="final-consolidated-implementation-specification-v4.0-single-self-contained-master-document">FINAL
+Consolidated Implementation Specification — v4.0 (Single self-contained
+Master Document)</h3>
+<p><strong>Platform:</strong> YSS Orbit (Enterprise Multi-Tenant SaaS)
+<strong>Sector Scope:</strong> This edition is scoped specifically to
+renewable energy EPC (Engineering, Procurement &amp; Construction)
+project quality management — <strong>solar ground-mounted plants, solar
+rooftop installations, and wind power project complexes</strong>. All
+categories, checklists, roles, reference standards, and the worked case
+study in this document are written for renewable EPC execution, not
+general building construction. <strong>Stack:</strong> Django REST
+Framework (Backend) · React + TypeScript (Frontend)
+<strong>Status:</strong> Single authoritative document for the renewable
+energy edition — supersedes all prior general-construction drafts. This
+is the only file you need. <strong>Diagrams:</strong> All 6 visuals —
+multi-tenancy hierarchy, case study workflow, system architecture, NC
+status lifecycle, entity-relationship diagram, and RBAC scope resolution
+— are static images with no JavaScript or external file dependency. They
+render natively in any browser or Markdown viewer that supports
+images.</p>
+<hr />
+<h2 id="table-of-contents">Table of Contents</h2>
+<ol type="1">
+<li>Module Purpose &amp; Objectives</li>
+<li>Module Scope</li>
+<li>Multi-Tenancy &amp; Organizational Model</li>
+<li>Real-World Case Study — Full Lifecycle Walkthrough</li>
+<li>Business Process Flow</li>
+<li>NC Data Model (Business Fields)</li>
+<li>User Roles &amp; RBAC</li>
+<li>Database Design (Full Schema)</li>
+<li>Backend Architecture</li>
+<li>API Design (Endpoints &amp; Contracts)</li>
+<li>Frontend Architecture</li>
+<li>Status Lifecycle / State Machine</li>
+<li>Permissions Matrix</li>
+<li>Notifications</li>
+<li>Audit &amp; Activity Logs</li>
+<li>Reports &amp; Analytics</li>
+<li>Dashboard</li>
+<li>UI/UX Design Guidelines</li>
+<li>Integration Points</li>
+<li>Practical Field &amp; Operations Considerations</li>
+<li>AI Features (Phase 2)</li>
+<li>Enterprise Standards &amp; Non-Functional Requirements</li>
+<li>Test Scenarios &amp; QA Verification Checklist</li>
+<li>Implementation Roadmap Appendix A. RBAC — Full Specification
+(Codenames, Hierarchy, Seeding, Field-Level Visibility) Appendix B.
+Completeness Gap-Fill — Database, Backend, Frontend, QA/QC &amp;
+Production Readiness</li>
+</ol>
+<hr />
+<h2 id="module-purpose-objectives">1. Module Purpose &amp;
+Objectives</h2>
+<h3 id="sector-context">1.0 Sector Context</h3>
+<p>PQM is built for the Quality function of a renewable energy EPC
+(Engineering, Procurement &amp; Construction) organization executing
+three asset types, each with materially different inspection points,
+trades, and failure modes:</p>
+<ul>
+<li><strong>Solar — Ground-Mounted Plants</strong>: civil/foundation
+works, module mounting structure (MMS) erection, module installation, DC
+cabling and string work, inverter/transformer installation, AC yard and
+evacuation, SCADA/communication, fencing and site civil works.</li>
+<li><strong>Solar — Rooftop Installations</strong>: roof structural
+assessment, mounting rail/clamp fixing, waterproofing at penetration
+points, module installation, DC/AC balance of system (BoS), net-metering
+interconnection.</li>
+<li><strong>Wind Power Projects</strong>: foundation (raft/pile) works,
+tower erection (sectional), nacelle and hub installation, blade
+installation and torque checks, WTG (Wind Turbine Generator) electrical
+and control systems, cabling and pooling substation works, met mast
+installation.</li>
+</ul>
+<p>The module’s category taxonomy, checklist references, and case study
+throughout this document (Section 6, Section 4) are written against this
+sector — not generic residential/commercial building construction.</p>
+<h3 id="business-goal">1.1 Business Goal</h3>
+<p>PQM gives the Quality function inside a renewable energy EPC
+organization a single system of record for identifying, assigning,
+rectifying, verifying, and closing quality defects (“Non-Conformances” /
+NCs) discovered during solar and wind project execution — across civil,
+mechanical, and electrical scopes — with full accountability and an
+audit trail strong enough to survive a client, lender (IFC/lender’s
+independent engineer), or regulatory audit, not just an internal
+report.</p>
+<h3 id="problems-it-solves">1.2 Problems It Solves</h3>
+<ul>
+<li>No standardized way to log/track quality issues today across civil,
+MMS, electrical (DC/AC), and WTG erection trades (WhatsApp, Excel, email
+— none traceable or reportable).</li>
+<li>No SLA visibility — issues missed, closure timelines unmeasured,
+especially where weather windows (monsoon, high wind-speed days) are
+tight and rework is costly.</li>
+<li>No enforced approval chain — issues closed without proper
+verification, a real risk on safety-critical items like torque-checked
+structural bolting or DC earthing.</li>
+<li>No analytics on recurring root causes, worst-performing projects/EPC
+contractors, or quality trends across a multi-project solar/wind
+portfolio.</li>
+<li>No audit trail for compliance, lender’s independent engineer (LIE),
+or client (developer/IPP) audits at Commercial Operation Date (COD)
+handover.</li>
+</ul>
+<h3 id="expected-outcomes">1.3 Expected Outcomes</h3>
+<ul>
+<li>100% of NCs raised, tracked, and closed inside the system — zero
+offline tracking — across civil, MMS, electrical, and WTG erection
+scopes.</li>
+<li>Measurable average closure time per project/engineer/EPC
+contractor.</li>
+<li>Full audit trail for internal QA, lender’s independent engineer, and
+client/regulatory audits at handover/COD.</li>
+<li>Real-time dashboard for Quality Head / Regional Managers across a
+multi-project solar and wind portfolio.</li>
+<li>Per-tenant configurability (categories, severities, approval chain
+length, SLA days) so each EPC organization can tune the module to its
+own solar-only, wind-only, or mixed portfolio.</li>
+</ul>
+<hr />
+<h2 id="module-scope">2. Module Scope</h2>
+<h3 id="in-scope-phase-1">2.1 In Scope (Phase 1)</h3>
+<p>NC creation → review → assignment → rectification → verification →
+closure workflow; configurable multi-level approval chain (1–4
+approvers); attachments with versioning and authenticity metadata; email
++ in-app notifications; full audit trail; dashboard + KPI reporting;
+export (Excel/PDF/CSV); BU-scoped RBAC reusing YSS Orbit’s existing
+engine; duplicate detection/merge; recurring-issue linking; EPC
+contractor backcharge flagging; safety-critical fast-track (relevant to
+working-at-height on WTG towers/rooftops and live DC/AC electrical
+work); SLA extension requests (relevant to monsoon/high-wind-speed
+weather stand-downs); mid-workflow reassignment; legacy Excel data
+migration; offline capture &amp; sync (relevant to remote solar parks
+and wind projects with poor connectivity); external
+client/lender’s-independent-engineer read-only access.</p>
+<h3 id="out-of-scope-phase-1-deferred">2.2 Out of Scope (Phase 1) —
+Deferred</h3>
+<p>Native offline-first mobile app; AI-based root-cause suggestion
+(Phase 2, Section 21); full EPC contractor self-service portal with
+external login (data fields reserved, login deferred); drawing
+markup/annotation tool; real-time finance/ERP integration for
+backcharges (report-based handoff only in Phase 1); direct SCADA/O&amp;M
+monitoring-platform integration (module records installation-phase NCs,
+not post-COD O&amp;M defects, in Phase 1).</p>
+<h3 id="future-roadmap">2.3 Future Roadmap</h3>
+<p>Phase 2 — AI insights, EPC contractor portal, native mobile app.
+Phase 3 — predictive SLA-breach alerts, auto-checklist generation from
+drawings (GA drawings, SLDs), integration with post-COD O&amp;M/SCADA
+defect tracking. Phase 4 — cross-tenant benchmarking (anonymized) as an
+advisory add-on across a portfolio of solar and wind assets.</p>
+<hr />
+<h2 id="multi-tenancy-organizational-model">3. Multi-Tenancy &amp;
+Organizational Model</h2>
+<p><strong>Note on terminology:</strong> earlier drafts of this spec
+modeled <code>Site</code> as a separate level below
+<code>Project</code>. For a renewable EPC portfolio, a Project
+<strong>is</strong> the site — a solar park or wind project complex is
+one physical location, not a parent with multiple child locations. This
+edition collapses that into a single level: <strong>Project is the
+atomic location unit.</strong> Finer-grained location detail within a
+project (a specific block, row, string, or WTG number) is captured as
+NC-level fields (Section 6), not as a separate hierarchy entity or
+database table. There is no <code>core_site</code> table and no
+<code>site_id</code> anywhere in this schema.</p>
+<pre><code>Tenant (Organization)
+ └── Business Unit (BU)
+      └── Project
+           └── NC records</code></pre>
+<figure>
+<img
+src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjgwIiBoZWlnaHQ9IjQyNCIgdmlld0JveD0iMCAwIDY4MCA0MjQiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgcm9sZT0iaW1nIj4KPHRpdGxlPlBRTSBtdWx0aS10ZW5hbmN5IGhpZXJhcmNoeTwvdGl0bGU+CjxkZXNjPlZlcnRpY2FsIGNoYWluIHNob3dpbmcgZGF0YSBuZXN0aW5nIGZyb20gT3JnYW5pemF0aW9uIGRvd24gdG8gQnVzaW5lc3MgVW5pdCwgUHJvamVjdCwgYW5kIE5DIHJlY29yZHMuIFByb2plY3QgaXMgdGhlIGF0b21pYyBsb2NhdGlvbiB1bml0IOKAlCB0aGVyZSBpcyBubyBzZXBhcmF0ZSBTaXRlIGxldmVsLjwvZGVzYz4KPGRlZnM+PG1hcmtlciBpZD0iYXJyb3ciIHZpZXdCb3g9IjAgMCAxMCAxMCIgcmVmWD0iOCIgcmVmWT0iNSIgbWFya2VyV2lkdGg9IjYiIG1hcmtlckhlaWdodD0iNiIgb3JpZW50PSJhdXRvLXN0YXJ0LXJldmVyc2UiPjxwYXRoIGQ9Ik0yIDFMOCA1TDIgOSIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjNUY1RTVBIiBzdHJva2Utd2lkdGg9IjEuNSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIi8+PC9tYXJrZXI+PC9kZWZzPgo8cmVjdCB3aWR0aD0iNjgwIiBoZWlnaHQ9IjQyNCIgZmlsbD0iI2ZmZmZmZiIvPgo8cmVjdCB4PSIyMTAiIHk9IjQwIiB3aWR0aD0iMjYwIiBoZWlnaHQ9IjU2IiByeD0iOCIgZmlsbD0iI0YxRUZFOCIgc3Ryb2tlPSIjNUY1RTVBIiBzdHJva2Utd2lkdGg9IjAuNSIvPgo8dGV4dCB4PSIzNDAiIHk9IjU5IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LWZhbWlseT0iQXJpYWwsIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTQiIGZvbnQtd2VpZ2h0PSI2MDAiIGZpbGw9IiMyQzJDMkEiPk9yZ2FuaXphdGlvbjwvdGV4dD4KPHRleHQgeD0iMzQwIiB5PSI3NyIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1mYW1pbHk9IkFyaWFsLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjEyIiBmaWxsPSIjNDQ0NDQxIj5UZW5hbnQgcm9vdDwvdGV4dD4KPGxpbmUgeDE9IjM0MCIgeTE9Ijk2IiB4Mj0iMzQwIiB5Mj0iMTMyIiBzdHJva2U9IiM1RjVFNUEiIHN0cm9rZS13aWR0aD0iMS41IiBtYXJrZXItZW5kPSJ1cmwoI2Fycm93KSIvPgo8cmVjdCB4PSIyMTAiIHk9IjEzNiIgd2lkdGg9IjI2MCIgaGVpZ2h0PSI1NiIgcng9IjgiIGZpbGw9IiNGMUVGRTgiIHN0cm9rZT0iIzVGNUU1QSIgc3Ryb2tlLXdpZHRoPSIwLjUiLz4KPHRleHQgeD0iMzQwIiB5PSIxNTUiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtZmFtaWx5PSJBcmlhbCwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxNCIgZm9udC13ZWlnaHQ9IjYwMCIgZmlsbD0iIzJDMkMyQSI+QnVzaW5lc3MgdW5pdDwvdGV4dD4KPHRleHQgeD0iMzQwIiB5PSIxNzMiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtZmFtaWx5PSJBcmlhbCwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxMiIgZmlsbD0iIzQ0NDQ0MSI+UkJBQyBzY29waW5nIGJvdW5kYXJ5PC90ZXh0Pgo8bGluZSB4MT0iMzQwIiB5MT0iMTkyIiB4Mj0iMzQwIiB5Mj0iMjI4IiBzdHJva2U9IiM1RjVFNUEiIHN0cm9rZS13aWR0aD0iMS41IiBtYXJrZXItZW5kPSJ1cmwoI2Fycm93KSIvPgo8cmVjdCB4PSIyMTAiIHk9IjIzMiIgd2lkdGg9IjI2MCIgaGVpZ2h0PSI1NiIgcng9IjgiIGZpbGw9IiNGMUVGRTgiIHN0cm9rZT0iIzVGNUU1QSIgc3Ryb2tlLXdpZHRoPSIwLjUiLz4KPHRleHQgeD0iMzQwIiB5PSIyNTEiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtZmFtaWx5PSJBcmlhbCwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxNCIgZm9udC13ZWlnaHQ9IjYwMCIgZmlsbD0iIzJDMkMyQSI+UHJvamVjdDwvdGV4dD4KPHRleHQgeD0iMzQwIiB5PSIyNjkiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtZmFtaWx5PSJBcmlhbCwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxMiIgZmlsbD0iIzQ0NDQ0MSI+U3VuQ3Jlc3QgU29sYXIgUGFyayAoNTAgTVdwKSDigJQgYXRvbWljIGxvY2F0aW9uIHVuaXQ8L3RleHQ+CjxsaW5lIHgxPSIzNDAiIHkxPSIyODgiIHgyPSIzNDAiIHkyPSIzMjQiIHN0cm9rZT0iIzVGNUU1QSIgc3Ryb2tlLXdpZHRoPSIxLjUiIG1hcmtlci1lbmQ9InVybCgjYXJyb3cpIi8+CjxyZWN0IHg9IjIxMCIgeT0iMzI4IiB3aWR0aD0iMjYwIiBoZWlnaHQ9IjU2IiByeD0iOCIgZmlsbD0iI0UxRjVFRSIgc3Ryb2tlPSIjMEY2RTU2IiBzdHJva2Utd2lkdGg9IjAuNSIvPgo8dGV4dCB4PSIzNDAiIHk9IjM0NyIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1mYW1pbHk9IkFyaWFsLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjE0IiBmb250LXdlaWdodD0iNjAwIiBmaWxsPSIjMDQzNDJDIj5OQyByZWNvcmRzPC90ZXh0Pgo8dGV4dCB4PSIzNDAiIHk9IjM2NSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1mYW1pbHk9IkFyaWFsLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjEyIiBmaWxsPSIjMDg1MDQxIj5wcW1fbm9uX2NvbmZvcm1hbmNlPC90ZXh0Pgo8L3N2Zz4K"
+alt="PQM multi-tenancy hierarchy" />
+<figcaption aria-hidden="true">PQM multi-tenancy hierarchy</figcaption>
+</figure>
+<p>Every NC row carries <code>organization_id</code> and
+<code>business_unit_id</code> even though <code>project_id</code>
+already implies them — this is <strong>required, not redundant</strong>.
+It lets RBAC and row-level filtering happen at the outermost tenant
+boundary without joining through Project on every query, matching the
+BU-isolation pattern already used in your Organization/IAM modules.</p>
+<p>All querysets are scoped server-side by the authenticated user’s
+accessible BU list. Client-supplied
+<code>organization_id</code>/<code>business_unit_id</code> on write
+requests must never be trusted — always resolve from the user’s role
+assignment. Cross-BU visibility (e.g., Org-level Quality Head) is a
+<strong>permission</strong> (<code>pqm.view_all_bu</code>), not a
+data-model exception.</p>
+<hr />
+<h2 id="real-world-case-study-full-lifecycle-walkthrough">4. Real-World
+Case Study — Full Lifecycle Walkthrough</h2>
+<p>Read this before building anything — it exercises almost every rule
+in this spec in one continuous, realistic example. Use it as your
+primary end-to-end QA test script (see Section 23).</p>
+<p><strong>Project:</strong> SunCrest Solar Park — 50 MWp Ground-Mounted
+(Kurnool, Andhra Pradesh) <strong>Tenant:</strong> Org = “Helios
+Renewables EPC Pvt Ltd”, BU = “Solar EPC — South Region”</p>
+<figure>
+<img
+src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjgwIiBoZWlnaHQ9IjU2MCIgdmlld0JveD0iMCAwIDY4MCA1NjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgcm9sZT0iaW1nIj4KPHRpdGxlPkJsb2NrIEQgY2FzZSBzdHVkeSB3b3JrZmxvdzwvdGl0bGU+CjxkZXNjPkVuZC10by1lbmQgY2FzZSBzdHVkeTogUmF2aSByYWlzZXMgYW4gTkMgb24gZGF5IDAgZm9yIHVuZGVyLXRvcnF1ZWQgTU1TIGZvdW5kYXRpb24gcGlsZXMsIGl0IGlzIHJldHVybmVkIGZvciBjb3JyZWN0aW9uLCByZXN1Ym1pdHRlZCBhbmQgYXNzaWduZWQsIGNvcnJlY3RpdmUgcmUtdG9ycXVpbmcgaGFwcGVucyBvdmVyIGRheXMgMiB0byA0LCB2ZXJpZmljYXRpb24gY2hhaW4gYXBwcm92ZXMgb24gZGF5IDUgdG8gY2xvc2UgaXQsIGFuZCBpdCBpcyByZW9wZW5lZCBvbiBkYXkgNDAgZm9yIGEgZGlmZmVyZW50aWFsIHNldHRsZW1lbnQgcmVjdXJyZW5jZSBjaGVjay48L2Rlc2M+CjxkZWZzPjxtYXJrZXIgaWQ9ImFycm93NCIgdmlld0JveD0iMCAwIDEwIDEwIiByZWZYPSI4IiByZWZZPSI1IiBtYXJrZXJXaWR0aD0iNiIgbWFya2VySGVpZ2h0PSI2IiBvcmllbnQ9ImF1dG8tc3RhcnQtcmV2ZXJzZSI+PHBhdGggZD0iTTIgMUw4IDVMMiA5IiBmaWxsPSJub25lIiBzdHJva2U9IiM1RjVFNUEiIHN0cm9rZS13aWR0aD0iMS41IiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz48L21hcmtlcj48L2RlZnM+CjxyZWN0IHdpZHRoPSI2ODAiIGhlaWdodD0iNTYwIiBmaWxsPSIjZmZmZmZmIi8+CjxyZWN0IHg9IjE4MCIgeT0iNDAiIHdpZHRoPSIzMjAiIGhlaWdodD0iNTYiIHJ4PSI4IiBmaWxsPSIjRTZGMUZCIiBzdHJva2U9IiMxODVGQTUiIHN0cm9rZS13aWR0aD0iMC41Ii8+Cjx0ZXh0IHg9IjM0MCIgeT0iNTkiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtZmFtaWx5PSJBcmlhbCwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxNCIgZm9udC13ZWlnaHQ9IjYwMCIgZmlsbD0iIzA0MkM1MyI+RGF5IDAg4oCUIFJhdmkgcmFpc2VzIE5DLUhSRS0yMDI2LTA0ODIxPC90ZXh0Pgo8dGV4dCB4PSIzNDAiIHk9Ijc3IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LWZhbWlseT0iQXJpYWwsIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTIiIGZpbGw9IiMwQzQ0N0MiPlVuZGVyLXRvcnF1ZWQgTU1TIHBpbGVzLCBCbG9jayBEIFJvdyAxNDwvdGV4dD4KPGxpbmUgeDE9IjM0MCIgeTE9Ijk2IiB4Mj0iMzQwIiB5Mj0iMTMyIiBzdHJva2U9IiM1RjVFNUEiIHN0cm9rZS13aWR0aD0iMS41IiBtYXJrZXItZW5kPSJ1cmwoI2Fycm93NCkiLz4KPHJlY3QgeD0iMTgwIiB5PSIxMzYiIHdpZHRoPSIzMjAiIGhlaWdodD0iNTYiIHJ4PSI4IiBmaWxsPSIjRkFFQ0U3IiBzdHJva2U9IiM5OTNDMUQiIHN0cm9rZS13aWR0aD0iMC41Ii8+Cjx0ZXh0IHg9IjM0MCIgeT0iMTU1IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LWZhbWlseT0iQXJpYWwsIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTQiIGZvbnQtd2VpZ2h0PSI2MDAiIGZpbGw9IiM0QTFCMEMiPkRheSAwIOKAlCByZXR1cm5lZCBmb3IgY29ycmVjdGlvbjwvdGV4dD4KPHRleHQgeD0iMzQwIiB5PSIxNzMiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtZmFtaWx5PSJBcmlhbCwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxMiIgZmlsbD0iIzcxMkIxMyI+UHJhc2FkIHJlcXVlc3RzIHRvcnF1ZSBjYWxpYnJhdGlvbiBldmlkZW5jZTwvdGV4dD4KPGxpbmUgeDE9IjM0MCIgeTE9IjE5MiIgeDI9IjM0MCIgeTI9IjIyOCIgc3Ryb2tlPSIjNUY1RTVBIiBzdHJva2Utd2lkdGg9IjEuNSIgbWFya2VyLWVuZD0idXJsKCNhcnJvdzQpIi8+CjxyZWN0IHg9IjE4MCIgeT0iMjMyIiB3aWR0aD0iMzIwIiBoZWlnaHQ9IjU2IiByeD0iOCIgZmlsbD0iI0ZBRUVEQSIgc3Ryb2tlPSIjODU0RjBCIiBzdHJva2Utd2lkdGg9IjAuNSIvPgo8dGV4dCB4PSIzNDAiIHk9IjI1MSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1mYW1pbHk9IkFyaWFsLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjE0IiBmb250LXdlaWdodD0iNjAwIiBmaWxsPSIjNDEyNDAyIj5EYXkgMSDigJQgcmVzdWJtaXR0ZWQsIGFwcHJvdmVkPC90ZXh0Pgo8dGV4dCB4PSIzNDAiIHk9IjI2OSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1mYW1pbHk9IkFyaWFsLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjEyIiBmaWxsPSIjNjMzODA2Ij5Bc3NpZ25lZCB0byBlbmdpbmVlciBBbmlsPC90ZXh0Pgo8bGluZSB4MT0iMzQwIiB5MT0iMjg4IiB4Mj0iMzQwIiB5Mj0iMzI0IiBzdHJva2U9IiM1RjVFNUEiIHN0cm9rZS13aWR0aD0iMS41IiBtYXJrZXItZW5kPSJ1cmwoI2Fycm93NCkiLz4KPHJlY3QgeD0iMTgwIiB5PSIzMjgiIHdpZHRoPSIzMjAiIGhlaWdodD0iNTYiIHJ4PSI4IiBmaWxsPSIjRkFFRURBIiBzdHJva2U9IiM4NTRGMEIiIHN0cm9rZS13aWR0aD0iMC41Ii8+Cjx0ZXh0IHg9IjM0MCIgeT0iMzQ3IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LWZhbWlseT0iQXJpYWwsIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTQiIGZvbnQtd2VpZ2h0PSI2MDAiIGZpbGw9IiM0MTI0MDIiPkRheSAyLTQg4oCUIHJlLXRvcnF1ZSBjb3JyZWN0aXZlIHdvcms8L3RleHQ+Cjx0ZXh0IHg9IjM0MCIgeT0iMzY1IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LWZhbWlseT0iQXJpYWwsIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTIiIGZpbGw9IiM2MzM4MDYiPlJvb3QgY2F1c2UgbG9nZ2VkLCBjbG9zdXJlIHJlcXVlc3RlZDwvdGV4dD4KPGxpbmUgeDE9IjM0MCIgeTE9IjM4NCIgeDI9IjM0MCIgeTI9IjQyMCIgc3Ryb2tlPSIjNUY1RTVBIiBzdHJva2Utd2lkdGg9IjEuNSIgbWFya2VyLWVuZD0idXJsKCNhcnJvdzQpIi8+CjxyZWN0IHg9IjE4MCIgeT0iNDI0IiB3aWR0aD0iMzIwIiBoZWlnaHQ9IjU2IiByeD0iOCIgZmlsbD0iI0UxRjVFRSIgc3Ryb2tlPSIjMEY2RTU2IiBzdHJva2Utd2lkdGg9IjAuNSIvPgo8dGV4dCB4PSIzNDAiIHk9IjQ0MyIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1mYW1pbHk9IkFyaWFsLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjE0IiBmb250LXdlaWdodD0iNjAwIiBmaWxsPSIjMDQzNDJDIj5EYXkgNSDigJQgdmVyaWZpY2F0aW9uIGNoYWluIGFwcHJvdmVzPC90ZXh0Pgo8dGV4dCB4PSIzNDAiIHk9IjQ2MSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1mYW1pbHk9IkFyaWFsLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjEyIiBmaWxsPSIjMDg1MDQxIj5TdGF0dXMgY2xvc2VkLCBTTEEgbWV0PC90ZXh0Pgo8dGV4dCB4PSIzNDAiIHk9IjUwMCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1mYW1pbHk9IkFyaWFsLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjEyIiBmaWxsPSIjNDQ0NDQxIj7ihrsgcmVvcGVuZWQgYWZ0ZXIgNDAgZGF5czwvdGV4dD4KPGxpbmUgeDE9IjM0MCIgeTE9IjUwOCIgeDI9IjM0MCIgeTI9IjUxNiIgc3Ryb2tlPSIjNUY1RTVBIiBzdHJva2Utd2lkdGg9IjEuNSIgbWFya2VyLWVuZD0idXJsKCNhcnJvdzQpIi8+Cjwvc3ZnPgo="
+alt="Block D case study workflow" />
+<figcaption aria-hidden="true">Block D case study workflow</figcaption>
+</figure>
+<p><strong>Day 0 — 06 Jul 2026, 9:40 AM</strong> Site Quality Engineer
+<em>Ravi Kumar</em> finds reactive torque test readings on 6 module
+mounting structure (MMS) foundation piles in Block D, Row 14, recorded
+below the specified 5 kN·m minimum per the structural Design Basis
+Report (<code>DBR-2024-Rev2</code>).</p>
+<ul>
+<li>New NC: Category = Civil &amp; Foundation — Module Mounting
+Structure (MMS), Severity = Major, Priority = High (SLA default 5 days →
+target 11 Jul). Location = Block D, Row 14. Attaches 3 before-photos of
+the torque test readings.</li>
+<li><strong>Validation on Submit:</strong> photo EXIF timestamp within
+last 24 hours and GPS within the project’s registered geofence — passes.
+NC Number generated: <code>NC-HRE-2026-04821</code>.</li>
+<li>Notifications: Site Incharge (<em>Prasad</em>), Site Quality
+Incharge (<em>Meena</em>), Project Incharge (<em>Suresh</em>).</li>
+</ul>
+<p><strong>Day 0, 2:15 PM — Review</strong> The civil supervisor
+disputes the finding. Prasad clicks <strong>Return for
+Correction</strong>: <em>“Please attach the torque wrench calibration
+certificate and geotechnical test log before resubmission.”</em> →
+Status: Draft.</p>
+<p><strong>Day 1, 10:00 AM</strong> Ravi attaches the torque wrench
+calibration certificate and geotechnical test log, resubmits. Prasad
+<strong>Approves</strong>, assigns Contractor = Suryodaya Structural
+Works (MMS erection sub-contractor), Responsible Engineer =
+<em>Anil</em>. → Status: Assigned.</p>
+<p><strong>Day 2–4</strong> Anil’s team re-drives and re-tests the 6
+piles to spec. Day 4: uploads 4 after-photos of the corrected torque
+readings, Root Cause (“Sub-contractor crew used an incorrect torque
+wrench calibration setting for this pile diameter, producing
+under-torqued readings”), Corrective Action, Preventive Action (“Add
+torque wrench calibration verification to the daily pre-work checklist,
+project-wide”). Clicks <strong>Request Closure</strong>.</p>
+<ul>
+<li><strong>Gate check:</strong> root cause present ✅, ≥1 after-photo
+✅ → Status: Verification Pending,
+<code>current_approval_level = 1</code>.</li>
+</ul>
+<p><strong>Day 5 — Verification Chain (3 levels, per this tenant’s
+config)</strong></p>
+<ol type="1">
+<li>Meena (Site Quality Incharge) — Approves. 2. Prasad (Site Incharge)
+— Approves. 3. Suresh (Quality Head) — Approves. → Status:
+<strong>Closed</strong>, <code>actual_closure_date = 2026-07-11</code>
+(SLA met on target; <code>first_time_right = false</code> due to the
+review-stage rework, but <code>sla_breached = false</code>).</li>
+</ol>
+<p><strong>Day 40 — Reopen</strong> Differential settlement is observed
+on an adjacent pile foundation in the same row during a later
+inspection. Site Quality Engineer <em>Divya</em> reopens
+<code>NC-HRE-2026-04821</code> instead of raising a new one:
+<em>“Adjacent pile foundation showing differential settlement in the
+same row, possible recurrence — linking for root-cause trend
+analysis.”</em></p>
+<ul>
+<li>Status → Assigned, <code>reopen_count</code> → 1, full verification
+chain re-triggered from level 1, and a <code>pqm_status_history</code>
+row records the two lifecycles as one chained NC rather than a silent
+duplicate.</li>
+</ul>
+<p><strong>What this proves out:</strong> rejection/rework path,
+EXIF/GPS evidence validation, contractor + engineer assignment,
+gate-checked closure, multi-level verification, SLA math with a rework
+cycle, and reopen-with-audit-trail — all in one script.</p>
+<h3
+id="supplementary-examples-rooftop-and-wind-for-cross-asset-type-qa-coverage">4.1
+Supplementary Examples — Rooftop and Wind (for cross-asset-type QA
+coverage)</h3>
+<p>The core NC workflow (Sections 5, 12) is identical across all three
+asset types; only the category, checklist reference, and project-level
+roles change. Use these two short examples alongside Section 4’s full
+walkthrough when testing rooftop and wind scenarios specifically:</p>
+<p><strong>Rooftop solar example:</strong> During a commercial rooftop
+installation (200 kWp, warehouse roof), a Quality Inspector raises an NC
+for a mounting rail clamp fixed without the specified EPDM waterproofing
+gasket at a roof-penetration point — Category = Rooftop Structural &amp;
+Waterproofing, Severity = Major (roof penetration defects are a common
+source of post-COD leak claims), Priority = High, SLA = 3 days given the
+client’s occupied-building constraint. The NC references the roof
+structural assessment report and the waterproofing detail drawing.
+Closure requires an after-photo of the corrected gasket plus a
+water-ponding test result before Request Closure is enabled.</p>
+<p><strong>Wind power example:</strong> During WTG (Wind Turbine
+Generator) erection, a Site Quality Engineer raises a
+<strong>Safety-Critical</strong> NC
+(<code>is_safety_critical = true</code>, Section 20.4) for a blade root
+bolt torque reading below the OEM-specified value on WTG-14 — Category =
+WTG Erection — Blade, Severity = Major. The safety-critical flag
+auto-sets a 24-hour SLA and fires an immediate parallel notification to
+the Safety Officer role, independent of the normal review chain, since
+an under-torqued blade bolt is a fall-of-load/structural risk. Closure
+requires the OEM torque wrench calibration certificate and a re-torque
+record referencing the WTG’s serial number.</p>
+<hr />
+<h2 id="business-process-flow">5. Business Process Flow</h2>
+<h3 id="end-to-end-workflow">5.1 End-to-End Workflow</h3>
+<pre><code>Daily inspection → deviation found → Raise NC (Draft)
+   → Submit → notify Site Incharge / Site Quality Incharge / Project Incharge
+   → Site Incharge Review
+        ├── Reject/Return → back to Draft (reviewer comment attached)
+        └── Approve → Assign responsible engineer → Status: Assigned
+   → Corrective work → Status: In Progress
+   → After-photos + root cause + Request Closure (gate-checked) → Verification Pending
+   → Verification Chain (configurable, default 3 levels: Site Quality Incharge → Site Incharge → Quality Head)
+        ├── Any level Rejects/Rework → back to Assigned
+        └── All levels Approve → Closed
+   → (optional) Reopen → back to Assigned, full chain re-triggered</code></pre>
+<h3 id="escalation-flow">5.2 Escalation Flow</h3>
+<p>If an NC stays in Assigned/In Progress past its target closure
+date:</p>
+<ul>
+<li>Day 0 (due date): reminder to Assigned Engineer + Site
+Incharge.</li>
+<li>Day +1: escalate to Site Incharge + Project Incharge.</li>
+<li>Day +3: escalate to Quality Head.</li>
+<li>Day +7: flagged “Critical Overdue” on dashboard, weekly digest to
+Org Admin. Escalation offsets are configurable per Organization
+(<code>pqm_escalation_config</code>, Section 8.9) since SLA tolerance
+differs per client contract.</li>
+</ul>
+<h3 id="weather-force-majeure-sla-extensions">5.3 Weather /
+Force-Majeure SLA Extensions</h3>
+<p>Real sites lose days to monsoon rain (civil/foundation works) and to
+high wind-speed days that halt crane lifts for tower, nacelle, and blade
+erection on wind projects; holding an engineer to an SLA breach caused
+by 3 days of continuous weather stand-down pollutes your compliance
+analytics unfairly. Assigned Engineer or Site Incharge can request an
+extension (<code>/extension-request/</code>), requiring approval from
+the next level up before <code>target_closure_date</code> changes. The
+<strong>original</strong> target date is never overwritten — both are
+stored so SLA-compliance reporting can still show whether a breach
+occurred before the extension was granted.</p>
+<hr />
+<h2 id="nc-data-model-business-fields">6. NC Data Model (Business
+Fields)</h2>
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Group</th>
+<th>Fields</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Identification</td>
+<td>NC Number (auto), Organization, BU, Project, <strong>Asset
+Type</strong> (Solar — Ground-Mounted / Solar — Rooftop / Wind)</td>
+</tr>
+<tr class="even">
+<td>Inspection</td>
+<td>Inspection Date, Raised Date, Raised By</td>
+</tr>
+<tr class="odd">
+<td>Issue</td>
+<td>Title, Description, Category, Subcategory, Work Type, Location,
+Block/Row/String (solar) or WTG ID (wind), Zone</td>
+</tr>
+<tr class="even">
+<td>Classification</td>
+<td>Priority (Critical/High/Medium/Low), Severity
+(Major/Minor/Observation), Is Safety-Critical</td>
+</tr>
+<tr class="odd">
+<td>Reference</td>
+<td>Drawing Ref (GA drawing / SLD), Specification Ref (DBR, technical
+spec), Checklist Ref, Standard Ref (IEC/MNRE/CEA)</td>
+</tr>
+<tr class="even">
+<td>Responsibility</td>
+<td>Site Quality Incharge, Project Incharge, Responsible Contractor (EPC
+sub-contractor), Responsible Engineer, Assigned To</td>
+</tr>
+<tr class="odd">
+<td>Timeline</td>
+<td>Target Closure Date (+ extension history), Actual Closure Date,
+Client Captured At (device time)</td>
+</tr>
+<tr class="even">
+<td>Attachments</td>
+<td>Before photos (min 1 at Submit), After photos (min 1 before Request
+Closure), Documents/Drawings, GPS + EXIF metadata</td>
+</tr>
+<tr class="odd">
+<td>Root Cause</td>
+<td>Root Cause Category, Root Cause Description — <strong>mandatory
+before Request Closure</strong>, optional before that</td>
+</tr>
+<tr class="even">
+<td>Action</td>
+<td>Corrective Action, Preventive Action</td>
+</tr>
+<tr class="odd">
+<td>Commercial</td>
+<td>Backcharge Amount, Backcharge Status</td>
+</tr>
+<tr class="even">
+<td>Relationships</td>
+<td>Linked NC (recurring family), Merged Into NC (duplicate
+resolution)</td>
+</tr>
+<tr class="odd">
+<td>Provenance</td>
+<td>Legacy Reference, Is Migrated</td>
+</tr>
+<tr class="even">
+<td>Status</td>
+<td>Per Section 12</td>
+</tr>
+</tbody>
+</table>
+<h3 id="field-level-business-rules">6.1 Field-level Business Rules</h3>
+<ul>
+<li><strong>Asset Type</strong> is set at the Project level (Section 3)
+and inherited by every NC raised against that project — it drives which
+Category/Subcategory list, checklist library, and default severity
+mapping are shown in the NC creation form (Section 11.3). A project
+cannot mix asset types; a solar park and a wind project sharing the same
+Business Unit are still modeled as separate Projects.</li>
+<li><strong>Root Cause</strong>: optional on Draft/Submit,
+<strong>mandatory gate</strong> before Request Closure — otherwise
+closure-time and root-cause analytics fill with nulls.</li>
+<li><strong>Before photos</strong>: enforce ≥1 attachment at Submit — an
+NC without photographic evidence is not audit-defensible, and is often
+required by the lender’s independent engineer (LIE) at COD
+handover.</li>
+<li><strong>After photos</strong>: enforce ≥1 attachment before Request
+Closure is enabled.</li>
+<li><strong>Target Closure Date</strong>: must be ≥ Raised Date; default
+SLA by Priority (Critical=2 days, High=5, Medium=10, Low=20),
+configurable per tenant; Safety-Critical NCs auto-override to 24 hours
+regardless of Priority — relevant here to working-at-height on WTG
+towers/blades and live DC/AC electrical work.</li>
+<li><strong>NC Number</strong>: generated inside a DB transaction with a
+per-organization/year sequence counter using
+<code>SELECT ... FOR UPDATE</code> (never <code>COUNT(*)+1</code>, which
+breaks under concurrent creation). Live and legacy-migrated records use
+separate numbering series (<code>LIVE</code> vs <code>LEGACY</code>) so
+provenance is always visible and the two never collide.</li>
+</ul>
+<h3
+id="category-taxonomy-by-asset-type-tenant-configurable-starting-set">6.2
+Category Taxonomy by Asset Type (tenant-configurable starting set)</h3>
+<p>This is the default <code>pqm_category</code> seed data per asset
+type (Section 8.2) — every tenant can add, rename, or deactivate
+categories, but this is the recommended starting taxonomy so a new
+tenant isn’t starting from a blank list.</p>
+<p><strong>Solar — Ground-Mounted</strong> | Category | Example
+subcategories | |—|—| | Civil &amp; Foundation | Pile foundation, raft
+foundation, torque testing, backfilling, site grading, drainage | |
+Module Mounting Structure (MMS) | Pile driving, torque values, structure
+alignment, corrosion protection/hot-dip galvanizing | | Module
+Installation | Module handling/breakage, clamping torque, row alignment,
+tilt angle | | DC Electrical | String wiring, DC cable routing/dressing,
+combiner box (SCB) termination, earthing/grounding, IV curve/insulation
+resistance | | AC Electrical | Inverter installation, LT/HT cabling,
+transformer, AC yard, switchgear | | SCADA &amp; Communication | Data
+logger, communication cabling, weather station installation | | Civil —
+BoS | Internal roads, boundary fencing, drainage, module washing system
+| | Safety | Working at height, PPE compliance, excavation/trenching
+safety, electrical LOTO |</p>
+<p><strong>Solar — Rooftop</strong> | Category | Example subcategories |
+|—|—| | Rooftop Structural &amp; Waterproofing | Roof load assessment,
+mounting rail/clamp fixing, penetration waterproofing, water-ponding
+test | | Module Installation | Module handling, row/string layout,
+tilt/orientation | | DC/AC Balance of System | DC cabling, combiner box,
+inverter mounting, AC cabling, net-metering interconnection | | Safety |
+Working at height (roof edge protection), fall arrest systems,
+electrical safety |</p>
+<p><strong>Wind Power</strong> | Category | Example subcategories |
+|—|—| | Civil &amp; Foundation | Raft/pile foundation, anchor
+cage/anchor ring alignment, concrete works, backfilling | | WTG Erection
+— Tower | Tower section alignment, flange bolt torque, tower internals |
+| WTG Erection — Nacelle &amp; Hub | Nacelle lift/alignment, hub
+installation, pitch/yaw system checks | | WTG Erection — Blade | Blade
+installation, blade root bolt torque, blade alignment/pitch angle | |
+WTG Electrical &amp; Control | Control panel, converter/transformer
+(in-tower), cabling, earthing | | Cabling &amp; Pooling Substation |
+Inter-array cabling, trenching, pooling substation civil/electrical
+works | | Safety | Working at height (tower/nacelle/blade), crane lift
+safety, electrical LOTO |</p>
+<hr />
+<h2 id="user-roles-rbac">7. User Roles &amp; RBAC</h2>
+<p>Plugs into YSS Orbit’s existing BU-scoped RBAC engine — does not
+invent a parallel permission system.</p>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Role</th>
+<th>Typical Scope</th>
+<th>Summary</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Platform Admin</td>
+<td>Cross-tenant</td>
+<td>System configuration only, no NC data access by default</td>
+</tr>
+<tr class="even">
+<td>Organization Admin</td>
+<td>Org</td>
+<td>Full config rights; not automatically in the approval chain</td>
+</tr>
+<tr class="odd">
+<td>Business Unit Admin</td>
+<td>BU</td>
+<td>Manages BU-level PQM config (categories, SLA overrides) — typically
+one BU per asset type (Solar EPC, Wind EPC)</td>
+</tr>
+<tr class="even">
+<td>Quality Head</td>
+<td>Org or multi-BU</td>
+<td>Final approver; full dashboard visibility across granted BUs,
+spanning solar and wind portfolios</td>
+</tr>
+<tr class="odd">
+<td>Regional Quality Manager</td>
+<td>Multi-Project</td>
+<td>Oversight + escalation visibility across a region’s solar parks and
+wind projects</td>
+</tr>
+<tr class="even">
+<td>Project Manager / Project Incharge</td>
+<td>Project</td>
+<td>Reviews/approves at project level, assigns engineers</td>
+</tr>
+<tr class="odd">
+<td>Site Incharge</td>
+<td>Project</td>
+<td>First-level reviewer, assigns responsible engineer</td>
+</tr>
+<tr class="even">
+<td>Site Quality Incharge</td>
+<td>Project</td>
+<td>Verification approver, day-to-day quality ownership</td>
+</tr>
+<tr class="odd">
+<td>Civil/Foundation Quality Engineer</td>
+<td>Project</td>
+<td>Raises/verifies NCs on civil, foundation, and MMS-erection
+scope</td>
+</tr>
+<tr class="even">
+<td>Electrical Quality Engineer (DC/AC)</td>
+<td>Project</td>
+<td>Raises/verifies NCs on DC string, combiner box, inverter, and
+AC-side scope</td>
+</tr>
+<tr class="odd">
+<td>Balance of Plant (BoP) Quality Engineer</td>
+<td>Project</td>
+<td>Raises/verifies NCs on SCADA, communication, internal roads, and
+other BoP scope</td>
+</tr>
+<tr class="even">
+<td>WTG Erection Quality Engineer</td>
+<td>Project (Wind)</td>
+<td>Raises/verifies NCs on tower, nacelle, hub, and blade erection scope
+specifically</td>
+</tr>
+<tr class="odd">
+<td>Senior Site Engineer / Site Engineer</td>
+<td>Project</td>
+<td>Raises NCs, performs/records corrective work</td>
+</tr>
+<tr class="even">
+<td>Quality Inspector / QA-QC Engineer</td>
+<td>Project</td>
+<td>Raises NCs, inspection execution</td>
+</tr>
+<tr class="odd">
+<td>Safety Officer</td>
+<td>Org/Project</td>
+<td>Parallel notification recipient for safety-critical NCs (working at
+height, live electrical, crane lifts); no approval-chain role by
+default</td>
+</tr>
+<tr class="even">
+<td>Auditor</td>
+<td>Org (read-only)</td>
+<td>Full read access + export, zero write access, sees full audit
+log</td>
+</tr>
+<tr class="odd">
+<td>External Client Auditor</td>
+<td>Project(s)</td>
+<td>Read-only, project-scoped (not BU-wide) — covers both the
+developer/IPP client and the lender’s independent engineer (LIE);
+export-enabled, comment threads hidden unless toggled per project</td>
+</tr>
+<tr class="even">
+<td>Read-only / Viewer</td>
+<td>Configurable</td>
+<td>Dashboard + report visibility only</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Design note:</strong> these are seed data (default roles
+created per new Organization), not a hardcoded enum — admins can rename,
+clone, or adjust permissions on them, consistent with how
+Organization/IAM already treats roles as configurable. The four
+trade-specific engineer roles above (Civil/Foundation, Electrical DC/AC,
+BoP, WTG Erection) are a <strong>recommended default seed for a
+renewable EPC tenant</strong> — a tenant running solar-only can
+deactivate the WTG Erection role, and vice versa for a wind-only tenant,
+without any schema change (Section 8, Appendix A.3).</p>
+<hr />
+<h2 id="database-design-full-schema">8. Database Design (Full
+Schema)</h2>
+<p>Naming convention: snake_case, prefix <code>pqm_</code>. Every table
+has the standard audit + soft-delete columns below.</p>
+<h3 id="shared-auditsoft-delete-columns-every-table">8.0 Shared
+audit/soft-delete columns (every table)</h3>
+<pre><code>id                  UUID PK (default uuid4)
+organization_id     UUID FK -&gt; core_organization.id       NOT NULL
+business_unit_id    UUID FK -&gt; core_business_unit.id      NOT NULL
+created_by          UUID FK -&gt; core_user.id               NOT NULL
+created_at          TIMESTAMPTZ NOT NULL default now()
+updated_by          UUID FK -&gt; core_user.id               NULL
+updated_at          TIMESTAMPTZ NOT NULL default now()
+is_deleted          BOOLEAN NOT NULL default false
+deleted_by          UUID FK -&gt; core_user.id               NULL
+deleted_at          TIMESTAMPTZ NULL</code></pre>
+<h3 id="pqm_non_conformance-core-table">8.1
+<code>pqm_non_conformance</code> (core table)</h3>
+<pre><code>id                        UUID PK
+nc_number                 VARCHAR(30) UNIQUE NOT NULL     -- NC-ORG-2026-00001 / NC-ORG-LEGACY-00001
+project_id                UUID FK -&gt; core_project.id       NOT NULL
+inspection_date           DATE NOT NULL
+raised_date               TIMESTAMPTZ NOT NULL default now()
+raised_by_id              UUID FK -&gt; core_user.id          NOT NULL
+title                     VARCHAR(255) NOT NULL
+description               TEXT NOT NULL
+category_id               UUID FK -&gt; pqm_category.id       NOT NULL
+subcategory_id            UUID FK -&gt; pqm_category.id       NULL
+work_type                 VARCHAR(100) NULL
+location                  VARCHAR(255) NULL
+floor                     VARCHAR(50) NULL
+block                     VARCHAR(50) NULL
+zone                      VARCHAR(50) NULL
+priority                  VARCHAR(20) NOT NULL
+severity                  VARCHAR(20) NOT NULL
+is_safety_critical        BOOLEAN NOT NULL default false
+drawing_reference         VARCHAR(255) NULL
+specification_reference   VARCHAR(255) NULL
+checklist_reference       VARCHAR(255) NULL
+standard_reference        VARCHAR(255) NULL
+site_quality_incharge_id  UUID FK -&gt; core_user.id          NULL
+project_incharge_id       UUID FK -&gt; core_user.id          NULL
+responsible_contractor_id UUID FK -&gt; pqm_contractor.id     NULL
+responsible_engineer_id   UUID FK -&gt; core_user.id          NULL
+assigned_to_id            UUID FK -&gt; core_user.id          NULL
+target_closure_date       DATE NOT NULL
+actual_closure_date       DATE NULL
+client_captured_at        TIMESTAMPTZ NULL
+root_cause_category       VARCHAR(100) NULL
+root_cause_description    TEXT NULL
+corrective_action         TEXT NULL
+preventive_action         TEXT NULL
+backcharge_amount         DECIMAL(12,2) NULL
+backcharge_status         VARCHAR(30) NOT NULL default &#39;Not Applicable&#39;
+linked_nc_id              UUID FK -&gt; pqm_non_conformance.id NULL
+merged_into_nc_id         UUID FK -&gt; pqm_non_conformance.id NULL
+legacy_reference          VARCHAR(100) NULL
+is_migrated               BOOLEAN NOT NULL default false
+status                    VARCHAR(30) NOT NULL default &#39;Draft&#39;
+current_approval_level    SMALLINT NOT NULL default 0
+reopen_count              SMALLINT NOT NULL default 0
+[+ shared audit columns from 8.0]
+
+INDEXES:
+  (organization_id, business_unit_id, status)
+  (project_id, status)
+  (assigned_to_id, status)
+  (target_closure_date) WHERE status NOT IN (&#39;Closed&#39;,&#39;Rejected&#39;,&#39;Merged&#39;)</code></pre>
+<p><strong>Note:</strong> <code>site_quality_incharge_id</code> keeps
+its name as a role/responsibility reference (matching the “Site Quality
+Incharge” job title in Section 7) — it is a <code>core_user</code> FK,
+not a link to a Site entity. There is no <code>site_id</code> column and
+no <code>core_site</code> table anywhere in this schema;
+<code>project_id</code> is the only location-hierarchy FK on this
+table.</p>
+<h3 id="pqm_category-self-referential-tenant-configurable">8.2
+<code>pqm_category</code> (self-referential, tenant-configurable)</h3>
+<p><code>id, organization_id, name, parent_id (FK self), is_active, display_order</code>
+[+ audit columns]</p>
+<h3 id="pqm_contractor">8.3 <code>pqm_contractor</code></h3>
+<p><code>id, organization_id, business_unit_id, name, contact_person, contact_email, contact_phone, is_active</code>
+[+ audit columns]</p>
+<h3 id="pqm_attachment">8.4 <code>pqm_attachment</code></h3>
+<pre><code>id, nc_id (FK), file_url, file_type,
+attachment_stage (&#39;before&#39;|&#39;after&#39;|&#39;document&#39;|&#39;drawing&#39;|&#39;report&#39;),
+version SMALLINT default 1, description VARCHAR(255) NULL,
+photo_gps_lat DECIMAL(9,6) NULL, photo_gps_lng DECIMAL(9,6) NULL,
+photo_captured_at TIMESTAMPTZ NULL, photo_exif_hash VARCHAR(64) NULL,
+gps_within_geofence BOOLEAN NULL,
+uploaded_by_id, uploaded_at
+[+ shared audit columns]
+
+INDEX: (nc_id, attachment_stage)</code></pre>
+<h3 id="pqm_approval_step-drives-the-verification-chain-generically">8.5
+<code>pqm_approval_step</code> (drives the verification chain
+generically)</h3>
+<pre><code>id, nc_id (FK), stage (&#39;review&#39;|&#39;verification&#39;), sequence_order SMALLINT NOT NULL,
+approver_role_id (FK -&gt; core_role.id), approver_user_id (FK -&gt; core_user.id) NULL,
+decision (&#39;Pending&#39;|&#39;Approved&#39;|&#39;Rejected&#39;|&#39;Rework&#39;) default &#39;Pending&#39;,
+comments TEXT NULL, decided_at TIMESTAMPTZ NULL
+[+ shared audit columns]
+
+UNIQUE (nc_id, stage, sequence_order)</code></pre>
+<p>This is what makes the approval chain configurable per organization
+(2–4 approvers) instead of hardcoding roles in application code.</p>
+<h3 id="pqm_status_history">8.6 <code>pqm_status_history</code></h3>
+<p><code>id, nc_id (FK), from_status, to_status, event_type ('StatusChange'|'Reassigned'), changed_by_id, changed_at, comments</code>
+[+ audit columns]</p>
+<h3 id="pqm_comment">8.7 <code>pqm_comment</code></h3>
+<p><code>id, nc_id (FK), author_id, body TEXT, created_at</code> [+
+audit columns]</p>
+<h3 id="pqm_notification_log">8.8 <code>pqm_notification_log</code></h3>
+<p><code>id, nc_id (FK), recipient_id, channel ('email'|'in_app'), event_type, sent_at, read_at NULL, delivery_status</code>
+[+ audit columns]</p>
+<h3 id="pqm_escalation_config-tenant-sla-configuration">8.9
+<code>pqm_escalation_config</code> (tenant SLA configuration)</h3>
+<p><code>id, organization_id, priority, sla_days, escalation_day_1_offset, escalation_day_2_offset, notify_role_day_1_id (FK), notify_role_day_2_id (FK)</code>
+[+ audit columns]</p>
+<h3 id="pqm_sequence_counter">8.10
+<code>pqm_sequence_counter</code></h3>
+<p><code>organization_id (PK, FK), year SMALLINT (PK), series VARCHAR(10) (PK) ['LIVE'|'LEGACY'], last_number INTEGER default 0</code></p>
+<h3 id="pqm_extension_request">8.11
+<code>pqm_extension_request</code></h3>
+<p><code>id, nc_id (FK), requested_by_id, original_target_date, new_target_date, reason TEXT, approved_by_id NULL, decision VARCHAR(20) default 'Pending', decided_at NULL</code>
+[+ audit columns]</p>
+<h3 id="pqm_project_geofence">8.12
+<code>pqm_project_geofence</code></h3>
+<p><code>id, project_id (FK, unique), center_lat, center_lng, radius_meters default 500</code>
+[+ audit columns]</p>
+<h3 id="entity-relationship-summary">8.13 Entity-Relationship
+Summary</h3>
+<pre><code>core_organization ─&lt; core_business_unit ─&lt; core_project ─&lt; pqm_non_conformance
+pqm_non_conformance ─&lt; pqm_attachment
+pqm_non_conformance ─&lt; pqm_approval_step
+pqm_non_conformance ─&lt; pqm_status_history
+pqm_non_conformance ─&lt; pqm_comment
+pqm_non_conformance ─&lt; pqm_notification_log
+pqm_non_conformance ─&lt; pqm_extension_request
+pqm_non_conformance &gt;─ pqm_category (category_id, subcategory_id)
+pqm_non_conformance &gt;─ pqm_contractor (responsible_contractor_id)
+pqm_non_conformance &gt;─ pqm_non_conformance (linked_nc_id, merged_into_nc_id — self-referential)
+pqm_non_conformance &gt;─ core_user (raised_by, assigned_to, ...)
+core_project ─| pqm_project_geofence (via project_id, used by pqm_attachment for GPS validation)</code></pre>
+<figure>
+<img
+src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNzIwIiBoZWlnaHQ9IjYyMCIgdmlld0JveD0iMCAwIDcyMCA2MjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgcm9sZT0iaW1nIj4KPHRpdGxlPlBRTSBlbnRpdHktcmVsYXRpb25zaGlwIGRpYWdyYW08L3RpdGxlPgo8ZGVzYz5Ob24tQ29uZm9ybWFuY2UgaXMgdGhlIGNlbnRyYWwgdGFibGUsIHJlbGF0ZWQgdG8gQ2F0ZWdvcnksIENvbnRyYWN0b3IsIFByb2plY3QsIEF0dGFjaG1lbnQsIEFwcHJvdmFsIFN0ZXAsIFN0YXR1cyBIaXN0b3J5LCBDb21tZW50LCBhbmQgRXh0ZW5zaW9uIFJlcXVlc3QuIFByb2plY3QgaXMgdGhlIGF0b21pYyBsb2NhdGlvbiB1bml0OyB0aGVyZSBpcyBubyBzZXBhcmF0ZSBTaXRlIGVudGl0eS48L2Rlc2M+CjxkZWZzPjxtYXJrZXIgaWQ9ImFycm93RSIgdmlld0JveD0iMCAwIDEwIDEwIiByZWZYPSI4IiByZWZZPSI1IiBtYXJrZXJXaWR0aD0iNiIgbWFya2VySGVpZ2h0PSI2IiBvcmllbnQ9ImF1dG8tc3RhcnQtcmV2ZXJzZSI+PHBhdGggZD0iTTIgMUw4IDVMMiA5IiBmaWxsPSJub25lIiBzdHJva2U9IiM1RjVFNUEiIHN0cm9rZS13aWR0aD0iMS41IiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz48L21hcmtlcj48L2RlZnM+CjxyZWN0IHdpZHRoPSI3MjAiIGhlaWdodD0iNjIwIiBmaWxsPSIjZmZmZmZmIi8+Cgo8cmVjdCB4PSIyNjAiIHk9IjI3MiIgd2lkdGg9IjIwMCIgaGVpZ2h0PSI3NiIgcng9IjgiIGZpbGw9IiNFMUY1RUUiIHN0cm9rZT0iIzBGNkU1NiIgc3Ryb2tlLXdpZHRoPSIxIi8+Cjx0ZXh0IHg9IjM2MCIgeT0iMjk4IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LWZhbWlseT0iQXJpYWwsIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTUiIGZvbnQtd2VpZ2h0PSI3MDAiIGZpbGw9IiMwNDM0MkMiPnBxbV9ub25fY29uZm9ybWFuY2U8L3RleHQ+Cjx0ZXh0IHg9IjM2MCIgeT0iMzE4IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LWZhbWlseT0iQXJpYWwsIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTEiIGZpbGw9IiMwODUwNDEiPm5jX251bWJlciwgc3RhdHVzLCBwcmlvcml0eSw8L3RleHQ+Cjx0ZXh0IHg9IjM2MCIgeT0iMzM0IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LWZhbWlseT0iQXJpYWwsIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTEiIGZpbGw9IiMwODUwNDEiPmlzX3NhZmV0eV9jcml0aWNhbCwgdGFyZ2V0X2Nsb3N1cmVfZGF0ZTwvdGV4dD4KCjxyZWN0IHg9IjIwIiB5PSIyMCIgd2lkdGg9IjE4MCIgaGVpZ2h0PSI1MiIgcng9IjgiIGZpbGw9IiNGMUVGRTgiIHN0cm9rZT0iIzVGNUU1QSIgc3Ryb2tlLXdpZHRoPSIwLjUiLz4KPHRleHQgeD0iMTEwIiB5PSI0MiIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1mYW1pbHk9IkFyaWFsLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjEzIiBmb250LXdlaWdodD0iNjAwIiBmaWxsPSIjMkMyQzJBIj5wcW1fY2F0ZWdvcnk8L3RleHQ+Cjx0ZXh0IHg9IjExMCIgeT0iNjAiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtZmFtaWx5PSJBcmlhbCwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxMSIgZmlsbD0iIzQ0NDQ0MSI+Y2xhc3NpZmllZF9hczwvdGV4dD4KPGxpbmUgeDE9IjIwMCIgeTE9IjU1IiB4Mj0iMjcwIiB5Mj0iMjgwIiBzdHJva2U9IiM1RjVFNUEiIHN0cm9rZS13aWR0aD0iMS4yIiBtYXJrZXItZW5kPSJ1cmwoI2Fycm93RSkiLz4KCjxyZWN0IHg9IjI3MCIgeT0iMjAiIHdpZHRoPSIxODAiIGhlaWdodD0iNTIiIHJ4PSI4IiBmaWxsPSIjRjFFRkU4IiBzdHJva2U9IiM1RjVFNUEiIHN0cm9rZS13aWR0aD0iMC41Ii8+Cjx0ZXh0IHg9IjM2MCIgeT0iNDIiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtZmFtaWx5PSJBcmlhbCwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxMyIgZm9udC13ZWlnaHQ9IjYwMCIgZmlsbD0iIzJDMkMyQSI+cHFtX2NvbnRyYWN0b3I8L3RleHQ+Cjx0ZXh0IHg9IjM2MCIgeT0iNjAiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtZmFtaWx5PSJBcmlhbCwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxMSIgZmlsbD0iIzQ0NDQ0MSI+YXNzaWduZWRfdG8gKG9wdGlvbmFsKTwvdGV4dD4KPGxpbmUgeDE9IjM2MCIgeTE9IjcyIiB4Mj0iMzYwIiB5Mj0iMjY4IiBzdHJva2U9IiM1RjVFNUEiIHN0cm9rZS13aWR0aD0iMS4yIiBtYXJrZXItZW5kPSJ1cmwoI2Fycm93RSkiLz4KCjxyZWN0IHg9IjUyMCIgeT0iMjAiIHdpZHRoPSIxODAiIGhlaWdodD0iNTIiIHJ4PSI4IiBmaWxsPSIjRjFFRkU4IiBzdHJva2U9IiM1RjVFNUEiIHN0cm9rZS13aWR0aD0iMC41Ii8+Cjx0ZXh0IHg9IjYxMCIgeT0iNDIiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtZmFtaWx5PSJBcmlhbCwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxMyIgZm9udC13ZWlnaHQ9IjYwMCIgZmlsbD0iIzJDMkMyQSI+Y29yZV9wcm9qZWN0PC90ZXh0Pgo8dGV4dCB4PSI2MTAiIHk9IjYwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LWZhbWlseT0iQXJpYWwsIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTEiIGZpbGw9IiM0NDQ0NDEiPmNvbnRhaW5zICgxIDogbWFueSkg4oCUIGF0b21pYyBsb2NhdGlvbiB1bml0PC90ZXh0Pgo8bGluZSB4MT0iNjEwIiB5MT0iNzIiIHgyPSI0NzAiIHkyPSIyODAiIHN0cm9rZT0iIzVGNUU1QSIgc3Ryb2tlLXdpZHRoPSIxLjIiIG1hcmtlci1lbmQ9InVybCgjYXJyb3dFKSIvPgoKPHJlY3QgeD0iMjAiIHk9IjI4NCIgd2lkdGg9IjIwMCIgaGVpZ2h0PSI1MiIgcng9IjgiIGZpbGw9IiNFNkYxRkIiIHN0cm9rZT0iIzE4NUZBNSIgc3Ryb2tlLXdpZHRoPSIwLjUiLz4KPHRleHQgeD0iMTIwIiB5PSIzMDYiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtZmFtaWx5PSJBcmlhbCwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxMyIgZm9udC13ZWlnaHQ9IjYwMCIgZmlsbD0iIzA0MkM1MyI+cHFtX2F0dGFjaG1lbnQ8L3RleHQ+Cjx0ZXh0IHg9IjEyMCIgeT0iMzI0IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LWZhbWlseT0iQXJpYWwsIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTEiIGZpbGw9IiMwQzQ0N0MiPkdQUywgRVhJRiwgdmVyc2lvbjwvdGV4dD4KPGxpbmUgeDE9IjIyMCIgeTE9IjMxMCIgeDI9IjI1NiIgeTI9IjMwOCIgc3Ryb2tlPSIjNUY1RTVBIiBzdHJva2Utd2lkdGg9IjEuMiIgbWFya2VyLWVuZD0idXJsKCNhcnJvd0UpIi8+Cgo8cmVjdCB4PSIyMCIgeT0iMzkyIiB3aWR0aD0iMjAwIiBoZWlnaHQ9IjUyIiByeD0iOCIgZmlsbD0iI0U2RjFGQiIgc3Ryb2tlPSIjMTg1RkE1IiBzdHJva2Utd2lkdGg9IjAuNSIvPgo8dGV4dCB4PSIxMjAiIHk9IjQxNCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1mYW1pbHk9IkFyaWFsLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjEzIiBmb250LXdlaWdodD0iNjAwIiBmaWxsPSIjMDQyQzUzIj5wcW1fYXBwcm92YWxfc3RlcDwvdGV4dD4KPHRleHQgeD0iMTIwIiB5PSI0MzIiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtZmFtaWx5PSJBcmlhbCwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxMSIgZmlsbD0iIzBDNDQ3QyI+c3RhZ2UsIHNlcXVlbmNlX29yZGVyPC90ZXh0Pgo8bGluZSB4MT0iMjIwIiB5MT0iNDEwIiB4Mj0iMjcwIiB5Mj0iMzQwIiBzdHJva2U9IiM1RjVFNUEiIHN0cm9rZS13aWR0aD0iMS4yIiBtYXJrZXItZW5kPSJ1cmwoI2Fycm93RSkiLz4KCjxyZWN0IHg9IjUwMCIgeT0iMjg0IiB3aWR0aD0iMjAwIiBoZWlnaHQ9IjUyIiByeD0iOCIgZmlsbD0iI0VFRURGRSIgc3Ryb2tlPSIjNTM0QUI3IiBzdHJva2Utd2lkdGg9IjAuNSIvPgo8dGV4dCB4PSI2MDAiIHk9IjMwNiIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1mYW1pbHk9IkFyaWFsLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjEzIiBmb250LXdlaWdodD0iNjAwIiBmaWxsPSIjMjYyMTVDIj5wcW1fc3RhdHVzX2hpc3Rvcnk8L3RleHQ+Cjx0ZXh0IHg9IjYwMCIgeT0iMzI0IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LWZhbWlseT0iQXJpYWwsIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTEiIGZpbGw9IiMzQzM0ODkiPmZyb21fc3RhdHVzLCB0b19zdGF0dXM8L3RleHQ+CjxsaW5lIHgxPSI1MDAiIHkxPSIzMDgiIHgyPSI0NjQiIHkyPSIzMDgiIHN0cm9rZT0iIzVGNUU1QSIgc3Ryb2tlLXdpZHRoPSIxLjIiIG1hcmtlci1lbmQ9InVybCgjYXJyb3dFKSIvPgoKPHJlY3QgeD0iNTAwIiB5PSIzOTIiIHdpZHRoPSIyMDAiIGhlaWdodD0iNTIiIHJ4PSI4IiBmaWxsPSIjRUVFREZFIiBzdHJva2U9IiM1MzRBQjciIHN0cm9rZS13aWR0aD0iMC41Ii8+Cjx0ZXh0IHg9IjYwMCIgeT0iNDE0IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LWZhbWlseT0iQXJpYWwsIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTMiIGZvbnQtd2VpZ2h0PSI2MDAiIGZpbGw9IiMyNjIxNUMiPnBxbV9jb21tZW50PC90ZXh0Pgo8dGV4dCB4PSI2MDAiIHk9IjQzMiIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1mYW1pbHk9IkFyaWFsLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjExIiBmaWxsPSIjM0MzNDg5Ij5hdXRob3IsIGJvZHksIGNyZWF0ZWRfYXQ8L3RleHQ+CjxsaW5lIHgxPSI1MDAiIHkxPSI0MTAiIHgyPSI0NTIiIHkyPSIzNDAiIHN0cm9rZT0iIzVGNUU1QSIgc3Ryb2tlLXdpZHRoPSIxLjIiIG1hcmtlci1lbmQ9InVybCgjYXJyb3dFKSIvPgoKPHJlY3QgeD0iMjYwIiB5PSI1MDAiIHdpZHRoPSIyMDAiIGhlaWdodD0iNTIiIHJ4PSI4IiBmaWxsPSIjRkFFRURBIiBzdHJva2U9IiM4NTRGMEIiIHN0cm9rZS13aWR0aD0iMC41Ii8+Cjx0ZXh0IHg9IjM2MCIgeT0iNTIyIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LWZhbWlseT0iQXJpYWwsIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTMiIGZvbnQtd2VpZ2h0PSI2MDAiIGZpbGw9IiM0MTI0MDIiPnBxbV9leHRlbnNpb25fcmVxdWVzdDwvdGV4dD4KPHRleHQgeD0iMzYwIiB5PSI1NDAiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtZmFtaWx5PSJBcmlhbCwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxMSIgZmlsbD0iIzYzMzgwNiI+b3JpZ2luYWwgLyBuZXcgdGFyZ2V0IGRhdGU8L3RleHQ+CjxsaW5lIHgxPSIzNjAiIHkxPSIzNDgiIHgyPSIzNjAiIHkyPSI0OTYiIHN0cm9rZT0iIzVGNUU1QSIgc3Ryb2tlLXdpZHRoPSIxLjIiIG1hcmtlci1lbmQ9InVybCgjYXJyb3dFKSIvPgoKPHJlY3QgeD0iMjYwIiB5PSIxNDAiIHdpZHRoPSIyMDAiIGhlaWdodD0iNTIiIHJ4PSI4IiBmaWxsPSIjRkFFQ0U3IiBzdHJva2U9IiM5OTNDMUQiIHN0cm9rZS13aWR0aD0iMC41Ii8+Cjx0ZXh0IHg9IjM2MCIgeT0iMTYyIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LWZhbWlseT0iQXJpYWwsIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTMiIGZvbnQtd2VpZ2h0PSI2MDAiIGZpbGw9IiM0QTFCMEMiPnBxbV9ub25fY29uZm9ybWFuY2U8L3RleHQ+Cjx0ZXh0IHg9IjM2MCIgeT0iMTgwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LWZhbWlseT0iQXJpYWwsIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTEiIGZpbGw9IiM3MTJCMTMiPmxpbmtlZF9uY19pZCAvIG1lcmdlZF9pbnRvX25jX2lkIChzZWxmLXJlZik8L3RleHQ+CjxsaW5lIHgxPSIzNjAiIHkxPSIxOTIiIHgyPSIzNjAiIHkyPSIyNjgiIHN0cm9rZT0iIzVGNUU1QSIgc3Ryb2tlLXdpZHRoPSIxLjIiIG1hcmtlci1lbmQ9InVybCgjYXJyb3dFKSIvPgo8cGF0aCBkPSJNMjYwIDE2NiBDIDE1MCAxNjYsIDE1MCAzMDYsIDI1NiAzMDYiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzVGNUU1QSIgc3Ryb2tlLXdpZHRoPSIxLjIiIG1hcmtlci1lbmQ9InVybCgjYXJyb3dFKSIvPgo8L3N2Zz4K"
+alt="PQM entity-relationship diagram" />
+<figcaption aria-hidden="true">PQM entity-relationship
+diagram</figcaption>
+</figure>
+<hr />
+<h2 id="backend-architecture-django">9. Backend Architecture
+(Django)</h2>
+<figure>
+<img
+src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjgwIiBoZWlnaHQ9IjMyOCIgdmlld0JveD0iMCAwIDY4MCAzMjgiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgcm9sZT0iaW1nIj4KPHRpdGxlPlBRTSBzeXN0ZW0gYXJjaGl0ZWN0dXJlPC90aXRsZT4KPGRlc2M+VGhyZWUtdGllciBhcmNoaXRlY3R1cmU6IFJlYWN0IGZyb250ZW5kLCBEamFuZ28gYmFja2VuZCwgUG9zdGdyZVNRTCBkYXRhYmFzZSwgd2l0aCBzaGFyZWQgUkJBQyBlbmdpbmUgYW5kIG5vdGlmaWNhdGlvbi9hc3luYyBzZXJ2aWNlcyBjb25uZWN0aW5nIGludG8gdGhlIGJhY2tlbmQuPC9kZXNjPgo8ZGVmcz48bWFya2VyIGlkPSJhcnJvdzIiIHZpZXdCb3g9IjAgMCAxMCAxMCIgcmVmWD0iOCIgcmVmWT0iNSIgbWFya2VyV2lkdGg9IjYiIG1hcmtlckhlaWdodD0iNiIgb3JpZW50PSJhdXRvLXN0YXJ0LXJldmVyc2UiPjxwYXRoIGQ9Ik0yIDFMOCA1TDIgOSIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjNUY1RTVBIiBzdHJva2Utd2lkdGg9IjEuNSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIi8+PC9tYXJrZXI+PC9kZWZzPgo8cmVjdCB3aWR0aD0iNjgwIiBoZWlnaHQ9IjMyOCIgZmlsbD0iI2ZmZmZmZiIvPgo8cmVjdCB4PSIyMzAiIHk9IjQwIiB3aWR0aD0iMjIwIiBoZWlnaHQ9IjU2IiByeD0iOCIgZmlsbD0iI0U2RjFGQiIgc3Ryb2tlPSIjMTg1RkE1IiBzdHJva2Utd2lkdGg9IjAuNSIvPgo8dGV4dCB4PSIzNDAiIHk9IjU5IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LWZhbWlseT0iQXJpYWwsIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTQiIGZvbnQtd2VpZ2h0PSI2MDAiIGZpbGw9IiMwNDJDNTMiPkZyb250ZW5kPC90ZXh0Pgo8dGV4dCB4PSIzNDAiIHk9Ijc3IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LWZhbWlseT0iQXJpYWwsIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTIiIGZpbGw9IiMwQzQ0N0MiPlJlYWN0ICsgVHlwZVNjcmlwdDwvdGV4dD4KPGxpbmUgeDE9IjM0MCIgeTE9Ijk2IiB4Mj0iMzQwIiB5Mj0iMTMyIiBzdHJva2U9IiM1RjVFNUEiIHN0cm9rZS13aWR0aD0iMS41IiBtYXJrZXItZW5kPSJ1cmwoI2Fycm93MikiLz4KPHJlY3QgeD0iMjMwIiB5PSIxMzYiIHdpZHRoPSIyMjAiIGhlaWdodD0iNTYiIHJ4PSI4IiBmaWxsPSIjRUVFREZFIiBzdHJva2U9IiM1MzRBQjciIHN0cm9rZS13aWR0aD0iMC41Ii8+Cjx0ZXh0IHg9IjM0MCIgeT0iMTU1IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LWZhbWlseT0iQXJpYWwsIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTQiIGZvbnQtd2VpZ2h0PSI2MDAiIGZpbGw9IiMyNjIxNUMiPkJhY2tlbmQ8L3RleHQ+Cjx0ZXh0IHg9IjM0MCIgeT0iMTczIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LWZhbWlseT0iQXJpYWwsIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTIiIGZpbGw9IiMzQzM0ODkiPkRqYW5nbyBSRVNUIEZyYW1ld29yazwvdGV4dD4KPGxpbmUgeDE9IjM0MCIgeTE9IjE5MiIgeDI9IjM0MCIgeTI9IjIyOCIgc3Ryb2tlPSIjNUY1RTVBIiBzdHJva2Utd2lkdGg9IjEuNSIgbWFya2VyLWVuZD0idXJsKCNhcnJvdzIpIi8+CjxyZWN0IHg9IjIzMCIgeT0iMjMyIiB3aWR0aD0iMjIwIiBoZWlnaHQ9IjU2IiByeD0iOCIgZmlsbD0iI0UxRjVFRSIgc3Ryb2tlPSIjMEY2RTU2IiBzdHJva2Utd2lkdGg9IjAuNSIvPgo8dGV4dCB4PSIzNDAiIHk9IjI1MSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1mYW1pbHk9IkFyaWFsLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjE0IiBmb250LXdlaWdodD0iNjAwIiBmaWxsPSIjMDQzNDJDIj5EYXRhYmFzZTwvdGV4dD4KPHRleHQgeD0iMzQwIiB5PSIyNjkiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtZmFtaWx5PSJBcmlhbCwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxMiIgZmlsbD0iIzA4NTA0MSI+UG9zdGdyZVNRTDwvdGV4dD4KPGxpbmUgeDE9IjE5MCIgeTE9IjE2NCIgeDI9IjIyNiIgeTI9IjE2NCIgc3Ryb2tlPSIjNUY1RTVBIiBzdHJva2Utd2lkdGg9IjEuNSIgbWFya2VyLWVuZD0idXJsKCNhcnJvdzIpIi8+CjxyZWN0IHg9IjQwIiB5PSIxMzYiIHdpZHRoPSIxNTAiIGhlaWdodD0iNTYiIHJ4PSI4IiBmaWxsPSIjRjFFRkU4IiBzdHJva2U9IiM1RjVFNUEiIHN0cm9rZS13aWR0aD0iMC41Ii8+Cjx0ZXh0IHg9IjExNSIgeT0iMTU1IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LWZhbWlseT0iQXJpYWwsIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTQiIGZvbnQtd2VpZ2h0PSI2MDAiIGZpbGw9IiMyQzJDMkEiPlJCQUMgLyBJQU08L3RleHQ+Cjx0ZXh0IHg9IjExNSIgeT0iMTczIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LWZhbWlseT0iQXJpYWwsIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTIiIGZpbGw9IiM0NDQ0NDEiPlNoYXJlZCBlbmdpbmU8L3RleHQ+CjxsaW5lIHgxPSI0NTQiIHkxPSIxNjQiIHgyPSI0ODYiIHkyPSIxNjQiIHN0cm9rZT0iIzVGNUU1QSIgc3Ryb2tlLXdpZHRoPSIxLjUiIG1hcmtlci1lbmQ9InVybCgjYXJyb3cyKSIvPgo8cmVjdCB4PSI0OTAiIHk9IjEzNiIgd2lkdGg9IjE1MCIgaGVpZ2h0PSI1NiIgcng9IjgiIGZpbGw9IiNGMUVGRTgiIHN0cm9rZT0iIzVGNUU1QSIgc3Ryb2tlLXdpZHRoPSIwLjUiLz4KPHRleHQgeD0iNTY1IiB5PSIxNTUiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtZmFtaWx5PSJBcmlhbCwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxNCIgZm9udC13ZWlnaHQ9IjYwMCIgZmlsbD0iIzJDMkMyQSI+Q2VsZXJ5IC8gUmVkaXM8L3RleHQ+Cjx0ZXh0IHg9IjU2NSIgeT0iMTczIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LWZhbWlseT0iQXJpYWwsIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTIiIGZpbGw9IiM0NDQ0NDEiPkVzY2FsYXRpb24sIG5vdGlmeTwvdGV4dD4KPC9zdmc+"
+alt="PQM system architecture" />
+<figcaption aria-hidden="true">PQM system architecture</figcaption>
+</figure>
+<h3 id="app-structure">9.1 App Structure</h3>
+<pre><code>apps/pqm/
+ ├── models.py
+ ├── serializers.py      # NCListSerializer, NCDetailSerializer, NCCreateSerializer,
+ │                       # ApprovalDecisionSerializer, AttachmentSerializer, ExtensionRequestSerializer
+ ├── views.py
+ ├── permissions.py      # PQMPermission — wraps core RBAC + BU scoping
+ ├── services/
+ │    ├── nc_service.py           # create_nc(), submit_nc(), transition_status()
+ │    ├── approval_service.py     # advance_approval_chain(), record_decision()
+ │    ├── escalation_service.py   # Celery: check_overdue_ncs()
+ │    ├── notification_service.py # send_nc_event(nc, event_type)
+ │    ├── numbering_service.py    # generate_nc_number(org, series) with row-lock
+ │    ├── duplicate_service.py    # find_similar_ncs(), merge_nc()
+ │    ├── geofence_service.py     # validate_photo_location(attachment)
+ │    └── migration_service.py    # import_legacy_batch(file, mapping, org)
+ ├── validators.py       # min photos, root cause gate, extension logic
+ ├── signals.py          # post_save -&gt; status_history, notification dispatch
+ ├── tasks.py            # Celery: escalation checks, digest emails
+ └── tests/ (test_models.py, test_services.py, test_api.py, test_permissions.py, test_migration.py)</code></pre>
+<h3 id="key-business-rules-enforced-in-services">9.2 Key Business Rules
+Enforced in <code>services/</code></h3>
+<ul>
+<li>Status transitions go only through
+<code>nc_service.transition_status(nc, target_status, user)</code>,
+validated against the state machine (Section 12) — reject anything not
+in the allowed map regardless of what the request claims.</li>
+<li><code>approval_service.record_decision()</code> is the only path
+that advances <code>current_approval_level</code>, and it re-checks the
+deciding user’s role/permission <strong>at decision time</strong>, not
+just at assignment time.</li>
+<li><code>numbering_service.generate_nc_number()</code> wraps the
+counter increment in <code>select_for_update()</code> inside
+<code>transaction.atomic()</code>, keyed by
+<code>(organization_id, year, series)</code>.</li>
+<li>Closure-gate validation (root cause required, ≥1 after-photo, all
+approval steps Approved) lives in <code>validators.py</code>, called
+before any transition to Closed.</li>
+<li><code>duplicate_service.find_similar_ncs()</code> runs a
+same-project + same-category + overlapping-location + 48-hour-window
+check on submit; <code>merge_nc()</code> reassigns child
+attachments/comments and marks the source NC <code>Merged</code>.</li>
+<li><code>geofence_service.validate_photo_location()</code> runs at
+attachment upload, comparing EXIF GPS against
+<code>pqm_project_geofence</code>, setting
+<code>gps_within_geofence</code> (soft flag, not a hard block).</li>
+<li><code>migration_service.import_legacy_batch()</code> validates rows
+against relaxed Phase-1 gates with an explicit
+<code>import_override</code> audit flag where historical data is
+incomplete, and produces a row-count reconciliation report (source vs
+loaded vs rejected).</li>
+</ul>
+<h3 id="example-model-sketch">9.3 Example Model Sketch</h3>
+<div class="sourceCode" id="cb9"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> NonConformance(TenantAuditModel):</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>    nc_number <span class="op">=</span> models.CharField(max_length<span class="op">=</span><span class="dv">30</span>, unique<span class="op">=</span><span class="va">True</span>, editable<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>    project <span class="op">=</span> models.ForeignKey(<span class="st">&#39;core.Project&#39;</span>, on_delete<span class="op">=</span>models.PROTECT)</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>    title <span class="op">=</span> models.CharField(max_length<span class="op">=</span><span class="dv">255</span>)</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>    description <span class="op">=</span> models.TextField()</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>    category <span class="op">=</span> models.ForeignKey(<span class="st">&#39;pqm.Category&#39;</span>, on_delete<span class="op">=</span>models.PROTECT, related_name<span class="op">=</span><span class="st">&#39;nc_primary&#39;</span>)</span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>    subcategory <span class="op">=</span> models.ForeignKey(<span class="st">&#39;pqm.Category&#39;</span>, null<span class="op">=</span><span class="va">True</span>, blank<span class="op">=</span><span class="va">True</span>, on_delete<span class="op">=</span>models.SET_NULL, related_name<span class="op">=</span><span class="st">&#39;nc_sub&#39;</span>)</span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>    priority <span class="op">=</span> models.CharField(max_length<span class="op">=</span><span class="dv">20</span>, choices<span class="op">=</span>Priority.choices)</span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>    severity <span class="op">=</span> models.CharField(max_length<span class="op">=</span><span class="dv">20</span>, choices<span class="op">=</span>Severity.choices)</span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>    is_safety_critical <span class="op">=</span> models.BooleanField(default<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>    status <span class="op">=</span> models.CharField(max_length<span class="op">=</span><span class="dv">30</span>, choices<span class="op">=</span>NCStatus.choices, default<span class="op">=</span>NCStatus.DRAFT)</span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>    current_approval_level <span class="op">=</span> models.PositiveSmallIntegerField(default<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>    target_closure_date <span class="op">=</span> models.DateField()</span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a>    actual_closure_date <span class="op">=</span> models.DateField(null<span class="op">=</span><span class="va">True</span>, blank<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a>    root_cause_description <span class="op">=</span> models.TextField(null<span class="op">=</span><span class="va">True</span>, blank<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a>    linked_nc <span class="op">=</span> models.ForeignKey(<span class="st">&#39;self&#39;</span>, null<span class="op">=</span><span class="va">True</span>, blank<span class="op">=</span><span class="va">True</span>, on_delete<span class="op">=</span>models.SET_NULL, related_name<span class="op">=</span><span class="st">&#39;linked_family&#39;</span>)</span>
+<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a>    merged_into_nc <span class="op">=</span> models.ForeignKey(<span class="st">&#39;self&#39;</span>, null<span class="op">=</span><span class="va">True</span>, blank<span class="op">=</span><span class="va">True</span>, on_delete<span class="op">=</span>models.SET_NULL, related_name<span class="op">=</span><span class="st">&#39;merged_children&#39;</span>)</span>
+<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a>    backcharge_amount <span class="op">=</span> models.DecimalField(max_digits<span class="op">=</span><span class="dv">12</span>, decimal_places<span class="op">=</span><span class="dv">2</span>, null<span class="op">=</span><span class="va">True</span>, blank<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb9-19"><a href="#cb9-19" aria-hidden="true" tabindex="-1"></a>    legacy_reference <span class="op">=</span> models.CharField(max_length<span class="op">=</span><span class="dv">100</span>, null<span class="op">=</span><span class="va">True</span>, blank<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb9-20"><a href="#cb9-20" aria-hidden="true" tabindex="-1"></a>    is_migrated <span class="op">=</span> models.BooleanField(default<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb9-21"><a href="#cb9-21" aria-hidden="true" tabindex="-1"></a>    <span class="co"># ... remaining fields per Section 6</span></span>
+<span id="cb9-22"><a href="#cb9-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-23"><a href="#cb9-23" aria-hidden="true" tabindex="-1"></a>    <span class="kw">class</span> Meta:</span>
+<span id="cb9-24"><a href="#cb9-24" aria-hidden="true" tabindex="-1"></a>        indexes <span class="op">=</span> [</span>
+<span id="cb9-25"><a href="#cb9-25" aria-hidden="true" tabindex="-1"></a>            models.Index(fields<span class="op">=</span>[<span class="st">&#39;organization&#39;</span>, <span class="st">&#39;business_unit&#39;</span>, <span class="st">&#39;status&#39;</span>]),</span>
+<span id="cb9-26"><a href="#cb9-26" aria-hidden="true" tabindex="-1"></a>            models.Index(fields<span class="op">=</span>[<span class="st">&#39;project&#39;</span>, <span class="st">&#39;status&#39;</span>]),</span>
+<span id="cb9-27"><a href="#cb9-27" aria-hidden="true" tabindex="-1"></a>            models.Index(fields<span class="op">=</span>[<span class="st">&#39;assigned_to&#39;</span>, <span class="st">&#39;status&#39;</span>]),</span>
+<span id="cb9-28"><a href="#cb9-28" aria-hidden="true" tabindex="-1"></a>        ]</span></code></pre></div>
+<hr />
+<h2 id="api-design-endpoints-contracts">10. API Design (Endpoints &amp;
+Contracts)</h2>
+<p>Base path: <code>/api/v1/pqm/</code></p>
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Method</th>
+<th>Endpoint</th>
+<th>Purpose</th>
+<th>Key Permission</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>GET</td>
+<td><code>/nc/</code></td>
+<td>List NCs (filters: status, priority, project, assigned_to, overdue,
+safety_critical)</td>
+<td><code>pqm.view_nc</code></td>
+</tr>
+<tr class="even">
+<td>POST</td>
+<td><code>/nc/</code></td>
+<td>Create NC (Draft)</td>
+<td><code>pqm.create_nc</code></td>
+</tr>
+<tr class="odd">
+<td>GET</td>
+<td><code>/nc/{id}/</code></td>
+<td>NC detail</td>
+<td><code>pqm.view_nc</code></td>
+</tr>
+<tr class="even">
+<td>PATCH</td>
+<td><code>/nc/{id}/</code></td>
+<td>Edit NC (Draft/Returned only)</td>
+<td><code>pqm.edit_nc</code></td>
+</tr>
+<tr class="odd">
+<td>POST</td>
+<td><code>/nc/{id}/submit/</code></td>
+<td>Draft → Submitted</td>
+<td><code>pqm.submit_nc</code></td>
+</tr>
+<tr class="even">
+<td>POST</td>
+<td><code>/nc/{id}/review-decision/</code></td>
+<td>Approve/Reject/Return (review stage)</td>
+<td><code>pqm.review_nc</code></td>
+</tr>
+<tr class="odd">
+<td>POST</td>
+<td><code>/nc/{id}/assign/</code></td>
+<td>Assign responsible engineer</td>
+<td><code>pqm.assign_nc</code></td>
+</tr>
+<tr class="even">
+<td>POST</td>
+<td><code>/nc/{id}/start-work/</code></td>
+<td>Assigned → In Progress</td>
+<td><code>pqm.update_nc_progress</code></td>
+</tr>
+<tr class="odd">
+<td>POST</td>
+<td><code>/nc/{id}/request-closure/</code></td>
+<td>Rectified → Verification Pending (gate-checked)</td>
+<td><code>pqm.request_closure</code></td>
+</tr>
+<tr class="even">
+<td>POST</td>
+<td><code>/nc/{id}/verification-decision/</code></td>
+<td>Approve/Reject/Rework at current level</td>
+<td><code>pqm.verify_nc</code></td>
+</tr>
+<tr class="odd">
+<td>POST</td>
+<td><code>/nc/{id}/reopen/</code></td>
+<td>Closed → Reopened (comment required)</td>
+<td><code>pqm.reopen_nc</code></td>
+</tr>
+<tr class="even">
+<td>GET</td>
+<td><code>/nc/{id}/history/</code></td>
+<td>Full status + approval history</td>
+<td><code>pqm.view_audit</code></td>
+</tr>
+<tr class="odd">
+<td>GET/POST</td>
+<td><code>/nc/{id}/attachments/</code></td>
+<td>List/upload attachments</td>
+<td><code>pqm.view_nc</code> / <code>pqm.upload_attachment</code></td>
+</tr>
+<tr class="even">
+<td>GET/POST</td>
+<td><code>/nc/{id}/comments/</code></td>
+<td>Discussion thread</td>
+<td><code>pqm.view_nc</code> / <code>pqm.comment_nc</code></td>
+</tr>
+<tr class="odd">
+<td>GET</td>
+<td><code>/nc/duplicates-check/</code></td>
+<td>Pre-submit similarity check</td>
+<td><code>pqm.create_nc</code></td>
+</tr>
+<tr class="even">
+<td>POST</td>
+<td><code>/nc/{id}/merge/</code></td>
+<td>Merge duplicate into a primary NC</td>
+<td><code>pqm.review_nc</code></td>
+</tr>
+<tr class="odd">
+<td>POST</td>
+<td><code>/nc/{id}/link/</code></td>
+<td>Link NC as recurring-issue family</td>
+<td><code>pqm.review_nc</code></td>
+</tr>
+<tr class="even">
+<td>POST</td>
+<td><code>/nc/{id}/extension-request/</code></td>
+<td>Request SLA/target-date extension</td>
+<td><code>pqm.update_nc_progress</code></td>
+</tr>
+<tr class="odd">
+<td>POST</td>
+<td><code>/nc/{id}/extension-decision/</code></td>
+<td>Approve/reject an extension request</td>
+<td><code>pqm.review_nc</code></td>
+</tr>
+<tr class="even">
+<td>POST</td>
+<td><code>/nc/{id}/reassign/</code></td>
+<td>Reassign engineer mid-workflow</td>
+<td><code>pqm.assign_nc</code></td>
+</tr>
+<tr class="odd">
+<td>POST</td>
+<td><code>/import/legacy/</code></td>
+<td>Bulk legacy data import</td>
+<td><code>pqm.manage_config</code> (Org Admin)</td>
+</tr>
+<tr class="even">
+<td>GET</td>
+<td><code>/dashboard/summary/</code></td>
+<td>KPI tiles</td>
+<td><code>pqm.view_dashboard</code></td>
+</tr>
+<tr class="odd">
+<td>GET</td>
+<td><code>/dashboard/trends/</code></td>
+<td>Trend chart data</td>
+<td><code>pqm.view_dashboard</code></td>
+</tr>
+<tr class="even">
+<td>GET</td>
+<td><code>/reports/export/</code></td>
+<td>Excel/PDF/CSV export</td>
+<td><code>pqm.export_report</code></td>
+</tr>
+<tr class="odd">
+<td>GET</td>
+<td><code>/reports/backcharge-summary/</code></td>
+<td>Backcharge-by-contractor report</td>
+<td><code>pqm.export_report</code></td>
+</tr>
+<tr class="even">
+<td>GET</td>
+<td><code>/reports/repeat-issue-rate/</code></td>
+<td>Recurrence/repeat-offender analytics</td>
+<td><code>pqm.export_report</code></td>
+</tr>
+<tr class="odd">
+<td>GET/POST</td>
+<td><code>/categories/</code></td>
+<td>Category tree management</td>
+<td><code>pqm.manage_config</code></td>
+</tr>
+<tr class="even">
+<td>GET/POST</td>
+<td><code>/contractors/</code></td>
+<td>Contractor list management</td>
+<td><code>pqm.manage_config</code></td>
+</tr>
+<tr class="odd">
+<td>GET/PATCH</td>
+<td><code>/escalation-config/</code></td>
+<td>Tenant SLA config</td>
+<td><code>pqm.manage_config</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="sample-payload-create-nc">10.1 Sample Payload — Create NC</h3>
+<div class="sourceCode" id="cb10"><pre
+class="sourceCode json"><code class="sourceCode json"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="er">POST</span> <span class="er">/api/v1/pqm/nc/</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&quot;project_id&quot;</span><span class="fu">:</span> <span class="st">&quot;uuid&quot;</span><span class="fu">,</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&quot;asset_type&quot;</span><span class="fu">:</span> <span class="st">&quot;Solar - Ground-Mounted&quot;</span><span class="fu">,</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&quot;inspection_date&quot;</span><span class="fu">:</span> <span class="st">&quot;2026-07-06&quot;</span><span class="fu">,</span></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&quot;title&quot;</span><span class="fu">:</span> <span class="st">&quot;Under-torqued MMS foundation piles - Block D Row 14&quot;</span><span class="fu">,</span></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&quot;description&quot;</span><span class="fu">:</span> <span class="st">&quot;Reactive torque test readings below 5 kN·m minimum on 6 piles per DBR-2024-Rev2&quot;</span><span class="fu">,</span></span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&quot;category_id&quot;</span><span class="fu">:</span> <span class="st">&quot;uuid&quot;</span><span class="fu">,</span></span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&quot;priority&quot;</span><span class="fu">:</span> <span class="st">&quot;High&quot;</span><span class="fu">,</span></span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&quot;severity&quot;</span><span class="fu">:</span> <span class="st">&quot;Major&quot;</span><span class="fu">,</span></span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&quot;location&quot;</span><span class="fu">:</span> <span class="st">&quot;Block D, Row 14&quot;</span><span class="fu">,</span></span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&quot;responsible_engineer_id&quot;</span><span class="fu">:</span> <span class="st">&quot;uuid&quot;</span><span class="fu">,</span></span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&quot;target_closure_date&quot;</span><span class="fu">:</span> <span class="st">&quot;2026-07-11&quot;</span><span class="fu">,</span></span>
+<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&quot;attachments&quot;</span><span class="fu">:</span> <span class="ot">[</span><span class="fu">{</span><span class="dt">&quot;file_url&quot;</span><span class="fu">:</span> <span class="st">&quot;...&quot;</span><span class="fu">,</span> <span class="dt">&quot;attachment_stage&quot;</span><span class="fu">:</span> <span class="st">&quot;before&quot;</span><span class="fu">}</span><span class="ot">]</span></span>
+<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a><span class="fu">}</span></span></code></pre></div>
+<p>All list/export endpoints apply BU-scope filtering from
+<code>request.user</code>’s role assignments <strong>before</strong>
+applying client-supplied filters — never let a client parameter widen
+access beyond what the user’s role grants.</p>
+<hr />
+<h2 id="frontend-architecture-react">11. Frontend Architecture
+(React)</h2>
+<h3 id="routes">11.1 Routes</h3>
+<pre><code>/pqm                             → NC List (table, filters, saved views)
+/pqm/new                         → Create NC form (multi-step)
+/pqm/:ncId                       → NC Detail (full-screen drill-down)
+/pqm/:ncId/history               → Audit trail tab
+/pqm/dashboard                   → PQM Dashboard
+/pqm/config/categories           → Category management (Admin)
+/pqm/config/contractors          → Contractor management (Admin)
+/pqm/config/escalation           → SLA/Escalation config (Admin)
+/pqm/import                      → Legacy data import wizard (Admin)</code></pre>
+<h3 id="component-reuse-from-existing-design-system">11.2 Component
+Reuse (from existing design system)</h3>
+<p><code>DataTable</code> (NC list), <code>StatCard</code> (dashboard
+tiles), <code>Drawer</code> (quick-view panel), <code>Toast</code>
+(transition feedback), <code>Tooltip</code> (SLA countdown hints),
+<code>PageHeader</code> (status badge + actions).</p>
+<h3 id="new-components">11.3 New Components</h3>
+<pre><code>components/pqm/
+ ├── NCStatusBadge.tsx
+ ├── NCPriorityTag.tsx
+ ├── NCTimeline.tsx               # merges status + approval + comment history
+ ├── NCApprovalChainWidget.tsx
+ ├── AttachmentGallery.tsx        # before/after photo comparison + GPS/EXIF badge
+ ├── NCFormStepper.tsx
+ ├── DuplicateWarningBanner.tsx   # shows on submit if similarity check hits
+ ├── ExtensionRequestForm.tsx
+ ├── ReassignDialog.tsx
+ ├── LegacyImportWizard.tsx
+ ├── EscalationConfigForm.tsx
+ └── SLACountdown.tsx</code></pre>
+<h3 id="permission-gated-actions">11.4 Permission-gated Actions</h3>
+<p>Every action button is gated with <code>usePermissions</code>
+<strong>plus</strong> a status-aware guard (e.g., “Request Closure” only
+renders if <code>status === 'In Progress'</code> AND user has
+<code>pqm.request_closure</code>). Don’t rely on backend 403 alone —
+hide actions the user can’t legally perform at the current status.</p>
+<h3 id="state-management">11.5 State Management</h3>
+<p>Same Redux slice pattern as Organization/IAM: <code>pqmSlice</code>
+with <code>ncList</code>, <code>ncDetail</code>,
+<code>dashboardSummary</code> sub-states, RTK Query for
+fetching/caching, optimistic updates on status transitions with rollback
+on 4xx.</p>
+<hr />
+<h2 id="status-lifecycle-state-machine">12. Status Lifecycle / State
+Machine</h2>
+<figure>
+<img
+src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjgwIiBoZWlnaHQ9IjUyMCIgdmlld0JveD0iMCAwIDY4MCA1MjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgcm9sZT0iaW1nIj4KPHRpdGxlPlBRTSBOQyBzdGF0dXMgbGlmZWN5Y2xlLCBtYWluIHBhdGg8L3RpdGxlPgo8ZGVzYz5NYWluIGhhcHB5LXBhdGggc3RhdHVzIGNoYWluOiBEcmFmdCwgU3VibWl0dGVkLCBBc3NpZ25lZCwgSW4gcHJvZ3Jlc3MsIFZlcmlmaWNhdGlvbiBwZW5kaW5nLCBDbG9zZWQuPC9kZXNjPgo8ZGVmcz48bWFya2VyIGlkPSJhcnJvdzMiIHZpZXdCb3g9IjAgMCAxMCAxMCIgcmVmWD0iOCIgcmVmWT0iNSIgbWFya2VyV2lkdGg9IjYiIG1hcmtlckhlaWdodD0iNiIgb3JpZW50PSJhdXRvLXN0YXJ0LXJldmVyc2UiPjxwYXRoIGQ9Ik0yIDFMOCA1TDIgOSIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjNUY1RTVBIiBzdHJva2Utd2lkdGg9IjEuNSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIi8+PC9tYXJrZXI+PC9kZWZzPgo8cmVjdCB3aWR0aD0iNjgwIiBoZWlnaHQ9IjUyMCIgZmlsbD0iI2ZmZmZmZiIvPgo8cmVjdCB4PSIyMzAiIHk9IjQwIiB3aWR0aD0iMjIwIiBoZWlnaHQ9IjQ0IiByeD0iOCIgZmlsbD0iI0YxRUZFOCIgc3Ryb2tlPSIjNUY1RTVBIiBzdHJva2Utd2lkdGg9IjAuNSIvPgo8dGV4dCB4PSIzNDAiIHk9IjY2IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LWZhbWlseT0iQXJpYWwsIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTQiIGZvbnQtd2VpZ2h0PSI2MDAiIGZpbGw9IiMyQzJDMkEiPkRyYWZ0PC90ZXh0Pgo8bGluZSB4MT0iMzQwIiB5MT0iODQiIHgyPSIzNDAiIHkyPSIxMTYiIHN0cm9rZT0iIzVGNUU1QSIgc3Ryb2tlLXdpZHRoPSIxLjUiIG1hcmtlci1lbmQ9InVybCgjYXJyb3czKSIvPgo8cmVjdCB4PSIyMzAiIHk9IjEyMCIgd2lkdGg9IjIyMCIgaGVpZ2h0PSI0NCIgcng9IjgiIGZpbGw9IiNFNkYxRkIiIHN0cm9rZT0iIzE4NUZBNSIgc3Ryb2tlLXdpZHRoPSIwLjUiLz4KPHRleHQgeD0iMzQwIiB5PSIxNDYiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtZmFtaWx5PSJBcmlhbCwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxNCIgZm9udC13ZWlnaHQ9IjYwMCIgZmlsbD0iIzA0MkM1MyI+U3VibWl0dGVkPC90ZXh0Pgo8bGluZSB4MT0iMzQwIiB5MT0iMTY0IiB4Mj0iMzQwIiB5Mj0iMTk2IiBzdHJva2U9IiM1RjVFNUEiIHN0cm9rZS13aWR0aD0iMS41IiBtYXJrZXItZW5kPSJ1cmwoI2Fycm93MykiLz4KPHJlY3QgeD0iMjMwIiB5PSIyMDAiIHdpZHRoPSIyMjAiIGhlaWdodD0iNDQiIHJ4PSI4IiBmaWxsPSIjRkFFRURBIiBzdHJva2U9IiM4NTRGMEIiIHN0cm9rZS13aWR0aD0iMC41Ii8+Cjx0ZXh0IHg9IjM0MCIgeT0iMjI2IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LWZhbWlseT0iQXJpYWwsIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTQiIGZvbnQtd2VpZ2h0PSI2MDAiIGZpbGw9IiM0MTI0MDIiPkFzc2lnbmVkPC90ZXh0Pgo8bGluZSB4MT0iMzQwIiB5MT0iMjQ0IiB4Mj0iMzQwIiB5Mj0iMjc2IiBzdHJva2U9IiM1RjVFNUEiIHN0cm9rZS13aWR0aD0iMS41IiBtYXJrZXItZW5kPSJ1cmwoI2Fycm93MykiLz4KPHJlY3QgeD0iMjMwIiB5PSIyODAiIHdpZHRoPSIyMjAiIGhlaWdodD0iNDQiIHJ4PSI4IiBmaWxsPSIjRkFFRURBIiBzdHJva2U9IiM4NTRGMEIiIHN0cm9rZS13aWR0aD0iMC41Ii8+Cjx0ZXh0IHg9IjM0MCIgeT0iMzA2IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LWZhbWlseT0iQXJpYWwsIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTQiIGZvbnQtd2VpZ2h0PSI2MDAiIGZpbGw9IiM0MTI0MDIiPkluIHByb2dyZXNzPC90ZXh0Pgo8bGluZSB4MT0iMzQwIiB5MT0iMzI0IiB4Mj0iMzQwIiB5Mj0iMzU2IiBzdHJva2U9IiM1RjVFNUEiIHN0cm9rZS13aWR0aD0iMS41IiBtYXJrZXItZW5kPSJ1cmwoI2Fycm93MykiLz4KPHJlY3QgeD0iMjMwIiB5PSIzNjAiIHdpZHRoPSIyMjAiIGhlaWdodD0iNDQiIHJ4PSI4IiBmaWxsPSIjRUVFREZFIiBzdHJva2U9IiM1MzRBQjciIHN0cm9rZS13aWR0aD0iMC41Ii8+Cjx0ZXh0IHg9IjM0MCIgeT0iMzg2IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LWZhbWlseT0iQXJpYWwsIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTQiIGZvbnQtd2VpZ2h0PSI2MDAiIGZpbGw9IiMyNjIxNUMiPlZlcmlmaWNhdGlvbiBwZW5kaW5nPC90ZXh0Pgo8bGluZSB4MT0iMzQwIiB5MT0iNDA0IiB4Mj0iMzQwIiB5Mj0iNDM2IiBzdHJva2U9IiM1RjVFNUEiIHN0cm9rZS13aWR0aD0iMS41IiBtYXJrZXItZW5kPSJ1cmwoI2Fycm93MykiLz4KPHJlY3QgeD0iMjMwIiB5PSI0NDAiIHdpZHRoPSIyMjAiIGhlaWdodD0iNDQiIHJ4PSI4IiBmaWxsPSIjRTFGNUVFIiBzdHJva2U9IiMwRjZFNTYiIHN0cm9rZS13aWR0aD0iMC41Ii8+Cjx0ZXh0IHg9IjM0MCIgeT0iNDY2IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LWZhbWlseT0iQXJpYWwsIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTQiIGZvbnQtd2VpZ2h0PSI2MDAiIGZpbGw9IiMwNDM0MkMiPkNsb3NlZDwvdGV4dD4KPC9zdmc+"
+alt="PQM NC status lifecycle, main path" />
+<figcaption aria-hidden="true">PQM NC status lifecycle, main
+path</figcaption>
+</figure>
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Current Status</th>
+<th>Allowed Next Status</th>
+<th>Trigger / Endpoint</th>
+<th>Who</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Draft</td>
+<td>Submitted</td>
+<td><code>/submit/</code></td>
+<td>Raised By</td>
+</tr>
+<tr class="even">
+<td>Submitted</td>
+<td>Under Review</td>
+<td>(auto, first reviewer view)</td>
+<td>System</td>
+</tr>
+<tr class="odd">
+<td>Under Review</td>
+<td>Approved / Rejected</td>
+<td><code>/review-decision/</code></td>
+<td>Site Incharge</td>
+</tr>
+<tr class="even">
+<td>Rejected</td>
+<td>Draft</td>
+<td>(auto)</td>
+<td>System</td>
+</tr>
+<tr class="odd">
+<td>Approved</td>
+<td>Assigned</td>
+<td><code>/assign/</code></td>
+<td>Site Incharge</td>
+</tr>
+<tr class="even">
+<td>Assigned</td>
+<td>In Progress</td>
+<td><code>/start-work/</code></td>
+<td>Assigned Engineer</td>
+</tr>
+<tr class="odd">
+<td>In Progress</td>
+<td>Rectified</td>
+<td>(auto, after-photo + remarks saved)</td>
+<td>Assigned Engineer</td>
+</tr>
+<tr class="even">
+<td>Rectified</td>
+<td>Verification Pending</td>
+<td><code>/request-closure/</code> (gate-checked)</td>
+<td>Assigned Engineer</td>
+</tr>
+<tr class="odd">
+<td>Verification Pending</td>
+<td>Approved for Closure / Rework</td>
+<td><code>/verification-decision/</code> (per level)</td>
+<td>Approval chain (8.5)</td>
+</tr>
+<tr class="even">
+<td>Rework</td>
+<td>Assigned</td>
+<td>(auto)</td>
+<td>System</td>
+</tr>
+<tr class="odd">
+<td>Approved for Closure</td>
+<td>Closed</td>
+<td>(auto, after final level)</td>
+<td>System</td>
+</tr>
+<tr class="even">
+<td>Closed</td>
+<td>Reopened</td>
+<td><code>/reopen/</code> (comment required)</td>
+<td>Site Quality Incharge+</td>
+</tr>
+<tr class="odd">
+<td>Reopened</td>
+<td>Assigned</td>
+<td>(auto)</td>
+<td>System</td>
+</tr>
+<tr class="even">
+<td>(any pre-closure)</td>
+<td>Merged</td>
+<td><code>/merge/</code></td>
+<td>Site Incharge+</td>
+</tr>
+</tbody>
+</table>
+<p>Every transition writes one row to <code>pqm_status_history</code> —
+this table alone must be sufficient to reconstruct the full lifecycle of
+any NC for an audit, without reading application logs.
+<code>Reassigned</code> is logged as a distinct <code>event_type</code>,
+not a status change.</p>
+<hr />
+<h2 id="permissions-matrix">13. Permissions Matrix</h2>
+<table style="width:100%;">
+<colgroup>
+<col style="width: 6%" />
+<col style="width: 11%" />
+<col style="width: 11%" />
+<col style="width: 11%" />
+<col style="width: 11%" />
+<col style="width: 11%" />
+<col style="width: 11%" />
+<col style="width: 11%" />
+<col style="width: 11%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Action</th>
+<th style="text-align: center;">Site Engineer</th>
+<th style="text-align: center;">Site Incharge</th>
+<th style="text-align: center;">Site Quality Incharge</th>
+<th style="text-align: center;">Project Incharge</th>
+<th style="text-align: center;">Quality Head</th>
+<th style="text-align: center;">Safety Officer</th>
+<th style="text-align: center;">Auditor</th>
+<th style="text-align: center;">External Client Auditor</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Create NC</td>
+<td style="text-align: center;">✅</td>
+<td style="text-align: center;">✅</td>
+<td style="text-align: center;">✅</td>
+<td style="text-align: center;">✅</td>
+<td style="text-align: center;">✅</td>
+<td style="text-align: center;">❌</td>
+<td style="text-align: center;">❌</td>
+<td style="text-align: center;">❌</td>
+</tr>
+<tr class="even">
+<td>Edit (Draft)</td>
+<td style="text-align: center;">Own only</td>
+<td style="text-align: center;">✅</td>
+<td style="text-align: center;">✅</td>
+<td style="text-align: center;">✅</td>
+<td style="text-align: center;">✅</td>
+<td style="text-align: center;">❌</td>
+<td style="text-align: center;">❌</td>
+<td style="text-align: center;">❌</td>
+</tr>
+<tr class="odd">
+<td>Submit</td>
+<td style="text-align: center;">Own only</td>
+<td style="text-align: center;">✅</td>
+<td style="text-align: center;">✅</td>
+<td style="text-align: center;">✅</td>
+<td style="text-align: center;">✅</td>
+<td style="text-align: center;">❌</td>
+<td style="text-align: center;">❌</td>
+<td style="text-align: center;">❌</td>
+</tr>
+<tr class="even">
+<td>Review Decision</td>
+<td style="text-align: center;">❌</td>
+<td style="text-align: center;">✅</td>
+<td style="text-align: center;">❌</td>
+<td style="text-align: center;">✅</td>
+<td style="text-align: center;">✅</td>
+<td style="text-align: center;">❌</td>
+<td style="text-align: center;">❌</td>
+<td style="text-align: center;">❌</td>
+</tr>
+<tr class="odd">
+<td>Assign / Reassign</td>
+<td style="text-align: center;">❌</td>
+<td style="text-align: center;">✅</td>
+<td style="text-align: center;">❌</td>
+<td style="text-align: center;">✅</td>
+<td style="text-align: center;">✅</td>
+<td style="text-align: center;">❌</td>
+<td style="text-align: center;">❌</td>
+<td style="text-align: center;">❌</td>
+</tr>
+<tr class="even">
+<td>Start Work / Progress</td>
+<td style="text-align: center;">Assigned only</td>
+<td style="text-align: center;">✅</td>
+<td style="text-align: center;">✅</td>
+<td style="text-align: center;">✅</td>
+<td style="text-align: center;">✅</td>
+<td style="text-align: center;">❌</td>
+<td style="text-align: center;">❌</td>
+<td style="text-align: center;">❌</td>
+</tr>
+<tr class="odd">
+<td>Request Closure</td>
+<td style="text-align: center;">Assigned only</td>
+<td style="text-align: center;">✅</td>
+<td style="text-align: center;">✅</td>
+<td style="text-align: center;">✅</td>
+<td style="text-align: center;">✅</td>
+<td style="text-align: center;">❌</td>
+<td style="text-align: center;">❌</td>
+<td style="text-align: center;">❌</td>
+</tr>
+<tr class="even">
+<td>Verification Decision</td>
+<td style="text-align: center;">❌</td>
+<td style="text-align: center;">✅ (own level)</td>
+<td style="text-align: center;">✅ (own level)</td>
+<td style="text-align: center;">❌</td>
+<td style="text-align: center;">✅ (final)</td>
+<td style="text-align: center;">❌</td>
+<td style="text-align: center;">❌</td>
+<td style="text-align: center;">❌</td>
+</tr>
+<tr class="odd">
+<td>Merge / Link NCs</td>
+<td style="text-align: center;">❌</td>
+<td style="text-align: center;">✅</td>
+<td style="text-align: center;">✅</td>
+<td style="text-align: center;">❌</td>
+<td style="text-align: center;">✅</td>
+<td style="text-align: center;">❌</td>
+<td style="text-align: center;">❌</td>
+<td style="text-align: center;">❌</td>
+</tr>
+<tr class="even">
+<td>Approve Extension</td>
+<td style="text-align: center;">❌</td>
+<td style="text-align: center;">✅ (own level)</td>
+<td style="text-align: center;">❌</td>
+<td style="text-align: center;">✅</td>
+<td style="text-align: center;">✅</td>
+<td style="text-align: center;">❌</td>
+<td style="text-align: center;">❌</td>
+<td style="text-align: center;">❌</td>
+</tr>
+<tr class="odd">
+<td>Reopen</td>
+<td style="text-align: center;">❌</td>
+<td style="text-align: center;">✅</td>
+<td style="text-align: center;">✅</td>
+<td style="text-align: center;">✅</td>
+<td style="text-align: center;">✅</td>
+<td style="text-align: center;">❌</td>
+<td style="text-align: center;">❌</td>
+<td style="text-align: center;">❌</td>
+</tr>
+<tr class="even">
+<td>Run Legacy Import</td>
+<td style="text-align: center;">❌</td>
+<td style="text-align: center;">❌</td>
+<td style="text-align: center;">❌</td>
+<td style="text-align: center;">❌</td>
+<td style="text-align: center;">❌ (unless Org Admin)</td>
+<td style="text-align: center;">❌</td>
+<td style="text-align: center;">❌</td>
+<td style="text-align: center;">❌</td>
+</tr>
+<tr class="odd">
+<td>View Safety-Critical Tile</td>
+<td style="text-align: center;">Own project</td>
+<td style="text-align: center;">✅</td>
+<td style="text-align: center;">✅</td>
+<td style="text-align: center;">✅</td>
+<td style="text-align: center;">✅</td>
+<td style="text-align: center;">✅ (all projects)</td>
+<td style="text-align: center;">✅</td>
+<td style="text-align: center;">❌</td>
+</tr>
+<tr class="even">
+<td>View (general)</td>
+<td style="text-align: center;">Own/Project</td>
+<td style="text-align: center;">Project</td>
+<td style="text-align: center;">Project</td>
+<td style="text-align: center;">Project</td>
+<td style="text-align: center;">Org/BU-scoped</td>
+<td style="text-align: center;">Org/Project</td>
+<td style="text-align: center;">Full (read-only)</td>
+<td style="text-align: center;">Project-scoped only</td>
+</tr>
+<tr class="odd">
+<td>View comment threads</td>
+<td style="text-align: center;">Own only</td>
+<td style="text-align: center;">✅</td>
+<td style="text-align: center;">✅</td>
+<td style="text-align: center;">✅</td>
+<td style="text-align: center;">✅</td>
+<td style="text-align: center;">❌</td>
+<td style="text-align: center;">✅</td>
+<td style="text-align: center;">❌ (unless toggled)</td>
+</tr>
+<tr class="even">
+<td>Export</td>
+<td style="text-align: center;">❌</td>
+<td style="text-align: center;">✅ (scoped)</td>
+<td style="text-align: center;">✅ (scoped)</td>
+<td style="text-align: center;">✅ (scoped)</td>
+<td style="text-align: center;">✅ (full)</td>
+<td style="text-align: center;">❌</td>
+<td style="text-align: center;">✅ (full)</td>
+<td style="text-align: center;">✅ (project-scoped)</td>
+</tr>
+<tr class="odd">
+<td>Manage Config</td>
+<td style="text-align: center;">❌</td>
+<td style="text-align: center;">❌</td>
+<td style="text-align: center;">❌</td>
+<td style="text-align: center;">❌</td>
+<td style="text-align: center;">✅ (if Org Admin)</td>
+<td style="text-align: center;">❌</td>
+<td style="text-align: center;">❌</td>
+<td style="text-align: center;">❌</td>
+</tr>
+</tbody>
+</table>
+<p>Implement as data (permission codenames per role), never as
+<code>if role == 'X'</code> conditionals scattered through the code.</p>
+<hr />
+<h2 id="notifications">14. Notifications</h2>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Event</th>
+<th>Channels</th>
+<th>Recipients</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>NC Created/Submitted</td>
+<td>Email + In-App</td>
+<td>Site Incharge, Site Quality Incharge, Project Incharge</td>
+</tr>
+<tr class="even">
+<td>Safety-Critical Submitted</td>
+<td>Email + In-App (immediate, parallel)</td>
+<td>Above + Safety Officer</td>
+</tr>
+<tr class="odd">
+<td>NC Approved (review)</td>
+<td>In-App</td>
+<td>Raised By</td>
+</tr>
+<tr class="even">
+<td>NC Rejected/Returned</td>
+<td>Email + In-App</td>
+<td>Raised By</td>
+</tr>
+<tr class="odd">
+<td>NC Assigned / Reassigned</td>
+<td>Email + In-App</td>
+<td>(New) Assigned Engineer</td>
+</tr>
+<tr class="even">
+<td>Due Date Approaching (T-1)</td>
+<td>In-App</td>
+<td>Assigned Engineer</td>
+</tr>
+<tr class="odd">
+<td>Overdue (escalation ladder)</td>
+<td>Email + In-App</td>
+<td>Per <code>pqm_escalation_config</code></td>
+</tr>
+<tr class="even">
+<td>Extension Requested / Decided</td>
+<td>Email + In-App</td>
+<td>Next-level approver / Requester</td>
+</tr>
+<tr class="odd">
+<td>Closure Requested</td>
+<td>Email + In-App</td>
+<td>Next approval-chain approver</td>
+</tr>
+<tr class="even">
+<td>Verification Approved (per level)</td>
+<td>In-App</td>
+<td>Raised By, Assigned Engineer</td>
+</tr>
+<tr class="odd">
+<td>Verification Rejected/Rework</td>
+<td>Email + In-App</td>
+<td>Assigned Engineer</td>
+</tr>
+<tr class="even">
+<td>Closed</td>
+<td>In-App</td>
+<td>Raised By, full approval chain</td>
+</tr>
+<tr class="odd">
+<td>Reopened</td>
+<td>Email + In-App</td>
+<td>Full approval chain + Quality Head</td>
+</tr>
+<tr class="even">
+<td>Merged</td>
+<td>In-App</td>
+<td>Raisers of both NCs</td>
+</tr>
+</tbody>
+</table>
+<p>Single dispatcher
+<code>notification_service.send_nc_event(nc, event_type)</code>,
+template-driven (per-tenant branding), every send logged to
+<code>pqm_notification_log</code> regardless of channel or delivery
+outcome.</p>
+<hr />
+<h2 id="audit-activity-logs">15. Audit &amp; Activity Logs</h2>
+<ul>
+<li><code>pqm_status_history</code> — every status transition and
+reassignment event (Section 12).</li>
+<li><code>pqm_approval_step</code> — every approval decision with
+comments and timestamp.</li>
+<li><code>pqm_extension_request</code> — every SLA extension request and
+its decision, preserving the original date.</li>
+<li>Signals on save write to <code>core_audit_log</code> (reuse the
+platform-wide one if it exists, rather than a parallel PQM-only table):
+actor, action, before/after diff (JSON), IP, timestamp.</li>
+<li><strong>Nothing is hard-deleted</strong> — soft-delete only, visible
+to Org Admin/Auditor via an explicit “Show deleted” toggle.</li>
+<li><code>NCTimeline.tsx</code> merges status history + approval history
++ comment thread + attachment version history into one reconstructable
+timeline for Auditor and External Client Auditor roles.</li>
+<li>Photo authenticity: <code>photo_exif_hash</code> lets you detect if
+an attachment’s underlying bytes were altered after upload — treat this
+with the same evidentiary rigor as your forensic investigation work,
+since these records may end up supporting a client dispute or regulatory
+review.</li>
+</ul>
+<hr />
+<h2 id="reports-analytics">16. Reports &amp; Analytics</h2>
+<h3 id="standard-reports">16.1 Standard Reports</h3>
+<p>NC Register (full, filterable, exportable) · Overdue NC Report ·
+Closure Time Analysis (by Project/Engineer/Contractor/Category) · Root
+Cause Pareto Report · SLA Compliance Report (% closed within target vs
+breached, extension-adjusted) · Reopened NC Report · <strong>Backcharge
+Summary by Contractor</strong> · <strong>Repeat Issue Rate</strong>
+(recurrence analytics via <code>linked_nc_id</code> family grouping) ·
+Legacy Migration Reconciliation Report (source vs loaded vs rejected row
+counts).</p>
+<h3 id="export-formats">16.2 Export Formats</h3>
+<p>Excel (openpyxl/pandas), PDF (existing pipeline), CSV — always scoped
+by the exporting user’s BU/role access, never bypassing row-level
+control.</p>
+<h3 id="kpi-calculation-notes">16.3 KPI Calculation Notes</h3>
+<ul>
+<li><strong>Average Closure Time</strong> =
+<code>AVG(actual_closure_date - raised_date)</code> for Closed NCs;
+pre-aggregate nightly via Celery once volume exceeds ~50k rows per
+tenant rather than live-aggregating on every dashboard load.</li>
+<li><strong>SLA Compliance %</strong> =
+<code>COUNT(actual_closure_date &lt;= target_closure_date) / COUNT(Closed)</code>,
+using the extension-adjusted target date where an approved extension
+exists, while still retaining the original date for a separate “true
+first-target” audit view.</li>
+<li><strong>First-Time-Right %</strong> = Closed NCs with
+<code>reopen_count = 0</code> AND zero review-stage rejections / Closed
+NCs total — a distinct, complementary metric from SLA compliance.</li>
+</ul>
+<hr />
+<h2 id="dashboard">17. Dashboard</h2>
+<h3 id="kpi-tiles">17.1 KPI Tiles</h3>
+<p>Total NCs · Open NCs · Closed NCs · Overdue NCs · Critical NCs · High
+Priority NCs · <strong>Safety-Critical Open (always visible)</strong> ·
+Average Closure Time · SLA Compliance % · Reopen Rate % · Repeat Issue
+Rate %.</p>
+<h3 id="charts">17.2 Charts</h3>
+<p>NC Trend (daily/weekly/monthly) · NCs by Priority (donut) · NCs by
+Project (bar, top 10) · NCs by Category (Pareto) · Closure Performance
+(stacked bar: on-time vs late) · Backcharge Value by Contractor.</p>
+<h3 id="scoping">17.3 Scoping</h3>
+<p>Dashboard queries run through the same BU-scope filter as list APIs —
+a Site Incharge sees only their project(s); Quality Head sees org-wide
+or their granted BU set; External Client Auditor sees only their
+assigned project(s).</p>
+<hr />
+<h2 id="uiux-design-guidelines">18. UI/UX Design Guidelines</h2>
+<ul>
+<li>Enterprise layout consistent with existing YSS Orbit AppLayout
+(responsive, light/dark theme already built).</li>
+<li>NC List: dense <code>DataTable</code> with saved filter views (“My
+Open NCs”, “Overdue”, “Pending My Approval”, “Safety-Critical”).</li>
+<li>NC Detail: full-screen drill-down, tabs for Details / Attachments /
+Approval Chain / History / Comments.</li>
+<li>Status badge colors: Draft=gray, Submitted/Under Review=blue,
+Assigned/In Progress=amber, Verification Pending=purple, Closed=green,
+Rejected/Reopened=red, Merged=slate (muted/read-only look).</li>
+<li>Safety-Critical NCs get a persistent red accent/icon regardless of
+status, visible in list and detail views.</li>
+<li>Mobile-responsive read + comment access at minimum; full inspection
+creation flow can be desktop/tablet-first for Phase 1, with the
+offline-cache pattern (Section 20.3) as the field-usability bridge.</li>
+</ul>
+<hr />
+<h2 id="integration-points">19. Integration Points</h2>
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>System</th>
+<th>Integration</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Core Organization / BU / Project</td>
+<td>FK relationships, shared tenancy scoping</td>
+</tr>
+<tr class="even">
+<td>Core IAM / RBAC</td>
+<td>Role &amp; permission resolution via
+<code>usePermissions</code></td>
+</tr>
+<tr class="odd">
+<td>Notification Service</td>
+<td>Shared email/in-app dispatch infrastructure</td>
+</tr>
+<tr class="even">
+<td>Audit Log Service</td>
+<td>Shared <code>core_audit_log</code> if platform-wide, reused not
+duplicated</td>
+</tr>
+<tr class="odd">
+<td>Document Management (future)</td>
+<td>Attachment storage behind an <code>AttachmentStorageAdapter</code>
+abstraction now, so swapping to a DMS later needs no data model
+change</td>
+</tr>
+<tr class="even">
+<td>Future: Contractor Portal</td>
+<td><code>pqm_contractor</code> already has contact fields ready for
+external-login extension</td>
+</tr>
+<tr class="odd">
+<td>Future: Finance/ERP</td>
+<td>Backcharge fields are report-based handoff only in Phase 1;
+real-time sync deferred</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="practical-field-operations-considerations">20. Practical Field
+&amp; Operations Considerations</h2>
+<p>These are the things that don’t show up in a clean textbook workflow
+but will show up within the first month of real usage.</p>
+<h3 id="duplicate-nc-detection">20.1 Duplicate NC Detection</h3>
+<p>Multiple engineers inspecting the same project independently will
+occasionally raise the same issue twice. On Submit, a similarity check
+(same project + category + overlapping location + within a rolling
+48-hour window) flags a <strong>possible duplicate</strong> as a soft
+warning (not a hard block, since it’s sometimes genuinely a distinct
+issue). Confirmed duplicates are merged via <code>/merge/</code>: the
+source NC’s attachments/comments are appended to the primary NC’s
+history (never deleted), and the source becomes <code>Merged</code>
+(terminal, read-only) with <code>merged_into_nc_id</code> set.</p>
+<h3 id="recurring-issue-repeat-offender-linking">20.2 Recurring Issue /
+Repeat-Offender Linking</h3>
+<p>Distinct from duplicates — the <em>same type</em> of issue recurring
+at a <em>different</em> location/time (e.g., under-torqued blade root
+bolts recurring across multiple WTGs erected by the same crew, or DC
+earthing resistance failures recurring across multiple combiner boxes on
+the same feeder) is a root-cause signal, not a duplicate.
+<code>linked_nc_id</code> groups a family of related NCs; the
+<strong>Repeat Issue Rate</strong> dashboard KPI is often the single
+most useful metric for EPC contractor performance reviews.</p>
+<h3 id="contractor-accountability-backcharge-tracking">20.3 Contractor
+Accountability &amp; Backcharge Tracking</h3>
+<p>Quality NCs frequently carry a commercial consequence (cost deducted
+from a subcontractor’s bill for rework). <code>backcharge_amount</code>
++ <code>backcharge_status</code>
+(<code>Not Applicable</code>/<code>Proposed</code>/<code>Contractor Disputed</code>/<code>Agreed</code>/<code>Deducted</code>)
+are kept intentionally simple — just enough for Quality to flag a cost
+consequence, with Commercial/Finance picking it up downstream via the
+Backcharge Summary report rather than a real-time integration in Phase
+1.</p>
+<h3 id="safety-critical-fast-track">20.4 Safety-Critical Fast-Track</h3>
+<p>A safety-critical finding (under-torqued blade root bolts, missing
+edge protection on a WTG platform, exposed live DC conductors) bypasses
+the normal SLA-by-priority default:
+<code>is_safety_critical = true</code> auto-sets a 24-hour SLA, fires an
+immediate parallel notification to the Safety Officer role, and always
+surfaces on a dedicated dashboard tile regardless of other filters.</p>
+<h3 id="weather-force-majeure-sla-extensions-1">20.5 Weather /
+Force-Majeure SLA Extensions</h3>
+<p>See Section 5.3 — extension requests require next-level approval
+before <code>target_closure_date</code> changes, and the original date
+is preserved for audit purposes.</p>
+<h3 id="mid-workflow-reassignment">20.6 Mid-Workflow Reassignment</h3>
+<p>Engineers resign, transfer, or go on leave constantly on real
+projects. <code>/reassign/</code> (Site Incharge/Project Incharge, any
+pre-closure status, reason required) logs a distinct
+<code>Reassigned</code> event so the audit trail clearly shows who
+actually performed the corrective work, even if it wasn’t the original
+assignee.</p>
+<h3 id="offline-capture-sync">20.7 Offline Capture &amp; Sync</h3>
+<p>Basements, remote sites, and tower-crane zones frequently have no
+signal. Draft NC creation should cache in IndexedDB (not localStorage)
+with photos held as blobs, syncing automatically on reconnect. The
+server accepts a <code>client_captured_at</code> timestamp distinct from
+<code>created_at</code> (server receipt time) — a large gap is expected
+and not itself suspicious, but a captured time <em>in the future</em>
+relative to server time should be rejected.</p>
+<h3 id="photo-authenticity-for-audit-defensibility">20.8 Photo
+Authenticity for Audit Defensibility</h3>
+<p>Per attachment, capture <code>photo_gps_lat/lng</code>,
+<code>photo_captured_at</code> (EXIF), and <code>photo_exif_hash</code>.
+Validate GPS against the project’s registered geofence
+(<code>pqm_project_geofence</code>, default 500m radius) at upload —
+flag, don’t block, since a valid reference photo (e.g., a
+fabrication-yard sample) is occasionally taken off-site. New uploads
+always create a new <code>version</code> row; existing attachment files
+are never overwritten in place.</p>
+<h3 id="legacy-data-migration-excel-pqm">20.9 Legacy Data Migration
+(Excel → PQM)</h3>
+<p>Most tenants will have 1–3 years of NCs in Excel that need to migrate
+in without corrupting numbering or audit integrity.
+<code>/import/legacy/</code> (Admin-only) accepts a mapped CSV/XLSX
+upload; every imported record gets a permanent
+<code>legacy_reference</code> and <code>is_migrated = true</code> flag,
+and uses the separate <code>LEGACY</code> numbering series so historical
+and live numbers never collide. Run through the same validators where
+feasible, with an explicit <code>import_override</code> audit flag where
+historical data is incomplete — apply the same ETL rigor as any
+data-migration-assurance engagement: row-count reconciliation (source vs
+loaded vs rejected), checksum/spot-check sampling, and a migration
+exception report before go-live sign-off.</p>
+<h3 id="external-client-auditor-read-only-access">20.10 External Client
+/ Auditor Read-Only Access</h3>
+<p>For projects needing end-client or third-party auditor visibility:
+the <strong>External Client Auditor</strong> role is scoped to specific
+Project(s) (not BU-wide), read-only, export-enabled, and cannot see
+internal <code>pqm_comment</code> threads (only formal fields + approval
+history) unless explicitly toggled per project. This is a permission
+profile (<code>scope_type = 'project_list'</code>), not a new table — it
+reuses the existing RBAC engine.</p>
+<hr />
+<h2 id="ai-features-phase-2-optional">21. AI Features (Phase 2 —
+Optional)</h2>
+<p>Auto-suggested category/severity from photo + description (vision
+model) · Root-cause pattern detection across historical NCs (cluster
+recurring issues by category/project/contractor) · Auto-generated
+closure summaries from approval comments · Predictive SLA-breach risk
+score per open NC · Natural-language dashboard queries (“show me overdue
+critical NCs on Project X this month”). These depend on sufficient
+historical volume — recommend a minimum of 500+ closed NCs per tenant
+before root-cause clustering becomes statistically useful; don’t build
+this before Phase 1 data exists.</p>
+<hr />
+<h2 id="enterprise-standards-non-functional-requirements">22. Enterprise
+Standards &amp; Non-Functional Requirements</h2>
+<ul>
+<li><strong>Multi-tenant isolation</strong>: every query filtered by
+<code>organization_id</code> at the ORM manager level (custom manager,
+not per-view filtering) to make tenant-leak bugs structurally harder to
+introduce.</li>
+<li><strong>BU isolation</strong>: consistent with existing BU-scoped
+RBAC.</li>
+<li><strong>Performance</strong>: index plan (Section 8) supports the
+two hottest queries — “my open NCs” and “overdue NCs” — target under
+200ms at 100k-row tenant scale; paginate all list endpoints (default 25,
+max 100).</li>
+<li><strong>Security</strong>: file upload validation (type/size limits,
+virus-scan hook placeholder), signed URLs for attachment access (no
+public bucket URLs), rate-limiting on write endpoints.</li>
+<li><strong>Data retention</strong>: soft-delete only; per-tenant
+retention policy for closed NCs configurable (never purge, or purge
+after N years per contract).</li>
+<li><strong>Backward compatibility</strong>: status enum and
+approval-step model support adding a 4th/5th approval level later
+without a migration on <code>pqm_non_conformance</code> itself — this is
+why approval steps live in a child table, not fixed columns.</li>
+</ul>
+<hr />
+<h2 id="test-scenarios-qa-verification-checklist">23. Test Scenarios
+&amp; QA Verification Checklist</h2>
+<h3 id="functional-happy-path">23.1 Functional — Happy Path</h3>
+<ul class="task-list">
+<li><label><input type="checkbox" />Full Section 4 case study replayed
+end-to-end as an automated E2E fixture (submit → return → resubmit →
+assign → progress → closure → 3-level verify → close →
+reopen)</label></li>
+<li><label><input type="checkbox" />Create NC with all mandatory fields
++ 1 before-photo → status = Draft</label></li>
+<li><label><input type="checkbox" />Submit → Submitted, correct
+notifications fired</label></li>
+<li><label><input type="checkbox" />Site Incharge approves + assigns
+engineer → Assigned, assignee notified</label></li>
+<li><label><input type="checkbox" />Engineer starts work → In
+Progress</label></li>
+<li><label><input type="checkbox" />After-photo + root cause + request
+closure → Verification Pending</label></li>
+<li><label><input type="checkbox" />Each approval level approves in
+sequence → <code>current_approval_level</code> increments
+correctly</label></li>
+<li><label><input type="checkbox" />Final approval → Closed,
+<code>actual_closure_date</code> set, read-only enforced</label></li>
+</ul>
+<h3 id="functional-negative-edge-cases">23.2 Functional — Negative /
+Edge Cases</h3>
+<ul class="task-list">
+<li><label><input type="checkbox" />Request closure blocked without root
+cause</label></li>
+<li><label><input type="checkbox" />Request closure blocked without
+after-photos</label></li>
+<li><label><input type="checkbox" />Submit blocked without
+before-photos</label></li>
+<li><label><input type="checkbox" />Reject at review → returns to Draft
+with comment visible</label></li>
+<li><label><input type="checkbox" />Rework at any verification level →
+resets to Assigned, doesn’t skip the wrong level</label></li>
+<li><label><input type="checkbox" />Reopen requires comment; blank
+rejected client- and server-side</label></li>
+<li><label><input type="checkbox" />Concurrent NC creation → NC numbers
+stay unique under load (<code>select_for_update</code>
+path)</label></li>
+<li><label><input type="checkbox" />PATCH blocked on any NC not in
+Draft/Returned, enforced server-side regardless of UI</label></li>
+</ul>
+<h3 id="new-workflow-coverage-v2v3-additions">23.3 New Workflow Coverage
+(v2/v3 additions)</h3>
+<ul class="task-list">
+<li><label><input type="checkbox" />Duplicate-check flags a genuinely
+similar NC without hard-blocking submission</label></li>
+<li><label><input type="checkbox" />Merge preserves NC-B’s
+attachments/comments under NC-A; NC-B becomes
+<code>Merged</code>/read-only</label></li>
+<li><label><input type="checkbox" />Backcharge fields optional, never
+block a status transition</label></li>
+<li><label><input type="checkbox" />Safety-critical NC auto-sets 24h SLA
+and fires parallel Safety Officer notification independent of the normal
+chain</label></li>
+<li><label><input type="checkbox" />Extension request changes
+<code>target_closure_date</code> only after approval; original date
+remains queryable</label></li>
+<li><label><input type="checkbox" />Reassignment writes a
+<code>Reassigned</code> history event without altering
+<code>status</code></label></li>
+<li><label><input type="checkbox" />Legacy import: reconciliation report
+matches source file; rejected rows listed with reason; legacy numbering
+never collides with live</label></li>
+<li><label><input type="checkbox" />GPS outside geofence flags but
+doesn’t block attachment upload</label></li>
+<li><label><input type="checkbox" />Photo EXIF hash changes if
+underlying bytes are altered post-upload (tamper-evidence)</label></li>
+<li><label><input type="checkbox" />External Client Auditor cannot see
+comment threads by default; only when project-level toggle
+enabled</label></li>
+</ul>
+<h3 id="rbac-security">23.4 RBAC / Security</h3>
+<ul class="task-list">
+<li><label><input type="checkbox" />Site Engineer from BU-A cannot
+view/list NCs from BU-B</label></li>
+<li><label><input type="checkbox" />Site Engineer cannot call
+<code>/review-decision/</code> even via a crafted request (server-side
+role check, not just hidden UI)</label></li>
+<li><label><input type="checkbox" />Auditor sees everything including
+soft-deleted; every write endpoint returns 403</label></li>
+<li><label><input type="checkbox" />Client-supplied
+<code>business_unit_id</code>/<code>organization_id</code> cannot
+override server-resolved tenant scope</label></li>
+<li><label><input type="checkbox" />Attachment download URLs expire /
+aren’t guessable</label></li>
+</ul>
+<h3 id="notifications-reporting-audit">23.5 Notifications / Reporting /
+Audit</h3>
+<ul class="task-list">
+<li><label><input type="checkbox" />Each event fires exactly once (no
+duplicate sends on retry)</label></li>
+<li><label><input type="checkbox" />Escalation ladder fires on correct
+day offsets per config</label></li>
+<li><label><input type="checkbox" /><code>pqm_notification_log</code>
+has one row per (event, recipient, channel)</label></li>
+<li><label><input type="checkbox" />KPI tiles match a manual SQL count
+for a seeded test dataset</label></li>
+<li><label><input type="checkbox" />SLA Compliance % correctly reflects
+extension-adjusted vs original target dates</label></li>
+<li><label><input type="checkbox" />Export respects BU/project scope (no
+cross-tenant or cross-BU leakage)</label></li>
+<li><label><input type="checkbox" />Every status change produces exactly
+one <code>pqm_status_history</code> row</label></li>
+<li><label><input type="checkbox" />History timeline correctly
+reconstructs a reopened NC’s two lifecycles without merging/confusing
+them</label></li>
+</ul>
+<hr />
+<h2 id="implementation-roadmap">24. Implementation Roadmap</h2>
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Phase</th>
+<th>Deliverable</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Phase 1</td>
+<td>Database migrations (Section 8), seed data (default categories,
+roles, geofences)</td>
+</tr>
+<tr class="even">
+<td>Phase 2</td>
+<td>Backend: models, services, permissions, API (Sections 9–10), unit
+tests</td>
+</tr>
+<tr class="odd">
+<td>Phase 3</td>
+<td>Frontend: routes, list/detail pages, forms (Section 11)</td>
+</tr>
+<tr class="even">
+<td>Phase 4</td>
+<td>Dashboard + charts (Section 17)</td>
+</tr>
+<tr class="odd">
+<td>Phase 5</td>
+<td>Reports/export (Section 16), Notifications (Section 14)</td>
+</tr>
+<tr class="even">
+<td>Phase 6</td>
+<td>Field-practice features: duplicate/merge, backcharge, safety
+fast-track, extensions, reassignment, offline cache (Section 20)</td>
+</tr>
+<tr class="odd">
+<td>Phase 7</td>
+<td>Legacy data migration tooling + tenant onboarding runs (Section
+20.9)</td>
+</tr>
+<tr class="even">
+<td>Phase 8</td>
+<td>QA pass against full checklist (Section 23), UAT with Quality Head +
+Site Incharge personas using the Section 4 case study script</td>
+</tr>
+<tr class="odd">
+<td>Phase 9</td>
+<td>Performance/security hardening (Section 22), production readiness
+sign-off</td>
+</tr>
+<tr class="even">
+<td>Phase 10 (later)</td>
+<td>AI enhancements (Section 21)</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<hr />
+<h2 id="appendix-a.-rbac-full-specification">Appendix A. RBAC — Full
+Specification</h2>
+<p>This appendix is the single canonical source for PQM’s RBAC —
+codenames, hierarchy, seeding, and field-level visibility. Sections 7,
+13, 3, and 9.2 describe RBAC conceptually; this appendix is what a
+developer should actually implement against.</p>
+<h3 id="a.1-full-permission-codename-list">A.1 Full Permission Codename
+List</h3>
+<p>Every permission below is a discrete, independently-assignable
+codename in the format <code>pqm.&lt;action&gt;_&lt;object&gt;</code>.
+There is no implicit bundling — a role has exactly the codenames it’s
+been given, nothing more (see A.2 for why inheritance is intentionally
+NOT used).</p>
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Codename</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>pqm.view_nc</code></td>
+<td>View NC list/detail within one’s scope</td>
+</tr>
+<tr class="even">
+<td><code>pqm.view_all_bu</code></td>
+<td>View across all BUs in the organization (overrides default single-BU
+scope)</td>
+</tr>
+<tr class="odd">
+<td><code>pqm.create_nc</code></td>
+<td>Create a new NC</td>
+</tr>
+<tr class="even">
+<td><code>pqm.edit_nc</code></td>
+<td>Edit an NC while in Draft/Returned</td>
+</tr>
+<tr class="odd">
+<td><code>pqm.submit_nc</code></td>
+<td>Draft → Submitted</td>
+</tr>
+<tr class="even">
+<td><code>pqm.review_nc</code></td>
+<td>Approve/Reject/Return at the review stage</td>
+</tr>
+<tr class="odd">
+<td><code>pqm.assign_nc</code></td>
+<td>Assign or reassign the responsible engineer</td>
+</tr>
+<tr class="even">
+<td><code>pqm.update_nc_progress</code></td>
+<td>Start work, log progress, request an SLA extension</td>
+</tr>
+<tr class="odd">
+<td><code>pqm.request_closure</code></td>
+<td>Submit an NC for verification (triggers the closure gate check)</td>
+</tr>
+<tr class="even">
+<td><code>pqm.verify_nc</code></td>
+<td>Approve/Reject/Rework at a verification-chain level</td>
+</tr>
+<tr class="odd">
+<td><code>pqm.reopen_nc</code></td>
+<td>Reopen a Closed NC</td>
+</tr>
+<tr class="even">
+<td><code>pqm.merge_nc</code></td>
+<td>Merge a duplicate NC into a primary NC</td>
+</tr>
+<tr class="odd">
+<td><code>pqm.link_nc</code></td>
+<td>Link an NC into a recurring-issue family</td>
+</tr>
+<tr class="even">
+<td><code>pqm.comment_nc</code></td>
+<td>Post to the internal comment thread</td>
+</tr>
+<tr class="odd">
+<td><code>pqm.view_comments</code></td>
+<td>View the internal comment thread (separable from
+<code>view_nc</code> — see A.4)</td>
+</tr>
+<tr class="even">
+<td><code>pqm.upload_attachment</code></td>
+<td>Upload photos/documents to an NC</td>
+</tr>
+<tr class="odd">
+<td><code>pqm.view_audit</code></td>
+<td>View status history / approval history / full timeline</td>
+</tr>
+<tr class="even">
+<td><code>pqm.view_dashboard</code></td>
+<td>View KPI tiles and charts within one’s scope</td>
+</tr>
+<tr class="odd">
+<td><code>pqm.export_report</code></td>
+<td>Export NC Register / reports (Excel/PDF/CSV)</td>
+</tr>
+<tr class="even">
+<td><code>pqm.view_backcharge</code></td>
+<td>View/edit <code>backcharge_amount</code> and
+<code>backcharge_status</code> fields</td>
+</tr>
+<tr class="odd">
+<td><code>pqm.manage_config</code></td>
+<td>Manage categories, contractors, escalation config</td>
+</tr>
+<tr class="even">
+<td><code>pqm.run_legacy_import</code></td>
+<td>Execute <code>/import/legacy/</code></td>
+</tr>
+<tr class="odd">
+<td><code>pqm.view_safety_critical</code></td>
+<td>See the Safety-Critical dashboard tile and flag (org/project-wide,
+bypasses normal BU scope for this one tile only)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Rule:</strong> any new action added to the module later gets
+its own codename — never overload an existing one (e.g., don’t make
+<code>merge_nc</code> also imply <code>link_nc</code> just because
+they’re similar actions; a tenant may legitimately want to allow one
+without the other).</p>
+<h3
+id="a.2-role-hierarchy-explicit-decision-no-automatic-inheritance">A.2
+Role Hierarchy — Explicit Decision: No Automatic Inheritance</h3>
+<p>A common mistake in RBAC design is assuming “Quality Head”
+automatically has everything “Site Incharge” has, because it
+<em>sounds</em> senior. <strong>This module does not use
+inheritance.</strong> Reasons:</p>
+<ul>
+<li>Seniority in a reporting-line sense (Quality Head manages Site
+Incharges) is not the same as functional scope (Quality Head may
+deliberately be excluded from day-to-day <code>assign_nc</code> actions
+in some tenants, to keep assignment authority local to the site).</li>
+<li>Inheritance chains become unauditable at scale — six months in,
+nobody can explain why a role has a permission because “it inherited it
+from three levels up.”</li>
+<li>YSS Orbit’s existing core RBAC engine (used elsewhere in
+Organization/IAM) already treats roles as <strong>flat, explicit
+permission sets</strong> — PQM must follow the same pattern for
+consistency, not introduce a second paradigm just for this module.</li>
+</ul>
+<p><strong>What this means practically:</strong> the default seed roles
+(A.3) come pre-populated with a sensible set of codenames per Section
+13’s matrix, but an Org Admin can freely add or remove any codename from
+any role afterward — including making a Quality Head <em>unable</em> to
+<code>assign_nc</code> if that tenant’s process requires it, without
+that decision cascading anywhere else.</p>
+<p>If a tenant genuinely wants hierarchy-like behavior (e.g., “give the
+Quality Head role everything Site Incharge has, plus these three more”),
+that’s achieved by <strong>cloning</strong> the Site Incharge role as a
+starting point and adding codenames — a one-time explicit action, not a
+standing inheritance relationship. This “clone as starting point”
+pattern should be a first-class action in the Role management UI, not
+just a database trick.</p>
+<h3 id="a.3-default-role-seeding-mechanism">A.3 Default Role Seeding
+Mechanism</h3>
+<ul>
+<li>Seed roles are shipped as a <strong>fixture file</strong>
+(<code>pqm/fixtures/default_roles.json</code>) containing the 14 roles
+from Section 7 with their default codename sets pre-populated per the
+Section 13 matrix.</li>
+<li>Seeding is triggered <strong>once per new Organization</strong>, as
+a step in the existing Organization-onboarding flow
+(<code>org_onboarding_service.provision_defaults(org)</code> — extend
+this existing hook rather than adding a separate PQM-specific onboarding
+trigger, so PQM roles are provisioned in the same transaction as the
+org’s other default roles).</li>
+<li>Seeded roles are <strong>fully editable copies</strong>, not
+references to a shared template — once created for an Organization,
+editing that org’s “Site Incharge” role never affects any other tenant’s
+“Site Incharge” role. This is critical: a shared/linked template would
+silently break tenant isolation the moment one client asks for a role
+tweak.</li>
+<li>A <code>is_system_default</code> boolean flag on the seeded role
+lets the UI show “(default)” next to unmodified roles and warn an admin
+before they edit one (“this will only affect your organization”), purely
+as a UX safety net — it has no functional effect on permission
+resolution.</li>
+<li>Re-running seeding (e.g., after a module upgrade adds a new default
+role like Safety Officer to existing tenants) must be <strong>additive
+and idempotent</strong> — insert only roles that don’t already exist for
+that org, never overwrite an admin’s existing customizations to a role
+with the same name.</li>
+</ul>
+<h3 id="a.4-field-level-visibility-beyond-object-level-view_nc">A.4
+Field-Level Visibility (beyond object-level <code>view_nc</code>)</h3>
+<p>Object-level <code>pqm.view_nc</code> is not sufficient on its own —
+some fields need to be hidden even from users who can see the NC itself.
+Implement as a <strong>serializer-level field filter</strong>, not by
+creating separate near-duplicate serializers per role:</p>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Field(s)</th>
+<th>Visible to</th>
+<th>Hidden from</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>backcharge_amount</code>, <code>backcharge_status</code></td>
+<td>Roles with <code>pqm.view_backcharge</code> (typically Site
+Incharge+, Quality Head, Org Admin)</td>
+<td>Site Engineer, Quality Inspector, External Client Auditor
+(commercial data, not a field-execution concern)</td>
+</tr>
+<tr class="even">
+<td><code>pqm_comment</code> thread</td>
+<td>Roles with <code>pqm.view_comments</code></td>
+<td>External Client Auditor by default (toggle-able per project — see
+20.10); Safety Officer (not part of the day-to-day discussion)</td>
+</tr>
+<tr class="odd">
+<td><code>legacy_reference</code>, <code>is_migrated</code></td>
+<td>Auditor, Org Admin</td>
+<td>Hidden from general list views for all other roles (visible only in
+NC Detail’s audit tab) — it’s provenance metadata, not something a Site
+Engineer needs cluttering their daily list</td>
+</tr>
+<tr class="even">
+<td>Photo GPS/EXIF raw metadata (<code>photo_gps_lat/lng</code>,
+<code>photo_exif_hash</code>)</td>
+<td>Auditor, Org Admin, Quality Head</td>
+<td>Shown to others only as a computed badge (“✓ Location verified” / “⚠
+Outside geofence”), never the raw coordinates — raw GPS of a project
+location is sensitive and unnecessary for most roles to see
+directly</td>
+</tr>
+<tr class="odd">
+<td><code>root_cause_description</code> (before the Request Closure
+gate)</td>
+<td>Assigned Engineer, Site Incharge+</td>
+<td>Not shown to Raised-By-only viewers as “required” until the gate
+actually requires it, to avoid confusing early-stage viewers</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Implementation pattern:</strong> one
+<code>NCDetailSerializer</code> with a <code>get_fields()</code>
+override that pops field keys based on <code>request.user</code>’s
+resolved codename set — this keeps one serializer as the source of truth
+instead of drifting copies per role.</p>
+<h3
+id="a.5-scope-resolution-order-how-a-requests-visible-data-is-actually-computed">A.5
+Scope Resolution Order (how a request’s visible data is actually
+computed)</h3>
+<figure>
+<img
+src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjgwIiBoZWlnaHQ9IjUyMCIgdmlld0JveD0iMCAwIDY4MCA1MjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgcm9sZT0iaW1nIj4KPHRpdGxlPlJCQUMgc2NvcGUgcmVzb2x1dGlvbiBvcmRlcjwvdGl0bGU+CjxkZXNjPkZpeGVkIHNlcXVlbmNlIGZvciByZXNvbHZpbmcgYSB1c2VyJ3MgdmlzaWJsZSBkYXRhIHNjb3BlOiBQbGF0Zm9ybSBBZG1pbiBjaGVjaywgb3JnLXdpZGUgdmlld19hbGxfYnUgY2hlY2ssIEV4dGVybmFsIENsaWVudCBBdWRpdG9yIHByb2plY3Qgc2NvcGUsIGRlZmF1bHQgYnVzaW5lc3MgdW5pdCBzY29wZSwgdGhlbiBhIHNlcGFyYXRlIGFjdGlvbiBwZXJtaXNzaW9uIGNoZWNrLjwvZGVzYz4KPGRlZnM+PG1hcmtlciBpZD0iYXJyb3c1IiB2aWV3Qm94PSIwIDAgMTAgMTAiIHJlZlg9IjgiIHJlZlk9IjUiIG1hcmtlcldpZHRoPSI2IiBtYXJrZXJIZWlnaHQ9IjYiIG9yaWVudD0iYXV0by1zdGFydC1yZXZlcnNlIj48cGF0aCBkPSJNMiAxTDggNUwyIDkiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzVGNUU1QSIgc3Ryb2tlLXdpZHRoPSIxLjUiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIvPjwvbWFya2VyPjwvZGVmcz4KPHJlY3Qgd2lkdGg9IjY4MCIgaGVpZ2h0PSI1MjAiIGZpbGw9IiNmZmZmZmYiLz4KPHJlY3QgeD0iMTgwIiB5PSI0MCIgd2lkdGg9IjMyMCIgaGVpZ2h0PSI1NiIgcng9IjgiIGZpbGw9IiNGMUVGRTgiIHN0cm9rZT0iIzVGNUU1QSIgc3Ryb2tlLXdpZHRoPSIwLjUiLz4KPHRleHQgeD0iMzQwIiB5PSI1OSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1mYW1pbHk9IkFyaWFsLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjE0IiBmb250LXdlaWdodD0iNjAwIiBmaWxsPSIjMkMyQzJBIj4xLiBJcyB1c2VyIGEgUGxhdGZvcm0gQWRtaW4/PC90ZXh0Pgo8dGV4dCB4PSIzNDAiIHk9Ijc3IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LWZhbWlseT0iQXJpYWwsIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTIiIGZpbGw9IiM0NDQ0NDEiPk5vIGRlZmF1bHQgUFFNIGFjY2VzczwvdGV4dD4KPGxpbmUgeDE9IjM0MCIgeTE9Ijk2IiB4Mj0iMzQwIiB5Mj0iMTMyIiBzdHJva2U9IiM1RjVFNUEiIHN0cm9rZS13aWR0aD0iMS41IiBtYXJrZXItZW5kPSJ1cmwoI2Fycm93NSkiLz4KPHJlY3QgeD0iMTgwIiB5PSIxMzYiIHdpZHRoPSIzMjAiIGhlaWdodD0iNTYiIHJ4PSI4IiBmaWxsPSIjRTZGMUZCIiBzdHJva2U9IiMxODVGQTUiIHN0cm9rZS13aWR0aD0iMC41Ii8+Cjx0ZXh0IHg9IjM0MCIgeT0iMTU1IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LWZhbWlseT0iQXJpYWwsIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTQiIGZvbnQtd2VpZ2h0PSI2MDAiIGZpbGw9IiMwNDJDNTMiPjIuIEhhcyBwcW0udmlld19hbGxfYnU/PC90ZXh0Pgo8dGV4dCB4PSIzNDAiIHk9IjE3MyIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1mYW1pbHk9IkFyaWFsLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjEyIiBmaWxsPSIjMEM0NDdDIj5TY29wZSA9IGFsbCBCVXMgaW4gdGhlIG9yZzwvdGV4dD4KPGxpbmUgeDE9IjM0MCIgeTE9IjE5MiIgeDI9IjM0MCIgeTI9IjIyOCIgc3Ryb2tlPSIjNUY1RTVBIiBzdHJva2Utd2lkdGg9IjEuNSIgbWFya2VyLWVuZD0idXJsKCNhcnJvdzUpIi8+CjxyZWN0IHg9IjE4MCIgeT0iMjMyIiB3aWR0aD0iMzIwIiBoZWlnaHQ9IjU2IiByeD0iOCIgZmlsbD0iI0ZBRUNFNyIgc3Ryb2tlPSIjOTkzQzFEIiBzdHJva2Utd2lkdGg9IjAuNSIvPgo8dGV4dCB4PSIzNDAiIHk9IjI1MSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1mYW1pbHk9IkFyaWFsLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjE0IiBmb250LXdlaWdodD0iNjAwIiBmaWxsPSIjNEExQjBDIj4zLiBJcyB1c2VyIEV4dGVybmFsIENsaWVudCBBdWRpdG9yPzwvdGV4dD4KPHRleHQgeD0iMzQwIiB5PSIyNjkiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtZmFtaWx5PSJBcmlhbCwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxMiIgZmlsbD0iIzcxMkIxMyI+U2NvcGUgPSBhc3NpZ25lZCBwcm9qZWN0IGxpc3Q8L3RleHQ+CjxsaW5lIHgxPSIzNDAiIHkxPSIyODgiIHgyPSIzNDAiIHkyPSIzMjQiIHN0cm9rZT0iIzVGNUU1QSIgc3Ryb2tlLXdpZHRoPSIxLjUiIG1hcmtlci1lbmQ9InVybCgjYXJyb3c1KSIvPgo8cmVjdCB4PSIxODAiIHk9IjMyOCIgd2lkdGg9IjMyMCIgaGVpZ2h0PSI1NiIgcng9IjgiIGZpbGw9IiNGQUVFREEiIHN0cm9rZT0iIzg1NEYwQiIgc3Ryb2tlLXdpZHRoPSIwLjUiLz4KPHRleHQgeD0iMzQwIiB5PSIzNDciIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtZmFtaWx5PSJBcmlhbCwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxNCIgZm9udC13ZWlnaHQ9IjYwMCIgZmlsbD0iIzQxMjQwMiI+NC4gRGVmYXVsdCBidXNpbmVzcyB1bml0IHNjb3BlPC90ZXh0Pgo8dGV4dCB4PSIzNDAiIHk9IjM2NSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1mYW1pbHk9IkFyaWFsLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjEyIiBmaWxsPSIjNjMzODA2Ij5SZXNvbHZlZCBmcm9tIHJvbGUgYXNzaWdubWVudDwvdGV4dD4KPGxpbmUgeDE9IjM0MCIgeTE9IjM4NCIgeDI9IjM0MCIgeTI9IjQyMCIgc3Ryb2tlPSIjNUY1RTVBIiBzdHJva2Utd2lkdGg9IjEuNSIgbWFya2VyLWVuZD0idXJsKCNhcnJvdzUpIi8+CjxyZWN0IHg9IjE4MCIgeT0iNDI0IiB3aWR0aD0iMzIwIiBoZWlnaHQ9IjU2IiByeD0iOCIgZmlsbD0iI0UxRjVFRSIgc3Ryb2tlPSIjMEY2RTU2IiBzdHJva2Utd2lkdGg9IjAuNSIvPgo8dGV4dCB4PSIzNDAiIHk9IjQ0MyIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1mYW1pbHk9IkFyaWFsLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjE0IiBmb250LXdlaWdodD0iNjAwIiBmaWxsPSIjMDQzNDJDIj41LiBBY3Rpb24gcGVybWlzc2lvbiBjaGVjazwvdGV4dD4KPHRleHQgeD0iMzQwIiB5PSI0NjEiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtZmFtaWx5PSJBcmlhbCwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxMiIgZmlsbD0iIzA4NTA0MSI+U2VwYXJhdGUgZnJvbSBzY29wZSwgcGVyIHJlcXVlc3Q8L3RleHQ+Cjwvc3ZnPg=="
+alt="RBAC scope resolution order" />
+<figcaption aria-hidden="true">RBAC scope resolution order</figcaption>
+</figure>
+<p>For every PQM request, scope is resolved in this fixed order —
+implement this as a single reusable queryset method
+(<code>PQMBaseQuerySet.scoped_for(user)</code>) rather than repeating
+logic per view:</p>
+<ol type="1">
+<li>Is the user a Platform Admin? → No default PQM data access (must be
+explicitly granted <code>pqm.view_all_bu</code> per org if they need
+support access).</li>
+<li>Does the user’s role have <code>pqm.view_all_bu</code>? → Scope =
+all BUs in their Organization.</li>
+<li>Is the user an External Client Auditor? → Scope = only the specific
+<code>project_id</code> list attached to their role assignment,
+regardless of BU.</li>
+<li>Default → Scope = the specific Business Unit(s) the user’s role
+assignment grants, resolved from the core IAM role-assignment table
+(never from a client-supplied parameter).</li>
+<li>Within whatever scope applies from steps 1–4, individual object
+action permissions (<code>pqm.review_nc</code>,
+<code>pqm.verify_nc</code>, etc.) are then checked per-request — scope
+determines <strong>what rows are visible/listed</strong>, action
+permissions determine <strong>what the user can do to a row already in
+view</strong>. These are deliberately two separate checks, not one
+combined check, so a permission bug in one never silently widens the
+other.</li>
+</ol>
+<h3 id="a.6-rbac-specific-test-cases-extends-section-23.4">A.6
+RBAC-Specific Test Cases (extends Section 23.4)</h3>
+<ul class="task-list">
+<li><label><input type="checkbox" />Every codename in A.1 is
+independently toggleable on a role with no side effects on any other
+codename</label></li>
+<li><label><input type="checkbox" />Removing <code>pqm.assign_nc</code>
+from a tenant’s Quality Head role does not remove any other permission
+from that role (proves no hidden inheritance)</label></li>
+<li><label><input type="checkbox" />Cloning a role copies its exact
+codename set at clone time; subsequent edits to the source role do not
+retroactively affect the clone</label></li>
+<li><label><input type="checkbox" />Editing “Site Incharge” role for Org
+A has zero effect on Org B’s “Site Incharge” role (fixture-seeded roles
+are true per-tenant copies, not shared references)</label></li>
+<li><label><input type="checkbox" />Re-running the seeding step for an
+org that already has PQM roles adds only missing roles (e.g., a newly
+introduced Safety Officer default) and does not overwrite any customized
+existing role</label></li>
+<li><label><input type="checkbox" />A user with <code>pqm.view_nc</code>
+but not <code>pqm.view_backcharge</code> never receives
+<code>backcharge_amount</code>/<code>backcharge_status</code> in any API
+response, including list, detail, and export payloads</label></li>
+<li><label><input type="checkbox" />A user with <code>pqm.view_nc</code>
+but not <code>pqm.view_comments</code> receives an NC detail payload
+with the comments array entirely omitted (not an empty array — the
+distinction matters so the frontend doesn’t render a misleading “no
+comments yet” state)</label></li>
+<li><label><input type="checkbox" />Raw GPS/EXIF fields never appear in
+any payload for a user lacking the specific visibility grant, even if
+they have <code>pqm.view_audit</code></label></li>
+<li><label><input type="checkbox" />External Client Auditor scoped to
+Project X cannot retrieve an NC from Project Y via direct object ID
+guessing (<code>GET /nc/{id}/</code> on an out-of-scope ID returns 404,
+not 403, to avoid confirming the ID’s existence)</label></li>
+<li><label><input type="checkbox" />Scope resolution (A.5) and
+action-permission checks are provably independent in code review — a
+test that grants scope without the action codename must fail the action
+attempt, and vice versa</label></li>
+</ul>
+<hr />
+<h2
+id="appendix-b.-completeness-gap-fill-database-backend-frontend-qaqc-production-readiness">Appendix
+B. Completeness Gap-Fill — Database, Backend, Frontend, QA/QC &amp;
+Production Readiness</h2>
+<p>A full re-audit of v3 against real production requirements surfaced
+the gaps below. Nothing here contradicts earlier sections — it fills in
+what a genuine go-live would still be missing.</p>
+<h3 id="b.1-database-missing-tables-structural-gaps">B.1 Database —
+Missing Tables &amp; Structural Gaps</h3>
+<p><strong>New table <code>pqm_checklist</code> /
+<code>pqm_checklist_item</code></strong> — v3 treats “Checklist
+Reference” as a free-text field, but real quality inspections run
+against a structured, versioned checklist (e.g., “Concrete Pour
+Checklist v2”), not a text note.</p>
+<pre><code>pqm_checklist: id, organization_id, name, category_id (FK), version SMALLINT, is_active [+ audit cols]
+pqm_checklist_item: id, checklist_id (FK), sequence_order, item_text, is_mandatory BOOLEAN</code></pre>
+<p>An NC’s <code>checklist_reference</code> should become a proper FK to
+<code>pqm_checklist</code> (keep the text field too, for legacy/migrated
+records that only ever had free text).</p>
+<p><strong>New table <code>pqm_drawing_reference</code></strong> — same
+problem as checklists: drawings get revised, and “Drawing Ref: DWG-104”
+without a version is ambiguous six months later when DWG-104 Rev C
+exists.</p>
+<pre><code>pqm_drawing_reference: id, organization_id, project_id, drawing_number, revision, file_url, effective_date [+ audit cols]</code></pre>
+<p>Link from <code>pqm_non_conformance.drawing_reference</code> (text)
+to this table via an optional FK once a project’s drawing register
+exists in the platform; keep the text field as a fallback for tenants
+without one.</p>
+<p><strong>New table <code>pqm_saved_view</code></strong> — Section 18
+mentions “saved filter views” in the UI (“My Open NCs”, “Overdue”) but
+v3 never defines where they persist.</p>
+<pre><code>pqm_saved_view: id, user_id (FK), name, filter_json JSONB, is_shared_with_role_id (FK, nullable), is_default BOOLEAN [+ audit cols]</code></pre>
+<p><strong>Full-text search</strong>: <code>title</code> and
+<code>description</code> need a Postgres GIN/trigram index
+(<code>pg_trgm</code>) for “search NCs by keyword” — without this, any
+search box on the NC list falls back to slow <code>ILIKE</code> scans
+past a few thousand rows. Add explicitly:</p>
+<div class="sourceCode" id="cb16"><pre
+class="sourceCode sql"><code class="sourceCode sql"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="kw">CREATE</span> <span class="kw">INDEX</span> idx_pqm_nc_search <span class="kw">ON</span> pqm_non_conformance <span class="kw">USING</span> GIN (</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>  to_tsvector(<span class="st">&#39;english&#39;</span>, title <span class="op">||</span> <span class="st">&#39; &#39;</span> <span class="op">||</span> description)</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>);</span></code></pre></div>
+<p><strong>Unbounded growth tables</strong>:
+<code>pqm_status_history</code> and <code>pqm_notification_log</code>
+grow forever with no natural cap. Plan for <strong>time-based
+partitioning</strong> (Postgres native partitioning by
+<code>created_at</code> month/year) once a tenant crosses roughly 1M
+rows in either table — call this out now in the schema so it’s a planned
+migration, not a surprise incident later.</p>
+<p><strong>Data integrity constraints not yet explicit</strong>: add
+DB-level <code>CHECK</code> constraints, not just application
+validation, for: <code>target_closure_date &gt;= raised_date</code>,
+<code>actual_closure_date &gt;= raised_date</code> (when set),
+<code>status</code> restricted to the enum values from Section 12,
+<code>current_approval_level &gt;= 0</code>. Application-layer
+validation can be bypassed by a bad migration script or a direct DB fix
+during an incident — the DB should refuse bad data regardless of which
+layer wrote it.</p>
+<p><strong>Soft-delete cascade behavior</strong> (previously unstated):
+when an NC is soft-deleted, its child rows (<code>pqm_attachment</code>,
+<code>pqm_comment</code>, <code>pqm_approval_step</code>, etc.) must be
+soft-deleted <strong>in the same transaction</strong>, not left
+orphaned-but-visible. Define this as a service-layer cascade
+(<code>nc_service.soft_delete_nc()</code>), not relied on via DB
+<code>ON DELETE</code> triggers, since soft-delete isn’t a real
+DELETE.</p>
+<h3 id="b.2-backend-missing-operational-concerns">B.2 Backend — Missing
+Operational Concerns</h3>
+<p><strong>API standards not yet defined:</strong></p>
+<ul>
+<li><strong>Versioning</strong>: <code>/api/v1/pqm/...</code> is used
+throughout, but there’s no stated policy for what happens at v2 — state
+it now: breaking changes require a new version prefix; additive fields
+do not.</li>
+<li><strong>Error response format</strong>: define one standard error
+shape now
+(<code>{"error_code": "PQM_CLOSURE_GATE_FAILED", "message": "...", "field_errors": {...}}</code>)
+so frontend error handling isn’t written ad hoc per endpoint.</li>
+<li><strong>Idempotency keys</strong>: mobile/offline sync (Section
+20.7) means the same “create NC” or “upload attachment” request may be
+retried after a dropped connection. Every write endpoint should accept
+an <code>Idempotency-Key</code> header; the server stores a short-lived
+record of processed keys and returns the original response for a repeat,
+rather than creating a duplicate NC.</li>
+<li><strong>Bulk operations</strong>: real Quality Heads will want to
+bulk-export or bulk-acknowledge a batch of NCs, not click through 40
+individually. Add <code>POST /nc/bulk-action/</code> (actions:
+<code>export</code>, <code>acknowledge</code>, <code>assign-tag</code>)
+with a max batch size (e.g., 200) and per-row success/failure reporting
+in the response, not an all-or-nothing transaction.</li>
+</ul>
+<p><strong>Caching</strong>: dashboard summary and KPI queries (Section
+17) should sit behind a short-TTL cache (Redis, 60–120 seconds) keyed by
+<code>(organization_id, business_unit_id, user_scope_hash)</code> —
+without this, a Quality Head’s dashboard re-running full aggregate
+queries on every page load will be the first thing that falls over under
+real usage.</p>
+<p><strong>Observability</strong>: structured logging with a
+<code>correlation_id</code> per request (propagated through Celery tasks
+triggered by that request, e.g., notification sends), so a support
+engineer can trace “why didn’t this notification fire” across the sync
+request and the async task in one query. Add a <code>/health/</code>
+endpoint (DB connectivity, Celery worker liveness, storage connectivity)
+for uptime monitoring — this is a standard production requirement that’s
+easy to forget until an incident.</p>
+<p><strong>API documentation</strong>: auto-generated OpenAPI/Swagger
+schema from the DRF serializers/viewsets, published at
+<code>/api/v1/pqm/schema/</code> — needed for frontend/backend parallel
+development and for any future external integration (contractor portal,
+ERP handoff) to have a contract to build against.</p>
+<p><strong>Read replica for reporting</strong>: once a tenant has
+meaningful volume, the Reports/Export queries (Section 16) and Dashboard
+aggregates (Section 17) should read from a replica/read-only connection
+where available, so a heavy export doesn’t lock rows needed by the live
+approval workflow.</p>
+<h3 id="b.3-frontend-missing-ux-concerns">B.3 Frontend — Missing UX
+Concerns</h3>
+<p><strong>Internationalization (i18n)</strong> — genuinely important
+here, not a nice-to-have: site-level users (Site Engineer, Quality
+Inspector) frequently work primarily in Telugu or Hindi, not English.
+The frontend should be built with an i18n framework (e.g.,
+<code>react-i18next</code>) from the start, with all user-facing strings
+in translation keys — retrofitting i18n after the fact across 15+ new
+components (Section 11.3) is far more expensive than building it in now.
+Category names, checklist items, and notification templates should also
+support per-tenant translated variants, not just the UI chrome.</p>
+<p><strong>Accessibility</strong>: status badges, priority tags, and the
+safety-critical indicator (Section 18) currently rely partly on color
+alone — add icon/text redundancy (not color-only) for colorblind users,
+and ensure the NC form stepper (10.3/11.3) is fully keyboard-navigable,
+since this is standard enterprise procurement due diligence (WCAG 2.1
+AA) that will otherwise surface late as a client requirement.</p>
+<p><strong>Print-friendly NC view</strong>: site teams frequently need a
+printed/PDF single-NC report for physical site files or client handover
+meetings — a dedicated print stylesheet or a “Generate NC Report PDF”
+button (distinct from the bulk Reports/Export in Section 16) should
+exist at the NC Detail level.</p>
+<p><strong>Bulk-action UI</strong>: matching B.2’s bulk API, the NC list
+needs row-selection checkboxes + a bulk-action toolbar (export selected,
+tag selected) — otherwise the backend capability has no way to be
+used.</p>
+<p><strong>Loading/error states</strong>: explicitly require skeleton
+loaders (not blank screens) for NC list/detail/dashboard, and a
+persistent “You’re offline — changes will sync when reconnected” banner
+tied to the offline-cache behavior in Section 20.7, so field users
+aren’t left guessing whether their submission actually went through.</p>
+<p><strong>Browser/device support matrix</strong>: state it explicitly
+rather than leaving it implied — e.g., latest two versions of
+Chrome/Edge/Safari, and Android Chrome for field/mobile-responsive use;
+Internet Explorer not supported.</p>
+<h3 id="b.4-qaqc-production-readiness-testing">B.4 QA/QC &amp;
+Production-Readiness Testing</h3>
+<p><strong>Environment strategy</strong> (not previously stated): four
+environments — Dev → Staging → UAT → Production, with Staging/UAT
+running on <strong>anonymized production-shaped data</strong>, not real
+client PII/site data, to allow realistic-scale testing without a
+data-privacy exposure.</p>
+<p><strong>Performance/load testing — concrete targets</strong> (Section
+22 stated “under 200ms” but no load profile):</p>
+<ul class="task-list">
+<li><label><input type="checkbox" />Load test at 200 concurrent users
+per tenant, 100k NC rows, sustained 10-minute run — p95 API latency
+under 500ms for list/detail, under 1s for dashboard
+aggregates</label></li>
+<li><label><input type="checkbox" />Spike test: simulate a
+Monday-morning surge (all site engineers logging weekend inspections at
+once) at 3x normal submission rate</label></li>
+<li><label><input type="checkbox" />Soak test: 24-hour run at moderate
+load to catch memory leaks or connection-pool exhaustion in Celery
+workers</label></li>
+</ul>
+<p><strong>Security testing</strong> (Section 22 covered upload
+validation and signed URLs; add a formal pass):</p>
+<ul class="task-list">
+<li><label><input type="checkbox" />OWASP Top 10 pass on all new
+endpoints (injection, broken auth, IDOR — directly relevant to the RBAC
+ID-guessing test in A.6)</label></li>
+<li><label><input type="checkbox" />Dependency vulnerability scan (e.g.,
+<code>pip-audit</code>/<code>npm audit</code>) as a CI gate before each
+release, not a one-time check</label></li>
+<li><label><input type="checkbox" />Penetration test on the multi-tenant
+boundary specifically — the highest-value target in any multi-tenant
+SaaS is proving one tenant absolutely cannot read another’s data under
+any crafted request</label></li>
+</ul>
+<p><strong>Data migration sign-off criteria</strong> (extends Section
+20.9/23.3): a formal go/no-go checklist before any tenant’s legacy
+import is marked complete — row-count reconciliation within an agreed
+tolerance (ideally 100% accounted-for, either loaded or explicitly
+rejected-with-reason), a sample of 20–30 migrated records manually
+spot-checked against the source Excel by the client’s own Quality team
+(not just your QA), and sign-off captured in writing before the legacy
+tracker is retired.</p>
+<p><strong>UAT sign-off criteria</strong>: define what “done” means
+before go-live — e.g., the Section 4 case study script executed
+successfully by an actual Site Incharge/Quality Head persona (not just
+QA engineers) on Staging, with zero Sev-1/Sev-2 defects open and Sev-3s
+explicitly accepted-with-workaround by the client stakeholder in
+writing.</p>
+<p><strong>Regression testing strategy</strong>: since PQM plugs into
+existing Organization/BU/IAM/RBAC modules, every release needs a
+regression pass confirming PQM changes haven’t broken unrelated modules’
+permission checks (a common failure mode when RBAC is a shared engine) —
+maintain a shared regression suite tag (<code>@pqm-regression</code>)
+rather than treating PQM as fully isolated.</p>
+<p><strong>Go-live / rollback plan</strong>:</p>
+<ul class="task-list">
+<li><label><input type="checkbox" />Documented cutover runbook:
+migration order, feature-flag rollout (enable PQM per-tenant via flag
+rather than a big-bang all-tenants release), and a defined rollback path
+(disable flag + restore pre-migration DB snapshot) if a Sev-1 emerges
+post-launch</label></li>
+<li><label><input type="checkbox" />Defined <strong>hypercare
+period</strong> (e.g., first 2 weeks post-launch per tenant) with a
+named on-call owner and a lower defect-triage SLA than steady-state
+support</label></li>
+</ul>
+<p><strong>Monitoring &amp; alerting thresholds</strong> (ties to B.2’s
+health/observability): define specific alert conditions before go-live —
+e.g., escalation-job failure (Celery task didn’t run), notification
+delivery failure rate above X%, API error rate above Y% over 5 minutes —
+rather than discovering these thresholds reactively after the first
+incident.</p>
+<h3 id="b.5-summary-table-what-appendix-b-adds-by-area">B.5 Summary
+Table — What Appendix B Adds, by Area</h3>
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Area</th>
+<th>Key additions</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Database</td>
+<td>Checklist &amp; drawing version tables, saved-view table, full-text
+search index, partitioning plan for history/log tables, DB-level CHECK
+constraints, soft-delete cascade rule</td>
+</tr>
+<tr class="even">
+<td>Backend</td>
+<td>API versioning policy, standard error format, idempotency keys,
+bulk-action endpoint, dashboard caching, structured logging +
+correlation IDs, health endpoint, OpenAPI schema, read replica for
+reporting</td>
+</tr>
+<tr class="odd">
+<td>Frontend</td>
+<td>i18n framework from day one (Telugu/Hindi/English relevant here),
+accessibility (WCAG 2.1 AA, non-color-only status), print-friendly NC
+view, bulk-action UI, explicit loading/offline states, browser support
+matrix</td>
+</tr>
+<tr class="even">
+<td>QA/QC &amp; Production</td>
+<td>4-environment strategy with anonymized staging data, concrete
+load/spike/soak test targets, formal security/pentest pass, migration
+sign-off criteria, UAT done-criteria, cross-module regression suite,
+go-live/rollback runbook with feature-flagged rollout, monitoring alert
+thresholds</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><em>End of specification — v3.1 Master Document with Appendices A
+(RBAC) and B (Completeness Gap-Fill), and all six diagrams embedded
+inline. This single self-contained <code>.md</code> file supersedes v1
+and v2 and is structured so each numbered section or appendix can be
+handed to a developer or tester independently.</em></p>
+</body>
+</html>
