@@ -442,6 +442,11 @@ export default function PQMSettingsPage() {
                           <span className="text-[15px] font-semibold text-gray-900 dark:text-white">
                             {opt.name}
                           </span>
+                          {activeDropdownTab === 'category' && (
+                            <Badge variant="outline" className="ml-2 bg-violet-50 text-violet-700 border-violet-200 dark:bg-violet-900/30 dark:text-violet-300 dark:border-violet-800">
+                              {subCategories.filter(sc => sc.system_mapping === opt.id).length} sub-categories
+                            </Badge>
+                          )}
                         </div>
                         <div 
                           className="flex items-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity"
