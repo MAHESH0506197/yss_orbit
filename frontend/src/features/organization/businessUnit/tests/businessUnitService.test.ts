@@ -153,7 +153,7 @@ describe('businessUnitApi.delete', () => {
   it('calls DELETE endpoint (triggers soft-delete on backend)', async () => {
     (apiClient.delete as any).mockResolvedValue({ data: { success: true } });
     await businessUnitApi.delete('bu-uuid-123');
-    expect(apiClient.delete).toHaveBeenCalledWith('/business-units/bu-uuid-123/');
+    expect(apiClient.delete).toHaveBeenCalledWith('/business-units/bu-uuid-123/', expect.anything());
   });
 });
 
@@ -165,6 +165,6 @@ describe('businessUnitApi.restore', () => {
     });
     const result = await businessUnitApi.restore('bu-uuid-123');
     expect(result.is_deleted).toBe(false);
-    expect(apiClient.post).toHaveBeenCalledWith('/business-units/bu-uuid-123/restore/');
+    expect(apiClient.post).toHaveBeenCalledWith('/business-units/bu-uuid-123/restore/', expect.anything());
   });
 });

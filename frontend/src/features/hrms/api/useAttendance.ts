@@ -18,7 +18,7 @@ export function useAttendanceList(filters: any) {
   return useQuery({
     queryKey: ['attendance', filters, buId],
     queryFn: async () => {
-      const { data } = await axios.get<any>('/api/v1/hrms/attendance/', { params: filters });
+      const { data } = await axios.get<any>('/hrms/attendance/', { params: filters });
       // The list endpoint uses pagination which wraps the response in { success: true, data: { count, results } }
       return data?.data || data;
     },
@@ -32,7 +32,7 @@ export function useAttendanceStats(filters: any) {
   return useQuery({
     queryKey: ['attendanceStats', filters, buId],
     queryFn: async () => {
-      const { data } = await axios.get<any>('/api/v1/hrms/attendance/stats/', { params: filters });
+      const { data } = await axios.get<any>('/hrms/attendance/stats/', { params: filters });
       return data?.data || data;
     },
     enabled: !!buId,
@@ -46,7 +46,7 @@ export function useMyAttendance() {
     queryKey: ['my-attendance-today', buId],
     queryFn: async () => {
       try {
-        const { data } = await axios.get<AttendanceRecord>('/api/v1/hrms/attendance/me/', { _disableToast: true });
+        const { data } = await axios.get<AttendanceRecord>('/hrms/attendance/me/', { _disableToast: true });
         return data; // May be empty object if no punches today
       } catch (error: any) {
         if (error.response?.status === 404) {
@@ -66,7 +66,7 @@ export function usePunch() {
   
   return useMutation({
     mutationFn: async (source: PunchSource = 'WEB') => {
-      const { data } = await axios.post<AttendanceRecord>('/api/v1/hrms/attendance/punch/', { source }, { _disableToast: true });
+      const { data } = await axios.post<AttendanceRecord>('/hrms/attendance/punch/', { source }, { _disableToast: true });
       return data;
     },
     onSuccess: (data) => {
@@ -87,7 +87,7 @@ export function useRequestCorrection() {
   
   return useMutation({
     mutationFn: async (data: { record: string, reason: string, requested_in_time?: string, requested_out_time?: string }) => {
-      const res = await axios.post('/api/v1/hrms/attendance-corrections/', data);
+      const res = await axios.post('/hrms/attendance-corrections/', data);
       return res.data;
     },
     onSuccess: () => {
@@ -108,7 +108,7 @@ export function useApproveCorrection() {
   
   return useMutation({
     mutationFn: async (id: string) => {
-      const res = await axios.post(`/api/v1/hrms/attendance-corrections/${id}/approve/`);
+      const res = await axios.post(`/hrms/attendance-corrections/${id}/approve/`);
       return res.data;
     },
     onSuccess: () => {
@@ -127,7 +127,7 @@ export function useExportAttendance() {
   const buId = useAuthStore((state) => state.selectedBusinessUnitId);
   return useMutation({
     mutationFn: async (filters: any) => {
-      const response = await axios.get('/api/v1/hrms/attendance/export/', {
+      const response = await axios.get('/hrms/attendance/export/', {
         params: filters,
         responseType: 'blob',
       });

@@ -10,26 +10,26 @@ export interface FeatureflagsDto {
 
 export const featureFlagsApi = {
   getAll: async (): Promise<FeatureflagsDto[]> => {
-    const response = await api.get(`/api/v1/featureFlags`);
+    const response = await api.get(`/featureFlags`);
     return response.data;
   },
   
   getById: async (id: string): Promise<FeatureflagsDto> => {
-    const response = await api.get(`/api/v1/featureFlags/${id}`);
+    const response = await api.get(`/featureFlags/${id}`);
     return response.data;
   },
   
   create: async (data: Partial<FeatureflagsDto>): Promise<FeatureflagsDto> => {
-    const response = await api.post(`/api/v1/featureFlags`, data);
+    const response = await api.post(`/featureFlags`, data);
     return response.data;
   },
   
   update: async (id: string, data: Partial<FeatureflagsDto>): Promise<FeatureflagsDto> => {
-    const response = await api.put(`/api/v1/featureFlags/${id}`, data);
+    const response = await api.put(`/featureFlags/${id}`, data);
     return response.data;
   },
   
   delete: async (id: string): Promise<void> => {
-    await api.delete(`/api/v1/featureFlags/${id}`);
+    await api.delete(`/featureFlags/${id}`);
   }
 };

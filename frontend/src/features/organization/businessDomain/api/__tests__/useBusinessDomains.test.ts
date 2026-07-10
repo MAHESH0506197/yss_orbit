@@ -36,7 +36,7 @@ vi.mock('@/features/organization/hooks/useOrganizations', () => ({
 // ─── Import after mocks ────────────────────────────────────────────────────────
 import { businessDomainApi } from '../useBusinessDomains';
 
-const BASE = '/api/v1/business-domains';
+const BASE = '/business-domains';
 
 // ─── Tests ────────────────────────────────────────────────────────────────────
 describe('businessDomainApi', () => {
@@ -71,7 +71,7 @@ describe('businessDomainApi', () => {
       mockDelete.mockResolvedValueOnce({ data: {} });
       await businessDomainApi.delete('domain-456');
 
-      expect(mockDelete).toHaveBeenCalledWith(`${BASE}/domain-456/`);
+      expect(mockDelete).toHaveBeenCalledWith(`${BASE}/domain-456/`, expect.anything());
       // Must NOT have ?hard=true
       const callUrl = mockDelete.mock.calls[0]![0] as string;
       expect(callUrl).not.toContain('hard');
@@ -87,7 +87,7 @@ describe('businessDomainApi', () => {
 
       const result = await businessDomainApi.restore('domain-789');
 
-      expect(mockPost).toHaveBeenCalledWith(`${BASE}/domain-789/restore/`);
+      expect(mockPost).toHaveBeenCalledWith(`${BASE}/domain-789/restore/`, expect.anything());
       expect(result).toEqual(mockDomain);
     });
   });

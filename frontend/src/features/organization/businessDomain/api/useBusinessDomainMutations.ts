@@ -14,7 +14,7 @@ export const useBusinessDomainMutations = () => {
 
   const createMutation = useMutation({
     mutationFn: async (payload: CreatePayload) => {
-      const { data } = await apiClient.post<{ data: BusinessDomain }>('/api/v1/business-domains/', payload);
+      const { data } = await apiClient.post<{ data: BusinessDomain }>('/business-domains/', payload);
       return data?.data ?? data;
     },
     onSuccess: () => {
@@ -24,7 +24,7 @@ export const useBusinessDomainMutations = () => {
 
   const updateMutation = useMutation({
     mutationFn: async ({ id, payload }: { id: string; payload: UpdatePayload }) => {
-      const { data } = await apiClient.patch<{ data: BusinessDomain }>(`/api/v1/business-domains/${id}/`, payload);
+      const { data } = await apiClient.patch<{ data: BusinessDomain }>(`/business-domains/${id}/`, payload);
       return data?.data ?? data;
     },
     onSuccess: () => {
@@ -34,7 +34,7 @@ export const useBusinessDomainMutations = () => {
 
   const deleteMutation = useMutation({
     mutationFn: async ({ id, reason }: { id: string; reason?: string }) => {
-      await apiClient.delete(`/api/v1/business-domains/${id}/`, { data: { reason } });
+      await apiClient.delete(`/business-domains/${id}/`, { data: { reason } });
     },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: businessDomainKeys.all() });
@@ -43,7 +43,7 @@ export const useBusinessDomainMutations = () => {
 
   const restoreMutation = useMutation({
     mutationFn: async ({ id, reason }: { id: string; reason?: string }) => {
-      const { data } = await apiClient.post<{ data: BusinessDomain }>(`/api/v1/business-domains/${id}/restore/`, { reason });
+      const { data } = await apiClient.post<{ data: BusinessDomain }>(`/business-domains/${id}/restore/`, { reason });
       return data?.data ?? data;
     },
     onSuccess: () => {
@@ -55,7 +55,7 @@ export const useBusinessDomainMutations = () => {
     mutationFn: async ({ id, file }: { id: string; file: File }) => {
       const formData = new FormData();
       formData.append('logo', file);
-      const { data } = await apiClient.post<{ data: BusinessDomain }>(`/api/v1/business-domains/${id}/upload-logo/`, formData, {
+      const { data } = await apiClient.post<{ data: BusinessDomain }>(`/business-domains/${id}/upload-logo/`, formData, {
         headers: { 'Content-Type': 'multipart/form-data' },
       });
       return data?.data ?? data;
@@ -71,7 +71,7 @@ export const useBusinessDomainMutations = () => {
    */
   const permanentDeleteMutation = useMutation({
     mutationFn: async ({ id, confirmationName }: { id: string; confirmationName: string }) => {
-      await apiClient.delete(`/api/v1/business-domains/${id}/?hard=true`, {
+      await apiClient.delete(`/business-domains/${id}/?hard=true`, {
         data: { confirmation_name: confirmationName },
       });
     },

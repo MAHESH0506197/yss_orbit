@@ -41,7 +41,7 @@ export default function ResetPasswordPage() {
     if (newPassword !== confirmPassword) { setError('Passwords do not match.'); return; }
     setError(''); setLoading(true);
     try {
-      const res = await fetch('/api/v1/auth/password/reset/', {
+      const res = await fetch('/auth/password/reset/', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ username, otp, new_password: newPassword, confirm_password: confirmPassword }),

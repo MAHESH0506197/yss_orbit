@@ -33,11 +33,11 @@ import type {
 // Constants
 // ─────────────────────────────────────────────────────────────────────────────
 
-const ROLES_URL          = '/api/v1/roles/';
-const PERMISSIONS_URL    = '/api/v1/permissions/';
-const ROLE_TEMPLATES_URL = '/api/v1/role-templates/';
-const RBAC_MODULES_URL   = '/api/v1/rbac-modules/';
-const RBAC_SUB_MODULES_URL = '/api/v1/rbac-sub-modules/';
+const ROLES_URL          = '/roles/';
+const PERMISSIONS_URL    = '/permissions/';
+const ROLE_TEMPLATES_URL = '/role-templates/';
+const RBAC_MODULES_URL   = '/rbac-modules/';
+const RBAC_SUB_MODULES_URL = '/rbac-sub-modules/';
 
 /**
  * Maximum permissions per page when fetching for the matrix.

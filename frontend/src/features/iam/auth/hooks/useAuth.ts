@@ -66,7 +66,7 @@ export function useLogin() {
 
   return useMutation<LoginResponse, Error, LoginCredentials>({
     mutationFn: (credentials) =>
-      api.post<LoginResponse>('/api/v1/auth/login/', credentials),
+      api.post<LoginResponse>('/auth/login/', credentials),
 
     onSuccess: (response) => {
       const payload = response.data;
@@ -149,7 +149,7 @@ export function useLogout() {
   const { clearAuth } = useAuthStore();
 
   return useMutation<LogoutResponse, Error, void>({
-    mutationFn: () => api.post<LogoutResponse>('/api/v1/auth/logout/'),
+    mutationFn: () => api.post<LogoutResponse>('/auth/logout/'),
 
     onSettled: () => {
       // Always clear auth state, even if API fails
@@ -165,6 +165,6 @@ export function useLogout() {
 export function useTokenRefresh() {
   return useMutation<TokenRefreshResponse, Error, void>({
     mutationFn: () =>
-      api.post<TokenRefreshResponse>('/api/v1/auth/token/refresh/'),
+      api.post<TokenRefreshResponse>('/auth/token/refresh/'),
   });
 }

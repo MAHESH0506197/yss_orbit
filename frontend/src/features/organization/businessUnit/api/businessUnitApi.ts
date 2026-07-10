@@ -19,7 +19,7 @@ import type {
   BusinessUnitMeta,
 } from '../types/businessUnitTypes';
 
-const BASE = '/api/v1/business-units';
+const BASE = '/business-units';
 
 // ─── Envelope unwrappers ──────────────────────────────────────────────────────
 function unwrapSingle<T>(response: any): T {

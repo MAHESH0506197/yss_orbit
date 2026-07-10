@@ -20,7 +20,7 @@ import type {
   OrganizationMeta,
 } from '../types/organizationTypes';
 
-const BASE = '/api/v1/organizations';
+const BASE = '/organizations';
 
 // ─── Envelope Unwrappers ──────────────────────────────────────────────────────
 function unwrapSingle<T>(response: any): T {

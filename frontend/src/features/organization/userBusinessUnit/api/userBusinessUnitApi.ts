@@ -11,7 +11,7 @@ import type {
   UserBusinessUnitFilters,
 } from '../types/userBusinessUnitTypes';
 
-const BASE = '/api/v1/user-bu-mapping/memberships';
+const BASE = '/user-bu-mapping/memberships';
 
 // ─── Envelope Unwrappers ──────────────────────────────────────────────────────
 

@@ -1,6 +1,6 @@
 // yss_orbit\frontend\src\modules\userBusinessUnit\constants\userBusinessUnitConstants.ts
 export const UBU_ENDPOINTS = {
-  BASE: '/api/v1/user-bu-mapping/memberships',
+  BASE: '/user-bu-mapping/memberships',
 } as const;
 
 export const UBU_ORDERING_OPTIONS = [

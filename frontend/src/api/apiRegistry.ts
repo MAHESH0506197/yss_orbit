@@ -1,14 +1,14 @@
 export const ApiRegistry = {
   AUTH: {
-    LOGIN: '/api/v1/auth/login/',
-    LOGOUT: '/api/v1/auth/logout/',
-    REFRESH: '/api/v1/auth/token/refresh/',
+    LOGIN: '/auth/login/',
+    LOGOUT: '/auth/logout/',
+    REFRESH: '/auth/token/refresh/',
   },
   USERS: {
-    BASE: '/api/v1/users/',
-    PROFILE: '/api/v1/users/profile/',
+    BASE: '/users/',
+    PROFILE: '/users/profile/',
   },
   TENANTS: {
-    BASE: '/api/v1/tenants/',
+    BASE: '/tenants/',
   }
 };

@@ -10,26 +10,26 @@ export interface AppraisalDto {
 
 export const appraisalApi = {
   getAll: async (): Promise<AppraisalDto[]> => {
-    const response = await api.get(`/api/v1/appraisal`);
+    const response = await api.get(`/appraisal`);
     return response.data;
   },
   
   getById: async (id: string): Promise<AppraisalDto> => {
-    const response = await api.get(`/api/v1/appraisal/${id}`);
+    const response = await api.get(`/appraisal/${id}`);
     return response.data;
   },
   
   create: async (data: Partial<AppraisalDto>): Promise<AppraisalDto> => {
-    const response = await api.post(`/api/v1/appraisal`, data);
+    const response = await api.post(`/appraisal`, data);
     return response.data;
   },
   
   update: async (id: string, data: Partial<AppraisalDto>): Promise<AppraisalDto> => {
-    const response = await api.put(`/api/v1/appraisal/${id}`, data);
+    const response = await api.put(`/appraisal/${id}`, data);
     return response.data;
   },
   
   delete: async (id: string): Promise<void> => {
-    await api.delete(`/api/v1/appraisal/${id}`);
+    await api.delete(`/appraisal/${id}`);
   }
 };

@@ -9,7 +9,7 @@ export default function AccessApprovalsPage() {
   const fetchApprovals = async () => {
     setIsLoading(true);
     try {
-      const res = await fetch('/api/v1/pqm/projects/access-approvals/');
+      const res = await fetch('/pqm/projects/access-approvals/');
       if (res.ok) {
         const data = await res.json();
         setApprovals(data.results || data || []);
@@ -34,7 +34,7 @@ export default function AccessApprovalsPage() {
 
   const handleAction = async (id: string, action: 'approve' | 'reject') => {
     try {
-      const res = await fetch(`/api/v1/pqm/projects/access-approvals/${id}/`, {
+      const res = await fetch(`/pqm/projects/access-approvals/${id}/`, {
         method: 'PATCH',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ status: action === 'approve' ? 'Approved' : 'Rejected' })

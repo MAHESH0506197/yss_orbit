@@ -5,7 +5,7 @@ export const useTenantModules = (businessUnitId?: string) => {
   return useQuery({
     queryKey: ['tenant-modules', businessUnitId],
     queryFn: async () => {
-      const res = await apiClient.get('/api/v1/tenant-module/');
+      const res = await apiClient.get('/tenant-module/');
       return res.data;
     },
     enabled: !!businessUnitId,
@@ -16,7 +16,7 @@ export const useBusinessUnitSubscription = (buId?: string) => {
   return useQuery({
     queryKey: ['business-unit-subscription', buId],
     queryFn: async () => {
-      const res = await apiClient.get(`/api/v1/subscription/business-units/${buId}/`);
+      const res = await apiClient.get(`/subscription/business-units/${buId}/`);
       return res.data;
     },
     enabled: !!buId,
@@ -27,7 +27,7 @@ export const useSubscriptionPlans = () => {
   return useQuery({
     queryKey: ['subscription-plans'],
     queryFn: async () => {
-      const res = await apiClient.get('/api/v1/subscription/plans/');
+      const res = await apiClient.get('/subscription/plans/');
       return res.data;
     },
   });
@@ -37,7 +37,7 @@ export const useChangeBusinessUnitPlan = (buId?: string) => {
   const queryClient = useQueryClient();
   return useMutation({
     mutationFn: async ({ planId, billingCycle }: { planId: string, billingCycle: string }) => {
-      const res = await apiClient.post(`/api/v1/subscription/business-units/${buId}/change-plan/`, {
+      const res = await apiClient.post(`/subscription/business-units/${buId}/change-plan/`, {
         new_plan_id: planId,
         billing_cycle: billingCycle,
       });
@@ -54,7 +54,7 @@ export const useCatalogModules = () => {
   return useQuery({
     queryKey: ['catalog-modules'],
     queryFn: async () => {
-      const res = await apiClient.get(`/api/v1/catalog/modules/`);
+      const res = await apiClient.get(`/catalog/modules/`);
       return res.data.results || res.data;
     },
   });
@@ -64,7 +64,7 @@ export const useCatalogModule = (id?: string) => {
   return useQuery({
     queryKey: ['catalog-module', id],
     queryFn: async () => {
-      const res = await apiClient.get(`/api/v1/catalog/modules/${id}/`);
+      const res = await apiClient.get(`/catalog/modules/${id}/`);
       return res.data;
     },
     enabled: !!id,
@@ -75,7 +75,7 @@ export const useCreateCatalogModule = () => {
   const queryClient = useQueryClient();
   return useMutation({
     mutationFn: async (data: any) => {
-      const res = await apiClient.post(`/api/v1/catalog/modules/`, data);
+      const res = await apiClient.post(`/catalog/modules/`, data);
       return res.data;
     },
     onSuccess: () => {
@@ -89,7 +89,7 @@ export const useUpdateCatalogModule = () => {
   const queryClient = useQueryClient();
   return useMutation({
     mutationFn: async ({ id, data }: { id: string, data: any }) => {
-      const res = await apiClient.put(`/api/v1/catalog/modules/${id}/`, data);
+      const res = await apiClient.put(`/catalog/modules/${id}/`, data);
       return res.data;
     },
     onSuccess: () => {
@@ -103,7 +103,7 @@ export const useDeleteCatalogModule = () => {
   const queryClient = useQueryClient();
   return useMutation({
     mutationFn: async (id: string) => {
-      const res = await apiClient.delete(`/api/v1/catalog/modules/${id}/`);
+      const res = await apiClient.delete(`/catalog/modules/${id}/`);
       return res.data;
     },
     onSuccess: () => {
@@ -118,7 +118,7 @@ export const useCatalogCategories = () => {
     queryKey: ['catalog-categories'],
     queryFn: async () => {
       // TODO(PROJ-001): Re-enable once the backend catalog module is built.
-      // const res = await apiClient.get(`/api/v1/catalog/categories/`);
+      // const res = await apiClient.get(`/catalog/categories/`);
       // return res.data.results || res.data;
       return [];
     },
@@ -129,7 +129,7 @@ export const useCreateCatalogCategory = () => {
   const queryClient = useQueryClient();
   return useMutation({
     mutationFn: async (data: any) => {
-      const res = await apiClient.post(`/api/v1/catalog/categories/`, data);
+      const res = await apiClient.post(`/catalog/categories/`, data);
       return res.data;
     },
     onSuccess: () => queryClient.invalidateQueries({ queryKey: ['catalog-categories'] }),
@@ -140,7 +140,7 @@ export const useDirectAssignSubscription = (buId?: string) => {
   const queryClient = useQueryClient();
   return useMutation({
     mutationFn: async (data: any) => {
-      const res = await apiClient.post(`/api/v1/subscription/business-units/${buId}/direct-assign/`, data);
+      const res = await apiClient.post(`/subscription/business-units/${buId}/direct-assign/`, data);
       return res.data;
     },
     onSuccess: () => {

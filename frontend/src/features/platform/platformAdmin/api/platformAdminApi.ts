@@ -10,26 +10,26 @@ export interface PlatformadminDto {
 
 export const platformAdminApi = {
   getAll: async (): Promise<PlatformadminDto[]> => {
-    const response = await api.get(`/api/v1/platformAdmin`);
+    const response = await api.get(`/platformAdmin`);
     return response.data;
   },
   
   getById: async (id: string): Promise<PlatformadminDto> => {
-    const response = await api.get(`/api/v1/platformAdmin/${id}`);
+    const response = await api.get(`/platformAdmin/${id}`);
     return response.data;
   },
   
   create: async (data: Partial<PlatformadminDto>): Promise<PlatformadminDto> => {
-    const response = await api.post(`/api/v1/platformAdmin`, data);
+    const response = await api.post(`/platformAdmin`, data);
     return response.data;
   },
   
   update: async (id: string, data: Partial<PlatformadminDto>): Promise<PlatformadminDto> => {
-    const response = await api.put(`/api/v1/platformAdmin/${id}`, data);
+    const response = await api.put(`/platformAdmin/${id}`, data);
     return response.data;
   },
   
   delete: async (id: string): Promise<void> => {
-    await api.delete(`/api/v1/platformAdmin/${id}`);
+    await api.delete(`/platformAdmin/${id}`);
   }
 };

@@ -16,7 +16,7 @@ export const TeamLeaveDashboard: React.FC = () => {
   const { data: response, isLoading } = useQuery({
     queryKey: ['teamLeaveRequests'],
     queryFn: async () => {
-      const res = await client.get('/api/v1/hrms/leave/requests/');
+      const res = await client.get('/hrms/leave/requests/');
       return res.data;
     }
   });

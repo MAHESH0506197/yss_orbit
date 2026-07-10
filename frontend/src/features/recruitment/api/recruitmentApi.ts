@@ -10,26 +10,26 @@ export interface RecruitmentDto {
 
 export const recruitmentApi = {
   getAll: async (): Promise<RecruitmentDto[]> => {
-    const response = await api.get(`/api/v1/recruitment`);
+    const response = await api.get(`/recruitment`);
     return response.data;
   },
   
   getById: async (id: string): Promise<RecruitmentDto> => {
-    const response = await api.get(`/api/v1/recruitment/${id}`);
+    const response = await api.get(`/recruitment/${id}`);
     return response.data;
   },
   
   create: async (data: Partial<RecruitmentDto>): Promise<RecruitmentDto> => {
-    const response = await api.post(`/api/v1/recruitment`, data);
+    const response = await api.post(`/recruitment`, data);
     return response.data;
   },
   
   update: async (id: string, data: Partial<RecruitmentDto>): Promise<RecruitmentDto> => {
-    const response = await api.put(`/api/v1/recruitment/${id}`, data);
+    const response = await api.put(`/recruitment/${id}`, data);
     return response.data;
   },
   
   delete: async (id: string): Promise<void> => {
-    await api.delete(`/api/v1/recruitment/${id}`);
+    await api.delete(`/recruitment/${id}`);
   }
 };

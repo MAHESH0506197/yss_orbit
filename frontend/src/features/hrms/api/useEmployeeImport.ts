@@ -9,7 +9,7 @@ export const useEmployeeImport = () => {
 
   const downloadTemplate = async () => {
     try {
-      const response = await axios.get('/api/v1/hrms/employees/import/template/', {
+      const response = await axios.get('/hrms/employees/import/template/', {
         responseType: 'blob',
       });
       const url = window.URL.createObjectURL(new Blob([response.data]));
@@ -28,7 +28,7 @@ export const useEmployeeImport = () => {
     mutationFn: async (file: File) => {
       const formData = new FormData();
       formData.append('file', file);
-      const { data } = await axios.post('/api/v1/hrms/employees/import/upload/', formData, {
+      const { data } = await axios.post('/hrms/employees/import/upload/', formData, {
         headers: { 'Content-Type': 'multipart/form-data' },
       });
       return data.session_id as string;
@@ -38,7 +38,7 @@ export const useEmployeeImport = () => {
 
   const validateSession = useMutation({
     mutationFn: async (sessionId: string) => {
-      const { data } = await axios.post(`/api/v1/hrms/employees/import/validate/${sessionId}/`);
+      const { data } = await axios.post(`/hrms/employees/import/validate/${sessionId}/`);
       return data;
     },
     onError: () => toast.error('Validation failed to execute.'),
@@ -46,7 +46,7 @@ export const useEmployeeImport = () => {
 
   const executeSession = useMutation({
     mutationFn: async (sessionId: string) => {
-      const { data } = await axios.post(`/api/v1/hrms/employees/import/execute/${sessionId}/`);
+      const { data } = await axios.post(`/hrms/employees/import/execute/${sessionId}/`);
       return data;
     },
     onSuccess: () => {
@@ -56,7 +56,7 @@ export const useEmployeeImport = () => {
 
   const downloadErrors = async (sessionId: string) => {
     try {
-      const response = await axios.get(`/api/v1/hrms/employees/import/errors/${sessionId}/`, {
+      const response = await axios.get(`/hrms/employees/import/errors/${sessionId}/`, {
         responseType: 'blob',
       });
       const url = window.URL.createObjectURL(new Blob([response.data]));
@@ -84,7 +84,7 @@ export const useImportHistory = () => {
   return useQuery({
     queryKey: ['employee-imports'],
     queryFn: async () => {
-      const { data } = await axios.get('/api/v1/hrms/employees/import/history/');
+      const { data } = await axios.get('/hrms/employees/import/history/');
       return data;
     },
   });

@@ -10,26 +10,26 @@ export interface IntegrationDto {
 
 export const integrationApi = {
   getAll: async (): Promise<IntegrationDto[]> => {
-    const response = await api.get(`/api/v1/integration`);
+    const response = await api.get(`/integration`);
     return response.data;
   },
   
   getById: async (id: string): Promise<IntegrationDto> => {
-    const response = await api.get(`/api/v1/integration/${id}`);
+    const response = await api.get(`/integration/${id}`);
     return response.data;
   },
   
   create: async (data: Partial<IntegrationDto>): Promise<IntegrationDto> => {
-    const response = await api.post(`/api/v1/integration`, data);
+    const response = await api.post(`/integration`, data);
     return response.data;
   },
   
   update: async (id: string, data: Partial<IntegrationDto>): Promise<IntegrationDto> => {
-    const response = await api.put(`/api/v1/integration/${id}`, data);
+    const response = await api.put(`/integration/${id}`, data);
     return response.data;
   },
   
   delete: async (id: string): Promise<void> => {
-    await api.delete(`/api/v1/integration/${id}`);
+    await api.delete(`/integration/${id}`);
   }
 };

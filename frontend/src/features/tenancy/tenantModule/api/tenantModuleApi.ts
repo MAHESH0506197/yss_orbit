@@ -25,17 +25,17 @@ export interface BusinessUnitModuleDto {
 export const tenantModuleApi = {
   getAll: async (businessUnitId: string): Promise<BusinessUnitModuleDto[]> => {
     if (!businessUnitId) return [];
-    const response = await api.get(`/api/v1/business-units/modules/?business_unit_id=${businessUnitId}`);
+    const response = await api.get(`/business-units/modules/?business_unit_id=${businessUnitId}`);
     return response.data.results || response.data.data || response.data;
   },
   
   activate: async (businessUnitId: string, moduleCode: string): Promise<BusinessUnitModuleDto> => {
-    const response = await api.post(`/api/v1/business-units/modules/activate/?business_unit_id=${businessUnitId}`, { module_code: moduleCode });
+    const response = await api.post(`/business-units/modules/activate/?business_unit_id=${businessUnitId}`, { module_code: moduleCode });
     return response.data.data || response.data;
   },
   
   deactivate: async (businessUnitId: string, moduleCode: string): Promise<BusinessUnitModuleDto> => {
-    const response = await api.post(`/api/v1/business-units/modules/deactivate/?business_unit_id=${businessUnitId}`, { module_code: moduleCode });
+    const response = await api.post(`/business-units/modules/deactivate/?business_unit_id=${businessUnitId}`, { module_code: moduleCode });
     return response.data.data || response.data;
   }
 };

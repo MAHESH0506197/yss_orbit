@@ -22,7 +22,7 @@ export const ProjectAccessRequestForm: React.FC<ProjectAccessRequestFormProps> =
     
     setIsSubmitting(true);
     try {
-      const res = await fetch('/api/v1/pqm/projects/request-access/', {
+      const res = await fetch('/pqm/projects/request-access/', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({

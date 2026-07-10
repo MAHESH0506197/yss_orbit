@@ -52,14 +52,14 @@ export function ProfileForm() {
   const { data: profile, isLoading } = useQuery<ProfileData>({
     queryKey: ['profile', 'me'],
     queryFn: async () => {
-      const res = await api.get('/api/v1/profile/me/');
+      const res = await api.get('/profile/me/');
       return res.data;
     }
   });
 
   const mutation = useMutation({
     mutationFn: async (data: ProfileFormData) => {
-      const res = await api.patch('/api/v1/profile/me/', data);
+      const res = await api.patch('/profile/me/', data);
       return res.data;
     },
     onSuccess: (data) => {

@@ -10,26 +10,26 @@ export interface SubscriptionDto {
 
 export const subscriptionApi = {
   getAll: async (): Promise<SubscriptionDto[]> => {
-    const response = await api.get(`/api/v1/subscription`);
+    const response = await api.get(`/subscription`);
     return response.data;
   },
   
   getById: async (id: string): Promise<SubscriptionDto> => {
-    const response = await api.get(`/api/v1/subscription/${id}`);
+    const response = await api.get(`/subscription/${id}`);
     return response.data;
   },
   
   create: async (data: Partial<SubscriptionDto>): Promise<SubscriptionDto> => {
-    const response = await api.post(`/api/v1/subscription`, data);
+    const response = await api.post(`/subscription`, data);
     return response.data;
   },
   
   update: async (id: string, data: Partial<SubscriptionDto>): Promise<SubscriptionDto> => {
-    const response = await api.put(`/api/v1/subscription/${id}`, data);
+    const response = await api.put(`/subscription/${id}`, data);
     return response.data;
   },
   
   delete: async (id: string): Promise<void> => {
-    await api.delete(`/api/v1/subscription/${id}`);
+    await api.delete(`/subscription/${id}`);
   }
 };

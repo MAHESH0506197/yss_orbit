@@ -45,7 +45,7 @@ export function AuthGuard() {
     data,
   } = useQuery({
     queryKey: ['session-restore'],
-    queryFn: () => api.get<MeResponse>('/api/v1/auth/me/'),
+    queryFn: () => api.get<MeResponse>('/auth/me/'),
     retry: false,
     staleTime: 5 * 60 * 1000,
     enabled: !isAuthenticated, // Only run if not already authenticated

@@ -7,7 +7,7 @@ export const usePayrollRuns = () => {
   return useQuery({
     queryKey: ['payrollRuns'],
     queryFn: async () => {
-      const res = await client.get('/api/v1/payroll/runs/');
+      const res = await client.get('/payroll/runs/');
       return res.data?.data?.results || res.data?.data || res.data;
     },
   });
@@ -18,7 +18,7 @@ export const useGeneratePayroll = () => {
   
   return useMutation({
     mutationFn: async ({ month, year }: { month: number, year: number }) => {
-      const res = await client.post('/api/v1/payroll/runs/generate/', { month, year });
+      const res = await client.post('/payroll/runs/generate/', { month, year });
       return res.data;
     },
     onSuccess: () => {
@@ -35,7 +35,7 @@ export const usePayslips = (runId?: string, myPayslips?: boolean) => {
       const params: any = {};
       if (runId) params.run_id = runId;
       if (myPayslips) params.my_payslips = true;
-      const res = await client.get('/api/v1/payroll/payslips/', { params });
+      const res = await client.get('/payroll/payslips/', { params });
       return res.data?.data?.results || res.data?.data || res.data;
     },
   });
@@ -45,7 +45,7 @@ export const useSalaryComponents = () => {
   return useQuery({
     queryKey: ['salaryComponents'],
     queryFn: async () => {
-      const res = await client.get('/api/v1/payroll/components/');
+      const res = await client.get('/payroll/components/');
       return res.data?.data?.results || res.data?.data || res.data;
     },
   });
@@ -56,7 +56,7 @@ export const useCreateSalaryComponent = () => {
   
   return useMutation({
     mutationFn: async (data: any) => {
-      const res = await client.post('/api/v1/payroll/components/', data);
+      const res = await client.post('/payroll/components/', data);
       return res.data;
     },
     onSuccess: () => {
@@ -69,7 +69,7 @@ export const useSalaryStructures = () => {
   return useQuery({
     queryKey: ['salaryStructures'],
     queryFn: async () => {
-      const res = await client.get('/api/v1/payroll/structures/');
+      const res = await client.get('/payroll/structures/');
       return res.data?.data?.results || res.data?.data || res.data;
     },
   });
@@ -80,7 +80,7 @@ export const useCreateSalaryStructure = () => {
   
   return useMutation({
     mutationFn: async (data: any) => {
-      const res = await client.post('/api/v1/payroll/structures/', data);
+      const res = await client.post('/payroll/structures/', data);
       return res.data;
     },
     onSuccess: () => {
@@ -90,7 +90,7 @@ export const useCreateSalaryStructure = () => {
 };
 
 export const downloadPayslip = async (payslipId: string) => {
-  const response = await client.get(`/api/v1/payroll/payslips/${payslipId}/download/`, {
+  const response = await client.get(`/payroll/payslips/${payslipId}/download/`, {
     responseType: 'blob'
   });
   return response.data;

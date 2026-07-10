@@ -54,7 +54,7 @@ export interface SetPlanLimitPayload {
 
 // ─── API client ─────────────────────────────────────────────────────────────
 
-const BASE = '/api/v1/business-units/modules';
+const BASE = '/business-units/modules';
 
 function buParam(businessUnitId: string): string {
   return `?business_unit_id=${businessUnitId}`;

@@ -1,0 +1,14 @@
+/tests/integration/userJourney.test.tsx > navigates from login to dashboard on successful login
+  TestingLibraryElementError: Unable to find an element with the placeholder text of: /Enter your email or username/i
+
+/features/organization/businessUnit/tests/businessUnitService.test.ts > calls DELETE endpoint (triggers soft-delete on backend)
+  AssertionError: expected "spy" to be called with arguments: [ '/business-units/bu-uuid-123/' ][90m
+
+/features/organization/businessUnit/tests/businessUnitService.test.ts > posts to restore endpoint and returns restored BU
+  AssertionError: expected "spy" to be called with arguments: [ Array(1) ][90m
+
+/features/organization/businessDomain/api/__tests__/useBusinessDomains.test.ts > calls plain DELETE without ?hard flag
+  AssertionError: expected "spy" to be called with arguments: [ '/business-domains/domain-456/' ][90m
+
+/features/organization/businessDomain/api/__tests__/useBusinessDomains.test.ts > calls POST /restore/
+  AssertionError: expected "spy" to be called with arguments: [ Array(1) ][90m

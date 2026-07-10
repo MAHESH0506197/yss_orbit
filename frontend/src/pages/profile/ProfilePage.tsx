@@ -43,7 +43,7 @@ export default function ProfilePage() {
   const { data: profile, isLoading } = useQuery<any>({
     queryKey: ['profile', 'me'],
     queryFn: async () => {
-      const res = await api.get('/api/v1/profile/me/');
+      const res = await api.get('/profile/me/');
       return res.data;
     }
   });
@@ -83,7 +83,7 @@ export default function ProfilePage() {
 
     const loadingToast = toast.loading('Uploading avatar...');
     try {
-      const res = await api.put('/api/v1/profile/me/avatar/', formData, {
+      const res = await api.put('/profile/me/avatar/', formData, {
         headers: { 'Content-Type': 'multipart/form-data' }
       });
       queryClient.invalidateQueries({ queryKey: ['profile', 'me'] });
@@ -98,7 +98,7 @@ export default function ProfilePage() {
   const handleAvatarDelete = async () => {
     const loadingToast = toast.loading('Removing avatar...');
     try {
-      await api.delete('/api/v1/profile/me/avatar/');
+      await api.delete('/profile/me/avatar/');
       queryClient.invalidateQueries({ queryKey: ['profile', 'me'] });
       queryClient.invalidateQueries({ queryKey: ['users'] });
       useAuthStore.setState({ avatar: null });

@@ -9,7 +9,7 @@ export const LeaveSettingsDashboard: React.FC = () => {
   const { data: typesResponse, isLoading } = useQuery({
     queryKey: ['leaveTypes'],
     queryFn: async () => {
-      const res = await client.get('/api/v1/hrms/leave/types/');
+      const res = await client.get('/hrms/leave/types/');
       return res.data;
     }
   });

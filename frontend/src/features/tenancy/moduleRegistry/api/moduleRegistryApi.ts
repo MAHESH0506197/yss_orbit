@@ -16,27 +16,27 @@ export interface ModuleregistryDto {
 
 export const moduleRegistryApi = {
   getAll: async (): Promise<ModuleregistryDto[]> => {
-    const response = await api.get(`/api/v1/subscription/platform-modules/`);
+    const response = await api.get(`/subscription/platform-modules/`);
     // Assuming backend returns paginated response, handle accordingly
     return response.data.results || response.data;
   },
   
   getById: async (id: string): Promise<ModuleregistryDto> => {
-    const response = await api.get(`/api/v1/subscription/platform-modules/${id}/`);
+    const response = await api.get(`/subscription/platform-modules/${id}/`);
     return response.data;
   },
   
   create: async (data: Partial<ModuleregistryDto>): Promise<ModuleregistryDto> => {
-    const response = await api.post(`/api/v1/subscription/platform-modules/`, data);
+    const response = await api.post(`/subscription/platform-modules/`, data);
     return response.data;
   },
   
   update: async (id: string, data: Partial<ModuleregistryDto>): Promise<ModuleregistryDto> => {
-    const response = await api.patch(`/api/v1/subscription/platform-modules/${id}/`, data);
+    const response = await api.patch(`/subscription/platform-modules/${id}/`, data);
     return response.data;
   },
   
   delete: async (id: string): Promise<void> => {
-    await api.delete(`/api/v1/moduleRegistry/${id}`);
+    await api.delete(`/moduleRegistry/${id}`);
   }
 };

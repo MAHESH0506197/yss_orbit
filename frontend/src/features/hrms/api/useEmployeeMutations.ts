@@ -8,7 +8,7 @@ export const useEmployeeMutations = () => {
 
   const createMutation = useMutation({
     mutationFn: async (payload: Partial<EmployeeFormValues>) => {
-      const { data } = await apiClient.post<{ data: Employee }>('/api/v1/hrms/employees/', payload);
+      const { data } = await apiClient.post<{ data: Employee }>('/hrms/employees/', payload);
       return data?.data ?? (data as any);
     },
     onSuccess: () => {
@@ -18,7 +18,7 @@ export const useEmployeeMutations = () => {
 
   const updateMutation = useMutation({
     mutationFn: async ({ id, payload }: { id: string; payload: Partial<EmployeeFormValues> }) => {
-      const { data } = await apiClient.patch<{ data: Employee }>(`/api/v1/hrms/employees/${id}/`, payload);
+      const { data } = await apiClient.patch<{ data: Employee }>(`/hrms/employees/${id}/`, payload);
       return data?.data ?? (data as any);
     },
     onSuccess: (_, { id }) => {
@@ -29,7 +29,7 @@ export const useEmployeeMutations = () => {
 
   const deactivateMutation = useMutation({
     mutationFn: async (id: string) => {
-      await apiClient.delete(`/api/v1/hrms/employees/${id}/`);
+      await apiClient.delete(`/hrms/employees/${id}/`);
     },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['employees'] });
@@ -41,7 +41,7 @@ export const useEmployeeMutations = () => {
       const formData = new FormData();
       formData.append('file', file);
       formData.append('document_type', docType);
-      const { data } = await apiClient.post(`/api/v1/hrms/employees/${id}/documents/`, formData, {
+      const { data } = await apiClient.post(`/hrms/employees/${id}/documents/`, formData, {
         headers: { 'Content-Type': 'multipart/form-data' },
       });
       return data;
@@ -55,7 +55,7 @@ export const useEmployeeMutations = () => {
     mutationFn: async ({ id, file }: { id: string; file: File }) => {
       const formData = new FormData();
       formData.append('photo', file);
-      const { data } = await apiClient.post<{ data: { photo_url: string } }>(`/api/v1/hrms/employees/${id}/photo/`, formData, {
+      const { data } = await apiClient.post<{ data: { photo_url: string } }>(`/hrms/employees/${id}/photo/`, formData, {
         headers: { 'Content-Type': 'multipart/form-data' },
       });
       return data?.data;

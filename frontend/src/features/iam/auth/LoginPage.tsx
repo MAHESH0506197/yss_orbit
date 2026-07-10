@@ -244,7 +244,7 @@ export default function LoginPage() {
     try {
       setUnlockLoading(true);
       setGlobalError('');
-      await api.post('/api/v1/auth/unlock/request/', { username: lockedUsername });
+      await api.post('/auth/unlock/request/', { username: lockedUsername });
       setUnlockMode('verify');
     } catch (e: any) {
       setGlobalError('Failed to request unlock OTP. Please try again.');
@@ -259,7 +259,7 @@ export default function LoginPage() {
     try {
       setUnlockLoading(true);
       setGlobalError('');
-      await api.post('/api/v1/auth/otp/verify/', { 
+      await api.post('/auth/otp/verify/', { 
         username: lockedUsername, 
         otp: unlockOTP, 
         purpose: 'ACCOUNT_UNLOCK' 

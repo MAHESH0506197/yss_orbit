@@ -8,7 +8,7 @@ export const useLeaveBalances = (employeeId: string, year: number) => {
   return useQuery({
     queryKey: ['leaveBalances', employeeId, year],
     queryFn: async () => {
-      const res = await client.get('/api/v1/hrms/leave/balances/', {
+      const res = await client.get('/hrms/leave/balances/', {
         params: { employee_id: employeeId, year }
       });
       return res.data?.data?.results || res.data?.data || res.data;
@@ -21,7 +21,7 @@ export const useLeaveRequests = (employeeId?: string) => {
   return useQuery({
     queryKey: ['leaveRequests', employeeId],
     queryFn: async () => {
-      const res = await client.get('/api/v1/hrms/leave/requests/', {
+      const res = await client.get('/hrms/leave/requests/', {
         params: employeeId ? { employee_id: employeeId } : undefined
       });
       return res.data?.data?.results || res.data?.data || res.data;
@@ -33,7 +33,7 @@ export const useTeamLeaveRequests = (managerId?: string) => {
   return useQuery({
     queryKey: ['teamLeaveRequests', managerId],
     queryFn: async () => {
-      const res = await client.get('/api/v1/hrms/leave/requests/', {
+      const res = await client.get('/hrms/leave/requests/', {
         params: managerId ? { manager_id: managerId } : undefined
       });
       return res.data;
@@ -47,7 +47,7 @@ export const useApplyLeave = () => {
   
   return useMutation({
     mutationFn: async (data: Partial<LeaveRequest>) => {
-      const res = await client.post('/api/v1/hrms/leave/requests/', data);
+      const res = await client.post('/hrms/leave/requests/', data);
       return res.data;
     },
     onSuccess: (data) => {
@@ -62,7 +62,7 @@ export const useApproveLeave = () => {
   
   return useMutation({
     mutationFn: async ({ id, managerId, comments }: { id: string, managerId: string, comments: string }) => {
-      const res = await client.post(`/api/v1/hrms/leave/requests/${id}/approve/`, {
+      const res = await client.post(`/hrms/leave/requests/${id}/approve/`, {
         manager_employee_id: managerId,
         comments
       });
@@ -79,7 +79,7 @@ export const useLeaveTypes = () => {
   return useQuery({
     queryKey: ['leaveTypes'],
     queryFn: async () => {
-      const res = await client.get('/api/v1/hrms/leave/types/');
+      const res = await client.get('/hrms/leave/types/');
       return res.data?.data?.results ?? res.data?.data ?? res.data ?? [];
     },
   });
@@ -90,7 +90,7 @@ export const useCancelLeave = () => {
   
   return useMutation({
     mutationFn: async (id: string) => {
-      await client.post(`/api/v1/hrms/leave/requests/${id}/cancel/`);
+      await client.post(`/hrms/leave/requests/${id}/cancel/`);
     },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['leaveRequests'] });
@@ -104,7 +104,7 @@ export const useRejectLeave = () => {
   
   return useMutation({
     mutationFn: async ({ id, managerId, comments }: { id: string, managerId: string, comments: string }) => {
-      const res = await client.post(`/api/v1/hrms/leave/requests/${id}/reject/`, {
+      const res = await client.post(`/hrms/leave/requests/${id}/reject/`, {
         manager_employee_id: managerId,
         comments
       });

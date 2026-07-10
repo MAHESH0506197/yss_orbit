@@ -49,7 +49,7 @@ export default function OTPVerifyPage() {
     if (otp.length < OTP_LENGTH) { setError('Please enter the complete 6-digit code.'); return; }
     setError(''); setLoading(true); setResendMessage('');
     try {
-      const res = await fetch('/api/v1/auth/otp/verify/', {
+      const res = await fetch('/auth/otp/verify/', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         credentials: 'include',
@@ -61,7 +61,7 @@ export default function OTPVerifyPage() {
       if (isEmailVerification) {
         toast.success('Email verified successfully! Please sign in again.');
         // Optionally logout just to clear the immediate token if the backend issued one automatically
-        fetch('/api/v1/auth/logout/', { method: 'POST', credentials: 'include' }).catch(() => {});
+        fetch('/auth/logout/', { method: 'POST', credentials: 'include' }).catch(() => {});
         sessionStorage.removeItem('pendingAuth');
         navigate('/login', { replace: true });
       } else {
@@ -84,7 +84,7 @@ export default function OTPVerifyPage() {
     setResendMessage('');
     setError('');
     try {
-      const res = await fetch('/api/v1/auth/otp/resend/', {
+      const res = await fetch('/auth/otp/resend/', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ user_id: pendingAuth.pending_user_id, purpose })

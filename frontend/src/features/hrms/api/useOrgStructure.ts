@@ -11,7 +11,7 @@ export const useDepartments = () => {
     queryKey: ['departments', selectedBusinessUnitId],
     queryFn: async () => {
       if (!selectedBusinessUnitId) return { data: [] };
-      const response = await client.get('/api/v1/hrms/departments/');
+      const response = await client.get('/hrms/departments/');
       return response.data;
     },
     enabled: !!selectedBusinessUnitId,
@@ -25,7 +25,7 @@ export const useDesignations = () => {
     queryKey: ['designations', selectedBusinessUnitId],
     queryFn: async () => {
       if (!selectedBusinessUnitId) return { data: [] };
-      const response = await client.get('/api/v1/hrms/designations/');
+      const response = await client.get('/hrms/designations/');
       return response.data;
     },
     enabled: !!selectedBusinessUnitId,
@@ -38,7 +38,7 @@ export const useCreateDepartment = () => {
 
   return useMutation({
     mutationFn: async (data: { name: string }) => {
-      const response = await client.post('/api/v1/hrms/departments/', data);
+      const response = await client.post('/hrms/departments/', data);
       return response.data;
     },
     onSuccess: () => {
@@ -53,7 +53,7 @@ export const useCreateDesignation = () => {
 
   return useMutation({
     mutationFn: async (data: { name: string, department?: string }) => {
-      const response = await client.post('/api/v1/hrms/designations/', data);
+      const response = await client.post('/hrms/designations/', data);
       return response.data;
     },
     onSuccess: () => {

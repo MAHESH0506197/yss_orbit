@@ -10,26 +10,26 @@ export interface AttendanceDto {
 
 export const attendanceApi = {
   getAll: async (): Promise<AttendanceDto[]> => {
-    const response = await api.get(`/api/v1/attendance`);
+    const response = await api.get(`/attendance`);
     return response.data;
   },
   
   getById: async (id: string): Promise<AttendanceDto> => {
-    const response = await api.get(`/api/v1/attendance/${id}`);
+    const response = await api.get(`/attendance/${id}`);
     return response.data;
   },
   
   create: async (data: Partial<AttendanceDto>): Promise<AttendanceDto> => {
-    const response = await api.post(`/api/v1/attendance`, data);
+    const response = await api.post(`/attendance`, data);
     return response.data;
   },
   
   update: async (id: string, data: Partial<AttendanceDto>): Promise<AttendanceDto> => {
-    const response = await api.put(`/api/v1/attendance/${id}`, data);
+    const response = await api.put(`/attendance/${id}`, data);
     return response.data;
   },
   
   delete: async (id: string): Promise<void> => {
-    await api.delete(`/api/v1/attendance/${id}`);
+    await api.delete(`/attendance/${id}`);
   }
 };

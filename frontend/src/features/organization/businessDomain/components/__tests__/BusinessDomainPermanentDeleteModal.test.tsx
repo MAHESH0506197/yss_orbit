@@ -149,7 +149,7 @@ describe('BusinessDomainPermanentDeleteModal', () => {
   describe('Name confirmation logic', () => {
     it('delete button is disabled initially (empty input)', () => {
       renderModal();
-      const deleteBtn = screen.getByRole('button', { name: /permanently delete domain pharmacy/i });
+      const deleteBtn = screen.getByRole('button', { name: /permanent delete domain pharmacy/i });
       expect(deleteBtn).toBeDisabled();
     })
 
@@ -157,7 +157,7 @@ describe('BusinessDomainPermanentDeleteModal', () => {
       renderModal();
       const input = screen.getByRole('textbox');
       await userEvent.type(input, 'pharmacy'); // lowercase — should not match
-      const deleteBtn = screen.getByRole('button', { name: /permanently delete domain pharmacy/i });
+      const deleteBtn = screen.getByRole('button', { name: /permanent delete domain pharmacy/i });
       expect(deleteBtn).toBeDisabled();
     });
 
@@ -165,7 +165,7 @@ describe('BusinessDomainPermanentDeleteModal', () => {
       renderModal();
       const input = screen.getByRole('textbox');
       await userEvent.type(input, 'Pharm'); // partial
-      const deleteBtn = screen.getByRole('button', { name: /permanently delete domain pharmacy/i });
+      const deleteBtn = screen.getByRole('button', { name: /permanent delete domain pharmacy/i });
       expect(deleteBtn).toBeDisabled();
     });
 
@@ -173,7 +173,7 @@ describe('BusinessDomainPermanentDeleteModal', () => {
       renderModal();
       const input = screen.getByRole('textbox');
       await userEvent.type(input, 'Pharmacy'); // exact match
-      const deleteBtn = screen.getByRole('button', { name: /permanently delete domain pharmacy/i });
+      const deleteBtn = screen.getByRole('button', { name: /permanent delete domain pharmacy/i });
       expect(deleteBtn).not.toBeDisabled();
     });
 
@@ -202,7 +202,7 @@ describe('BusinessDomainPermanentDeleteModal', () => {
       const input = screen.getByRole('textbox');
       await userEvent.type(input, 'Pharmacy');
 
-      const deleteBtn = screen.getByRole('button', { name: /permanently delete domain pharmacy/i });
+      const deleteBtn = screen.getByRole('button', { name: /permanent delete domain pharmacy/i });
       fireEvent.click(deleteBtn);
 
       await waitFor(() => {
@@ -220,7 +220,7 @@ describe('BusinessDomainPermanentDeleteModal', () => {
       renderModal({ onDeleted, onClose });
 
       await userEvent.type(screen.getByRole('textbox'), 'Pharmacy');
-      fireEvent.click(screen.getByRole('button', { name: /permanently delete domain pharmacy/i }));
+      fireEvent.click(screen.getByRole('button', { name: /permanent delete domain pharmacy/i }));
 
       await waitFor(() => {
         expect(onDeleted).toHaveBeenCalled();
@@ -234,7 +234,7 @@ describe('BusinessDomainPermanentDeleteModal', () => {
       renderModal({ onDeleted });
 
       await userEvent.type(screen.getByRole('textbox'), 'Pharmacy');
-      fireEvent.click(screen.getByRole('button', { name: /permanently delete domain pharmacy/i }));
+      fireEvent.click(screen.getByRole('button', { name: /permanent delete domain pharmacy/i }));
 
       await waitFor(() => {
         expect(onDeleted).not.toHaveBeenCalled();

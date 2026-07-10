@@ -17,7 +17,7 @@ interface CreateEmployeePayload {
 
 // Thin wrapper so EmployeeForm doesn't depend on useEmployeeMutations hook shape
 const createEmployee = async (payload: CreateEmployeePayload) => {
-  const { data } = await apiClient.post('/api/v1/hrms/employees/', payload);
+  const { data } = await apiClient.post('/hrms/employees/', payload);
   return data;
 };
 

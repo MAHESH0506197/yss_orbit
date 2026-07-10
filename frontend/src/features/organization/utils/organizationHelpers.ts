@@ -93,8 +93,8 @@ export function maskPAN(pan: string): string {
 
 // ─── Currency ─────────────────────────────────────────────────────────────────
 const CURRENCY_SYMBOLS: Record<string, string> = {
-  INR: 'â‚¹', USD: '$', EUR: 'â‚¬', GBP: 'Â£',
-  AED: 'Ø¯.Ø¥', SGD: 'S$', JPY: 'Â¥', CAD: 'C$', AUD: 'A$',
+  INR: '₹', USD: '$', EUR: '€', GBP: '£',
+  AED: 'د.إ', SGD: 'S$', JPY: '¥', CAD: 'C$', AUD: 'A$',
 };
 
 export function getCurrencySymbol(code: string): string {

@@ -10,7 +10,7 @@ import toast from 'react-hot-toast';
 import type { BusinessDomain, BusinessDomainListParams } from '@/features/organization/businessDomain/types/businessDomainTypes';
 import { organizationKeys } from '@/features/organization/hooks/useOrganizations';
 
-const BASE = '/api/v1/business-domains';
+const BASE = '/business-domains';
 
 // ─── Query key factory ────────────────────────────────────────────────────────
 export const businessDomainKeys = {

@@ -23,7 +23,7 @@ export interface PlatformDashboardResponse {
 
 class PlatformService {
   async getDashboardMetrics(): Promise<PlatformDashboardResponse> {
-    const response = await apiClient.get<{ data: PlatformDashboardResponse }>('/api/v1/platform/dashboard/');
+    const response = await apiClient.get<{ data: PlatformDashboardResponse }>('/platform/dashboard/');
     return response.data.data;
   }
 }

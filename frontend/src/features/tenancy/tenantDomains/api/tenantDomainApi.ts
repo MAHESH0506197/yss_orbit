@@ -8,7 +8,7 @@ import type {
   TenantDomainListResponse,
 } from '../types/tenantDomainTypes';
 
-const BASE = '/api/v1/platform-admin/domains';
+const BASE = '/platform-admin/domains';
 
 function unwrapSingle<T>(response: any): T {
   return response?.data?.data ?? response?.data;

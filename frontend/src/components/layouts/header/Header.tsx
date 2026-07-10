@@ -45,7 +45,7 @@ export function Header() {
 
   const handleLogout = async () => {
     try {
-      await api.post('/api/v1/auth/logout/');
+      await api.post('/auth/logout/');
     } catch (e) {
       console.error(e);
     } finally {

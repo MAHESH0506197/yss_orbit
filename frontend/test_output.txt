@@ -1,0 +1,289 @@
+
+[1m[7m[36m RUN [39m[27m[22m [36mv2.1.9 [39m[90mC:/PROJECT/yss_orbit/frontend[39m
+
+ [32m✓[39m src/features/organization/businessUnit/tests/businessUnitService.test.ts [2m([22m[2m9 tests[22m[2m)[22m[90m 38[2mms[22m[39m
+ [32m✓[39m src/features/organization/tests/organizationHelpers.test.ts [2m([22m[2m19 tests[22m[2m)[22m[90m 20[2mms[22m[39m
+ [32m✓[39m src/features/organization/businessUnit/tests/businessUnitStore.test.ts [2m([22m[2m11 tests[22m[2m)[22m[90m 18[2mms[22m[39m
+ [32m✓[39m src/features/organization/businessDomain/api/__tests__/useBusinessDomains.test.ts [2m([22m[2m10 tests[22m[2m)[22m[90m 34[2mms[22m[39m
+ [2m[90m↓[39m[22m src/tests/integration/hrmsPortal.test.tsx [2m([22m[2m1 test[22m[2m | [22m[33m1 skipped[39m[2m)[22m
+[90mstderr[2m | src/tests/integration/userJourney.test.tsx[2m > [22m[2mUser Authentication Journey[2m > [22m[2mnavigates from login to dashboard on successful login
+[22m[39m⚠️ React Router Future Flag Warning: React Router will begin wrapping state updates in `React.startTransition` in v7. You can use the `v7_startTransition` future flag to opt-in early. For more information, see https://reactrouter.com/v6/upgrading/future#v7_starttransition.
+⚠️ React Router Future Flag Warning: Relative route resolution within Splat routes is changing in v7. You can use the `v7_relativeSplatPath` future flag to opt-in early. For more information, see https://reactrouter.com/v6/upgrading/future#v7_relativesplatpath.
+
+ [32m✓[39m src/features/organization/tests/organizationApi.test.ts [2m([22m[2m2 tests[22m[2m)[22m[90m 12[2mms[22m[39m
+ [32m✓[39m src/features/organization/tests/organizationStore.test.ts [2m([22m[2m4 tests[22m[2m)[22m[90m 11[2mms[22m[39m
+ [32m✓[39m src/tests/axiosClient.test.ts [2m([22m[2m3 tests[22m[2m)[22m[90m 9[2mms[22m[39m
+ [32m✓[39m src/features/organization/businessDomain/components/__tests__/BusinessDomainPermanentDeleteModal.test.tsx [2m([22m[2m18 tests[22m[2m)[22m[33m 4849[2mms[22m[39m
+   [33m[2m✓[22m[39m BusinessDomainPermanentDeleteModal[2m > [22mRendering[2m > [22mrenders the dialog when isOpen=true and domain is set [33m683[2mms[22m[39m
+   [33m[2m✓[22m[39m BusinessDomainPermanentDeleteModal[2m > [22mName confirmation logic[2m > [22mdelete button remains disabled when input does NOT match (case-sensitive) [33m654[2mms[22m[39m
+   [33m[2m✓[22m[39m BusinessDomainPermanentDeleteModal[2m > [22mName confirmation logic[2m > [22mdelete button remains disabled for partial input [33m498[2mms[22m[39m
+   [33m[2m✓[22m[39m BusinessDomainPermanentDeleteModal[2m > [22mName confirmation logic[2m > [22mdelete button is ENABLED when input exactly matches domain.name [33m669[2mms[22m[39m
+   [33m[2m✓[22m[39m BusinessDomainPermanentDeleteModal[2m > [22mName confirmation logic[2m > [22mshows confirmed hint when name matches [33m387[2mms[22m[39m
+   [33m[2m✓[22m[39m BusinessDomainPermanentDeleteModal[2m > [22mDelete action[2m > [22mcalls permanentDeleteDomain with correct id and confirmationName on submit [33m456[2mms[22m[39m
+   [33m[2m✓[22m[39m BusinessDomainPermanentDeleteModal[2m > [22mDelete action[2m > [22mdoes NOT call onDeleted when API call fails [33m316[2mms[22m[39m
+ [32m✓[39m src/features/organization/userBusinessUnit/tests/userBusinessUnitService.test.ts [2m([22m[2m2 tests[22m[2m)[22m[90m 7[2mms[22m[39m
+ [32m✓[39m src/features/iam/users/tests/userService.test.ts [2m([22m[2m2 tests[22m[2m)[22m[90m 8[2mms[22m[39m
+[90mstderr[2m | src/tests/integration/userJourney.test.tsx[2m > [22m[2mUser Authentication Journey[2m > [22m[2mnavigates from login to dashboard on successful login
+[22m[39mNot implemented: HTMLCanvasElement's getContext() method: without installing the canvas npm package
+
+ [32m✓[39m src/features/platform/branding/tests/brandingService.test.ts [2m([22m[2m1 test[22m[2m)[22m[90m 7[2mms[22m[39m
+ [32m✓[39m src/features/platform/branding/tests/brandingStore.test.ts [2m([22m[2m1 test[22m[2m)[22m[90m 6[2mms[22m[39m
+ [31m❯[39m src/features/tenancy/moduleRegistry/tests/moduleRegistryService.test.ts [2m([22m[2m0 test[22m[2m)[22m
+ [31m❯[39m src/features/tenancy/tenantSettings/tests/tenantSettingsService.test.ts [2m([22m[2m0 test[22m[2m)[22m
+ [31m❯[39m src/features/observability/tests/observabilityService.test.ts [2m([22m[2m0 test[22m[2m)[22m
+ [31m❯[39m src/features/platform/platformAdmin/tests/platformAdminService.test.ts [2m([22m[2m0 test[22m[2m)[22m
+ [32m✓[39m src/tests/integration/userJourney.test.tsx [2m([22m[2m1 test[22m[2m)[22m[33m 12469[2mms[22m[39m
+   [33m[2m✓[22m[39m User Authentication Journey[2m > [22mnavigates from login to dashboard on successful login [33m12464[2mms[22m[39m
+ [31m❯[39m src/features/organization/tests/organizationService.test.ts [2m([22m[2m0 test[22m[2m)[22m
+ [31m❯[39m src/features/platform/featureFlags/tests/featureFlagsService.test.ts [2m([22m[2m0 test[22m[2m)[22m
+ [31m❯[39m src/features/tenancy/tenantModule/tests/tenantModuleService.test.ts [2m([22m[2m0 test[22m[2m)[22m
+ [31m❯[39m src/features/recruitment/tests/recruitmentService.test.ts [2m([22m[2m0 test[22m[2m)[22m
+ [31m❯[39m src/features/platform/notifications/tests/notificationService.test.ts [2m([22m[2m0 test[22m[2m)[22m
+ [31m❯[39m src/features/platform/fileStorage/tests/fileStorageService.test.ts [2m([22m[2m0 test[22m[2m)[22m
+ [31m❯[39m src/features/platform/integration/tests/integrationService.test.ts [2m([22m[2m0 test[22m[2m)[22m
+ [31m❯[39m src/features/attendance/tests/attendanceService.test.ts [2m([22m[2m0 test[22m[2m)[22m
+ [31m❯[39m src/features/appraisal/tests/appraisalService.test.ts [2m([22m[2m0 test[22m[2m)[22m
+ [31m❯[39m src/features/observability/dashboard/tests/dashboardService.test.ts [2m([22m[2m0 test[22m[2m)[22m
+ [31m❯[39m src/features/compliance/errorLog/tests/errorLogService.test.ts [2m([22m[2m0 test[22m[2m)[22m
+ [31m❯[39m src/features/payroll/tests/payrollService.test.ts [2m([22m[2m0 test[22m[2m)[22m
+ [31m❯[39m src/features/observability/health/tests/healthService.test.ts [2m([22m[2m0 test[22m[2m)[22m
+ [31m❯[39m src/features/compliance/audit/tests/auditService.test.ts [2m([22m[2m0 test[22m[2m)[22m
+ [31m❯[39m src/features/tenancy/moduleRegistry/tests/moduleRegistryStore.test.ts [2m([22m[2m0 test[22m[2m)[22m
+ [31m❯[39m src/features/tenancy/tenantSettings/tests/tenantSettingsStore.test.ts [2m([22m[2m0 test[22m[2m)[22m
+ [31m❯[39m src/features/observability/tests/observabilityStore.test.ts [2m([22m[2m0 test[22m[2m)[22m
+ [31m❯[39m src/features/platform/platformAdmin/tests/platformAdminStore.test.ts [2m([22m[2m0 test[22m[2m)[22m
+ [31m❯[39m src/features/platform/featureFlags/tests/featureFlagsStore.test.ts [2m([22m[2m0 test[22m[2m)[22m
+ [31m❯[39m src/features/platform/notifications/tests/notificationStore.test.ts [2m([22m[2m0 test[22m[2m)[22m
+ [31m❯[39m src/features/tenancy/tenantModule/tests/tenantModuleStore.test.ts [2m([22m[2m0 test[22m[2m)[22m
+ [31m❯[39m src/features/recruitment/tests/recruitmentStore.test.ts [2m([22m[2m0 test[22m[2m)[22m
+ [31m❯[39m src/features/platform/fileStorage/tests/fileStorageStore.test.ts [2m([22m[2m0 test[22m[2m)[22m
+ [31m❯[39m src/features/platform/integration/tests/integrationStore.test.ts [2m([22m[2m0 test[22m[2m)[22m
+ [31m❯[39m src/features/appraisal/tests/appraisalStore.test.ts [2m([22m[2m0 test[22m[2m)[22m
+ [31m❯[39m src/features/attendance/tests/attendanceStore.test.ts [2m([22m[2m0 test[22m[2m)[22m
+ [31m❯[39m src/features/observability/dashboard/tests/dashboardStore.test.ts [2m([22m[2m0 test[22m[2m)[22m
+ [31m❯[39m src/features/payroll/tests/payrollStore.test.ts [2m([22m[2m0 test[22m[2m)[22m
+ [31m❯[39m src/features/observability/health/tests/healthStore.test.ts [2m([22m[2m0 test[22m[2m)[22m
+ [31m❯[39m src/features/compliance/audit/tests/auditStore.test.ts [2m([22m[2m0 test[22m[2m)[22m
+ [31m❯[39m src/features/compliance/errorLog/tests/errorLogStore.test.ts [2m([22m[2m0 test[22m[2m)[22m
+ [31m❯[39m tests/e2e/tenant-flow.spec.ts [2m([22m[2m0 test[22m[2m)[22m
+ [31m❯[39m src/features/tenancy/subscription/tests/subscriptionService.test.ts [2m([22m[2m0 test[22m[2m)[22m
+ [31m❯[39m tests/e2e/auth.spec.ts [2m([22m[2m0 test[22m[2m)[22m
+ [31m❯[39m src/features/organization/userBusinessUnit/tests/userBusinessUnitStore.test.ts [2m([22m[2m0 test[22m[2m)[22m
+ [31m❯[39m src/features/tenancy/subscription/tests/subscriptionStore.test.ts [2m([22m[2m0 test[22m[2m)[22m
+ [31m❯[39m src/features/platform/support/tests/supportService.test.ts [2m([22m[2m0 test[22m[2m)[22m
+ [31m❯[39m src/features/platform/support/tests/supportStore.test.ts [2m([22m[2m0 test[22m[2m)[22m
+ [31m❯[39m src/features/iam/users/tests/userStore.test.ts [2m([22m[2m0 test[22m[2m)[22m
+
+[31m⎯⎯⎯⎯⎯⎯[1m[7m Failed Suites 43 [27m[22m⎯⎯⎯⎯⎯⎯[39m
+
+[31m[1m[7m FAIL [27m[22m[39m tests/e2e/auth.spec.ts[2m [ tests/e2e/auth.spec.ts ][22m
+[31m[1mError[22m: Playwright Test did not expect test() to be called here.
+Most common reasons include:
+- You are calling test() in a configuration file.
+- You are calling test() in a file that is imported by the configuration file.
+- You have two different versions of @playwright/test. This usually happens
+  when one of the dependencies in your package.json depends on @playwright/test.
+- You are calling test() from an async test.describe() block. Only sync ones are supported.[39m
+[90m [2m❯[22m _TestTypeImpl._currentSuite node_modules/playwright/lib/common/index.js:[2m2256:13[22m[39m
+[90m [2m❯[22m _TestTypeImpl._createTest node_modules/playwright/lib/common/index.js:[2m2270:24[22m[39m
+[90m [2m❯[22m Module.<anonymous> node_modules/playwright/lib/common/index.js:[2m1219:12[22m[39m
+[36m [2m❯[22m tests/e2e/auth.spec.ts:[2m3:1[22m[39m
+    [90m  1| [39m[35mimport[39m { test[33m,[39m expect } [35mfrom[39m [32m'@playwright/test'[39m[33m;[39m
+    [90m  2| [39m
+    [90m  3| [39m[34mtest[39m([32m'auth spec placeholder'[39m[33m,[39m [35masync[39m () [33m=>[39m {
+    [90m   | [39m[31m^[39m
+    [90m  4| [39m    [34mexpect[39m([35mtrue[39m)[33m.[39m[34mtoBe[39m([35mtrue[39m)[33m;[39m
+    [90m  5| [39m})[33m;[39m
+
+[31m[2m⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/43]⎯[22m[39m
+
+[31m[1m[7m FAIL [27m[22m[39m tests/e2e/tenant-flow.spec.ts[2m [ tests/e2e/tenant-flow.spec.ts ][22m
+[31m[1mError[22m: Playwright Test did not expect test() to be called here.
+Most common reasons include:
+- You are calling test() in a configuration file.
+- You are calling test() in a file that is imported by the configuration file.
+- You have two different versions of @playwright/test. This usually happens
+  when one of the dependencies in your package.json depends on @playwright/test.
+- You are calling test() from an async test.describe() block. Only sync ones are supported.[39m
+[90m [2m❯[22m _TestTypeImpl._currentSuite node_modules/playwright/lib/common/index.js:[2m2256:13[22m[39m
+[90m [2m❯[22m _TestTypeImpl._createTest node_modules/playwright/lib/common/index.js:[2m2270:24[22m[39m
+[90m [2m❯[22m Module.<anonymous> node_modules/playwright/lib/common/index.js:[2m1219:12[22m[39m
+[36m [2m❯[22m tests/e2e/tenant-flow.spec.ts:[2m3:1[22m[39m
+    [90m  1| [39m[35mimport[39m { test[33m,[39m expect } [35mfrom[39m [32m'@playwright/test'[39m[33m;[39m
+    [90m  2| [39m
+    [90m  3| [39m[34mtest[39m([32m'tenant flow placeholder'[39m[33m,[39m [35masync[39m () [33m=>[39m {
+    [90m   | [39m[31m^[39m
+    [90m  4| [39m    [34mexpect[39m([35mtrue[39m)[33m.[39m[34mtoBe[39m([35mtrue[39m)[33m;[39m
+    [90m  5| [39m})[33m;[39m
+
+[31m[2m⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/43]⎯[22m[39m
+
+[31m[1m[7m FAIL [27m[22m[39m src/features/appraisal/tests/appraisalService.test.ts[2m [ src/features/appraisal/tests/appraisalService.test.ts ][22m
+[31m[1mError[22m: No test suite found in file C:/PROJECT/yss_orbit/frontend/src/features/appraisal/tests/appraisalService.test.ts[39m
+[31m[2m⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/43]⎯[22m[39m
+
+[31m[1m[7m FAIL [27m[22m[39m src/features/appraisal/tests/appraisalStore.test.ts[2m [ src/features/appraisal/tests/appraisalStore.test.ts ][22m
+[31m[1mError[22m: No test suite found in file C:/PROJECT/yss_orbit/frontend/src/features/appraisal/tests/appraisalStore.test.ts[39m
+[31m[2m⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/43]⎯[22m[39m
+
+[31m[1m[7m FAIL [27m[22m[39m src/features/attendance/tests/attendanceService.test.ts[2m [ src/features/attendance/tests/attendanceService.test.ts ][22m
+[31m[1mError[22m: No test suite found in file C:/PROJECT/yss_orbit/frontend/src/features/attendance/tests/attendanceService.test.ts[39m
+[31m[2m⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[5/43]⎯[22m[39m
+
+[31m[1m[7m FAIL [27m[22m[39m src/features/attendance/tests/attendanceStore.test.ts[2m [ src/features/attendance/tests/attendanceStore.test.ts ][22m
+[31m[1mError[22m: No test suite found in file C:/PROJECT/yss_orbit/frontend/src/features/attendance/tests/attendanceStore.test.ts[39m
+[31m[2m⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[6/43]⎯[22m[39m
+
+[31m[1m[7m FAIL [27m[22m[39m src/features/observability/tests/observabilityService.test.ts[2m [ src/features/observability/tests/observabilityService.test.ts ][22m
+[31m[1mError[22m: No test suite found in file C:/PROJECT/yss_orbit/frontend/src/features/observability/tests/observabilityService.test.ts[39m
+[31m[2m⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[7/43]⎯[22m[39m
+
+[31m[1m[7m FAIL [27m[22m[39m src/features/observability/tests/observabilityStore.test.ts[2m [ src/features/observability/tests/observabilityStore.test.ts ][22m
+[31m[1mError[22m: No test suite found in file C:/PROJECT/yss_orbit/frontend/src/features/observability/tests/observabilityStore.test.ts[39m
+[31m[2m⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[8/43]⎯[22m[39m
+
+[31m[1m[7m FAIL [27m[22m[39m src/features/organization/tests/organizationService.test.ts[2m [ src/features/organization/tests/organizationService.test.ts ][22m
+[31m[1mError[22m: No test suite found in file C:/PROJECT/yss_orbit/frontend/src/features/organization/tests/organizationService.test.ts[39m
+[31m[2m⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[9/43]⎯[22m[39m
+
+[31m[1m[7m FAIL [27m[22m[39m src/features/payroll/tests/payrollService.test.ts[2m [ src/features/payroll/tests/payrollService.test.ts ][22m
+[31m[1mError[22m: No test suite found in file C:/PROJECT/yss_orbit/frontend/src/features/payroll/tests/payrollService.test.ts[39m
+[31m[2m⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[10/43]⎯[22m[39m
+
+[31m[1m[7m FAIL [27m[22m[39m src/features/payroll/tests/payrollStore.test.ts[2m [ src/features/payroll/tests/payrollStore.test.ts ][22m
+[31m[1mError[22m: No test suite found in file C:/PROJECT/yss_orbit/frontend/src/features/payroll/tests/payrollStore.test.ts[39m
+[31m[2m⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[11/43]⎯[22m[39m
+
+[31m[1m[7m FAIL [27m[22m[39m src/features/recruitment/tests/recruitmentService.test.ts[2m [ src/features/recruitment/tests/recruitmentService.test.ts ][22m
+[31m[1mError[22m: No test suite found in file C:/PROJECT/yss_orbit/frontend/src/features/recruitment/tests/recruitmentService.test.ts[39m
+[31m[2m⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[12/43]⎯[22m[39m
+
+[31m[1m[7m FAIL [27m[22m[39m src/features/recruitment/tests/recruitmentStore.test.ts[2m [ src/features/recruitment/tests/recruitmentStore.test.ts ][22m
+[31m[1mError[22m: No test suite found in file C:/PROJECT/yss_orbit/frontend/src/features/recruitment/tests/recruitmentStore.test.ts[39m
+[31m[2m⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[13/43]⎯[22m[39m
+
+[31m[1m[7m FAIL [27m[22m[39m src/features/compliance/audit/tests/auditService.test.ts[2m [ src/features/compliance/audit/tests/auditService.test.ts ][22m
+[31m[1mError[22m: No test suite found in file C:/PROJECT/yss_orbit/frontend/src/features/compliance/audit/tests/auditService.test.ts[39m
+[31m[2m⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[14/43]⎯[22m[39m
+
+[31m[1m[7m FAIL [27m[22m[39m src/features/compliance/audit/tests/auditStore.test.ts[2m [ src/features/compliance/audit/tests/auditStore.test.ts ][22m
+[31m[1mError[22m: No test suite found in file C:/PROJECT/yss_orbit/frontend/src/features/compliance/audit/tests/auditStore.test.ts[39m
+[31m[2m⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[15/43]⎯[22m[39m
+
+[31m[1m[7m FAIL [27m[22m[39m src/features/compliance/errorLog/tests/errorLogService.test.ts[2m [ src/features/compliance/errorLog/tests/errorLogService.test.ts ][22m
+[31m[1mError[22m: No test suite found in file C:/PROJECT/yss_orbit/frontend/src/features/compliance/errorLog/tests/errorLogService.test.ts[39m
+[31m[2m⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[16/43]⎯[22m[39m
+
+[31m[1m[7m FAIL [27m[22m[39m src/features/compliance/errorLog/tests/errorLogStore.test.ts[2m [ src/features/compliance/errorLog/tests/errorLogStore.test.ts ][22m
+[31m[1mError[22m: No test suite found in file C:/PROJECT/yss_orbit/frontend/src/features/compliance/errorLog/tests/errorLogStore.test.ts[39m
+[31m[2m⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[17/43]⎯[22m[39m
+
+[31m[1m[7m FAIL [27m[22m[39m src/features/iam/users/tests/userStore.test.ts[2m [ src/features/iam/users/tests/userStore.test.ts ][22m
+[31m[1mError[22m: No test suite found in file C:/PROJECT/yss_orbit/frontend/src/features/iam/users/tests/userStore.test.ts[39m
+[31m[2m⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[18/43]⎯[22m[39m
+
+[31m[1m[7m FAIL [27m[22m[39m src/features/observability/dashboard/tests/dashboardService.test.ts[2m [ src/features/observability/dashboard/tests/dashboardService.test.ts ][22m
+[31m[1mError[22m: No test suite found in file C:/PROJECT/yss_orbit/frontend/src/features/observability/dashboard/tests/dashboardService.test.ts[39m
+[31m[2m⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[19/43]⎯[22m[39m
+
+[31m[1m[7m FAIL [27m[22m[39m src/features/observability/dashboard/tests/dashboardStore.test.ts[2m [ src/features/observability/dashboard/tests/dashboardStore.test.ts ][22m
+[31m[1mError[22m: No test suite found in file C:/PROJECT/yss_orbit/frontend/src/features/observability/dashboard/tests/dashboardStore.test.ts[39m
+[31m[2m⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[20/43]⎯[22m[39m
+
+[31m[1m[7m FAIL [27m[22m[39m src/features/observability/health/tests/healthService.test.ts[2m [ src/features/observability/health/tests/healthService.test.ts ][22m
+[31m[1mError[22m: No test suite found in file C:/PROJECT/yss_orbit/frontend/src/features/observability/health/tests/healthService.test.ts[39m
+[31m[2m⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[21/43]⎯[22m[39m
+
+[31m[1m[7m FAIL [27m[22m[39m src/features/observability/health/tests/healthStore.test.ts[2m [ src/features/observability/health/tests/healthStore.test.ts ][22m
+[31m[1mError[22m: No test suite found in file C:/PROJECT/yss_orbit/frontend/src/features/observability/health/tests/healthStore.test.ts[39m
+[31m[2m⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[22/43]⎯[22m[39m
+
+[31m[1m[7m FAIL [27m[22m[39m src/features/organization/userBusinessUnit/tests/userBusinessUnitStore.test.ts[2m [ src/features/organization/userBusinessUnit/tests/userBusinessUnitStore.test.ts ][22m
+[31m[1mError[22m: No test suite found in file C:/PROJECT/yss_orbit/frontend/src/features/organization/userBusinessUnit/tests/userBusinessUnitStore.test.ts[39m
+[31m[2m⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[23/43]⎯[22m[39m
+
+[31m[1m[7m FAIL [27m[22m[39m src/features/platform/featureFlags/tests/featureFlagsService.test.ts[2m [ src/features/platform/featureFlags/tests/featureFlagsService.test.ts ][22m
+[31m[1mError[22m: No test suite found in file C:/PROJECT/yss_orbit/frontend/src/features/platform/featureFlags/tests/featureFlagsService.test.ts[39m
+[31m[2m⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[24/43]⎯[22m[39m
+
+[31m[1m[7m FAIL [27m[22m[39m src/features/platform/featureFlags/tests/featureFlagsStore.test.ts[2m [ src/features/platform/featureFlags/tests/featureFlagsStore.test.ts ][22m
+[31m[1mError[22m: No test suite found in file C:/PROJECT/yss_orbit/frontend/src/features/platform/featureFlags/tests/featureFlagsStore.test.ts[39m
+[31m[2m⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[25/43]⎯[22m[39m
+
+[31m[1m[7m FAIL [27m[22m[39m src/features/platform/fileStorage/tests/fileStorageService.test.ts[2m [ src/features/platform/fileStorage/tests/fileStorageService.test.ts ][22m
+[31m[1mError[22m: No test suite found in file C:/PROJECT/yss_orbit/frontend/src/features/platform/fileStorage/tests/fileStorageService.test.ts[39m
+[31m[2m⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[26/43]⎯[22m[39m
+
+[31m[1m[7m FAIL [27m[22m[39m src/features/platform/fileStorage/tests/fileStorageStore.test.ts[2m [ src/features/platform/fileStorage/tests/fileStorageStore.test.ts ][22m
+[31m[1mError[22m: No test suite found in file C:/PROJECT/yss_orbit/frontend/src/features/platform/fileStorage/tests/fileStorageStore.test.ts[39m
+[31m[2m⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[27/43]⎯[22m[39m
+
+[31m[1m[7m FAIL [27m[22m[39m src/features/platform/integration/tests/integrationService.test.ts[2m [ src/features/platform/integration/tests/integrationService.test.ts ][22m
+[31m[1mError[22m: No test suite found in file C:/PROJECT/yss_orbit/frontend/src/features/platform/integration/tests/integrationService.test.ts[39m
+[31m[2m⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[28/43]⎯[22m[39m
+
+[31m[1m[7m FAIL [27m[22m[39m src/features/platform/integration/tests/integrationStore.test.ts[2m [ src/features/platform/integration/tests/integrationStore.test.ts ][22m
+[31m[1mError[22m: No test suite found in file C:/PROJECT/yss_orbit/frontend/src/features/platform/integration/tests/integrationStore.test.ts[39m
+[31m[2m⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[29/43]⎯[22m[39m
+
+[31m[1m[7m FAIL [27m[22m[39m src/features/platform/notifications/tests/notificationService.test.ts[2m [ src/features/platform/notifications/tests/notificationService.test.ts ][22m
+[31m[1mError[22m: No test suite found in file C:/PROJECT/yss_orbit/frontend/src/features/platform/notifications/tests/notificationService.test.ts[39m
+[31m[2m⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[30/43]⎯[22m[39m
+
+[31m[1m[7m FAIL [27m[22m[39m src/features/platform/notifications/tests/notificationStore.test.ts[2m [ src/features/platform/notifications/tests/notificationStore.test.ts ][22m
+[31m[1mError[22m: No test suite found in file C:/PROJECT/yss_orbit/frontend/src/features/platform/notifications/tests/notificationStore.test.ts[39m
+[31m[2m⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[31/43]⎯[22m[39m
+
+[31m[1m[7m FAIL [27m[22m[39m src/features/platform/platformAdmin/tests/platformAdminService.test.ts[2m [ src/features/platform/platformAdmin/tests/platformAdminService.test.ts ][22m
+[31m[1mError[22m: No test suite found in file C:/PROJECT/yss_orbit/frontend/src/features/platform/platformAdmin/tests/platformAdminService.test.ts[39m
+[31m[2m⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[32/43]⎯[22m[39m
+
+[31m[1m[7m FAIL [27m[22m[39m src/features/platform/platformAdmin/tests/platformAdminStore.test.ts[2m [ src/features/platform/platformAdmin/tests/platformAdminStore.test.ts ][22m
+[31m[1mError[22m: No test suite found in file C:/PROJECT/yss_orbit/frontend/src/features/platform/platformAdmin/tests/platformAdminStore.test.ts[39m
+[31m[2m⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[33/43]⎯[22m[39m
+
+[31m[1m[7m FAIL [27m[22m[39m src/features/platform/support/tests/supportService.test.ts[2m [ src/features/platform/support/tests/supportService.test.ts ][22m
+[31m[1mError[22m: No test suite found in file C:/PROJECT/yss_orbit/frontend/src/features/platform/support/tests/supportService.test.ts[39m
+[31m[2m⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[34/43]⎯[22m[39m
+
+[31m[1m[7m FAIL [27m[22m[39m src/features/platform/support/tests/supportStore.test.ts[2m [ src/features/platform/support/tests/supportStore.test.ts ][22m
+[31m[1mError[22m: No test suite found in file C:/PROJECT/yss_orbit/frontend/src/features/platform/support/tests/supportStore.test.ts[39m
+[31m[2m⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[35/43]⎯[22m[39m
+
+[31m[1m[7m FAIL [27m[22m[39m src/features/tenancy/moduleRegistry/tests/moduleRegistryService.test.ts[2m [ src/features/tenancy/moduleRegistry/tests/moduleRegistryService.test.ts ][22m
+[31m[1mError[22m: No test suite found in file C:/PROJECT/yss_orbit/frontend/src/features/tenancy/moduleRegistry/tests/moduleRegistryService.test.ts[39m
+[31m[2m⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[36/43]⎯[22m[39m
+
+[31m[1m[7m FAIL [27m[22m[39m src/features/tenancy/moduleRegistry/tests/moduleRegistryStore.test.ts[2m [ src/features/tenancy/moduleRegistry/tests/moduleRegistryStore.test.ts ][22m
+[31m[1mError[22m: No test suite found in file C:/PROJECT/yss_orbit/frontend/src/features/tenancy/moduleRegistry/tests/moduleRegistryStore.test.ts[39m
+[31m[2m⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[37/43]⎯[22m[39m
+
+[31m[1m[7m FAIL [27m[22m[39m src/features/tenancy/subscription/tests/subscriptionService.test.ts[2m [ src/features/tenancy/subscription/tests/subscriptionService.test.ts ][22m
+[31m[1mError[22m: No test suite found in file C:/PROJECT/yss_orbit/frontend/src/features/tenancy/subscription/tests/subscriptionService.test.ts[39m
+[31m[2m⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[38/43]⎯[22m[39m
+
+[31m[1m[7m FAIL [27m[22m[39m src/features/tenancy/subscription/tests/subscriptionStore.test.ts[2m [ src/features/tenancy/subscription/tests/subscriptionStore.test.ts ][22m
+[31m[1mError[22m: No test suite found in file C:/PROJECT/yss_orbit/frontend/src/features/tenancy/subscription/tests/subscriptionStore.test.ts[39m
+[31m[2m⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[39/43]⎯[22m[39m
+
+[31m[1m[7m FAIL [27m[22m[39m src/features/tenancy/tenantModule/tests/tenantModuleService.test.ts[2m [ src/features/tenancy/tenantModule/tests/tenantModuleService.test.ts ][22m
+[31m[1mError[22m: No test suite found in file C:/PROJECT/yss_orbit/frontend/src/features/tenancy/tenantModule/tests/tenantModuleService.test.ts[39m
+[31m[2m⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[40/43]⎯[22m[39m
+
+[31m[1m[7m FAIL [27m[22m[39m src/features/tenancy/tenantModule/tests/tenantModuleStore.test.ts[2m [ src/features/tenancy/tenantModule/tests/tenantModuleStore.test.ts ][22m
+[31m[1mError[22m: No test suite found in file C:/PROJECT/yss_orbit/frontend/src/features/tenancy/tenantModule/tests/tenantModuleStore.test.ts[39m
+[31m[2m⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[41/43]⎯[22m[39m
+
+[31m[1m[7m FAIL [27m[22m[39m src/features/tenancy/tenantSettings/tests/tenantSettingsService.test.ts[2m [ src/features/tenancy/tenantSettings/tests/tenantSettingsService.test.ts ][22m
+[31m[1mError[22m: No test suite found in file C:/PROJECT/yss_orbit/frontend/src/features/tenancy/tenantSettings/tests/tenantSettingsService.test.ts[39m
+[31m[2m⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[42/43]⎯[22m[39m
+
+[31m[1m[7m FAIL [27m[22m[39m src/features/tenancy/tenantSettings/tests/tenantSettingsStore.test.ts[2m [ src/features/tenancy/tenantSettings/tests/tenantSettingsStore.test.ts ][22m
+[31m[1mError[22m: No test suite found in file C:/PROJECT/yss_orbit/frontend/src/features/tenancy/tenantSettings/tests/tenantSettingsStore.test.ts[39m
+[31m[2m⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[43/43]⎯[22m[39m
+
+[2m Test Files [22m [1m[31m43 failed[39m[22m[2m | [22m[1m[32m13 passed[39m[22m[2m | [22m[33m1 skipped[39m[90m (57)[39m
+[2m      Tests [22m [1m[32m83 passed[39m[22m[2m | [22m[33m1 skipped[39m[90m (84)[39m
+[2m   Start at [22m 11:49:35
+[2m   Duration [22m 61.83s[2m (transform 6.45s, setup 33.60s, collect 12.23s, tests 17.49s, environment 254.18s, prepare 22.25s)[22m
+

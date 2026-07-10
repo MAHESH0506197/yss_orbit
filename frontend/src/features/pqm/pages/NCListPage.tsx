@@ -77,7 +77,7 @@ export default function NCListPage() {
   const handleBulkExport = async () => {
     if (selectedIds.size === 0) return;
     try {
-      await fetch('/api/v1/pqm/nc/bulk-action/', {
+      await fetch('/pqm/nc/bulk-action/', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ action: 'export', nc_ids: Array.from(selectedIds) })

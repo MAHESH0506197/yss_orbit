@@ -10,26 +10,26 @@ export interface TenantsettingsDto {
 
 export const tenantSettingsApi = {
   getAll: async (): Promise<TenantsettingsDto[]> => {
-    const response = await api.get(`/api/v1/tenantSettings`);
+    const response = await api.get(`/tenantSettings`);
     return response.data;
   },
   
   getById: async (id: string): Promise<TenantsettingsDto> => {
-    const response = await api.get(`/api/v1/tenantSettings/${id}`);
+    const response = await api.get(`/tenantSettings/${id}`);
     return response.data;
   },
   
   create: async (data: Partial<TenantsettingsDto>): Promise<TenantsettingsDto> => {
-    const response = await api.post(`/api/v1/tenantSettings`, data);
+    const response = await api.post(`/tenantSettings`, data);
     return response.data;
   },
   
   update: async (id: string, data: Partial<TenantsettingsDto>): Promise<TenantsettingsDto> => {
-    const response = await api.put(`/api/v1/tenantSettings/${id}`, data);
+    const response = await api.put(`/tenantSettings/${id}`, data);
     return response.data;
   },
   
   delete: async (id: string): Promise<void> => {
-    await api.delete(`/api/v1/tenantSettings/${id}`);
+    await api.delete(`/tenantSettings/${id}`);
   }
 };

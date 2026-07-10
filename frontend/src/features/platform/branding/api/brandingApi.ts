@@ -10,27 +10,27 @@ export interface BrandingDto {
 
 export const brandingApi = {
   getAll: async (): Promise<BrandingDto[]> => {
-    const response = await api.get(`/api/v1/branding/`);
+    const response = await api.get(`/branding/`);
     return response.data;
   },
   
   getById: async (id: string): Promise<BrandingDto> => {
-    const response = await api.get(`/api/v1/branding/${id}/`);
+    const response = await api.get(`/branding/${id}/`);
     return response.data;
   },
   
   create: async (data: Partial<BrandingDto>): Promise<BrandingDto> => {
-    const response = await api.post(`/api/v1/branding/`, data);
+    const response = await api.post(`/branding/`, data);
     return response.data;
   },
   
   update: async (id: string, data: Partial<BrandingDto>): Promise<BrandingDto> => {
-    const response = await api.put(`/api/v1/branding/${id}/`, data);
+    const response = await api.put(`/branding/${id}/`, data);
     return response.data;
   },
   
   delete: async (id: string): Promise<void> => {
-    await api.delete(`/api/v1/branding/${id}/`);
+    await api.delete(`/branding/${id}/`);
   }
 };
 

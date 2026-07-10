@@ -10,26 +10,26 @@ export interface PayrollDto {
 
 export const payrollApi = {
   getAll: async (): Promise<PayrollDto[]> => {
-    const response = await api.get(`/api/v1/payroll`);
+    const response = await api.get(`/payroll`);
     return response.data;
   },
   
   getById: async (id: string): Promise<PayrollDto> => {
-    const response = await api.get(`/api/v1/payroll/${id}`);
+    const response = await api.get(`/payroll/${id}`);
     return response.data;
   },
   
   create: async (data: Partial<PayrollDto>): Promise<PayrollDto> => {
-    const response = await api.post(`/api/v1/payroll`, data);
+    const response = await api.post(`/payroll`, data);
     return response.data;
   },
   
   update: async (id: string, data: Partial<PayrollDto>): Promise<PayrollDto> => {
-    const response = await api.put(`/api/v1/payroll/${id}`, data);
+    const response = await api.put(`/payroll/${id}`, data);
     return response.data;
   },
   
   delete: async (id: string): Promise<void> => {
-    await api.delete(`/api/v1/payroll/${id}`);
+    await api.delete(`/payroll/${id}`);
   }
 };

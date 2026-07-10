@@ -22,7 +22,7 @@ export const useEmployees = (filters?: EmployeeFilters, options?: Omit<UseQueryO
   return useQuery({
     queryKey: ['employees', filters, buId],
     queryFn: async () => {
-      const { data } = await apiClient.get<EmployeesResponse>('/api/v1/hrms/employees/', {
+      const { data } = await apiClient.get<EmployeesResponse>('/hrms/employees/', {
         params: filters,
       });
       return {
@@ -49,7 +49,7 @@ export const useEmployee = (id: string, options?: Omit<UseQueryOptions<Employee>
   return useQuery({
     queryKey: ['employee', id, buId],
     queryFn: async () => {
-      const { data } = await apiClient.get<{ data: Employee }>(`/api/v1/hrms/employees/${id}/`);
+      const { data } = await apiClient.get<{ data: Employee }>(`/hrms/employees/${id}/`);
       return data?.data ?? (data as any);
     },
     enabled: !!id && !!buId && (options?.enabled ?? true),

@@ -28,7 +28,7 @@ export function useSystemModules() {
   return useQuery({
     queryKey: ['system_modules'],
     queryFn: async () => {
-      const response = await api.get<any>('/api/v1/modules/system/');
+      const response = await api.get<any>('/modules/system/');
       return response.data as SystemModulesResponse;
     },
   });
@@ -38,7 +38,7 @@ export function useSubscribedModules() {
   return useQuery({
     queryKey: ['subscribed_modules'],
     queryFn: async () => {
-      const response = await api.get<any>('/api/v1/modules/subscribed/');
+      const response = await api.get<any>('/modules/subscribed/');
       return response.data as string[];
     },
   });
@@ -48,7 +48,7 @@ export function useActivateModule() {
   const queryClient = useQueryClient();
   return useMutation({
     mutationFn: async (moduleCode: string) => {
-      const response = await api.post<any>(`/api/v1/modules/${moduleCode}/activate/`);
+      const response = await api.post<any>(`/modules/${moduleCode}/activate/`);
       return response.data;
     },
     onSuccess: () => {
@@ -62,7 +62,7 @@ export function useDeactivateModule() {
   const queryClient = useQueryClient();
   return useMutation({
     mutationFn: async (moduleCode: string) => {
-      const response = await api.delete<any>(`/api/v1/modules/${moduleCode}/deactivate/`);
+      const response = await api.delete<any>(`/modules/${moduleCode}/deactivate/`);
       return response.data;
     },
     onSuccess: () => {

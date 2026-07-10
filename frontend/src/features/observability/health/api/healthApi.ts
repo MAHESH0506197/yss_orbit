@@ -10,26 +10,26 @@ export interface HealthDto {
 
 export const healthApi = {
   getAll: async (): Promise<HealthDto[]> => {
-    const response = await api.get(`/api/v1/health`);
+    const response = await api.get(`/health`);
     return response.data;
   },
   
   getById: async (id: string): Promise<HealthDto> => {
-    const response = await api.get(`/api/v1/health/${id}`);
+    const response = await api.get(`/health/${id}`);
     return response.data;
   },
   
   create: async (data: Partial<HealthDto>): Promise<HealthDto> => {
-    const response = await api.post(`/api/v1/health`, data);
+    const response = await api.post(`/health`, data);
     return response.data;
   },
   
   update: async (id: string, data: Partial<HealthDto>): Promise<HealthDto> => {
-    const response = await api.put(`/api/v1/health/${id}`, data);
+    const response = await api.put(`/health/${id}`, data);
     return response.data;
   },
   
   delete: async (id: string): Promise<void> => {
-    await api.delete(`/api/v1/health/${id}`);
+    await api.delete(`/health/${id}`);
   }
 };

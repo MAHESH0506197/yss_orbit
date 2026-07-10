@@ -25,7 +25,7 @@ export function useUser(id: string) {
 export function useOrganizationUsers(organizationId?: string) {
   return useQuery({
     queryKey: ['organization-users', organizationId],
-    queryFn: () => api.get<PaginatedResponse<User>>(`/api/v1/users/?organization_id=${organizationId}`),
+    queryFn: () => api.get<PaginatedResponse<User>>(`/users/?organization_id=${organizationId}`),
     enabled: !!organizationId,
   });
 }

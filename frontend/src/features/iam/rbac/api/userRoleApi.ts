@@ -1,7 +1,7 @@
 import { apiClient } from '@/api/client';
 import { UserRole, UserRoleCreatePayload, UserRoleUpdatePayload, UserRoleListResponse } from '../types/userRoleTypes';
 
-const USER_ROLES_URL = '/api/v1/user-roles/';
+const USER_ROLES_URL = '/user-roles/';
 
 function unwrapList(response: any): UserRoleListResponse {
   const envelope = response?.data;

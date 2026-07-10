@@ -19,7 +19,7 @@ export const useSessions = () => {
   const sessionsQuery = useQuery<SessionDto[]>({
     queryKey: ['profile', 'sessions'],
     queryFn: async () => {
-      const res = await api.get('/api/v1/profile/me/sessions/');
+      const res = await api.get('/profile/me/sessions/');
       // Handle paginated responses or wrapped success responses
       if (res.data && Array.isArray(res.data.results)) {
         return res.data.results;
@@ -33,7 +33,7 @@ export const useSessions = () => {
 
   const revokeMutation = useMutation({
     mutationFn: async (sessionId: string) => {
-      const res = await api.delete(`/api/v1/profile/me/sessions/${sessionId}/revoke/`);
+      const res = await api.delete(`/profile/me/sessions/${sessionId}/revoke/`);
       return res.data;
     },
     onSuccess: () => {

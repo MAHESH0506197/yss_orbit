@@ -19,7 +19,7 @@ export function ChangePasswordForm() {
 
   const mutation = useMutation({
     mutationFn: async (data: any) => {
-      const res = await api.post('/api/v1/auth/password/change/', data);
+      const res = await api.post('/auth/password/change/', data);
       return res.data;
     },
     onSuccess: () => {

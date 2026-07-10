@@ -38,33 +38,33 @@ function unwrapList(response: any): UserListResponse {
 
 export const userApi = {
   getAll: async (params?: UserListParams): Promise<UserListResponse> => {
-    const response = await apiClient.get('/api/v1/users/', { params });
+    const response = await apiClient.get('/users/', { params });
     return unwrapList(response);
   },
 
   getById: async (id: string): Promise<User> => {
-    const response = await apiClient.get(`/api/v1/users/${id}/`, { params: { is_deleted: 'all' } });
+    const response = await apiClient.get(`/users/${id}/`, { params: { is_deleted: 'all' } });
     return unwrapSingle<User>(response);
   },
 
   create: async (data: UserCreatePayload): Promise<User> => {
-    const response = await apiClient.post('/api/v1/users/', data);
+    const response = await apiClient.post('/users/', data);
     return unwrapSingle<User>(response);
   },
 
   update: async (id: string, data: UserUpdatePayload): Promise<User> => {
-    const response = await apiClient.patch(`/api/v1/users/${id}/`, data);
+    const response = await apiClient.patch(`/users/${id}/`, data);
     return unwrapSingle<User>(response);
   },
 
   delete: async (id: string, reason?: string, hard?: boolean, confirmation_username?: string): Promise<void> => {
     const params = hard ? { hard: 'true' } : undefined;
     const data = { reason, confirmation_username };
-    await apiClient.delete(`/api/v1/users/${id}/`, { params, data });
+    await apiClient.delete(`/users/${id}/`, { params, data });
   },
 
   restore: async (id: string, reason?: string): Promise<User> => {
-    const response = await apiClient.post(`/api/v1/users/${id}/restore/`, { reason });
+    const response = await apiClient.post(`/users/${id}/restore/`, { reason });
     return unwrapSingle<User>(response);
   },
 };

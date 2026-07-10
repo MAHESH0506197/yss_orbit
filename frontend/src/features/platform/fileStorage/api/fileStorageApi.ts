@@ -10,26 +10,26 @@ export interface FilestorageDto {
 
 export const fileStorageApi = {
   getAll: async (): Promise<FilestorageDto[]> => {
-    const response = await api.get(`/api/v1/fileStorage`);
+    const response = await api.get(`/fileStorage`);
     return response.data;
   },
   
   getById: async (id: string): Promise<FilestorageDto> => {
-    const response = await api.get(`/api/v1/fileStorage/${id}`);
+    const response = await api.get(`/fileStorage/${id}`);
     return response.data;
   },
   
   create: async (data: Partial<FilestorageDto>): Promise<FilestorageDto> => {
-    const response = await api.post(`/api/v1/fileStorage`, data);
+    const response = await api.post(`/fileStorage`, data);
     return response.data;
   },
   
   update: async (id: string, data: Partial<FilestorageDto>): Promise<FilestorageDto> => {
-    const response = await api.put(`/api/v1/fileStorage/${id}`, data);
+    const response = await api.put(`/fileStorage/${id}`, data);
     return response.data;
   },
   
   delete: async (id: string): Promise<void> => {
-    await api.delete(`/api/v1/fileStorage/${id}`);
+    await api.delete(`/fileStorage/${id}`);
   }
 };
