@@ -151,4 +151,5 @@ responses==0.25.3
 httpretty==1.1.4
 
 # --- Coverage ---
-coverage==7.6.1pydantic==2.8.2 
+coverage==7.6.1
+pydantic==2.8.2 
