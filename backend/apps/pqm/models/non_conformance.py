@@ -119,6 +119,24 @@ class NonConformance(TenantModel):
         on_delete=models.PROTECT,
         related_name="nc_areas",
     )
+    location_details = models.CharField(
+        max_length=255,
+        blank=True,
+        default="",
+        help_text="Specific location, e.g. Block D, Row 14",
+    )
+    block = models.CharField(
+        max_length=100,
+        blank=True,
+        default="",
+        help_text="e.g. Block D",
+    )
+    zone = models.CharField(
+        max_length=100,
+        blank=True,
+        default="",
+        help_text="e.g. Zone C",
+    )
 
     reference_type = models.ForeignKey(
         "pqm.PQMDropdownOption",
@@ -132,6 +150,24 @@ class NonConformance(TenantModel):
         blank=True,
         default="",
         help_text="Details of the reference.",
+    )
+    drawing_reference = models.CharField(
+        max_length=255,
+        blank=True,
+        default="",
+        help_text="GA drawing / SLD number",
+    )
+    specification_reference = models.CharField(
+        max_length=255,
+        blank=True,
+        default="",
+        help_text="e.g. DBR-2024-Rev2",
+    )
+    standard_reference = models.CharField(
+        max_length=255,
+        blank=True,
+        default="",
+        help_text="e.g. IEC 62446-1, MNRE guideline ref",
     )
 
     # ── Checklist Reference ────────────────────────────────────────────────

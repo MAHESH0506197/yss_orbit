@@ -5,6 +5,7 @@
  */
 import { create } from "zustand";
 import { devtools } from "zustand/middleware";
+import toast from "react-hot-toast";
 import type {
   NonConformance,
   NCListItem,
@@ -17,6 +18,16 @@ import type {
   PQMDropdownOption,
 } from "../types";
 import { pqmService } from "../api/pqmService";
+
+function extractErrorMessage(err: any, fallback: string): string {
+  return (
+    err?.response?.data?.detail ||
+    err?.response?.data?.message ||
+    err?.response?.data?.error_code ||
+    err?.message ||
+    fallback
+  );
+}
 
 // ─── State ────────────────────────────────────────────────────────────────────
 interface PqmState {
@@ -67,6 +78,7 @@ interface PqmActions {
   requestClosure: (id: string) => Promise<void>;
   makeVerificationDecision: (id: string, level: number, decision: string, comments: string) => Promise<void>;
   reopenNc: (id: string, reason: string) => Promise<void>;
+  reassignNc: (id: string, newAssigneeId: string, reason: string) => Promise<void>;
   mergeNc: (sourceId: string, targetId: string) => Promise<void>;
   checkDuplicates: (id: string) => Promise<void>;
   fetchConfig: () => Promise<void>;
@@ -83,6 +95,7 @@ const DEFAULT_FILTERS: NCFilters = {
   severity: "",
   project: "",
   search: "",
+  date: "",
 };
 
 // ─── Store creation ───────────────────────────────────────────────────────────
@@ -123,8 +136,9 @@ export const usePqmStore = create<PqmState & PqmActions>()(
           const merged = { ...get().ncFilters, ...filters, page } as NCFilters;
           const data: PaginatedResponse<NCListItem> = await pqmService.listNCs(merged);
           set({ ncList: data.results, ncListTotal: data.count, ncListPage: page, ncListLoading: false });
-        } catch {
-          set({ ncListLoading: false });
+        } catch (err: any) {
+          set({ ncListLoading: false, ncList: [], ncListTotal: 0 });
+          toast.error(extractErrorMessage(err, "Failed to load Non-Conformances."));
         }
       },
 
@@ -144,8 +158,9 @@ export const usePqmStore = create<PqmState & PqmActions>()(
         try {
           const nc = await pqmService.getNC(id);
           set({ selectedNc: nc, ncDetailLoading: false });
-        } catch {
-          set({ ncDetailLoading: false });
+        } catch (err: any) {
+          set({ ncDetailLoading: false, selectedNc: null });
+          toast.error(extractErrorMessage(err, "Failed to load this Non-Conformance."));
         }
       },
 
@@ -160,59 +175,134 @@ export const usePqmStore = create<PqmState & PqmActions>()(
             pqmService.getDashboardTrends(projectId),
           ]);
           set({ dashboard: data, dashboardTrends: trends, dashboardLoading: false });
-        } catch {
+        } catch (err: any) {
           set({ dashboardLoading: false });
+          toast.error(extractErrorMessage(err, "Failed to load dashboard data."));
         }
       },
 
       // ── Lifecycle actions ────────────────────────────────────────────────
+      // Every action below surfaces failures via toast rather than swallowing them —
+      // a failed API call (permission denied, closure-gate validation, network error)
+      // must never look identical to a successful one in the UI.
       submitNc: async (id) => {
-        const nc = await pqmService.submitNC(id);
-        await get().fetchNcDetail(id);
-        return nc;
+        try {
+          const nc = await pqmService.submitNC(id);
+          await get().fetchNcDetail(id);
+          toast.success("NC submitted for review.");
+          return nc;
+        } catch (err: any) {
+          toast.error(extractErrorMessage(err, "Failed to submit NC."));
+          throw err;
+        }
       },
 
       makeReviewDecision: async (id, decision, comments) => {
-        await pqmService.reviewDecision(id, decision, comments);
-        await get().fetchNcDetail(id);
-        set({ approvalDialogOpen: false });
+        try {
+          await pqmService.reviewDecision(id, decision, comments);
+          await get().fetchNcDetail(id);
+          set({ approvalDialogOpen: false });
+          toast.success(`Review decision recorded: ${decision}.`);
+        } catch (err: any) {
+          toast.error(extractErrorMessage(err, "Failed to record review decision."));
+          throw err;
+        }
       },
 
       assignNc: async (id, assigneeId) => {
-        await pqmService.assignNC(id, assigneeId);
-        await get().fetchNcDetail(id);
+        try {
+          await pqmService.assignNC(id, assigneeId);
+          await get().fetchNcDetail(id);
+          toast.success("Engineer assigned.");
+        } catch (err: any) {
+          toast.error(extractErrorMessage(err, "Failed to assign engineer."));
+          throw err;
+        }
       },
 
       startWork: async (id) => {
-        await pqmService.startWork(id);
-        await get().fetchNcDetail(id);
+        try {
+          await pqmService.startWork(id);
+          await get().fetchNcDetail(id);
+          toast.success("Marked as In Progress.");
+        } catch (err: any) {
+          toast.error(extractErrorMessage(err, "Failed to start work."));
+          throw err;
+        }
       },
 
       requestClosure: async (id) => {
-        await pqmService.requestClosure(id);
-        await get().fetchNcDetail(id);
+        try {
+          await pqmService.requestClosure(id);
+          await get().fetchNcDetail(id);
+          toast.success("Closure requested — sent for verification.");
+        } catch (err: any) {
+          // This is the closure gate (root cause required, min 1 after-photo) —
+          // the backend's validation message is the one the user actually needs to see.
+          toast.error(extractErrorMessage(err, "Cannot request closure yet — check root cause and after-photos."));
+          throw err;
+        }
       },
 
       makeVerificationDecision: async (id, level, decision, comments) => {
-        await pqmService.verificationDecision(id, level, decision, comments);
-        await get().fetchNcDetail(id);
-        set({ approvalDialogOpen: false });
+        try {
+          await pqmService.verificationDecision(id, level, decision, comments);
+          await get().fetchNcDetail(id);
+          set({ approvalDialogOpen: false });
+          toast.success(`Verification decision recorded: ${decision}.`);
+        } catch (err: any) {
+          toast.error(extractErrorMessage(err, "Failed to record verification decision."));
+          throw err;
+        }
       },
 
       reopenNc: async (id, reason) => {
-        await pqmService.reopenNC(id, reason);
-        await get().fetchNcDetail(id);
-        set({ reopenDialogOpen: false });
+        try {
+          await pqmService.reopenNC(id, reason);
+          await get().fetchNcDetail(id);
+          set({ reopenDialogOpen: false });
+          toast.success("NC reopened.");
+        } catch (err: any) {
+          toast.error(extractErrorMessage(err, "Failed to reopen NC."));
+          throw err;
+        }
+      },
+
+      // Distinct from assignNc: hits /reassign/, not /assign/, so the audit trail
+      // records a "Reassigned" event rather than looking like an initial assignment.
+      reassignNc: async (id, newAssigneeId, reason) => {
+        try {
+          await pqmService.reassignNC(id, newAssigneeId, reason);
+          await get().fetchNcDetail(id);
+          set({ reassignDialogOpen: false });
+          toast.success("NC reassigned.");
+        } catch (err: any) {
+          toast.error(extractErrorMessage(err, "Failed to reassign NC."));
+          throw err;
+        }
       },
 
       mergeNc: async (sourceId, targetId) => {
-        await pqmService.mergeNC(sourceId, targetId);
-        await get().fetchNcList();
+        try {
+          await pqmService.mergeNC(sourceId, targetId);
+          await get().fetchNcList();
+          toast.success("NC merged.");
+        } catch (err: any) {
+          toast.error(extractErrorMessage(err, "Failed to merge NC."));
+          throw err;
+        }
       },
 
       checkDuplicates: async (id) => {
-        const dupes = await pqmService.checkDuplicates(id);
-        set({ duplicateWarning: dupes });
+        try {
+          const dupes = await pqmService.checkDuplicates(id);
+          set({ duplicateWarning: dupes });
+        } catch {
+          // Non-critical — duplicate check is a soft warning, not a blocking gate.
+          // Fail quietly here; we don't want a flaky duplicate-check endpoint to
+          // block someone from seeing the rest of the form.
+          set({ duplicateWarning: [] });
+        }
       },
 
       fetchConfig: async () => {

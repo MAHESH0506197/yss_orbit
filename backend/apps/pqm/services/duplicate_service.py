@@ -25,7 +25,7 @@ class DuplicateService:
         window_end = (nc.created_at or timezone.now()) + timedelta(hours=48)
 
         qs = NonConformance.objects.filter(
-            site_id=nc.site_id,
+            project_id=nc.project_id,
             category_id=nc.category_id,
             created_at__range=(window_start, window_end),
             is_deleted=False,
@@ -35,9 +35,9 @@ class DuplicateService:
             status__in=[NCStatus.MERGED, NCStatus.CLOSED],
         )
 
-        if nc.location_description:
-            # Narrow further by overlapping location text (substring match)
-            qs = qs.filter(location_description__icontains=nc.location_description[:30])
+        if nc.location_description_id:
+            # Narrow further by exact location area match
+            qs = qs.filter(location_description_id=nc.location_description_id)
 
         return qs
 

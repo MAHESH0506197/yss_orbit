@@ -18,10 +18,20 @@ class ApprovalDecisionSerializer(serializers.Serializer):
 
 
 class ApprovalStepSerializer(serializers.ModelSerializer):
+    approver_name = serializers.SerializerMethodField()
+
+    def get_approver_name(self, obj):
+        from django.contrib.auth import get_user_model
+        User = get_user_model()
+        if obj.approver_id:
+            user = User.objects.filter(id=obj.approver_id).first()
+            return f"{user.first_name} {user.last_name}".strip() if user else None
+        return None
+
     class Meta:
         model = PQMApprovalStep
         fields = [
-            "id", "stage", "sequence_order", "approver_id",
+            "id", "stage", "sequence_order", "approver_id", "approver_name",
             "decision", "comments", "decided_at",
         ]
         read_only_fields = fields

@@ -50,13 +50,11 @@ export const ProjectWorkspaceLayout: React.FC = () => {
   
   if (currentPath.startsWith(`${basePath}/nc`)) activeTab = 'ncs';
   else if (currentPath.startsWith(`${basePath}/docs`)) activeTab = 'docs';
-  else if (currentPath.startsWith(`${basePath}/team`)) activeTab = 'team';
   else if (currentPath.startsWith(`${basePath}/config`)) activeTab = 'settings';
 
   const tabs = [
     { id: 'dashboard', label: 'Dashboard', icon: LayoutDashboard },
     { id: 'ncs', label: 'NCs', icon: ShieldAlert },
-    { id: 'team', label: 'Project Team', icon: Users },
     { id: 'settings', label: 'Settings', icon: Settings },
   ];
 
@@ -64,7 +62,6 @@ export const ProjectWorkspaceLayout: React.FC = () => {
     switch(tabId) {
       case 'dashboard': navigate(`/pqm/nc-management/${projectId}`); break;
       case 'ncs': navigate(`/pqm/nc-management/${projectId}/nc`); break;
-      case 'team': navigate(`/pqm/nc-management/${projectId}/team`); break; // Placeholder
       case 'settings': navigate(`/pqm/nc-management/${projectId}/config`); break;
     }
   };
@@ -72,7 +69,7 @@ export const ProjectWorkspaceLayout: React.FC = () => {
   return (
     <div className="flex flex-col h-full bg-gray-50/50 dark:bg-gray-900/50">
       {/* Workspace Header */}
-      <div className="bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-gray-800 shrink-0">
+      <div className="sticky top-[64px] z-30 bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-gray-800 shrink-0">
         <div className="max-w-7xl mx-auto px-6">
           <div className="py-6 flex items-center justify-between">
             <div className="flex items-center gap-4">

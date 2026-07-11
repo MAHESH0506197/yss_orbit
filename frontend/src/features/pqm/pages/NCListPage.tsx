@@ -52,7 +52,6 @@ export default function NCListPage() {
     }
   }, [projectId, ncFilters.project, setFilters]);
 
-  const [viewMode, setViewMode, density, setDensity] = useViewMode('pqmNCs', 'table');
   const [searchInput, setSearchInput] = useState(ncFilters.search || "");
   const [isSearching, setIsSearching] = useState(false);
   const debounceRef = useRef<ReturnType<typeof setTimeout>>();
@@ -178,16 +177,22 @@ export default function NCListPage() {
           onSearch={setSearchInput}
           placeholder="Search NC number or title…"
           isSearching={isSearching}
-          sortOptions={SORT_OPTIONS}
-          sort="-created_at"
-          onSort={() => {}} // Store currently doesn't support generic sort, placeholder for now
-          viewMode={viewMode}
-          onViewMode={setViewMode}
           isFetching={ncListLoading}
           onRefresh={() => fetchNcList(undefined, ncListPage)}
           rightSlot={
-            <div className="hidden sm:inline-flex items-center gap-1 bg-gray-50/80 dark:bg-gray-800/40 p-1 rounded-2xl border border-gray-100 dark:border-gray-700/50">
-              {STATUS_OPTIONS.slice(0, 5).map(tab => {
+            <div className="flex items-center gap-2">
+              <input
+                type="date"
+                value={ncFilters.date || ""}
+                onChange={(e) => {
+                  setFilters({ date: e.target.value });
+                  fetchNcList(undefined, 1);
+                }}
+                className="h-9 rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 px-3 text-sm text-gray-700 dark:text-gray-300 focus:border-violet-500 focus:ring-2 focus:ring-violet-500/20"
+                aria-label="Filter by date"
+              />
+              <div className="hidden sm:inline-flex items-center gap-1 bg-gray-50/80 dark:bg-gray-800/40 p-1 rounded-2xl border border-gray-100 dark:border-gray-700/50">
+                {STATUS_OPTIONS.slice(0, 5).map(tab => {
                 const isSelected = ncFilters.status === tab.value;
                 return (
                   <button
@@ -203,6 +208,7 @@ export default function NCListPage() {
                   </button>
                 );
               })}
+              </div>
             </div>
           }
         />
@@ -221,45 +227,7 @@ export default function NCListPage() {
               </button>
             </div>
           )}
-          {viewMode === 'grid' ? (
-            <CardGrid
-              density={density}
-              isEmpty={ncList.length === 0}
-              emptyState={
-                <EmptyState
-                  title={hasActiveFilters ? 'No NCs Match' : 'No Non-Conformances Yet'}
-                  description={hasActiveFilters ? 'Try adjusting your search or status filter.' : 'Raise your first NC to get started.'}
-                  hasFilters={hasActiveFilters}
-                  onClear={clearAllFilters}
-                  onCreate={handleCreate}
-                  createLabel="Raise First NC"
-                />
-              }
-            >
-              {ncList.map((nc, i) => (
-                <div key={nc.id} style={{ animationDelay: `${i * 40}ms` }} className="flex flex-col h-full animate-fadeInUp">
-                  <EntityCard
-                    id={nc.id}
-                    density={density}
-                    title={nc.title}
-                    subtitle={nc.nc_number || 'DRAFT'}
-                    avatar={<EntityAvatar name={nc.title} size={40} />}
-                    statusBadge={<NCStatusBadge status={nc.status} size="sm" />}
-                    onClick={() => projectId ? navigate(`/pqm/nc-management/${projectId}/nc/${nc.id}`) : navigate(`/pqm/nc-management/nc/${nc.id}`)}
-                    metrics={[
-                      { label: 'Priority', value: nc.priority },
-                    ]}
-                    actions={[
-                      { label: 'View Details', icon: <Eye className="h-4 w-4" />, onClick: () => projectId ? navigate(`/pqm/nc-management/${projectId}/nc/${nc.id}`) : navigate(`/pqm/nc-management/nc/${nc.id}`) },
-                      { label: 'Edit NC', icon: <Edit2 className="h-4 w-4" />, onClick: () => projectId ? navigate(`/pqm/nc-management/${projectId}/nc/${nc.id}/edit`) : navigate(`/pqm/nc-management/nc/${nc.id}/edit`) },
-                      { label: 'Go to Project Details', icon: <Eye className="h-4 w-4" />, onClick: () => navigate(`/platform/projects/${nc.project}`) },
-                    ]}
-                  />
-                </div>
-              ))}
-            </CardGrid>
-          ) : (
-            ncList.length === 0 ? (
+          {ncList.length === 0 ? (
               <EmptyState
                 title={hasActiveFilters ? 'No NCs Match' : 'No Non-Conformances Yet'}
                 description={hasActiveFilters ? 'Try adjusting your search or status filter.' : 'Raise your first NC to get started.'}
@@ -282,12 +250,13 @@ export default function NCListPage() {
                         />
                       </th>
                       {[
-                        { key: 'Title',    label: 'Title' },
+                        { key: 'Title',    label: 'NC Title' },
                         { key: 'NCNumber', label: 'NC Number' },
                         { key: 'Status',   label: 'Status' },
                         { key: 'Priority', label: 'Priority' },
                         { key: 'Raised',   label: 'Raised' },
-                        { key: 'SLA',      label: 'SLA' },
+                        { key: 'SLA',      label: 'Service Level Agreement' },
+                        { key: 'Actions',  label: 'Actions' },
                       ].map(h => (
                         <th key={h.key} className="px-4 py-3.5 text-[11px] font-bold uppercase tracking-wider text-white whitespace-nowrap">
                           {h.label}
@@ -353,13 +322,37 @@ export default function NCListPage() {
                             <SLACountdown targetClosureDate={nc.target_closure_date} isSafetyCritical={nc.is_safety_critical} />
                           ) : <span className="text-gray-400">—</span>}
                         </td>
+                        <td className="px-4 py-3.5 whitespace-nowrap text-right">
+                          <div className="flex items-center justify-end gap-2">
+                            <button
+                              onClick={(e) => {
+                                e.stopPropagation();
+                                projectId ? navigate(`/pqm/nc-management/${projectId}/nc/${nc.id}`) : navigate(`/pqm/nc-management/nc/${nc.id}`);
+                              }}
+                              className="inline-flex items-center gap-1.5 rounded-lg border border-gray-200 bg-white px-3 py-1.5 text-[11px] font-bold text-gray-700 shadow-sm transition-colors hover:bg-gray-50 hover:text-gray-900"
+                            >
+                              <Eye className="h-3.5 w-3.5" />
+                              View Details
+                            </button>
+                            <button
+                              onClick={(e) => {
+                                e.stopPropagation();
+                                projectId ? navigate(`/pqm/nc-management/${projectId}/nc/${nc.id}/edit`) : navigate(`/pqm/nc-management/nc/${nc.id}/edit`);
+                              }}
+                              className="inline-flex items-center gap-1.5 rounded-lg bg-violet-50 px-3 py-1.5 text-[11px] font-bold text-violet-700 shadow-sm transition-colors hover:bg-violet-100"
+                            >
+                              <Edit2 className="h-3.5 w-3.5" />
+                              NC Edit
+                            </button>
+                          </div>
+                        </td>
                       </tr>
                     ))}
                   </tbody>
                 </table>
               </div>
             )
-          )}
+          }
         </div>
 
         {/* Pagination Footer */}

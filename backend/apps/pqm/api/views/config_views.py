@@ -32,7 +32,7 @@ class ContractorListView(APIView):
         bu_id, err = _require_bu(request)
         if err:
             return err
-        qs = PQMContractor.objects.filter(business_unit_id=bu_id, is_deleted=False).order_by("name")
+        qs = PQMContractor.objects.filter(business_unit_id=bu_id, is_deleted=False).select_related("project").order_by("name")
         return success_response(data=PQMContractorSerializer(qs, many=True).data, request=request)
 
     def post(self, request: Request) -> Response:
@@ -44,8 +44,12 @@ class ContractorListView(APIView):
         serializer = PQMContractorSerializer(data=request.data)
         if not serializer.is_valid():
             return error_response("PQM_VALIDATION_ERROR", "Invalid data.", details=serializer.errors, http_status=400, request=request)
-        obj = serializer.save(organization_id=_get_org_id(request), business_unit_id=bu_id, created_by_id=request.user.id)
-        return created_response(data=PQMContractorSerializer(obj).data, request=request)
+        from django.db import IntegrityError
+        try:
+            obj = serializer.save(organization_id=_get_org_id(request), business_unit_id=bu_id, created_by_id=request.user.id)
+            return created_response(data=PQMContractorSerializer(obj).data, request=request)
+        except IntegrityError:
+            return error_response("DUPLICATE_CONTRACTOR", "A contractor with this company name already exists.", http_status=400, request=request)
 
 
 class ContractorDetailView(APIView):
@@ -78,8 +82,12 @@ class ContractorDetailView(APIView):
         serializer = PQMContractorSerializer(obj, data=request.data, partial=True)
         if not serializer.is_valid():
             return error_response("PQM_VALIDATION_ERROR", "Invalid data.", details=serializer.errors, http_status=400, request=request)
-        serializer.save(updated_by_id=request.user.id)
-        return success_response(data=serializer.data, request=request)
+        from django.db import IntegrityError
+        try:
+            serializer.save(updated_by_id=request.user.id)
+            return success_response(data=serializer.data, request=request)
+        except IntegrityError:
+            return error_response("DUPLICATE_CONTRACTOR", "A contractor with this company name already exists.", http_status=400, request=request)
 
     def delete(self, request: Request, pk: uuid.UUID) -> Response:
         bu_id, err = _require_bu(request)
@@ -90,7 +98,7 @@ class ContractorDetailView(APIView):
         obj, err_msg = self._get(pk, bu_id)
         if err_msg:
             return error_response("NOT_FOUND", err_msg, http_status=404, request=request)
-        obj.soft_delete(deleted_by_id=request.user.id)
+        obj.delete()
         return no_content_response(request=request)
 
 

@@ -24,6 +24,7 @@ class PQMContractor(TenantModel):
     contact_person = models.CharField(max_length=255, blank=True, default="")
     contact_email = models.EmailField(blank=True, default="")
     contact_phone = models.CharField(max_length=30, blank=True, default="")
+    project = models.ForeignKey("pqm.PQMProject", on_delete=models.CASCADE, related_name="contractors", null=True, blank=True)
     is_active = models.BooleanField(default=True)
 
     class Meta(TenantModel.Meta):

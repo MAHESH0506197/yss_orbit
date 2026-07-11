@@ -32,10 +32,19 @@ from apps.pqm.services.duplicate_service import DuplicateService
 from apps.pqm.enums import NCStatus
 
 
-def _get_nc_or_404(pk: uuid.UUID, bu_id: uuid.UUID, request: Request) -> tuple:
+def _get_nc_or_404(pk: uuid.UUID, bu_id: uuid.UUID, request: Request, select_related_fields=None) -> tuple:
     """Return (nc, None) or (None, error_response) scoped to BU."""
     try:
-        nc = NonConformance.objects.get(id=pk, business_unit_id=bu_id, is_deleted=False)
+        qs = NonConformance.objects.filter(id=pk, business_unit_id=bu_id, is_deleted=False)
+        if select_related_fields:
+            qs = qs.select_related(*select_related_fields)
+        nc = qs.get()
+        
+        # Bypass project member check for super admins
+        security_ctx = getattr(request, "security_context", None)
+        if security_ctx and getattr(security_ctx, "is_super_admin", False):
+            return nc, None
+            
         from apps.pqm.models.project_access import PQMProjectMember
         if not PQMProjectMember.objects.filter(user_id=request.user.id, project_id=nc.project_id, is_deleted=False).exists():
             return None, error_response("PQM_FORBIDDEN", "You are not a member of this project.", http_status=403, request=request)
@@ -57,11 +66,9 @@ class NCListView(APIView):
         if not PQMPermission.check_permission(request, PQMPermission.VIEW_NC):
             return error_response("PQM_FORBIDDEN", "You do not have permission to view NCs.", http_status=403, request=request)
 
-        qs = (
-            NonConformance.objects.filter(business_unit_id=bu_id, is_deleted=False)
-            .select_related("project", "category")
-            .order_by("-created_at")
-        )
+        qs = NonConformance.objects.filter(business_unit_id=bu_id, is_deleted=False).select_related(
+            "priority", "severity", "project", "category", "contractor"
+        ).order_by("-created_at")
 
         # Apply filters from query params
         p = request.query_params
@@ -82,6 +89,8 @@ class NCListView(APIView):
             qs = qs.filter(assigned_to_id=p["assigned_to_id"])
         if p.get("is_safety_critical") in ("true", "1", "True"):
             qs = qs.filter(is_safety_critical=True)
+        if p.get("date"):
+            qs = qs.filter(raised_date=p["date"])
         if p.get("search"):
             from django.db.models import Q
             term = p["search"]
@@ -134,7 +143,11 @@ class NCDetailView(APIView):
         bu_id, err = _require_bu(request)
         if err:
             return err
-        nc, err = _get_nc_or_404(pk, bu_id, request)
+        select_related_fields = [
+            "priority", "severity", "project", "category", 
+            "sub_category", "contractor", "location_description", "reference_type"
+        ]
+        nc, err = _get_nc_or_404(pk, bu_id, request, select_related_fields=select_related_fields)
         if err:
             return err
         if not PQMPermission.check_permission(request, PQMPermission.VIEW_NC):

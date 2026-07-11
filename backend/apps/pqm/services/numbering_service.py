@@ -40,5 +40,7 @@ class NumberingService:
             seq = counter.last_value
 
         proj_code = project.code or "PRJ"
-        # e.g. PRJ-PAV_NC_00001 or PRJ-PAV_NC_LG00001
-        return f"{proj_code}_NC_{series_prefix}{seq:05d}"
+        # e.g. PRJ-PAV_NC_2025_00001 or PRJ-PAV_NC_2025_LG00001
+        if series_prefix:
+            return f"{proj_code}_NC_{year}_{series_prefix}_{seq:05d}"
+        return f"{proj_code}_NC_{year}_{seq:05d}"

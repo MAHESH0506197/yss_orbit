@@ -15,6 +15,7 @@ import { pqmService } from "../api/pqmService";
 import { useAuthStore } from "@/store/authStore";
 import type { PQMComment, PQMAttachment } from "../types";
 import { formatIST } from '@/utils/date';
+import toast from 'react-hot-toast';
 
 import { PageHeader } from '@/components/ui/PageHeader';
 import { SectionCard } from '@/components/platform/SectionCard';
@@ -51,6 +52,9 @@ export default function NCDetailPage() {
     requestClosure,
     reopenNc,
     assignNc,
+    reassignNc,
+    makeReviewDecision,
+    makeVerificationDecision,
     reopenDialogOpen,
     setReopenDialogOpen,
     reassignDialogOpen,
@@ -76,41 +80,80 @@ export default function NCDetailPage() {
   useEffect(() => {
     if (!id) return;
     if (activeTab === "comments") {
-      pqmService.listComments(id).then(setComments).catch(() => {});
+      pqmService.listComments(id).then(setComments).catch(() => {
+        toast.error("Failed to load comments.");
+      });
     }
     if (activeTab === "attachments") {
-      pqmService.listAttachments(id).then(setAttachments).catch(() => {});
+      pqmService.listAttachments(id).then(setAttachments).catch(() => {
+        toast.error("Failed to load attachments.");
+      });
     }
   }, [id, activeTab]);
 
   const handleAction = async (action: () => Promise<any>) => {
     setActionLoading(true);
-    try { 
-      await action(); 
-      if (id) await fetchNcDetail(id); 
-    } finally { 
-      setActionLoading(false); 
+    try {
+      await action();
+      if (id) await fetchNcDetail(id);
+    } catch {
+      // Intentionally swallowed here — every store action already surfaces
+      // a toast.error() on failure. This catch exists only to stop the
+      // rejection from propagating further as an unhandled promise error.
+    } finally {
+      setActionLoading(false);
     }
   };
 
   const postComment = async () => {
     if (!id || !newComment.trim()) return;
-    await pqmService.addComment(id, newComment.trim(), commentInternal);
-    setNewComment("");
-    const updated = await pqmService.listComments(id);
-    setComments(updated);
+    try {
+      await pqmService.addComment(id, newComment.trim(), commentInternal);
+      setNewComment("");
+      const updated = await pqmService.listComments(id);
+      setComments(updated);
+    } catch (err: any) {
+      toast.error(err?.response?.data?.detail || "Failed to post comment.");
+    }
   };
 
   const handleReopen = async (reason: string) => {
     if (!id) return;
     await handleAction(() => reopenNc(id, reason));
-    setReopenDialogOpen(false);
   };
 
+  // Distinct from initial assignment — calls /reassign/ so the audit trail
+  // records this as a handoff, not as the NC's first assignment.
   const handleReassign = async (newAssigneeId: string, reason: string) => {
     if (!id) return;
-    await handleAction(() => assignNc(id, newAssigneeId));
-    setReassignDialogOpen(false);
+    await handleAction(() => reassignNc(id, newAssigneeId, reason));
+  };
+
+  const handleApproveStep = async (_stepId: string, comments: string) => {
+    if (!id || !nc) return;
+    const isVerification = nc.status === "Verification Pending";
+    await handleAction(() =>
+      isVerification
+        ? makeVerificationDecision(id, nc.current_approval_level, "Approved", comments)
+        : makeReviewDecision(id, "Approved", comments)
+    );
+  };
+
+  const handleRejectStep = async (_stepId: string, comments: string) => {
+    if (!id || !nc) return;
+    const isVerification = nc.status === "Verification Pending";
+    await handleAction(() =>
+      isVerification
+        ? makeVerificationDecision(id, nc.current_approval_level, "Rejected", comments)
+        : makeReviewDecision(id, "Rejected", comments)
+    );
+  };
+
+  const handleReworkStep = async (_stepId: string, comments: string) => {
+    if (!id || !nc) return;
+    await handleAction(() =>
+      makeVerificationDecision(id, nc.current_approval_level, "Rework", comments)
+    );
   };
 
   if (ncDetailLoading) {
@@ -241,7 +284,7 @@ export default function NCDetailPage() {
           <NCStatusBadge status={nc.status} />
           <span className="flex items-center gap-1.5 rounded-full border border-gray-200 bg-white px-2.5 py-1 text-xs font-semibold text-gray-700">
             <AlertTriangle className="h-3.5 w-3.5 text-amber-500" />
-            {nc.severity.toUpperCase()}
+            {nc.severity ? (typeof nc.severity === 'object' ? nc.severity.name?.toUpperCase() : String(nc.severity).toUpperCase()) : 'N/A'}
           </span>
           <span className="flex items-center gap-1.5 rounded-full border border-gray-200 bg-white px-2.5 py-1 text-xs font-semibold text-gray-700">
             <Calendar className="h-3.5 w-3.5 text-gray-400" />
@@ -277,6 +320,9 @@ export default function NCDetailPage() {
           <NCApprovalChainWidget
             steps={nc.approval_steps}
             currentUserId={currentUserId}
+            onApprove={handleApproveStep}
+            onReject={handleRejectStep}
+            onRework={handleReworkStep}
           />
         </div>
       )}
@@ -323,13 +369,13 @@ export default function NCDetailPage() {
           {activeTab === "details" && (
             <div className="space-y-6">
               
-              <SectionCard title="Basic Information" icon={Info} iconColor="text-blue-500" animDelay="delay-50">
+              <SectionCard collapsible defaultExpanded={true} title="Basic Information" icon={Info} iconColor="text-blue-500" animDelay="delay-50">
                 <div className="grid gap-x-6 gap-y-4 sm:grid-cols-2">
                   <div className="sm:col-span-2">
                     <DetailField label="NC Description" value={nc.description} wide />
                   </div>
-                  <DetailField label="Raised By" value={nc.raised_by_id} />
-                  <DetailField label="Assigned To" value={nc.assigned_to_id ?? "—"} />
+                  <DetailField label="Raised By" value={(nc as any).raised_by_name || nc.raised_by_id} />
+                  <DetailField label="Assigned To" value={(nc as any).assigned_to_name || nc.assigned_to_id || "—"} />
                   <DetailField label="Raised Date" value={nc.raised_date} />
                   <DetailField label="Target Closure" value={nc.target_closure_date ?? "—"} />
                   <DetailField label="Actual Closure" value={nc.actual_closure_date ?? "—"} />
@@ -337,26 +383,26 @@ export default function NCDetailPage() {
                 </div>
               </SectionCard>
 
-              <SectionCard title="Location & Reference" icon={MapPin} iconColor="text-emerald-500" animDelay="delay-100">
+              <SectionCard collapsible defaultExpanded={true} title="Location & Reference" icon={MapPin} iconColor="text-emerald-500" animDelay="delay-100">
                 <div className="grid gap-x-6 gap-y-4 sm:grid-cols-2">
-                  <DetailField label="Project" value={nc.project} />
-                  <DetailField label="Location / Area" value={nc.location_description} tooltip="The physical location — where on the site the non-conformance occurred." />
-                  <DetailField label="Reference Type" value={nc.reference_type} tooltip="Categorizes the origin document, drawing, or standard violated." />
-                  <DetailField label="Reference Details" value={nc.reference_description} wide className="sm:col-span-2" />
+                  <DetailField label="Project" value={nc.project ? (typeof nc.project === 'object' ? nc.project.name : nc.project) : "—"} />
+                  <DetailField label="Location / Area" value={nc.location_description ? (typeof nc.location_description === 'object' ? nc.location_description.name : nc.location_description) : "—"} tooltip="The physical location — where on the site the non-conformance occurred." />
+                  <DetailField label="Reference Type" value={nc.reference_type ? (typeof nc.reference_type === 'object' ? nc.reference_type.name : nc.reference_type) : "—"} tooltip="Categorizes the origin document, drawing, or standard violated." />
+                  <DetailField label="Reference Details" value={nc.reference_description} />
                 </div>
               </SectionCard>
 
-              <SectionCard title="Classification" icon={Tag} iconColor="text-violet-500" animDelay="delay-150">
+              <SectionCard collapsible defaultExpanded={true} title="Classification" icon={Tag} iconColor="text-violet-500" animDelay="delay-150">
                 <div className="grid gap-x-6 gap-y-4 sm:grid-cols-2">
-                  <DetailField label="Category" value={nc.category} tooltip="The discipline or type of work — what kind of issue it is." />
-                  <DetailField label="Sub-Category" value={nc.sub_category} tooltip="A more specific breakdown of the category." />
-                  <DetailField label="Contractor" value={nc.contractor} />
-                  <DetailField label="Severity" value={nc.severity} tooltip="Severity determines the impact of the non-conformance on the project quality or cost." />
+                  <DetailField label="Category" value={nc.category ? (typeof nc.category === 'object' ? nc.category.name : nc.category) : "—"} tooltip="The discipline or type of work — what kind of issue it is." />
+                  <DetailField label="Sub-Category" value={nc.sub_category ? (typeof nc.sub_category === 'object' ? nc.sub_category.name : nc.sub_category) : "—"} tooltip="A more specific breakdown of the category." />
+                  <DetailField label="Contractor" value={nc.contractor ? (typeof nc.contractor === 'object' ? nc.contractor.name : nc.contractor) : "—"} />
+                  <DetailField label="Severity" value={nc.severity ? (typeof nc.severity === 'object' ? nc.severity.name : nc.severity) : "—"} tooltip="Severity determines the impact of the non-conformance on the project quality or cost." />
                 </div>
               </SectionCard>
 
               {(nc.root_cause_description || nc.corrective_action || nc.preventive_action) && (
-                <SectionCard title="Resolution" icon={Target} iconColor="text-amber-500" animDelay="delay-200">
+                <SectionCard collapsible defaultExpanded={true} title="Resolution" icon={Target} iconColor="text-amber-500" animDelay="delay-200">
                   <div className="grid gap-y-6 sm:grid-cols-1">
                     {nc.root_cause_description && (
                       <DetailField label="Root Cause" value={nc.root_cause_description} wide />
@@ -437,7 +483,7 @@ export default function NCDetailPage() {
                   comments.map(c => (
                     <div key={c.id} className="rounded-2xl border border-gray-100 bg-white p-4 shadow-sm dark:border-gray-800 dark:bg-gray-900">
                       <div className="mb-2 flex flex-wrap items-center gap-2">
-                        <span className="font-bold text-gray-900 dark:text-white">{c.author_id}</span>
+                        <span className="font-bold text-gray-900 dark:text-white">{(c as any).author_name || c.author_id}</span>
                         <span className="text-xs font-medium text-gray-500">{formatIST(new Date(c.created_at), 'PP pp')}</span>
                         {c.is_internal && (
                           <span className="rounded-full bg-amber-100 px-2 py-0.5 text-[10px] font-bold text-amber-700 dark:bg-amber-500/20 dark:text-amber-400">

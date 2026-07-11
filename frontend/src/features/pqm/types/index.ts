@@ -76,6 +76,8 @@ export interface PQMContractor {
   contact_person: string;
   contact_email: string;
   contact_phone: string;
+  project?: string;
+  project_name?: string;
   is_active: boolean;
 }
 
@@ -145,10 +147,17 @@ export interface NonConformance {
   contractor: string | null;
   location_description: string;
   reference_type: ReferenceType | '';
-  reference_description: string;
+  location_details: string;
+  block: string;
+  zone: string;
+  checklist_reference: string | null;
+  checklist_reference_text: string;
 
   raised_by_id: string;
   assigned_to_id: string | null;
+  site_quality_incharge_id: string | null;
+  project_incharge_id: string | null;
+  site_incharge_id: string | null;
   raised_date: string;
   target_closure_date: string | null;
   original_target_closure_date: string | null;
@@ -205,6 +214,7 @@ export interface NCFilters {
 
   raised_by_id?: string;
   search?: string;
+  date?: string;
   page?: number;
   page_size?: number;
   ordering?: string;

@@ -70,7 +70,7 @@ export default function DashboardPage() {
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
           <h1 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-            {businessUnit ? `${businessUnit.name} Dashboard` : 'Platform Dashboard'}
+            Platform Dashboard
           </h1>
           <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">
             Welcome back, {firstName}. Here's what's happening today.
@@ -78,53 +78,7 @@ export default function DashboardPage() {
         </div>
         
         <div className="flex items-center gap-3">
-          {/* BU Switcher for Super Admins */}
-          {isSuperAdmin && (
-            <div className="flex items-center space-x-2 mr-2">
-              <div className="relative">
-                <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-gray-400">
-                  <Building2 size={16} />
-                </div>
-                <select
-                  className="pl-10 pr-8 py-2 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-700 text-gray-900 dark:text-white text-sm rounded-lg focus:ring-[var(--color-primary)] focus:border-[var(--color-primary)] block shadow-sm appearance-none cursor-pointer"
-                  value={businessUnit?.id || ''}
-                  onChange={(e) => {
-                    const selectedId = e.target.value;
-                    if (selectedId === '') {
-                      // Handle global view selection if store supports it, otherwise ignore
-                      selectBusinessUnit('');
-                    } else {
-                      selectBusinessUnit(selectedId);
-                    }
-                  }}
-                >
-                  <option value="">Global View (All Units)</option>
-                  {businessUnits?.map(bu => (
-                    <option key={bu.id} value={bu.id}>{bu.name}</option>
-                  ))}
-                </select>
-              </div>
 
-              {/* Go to Workspace Button */}
-              {businessUnit && (
-                <button
-                  onClick={() => navigate('/dashboard')}
-                  className="inline-flex items-center justify-center px-4 py-2 bg-[var(--color-primary)] hover:bg-opacity-90 text-white text-sm font-medium rounded-lg shadow-sm transition-colors"
-                  title={`Enter ${businessUnit.name} Workspace`}
-                >
-                  <span>Go to Workspace</span>
-                  <ExternalLink size={16} className="ml-2" />
-                </button>
-              )}
-            </div>
-          )}
-
-          {/* Regular BU Badge (Non-SuperAdmins) */}
-          {!isSuperAdmin && businessUnit && (
-            <span className="text-sm font-medium px-3 py-1 bg-[var(--color-primary)]/10 text-[var(--color-primary)] rounded-full">
-              {businessUnit.name}
-            </span>
-          )}
 
           {/* Date Badge */}
           <span className="text-sm text-gray-500 dark:text-gray-400 hidden md:inline-block">

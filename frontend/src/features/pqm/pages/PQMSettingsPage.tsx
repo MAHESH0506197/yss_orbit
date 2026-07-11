@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 import { usePqmStore } from "../store/usePqmStore";
 import { pqmService } from "../api/pqmService";
 import { PageHeader } from "@/components/ui/PageHeader";
@@ -7,11 +8,13 @@ import { Settings, Plus, Trash2, Edit2, X, CornerDownRight, FolderPlus, ChevronD
 import { InfoTooltip } from "@/components/ui/InfoTooltip";
 import { Badge } from "@/components/ui/Badge";
 import { PQMDropdownOption } from "../types";
+import ProjectTeamPage from "./project/ProjectTeamPage";
 
-type ConfigTab = "dropdowns" | "contractors";
+type ConfigTab = "dropdowns" | "contractors" | "project_team";
 type DropdownFieldType = "priority" | "severity" | "reference_type" | "area" | "category";
 
 export default function PQMSettingsPage() {
+  const { projectId } = useParams<{ projectId: string }>();
   const [activeTab, setActiveTab] = useState<ConfigTab>("dropdowns");
   const [activeDropdownTab, setActiveDropdownTab] = useState<DropdownFieldType>("priority");
 
@@ -26,7 +29,9 @@ export default function PQMSettingsPage() {
     }
   };
   
-  const { contractors, fetchConfig, priorities, severities, referenceTypes, areas, categories, subCategories, fetchDropdownConfig } = usePqmStore();
+  const { contractors, projects, fetchConfig, priorities, severities, referenceTypes, areas, categories, subCategories, fetchDropdownConfig } = usePqmStore();
+
+  const activeProjectName = projects.find(p => p.id === projectId)?.name || "";
 
   useEffect(() => {
     fetchConfig();
@@ -35,7 +40,7 @@ export default function PQMSettingsPage() {
 
 
   // ── Contractor management ────────────────────────────────────────────────────
-  const [ctForm, setCtForm] = useState({ name: "", contact_person: "", contact_email: "" });
+  const [ctForm, setCtForm] = useState({ name: "", contact_person: "", contact_email: "", contact_phone: "" });
   const [ctSubmitting, setCtSubmitting] = useState(false);
   const [editingCtId, setEditingCtId] = useState<string | null>(null);
 
@@ -43,24 +48,27 @@ export default function PQMSettingsPage() {
     if (!ctForm.name.trim()) return;
     setCtSubmitting(true);
     try {
+      const dataToSubmit = { ...ctForm, project: projectId };
       if (editingCtId) {
-        await pqmService.updateContractor(editingCtId, ctForm);
+        await pqmService.updateContractor(editingCtId, dataToSubmit);
       } else {
-        await pqmService.createContractor(ctForm);
+        await pqmService.createContractor(dataToSubmit);
       }
       cancelCtEdit();
       await fetchConfig();
+    } catch (e: any) {
+      alert(e?.response?.data?.message || "Failed to save contractor.");
     } finally { setCtSubmitting(false); }
   };
 
   const startCtEdit = (c: any) => {
     setEditingCtId(c.id);
-    setCtForm({ name: c.name, contact_person: c.contact_person || "", contact_email: c.contact_email || "" });
+    setCtForm({ name: c.name, contact_person: c.contact_person || "", contact_email: c.contact_email || "", contact_phone: c.contact_phone || "" });
   };
 
   const cancelCtEdit = () => {
     setEditingCtId(null);
-    setCtForm({ name: "", contact_person: "", contact_email: "" });
+    setCtForm({ name: "", contact_person: "", contact_email: "", contact_phone: "" });
   };
 
   const deleteContractor = async (id: string) => {
@@ -116,7 +124,7 @@ export default function PQMSettingsPage() {
       } else {
         await pqmService.createDropdownOption({ 
           name: ddForm.name, 
-          field_type: activeDropdownTab.toUpperCase(),
+          field_type: activeDropdownTab.toUpperCase() as PQMDropdownOption["field_type"],
           display_order: parseInt(ddForm.display_order) || 0,
           is_active: true
         });
@@ -188,33 +196,59 @@ export default function PQMSettingsPage() {
     if (!categoryDraft.name.trim()) return;
     setCategorySubmitting(true);
     try {
-      const newCat = await pqmService.createDropdownOption({
-        name: categoryDraft.name,
-        field_type: "CATEGORY",
-        display_order: parseInt(categoryDraft.display_order) || 0,
-        is_active: true
-      });
+      let catId = "";
+      try {
+        const newCat = await pqmService.createDropdownOption({
+          name: categoryDraft.name,
+          field_type: "CATEGORY",
+          display_order: parseInt(categoryDraft.display_order) || 0,
+          is_active: true
+        });
+        catId = newCat.id;
+      } catch (err: any) {
+        if (err.response?.data?.error_code === "DUPLICATE_OPTION") {
+          // It already exists, find its ID
+          await fetchDropdownConfig();
+          const { categories } = usePqmStore.getState();
+          const existingCat = categories.find((c: any) => c.name.toLowerCase() === categoryDraft.name.toLowerCase());
+          if (existingCat) {
+            catId = existingCat.id;
+          } else {
+            throw new Error("Category already exists but could not be retrieved.");
+          }
+        } else {
+          throw err;
+        }
+      }
 
       const validSubCats = categoryDraft.subCategories.filter(sc => sc.name.trim());
-      if (validSubCats.length > 0) {
-        await Promise.all(validSubCats.map(sc => 
-          pqmService.createDropdownOption({
-            name: sc.name.trim(),
-            field_type: "SUB_CATEGORY",
-            display_order: parseInt(sc.display_order) || 0,
-            system_mapping: newCat.id,
-            is_active: true
-          })
-        ));
+      if (validSubCats.length > 0 && catId) {
+        // Run sequentially to prevent SQLite locks and handle duplicates individually
+        for (const sc of validSubCats) {
+          try {
+            await pqmService.createDropdownOption({
+              name: sc.name.trim(),
+              field_type: "SUB_CATEGORY",
+              display_order: parseInt(sc.display_order) || 0,
+              system_mapping: catId,
+              is_active: true
+            });
+          } catch (err: any) {
+            if (err.response?.data?.error_code !== "DUPLICATE_OPTION") {
+              throw err;
+            }
+          }
+        }
       }
 
       setCategoryDraft({ name: "", display_order: "0", subCategories: [] });
       await fetchDropdownConfig();
-    } catch (e) {
-      console.error("Failed to create category structure");
-      alert("Failed to create category structure.");
+    } catch (e: any) {
+      console.error("Failed to create category structure", e);
+      alert(e?.response?.data?.message || e.message || "Failed to create category structure.");
     } finally {
       setCategorySubmitting(false);
+      await fetchDropdownConfig();
     }
   };
 
@@ -257,7 +291,7 @@ export default function PQMSettingsPage() {
 
       {/* ── Main Tabs (Segmented Control) ── */}
       <div className="inline-flex items-center p-1.5 bg-gray-100/80 dark:bg-gray-800/80 rounded-xl w-fit shadow-inner">
-        {(["dropdowns", "contractors"] as ConfigTab[]).map(tab => (
+        {(["dropdowns", "contractors", "project_team"] as ConfigTab[]).map(tab => (
           <button
             key={tab}
             onClick={() => setActiveTab(tab)}
@@ -267,7 +301,7 @@ export default function PQMSettingsPage() {
                 : "text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-200 hover:bg-gray-50/50 dark:hover:bg-gray-700/50"
             }`}
           >
-            {tab.charAt(0).toUpperCase() + tab.slice(1)}
+            {tab === "project_team" ? "Project Team" : tab.charAt(0).toUpperCase() + tab.slice(1)}
           </button>
         ))}
       </div>
@@ -600,6 +634,12 @@ export default function PQMSettingsPage() {
             <SectionCard title="Contractors">
               <div className="flex flex-wrap items-center gap-3 mb-10 p-5 bg-gray-50/50 dark:bg-gray-900/50 border border-gray-200 dark:border-gray-800 rounded-2xl">
                 <input 
+                  className="flex-1 min-w-[200px] h-11 px-4 py-2 bg-white dark:bg-gray-950 border border-gray-200 dark:border-gray-700 rounded-xl text-sm shadow-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-violet-500/50 focus:border-violet-500 transition-all disabled:opacity-50 disabled:bg-gray-100 dark:disabled:bg-gray-800" 
+                  placeholder="Project name"
+                  value={activeProjectName} 
+                  disabled
+                />
+                <input 
                   className="flex-1 min-w-[200px] h-11 px-4 py-2 bg-white dark:bg-gray-950 border border-gray-200 dark:border-gray-700 rounded-xl text-sm shadow-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-violet-500/50 focus:border-violet-500 transition-all" 
                   placeholder="Company name"
                   value={ctForm.name} 
@@ -616,6 +656,12 @@ export default function PQMSettingsPage() {
                   placeholder="Contact email" type="email"
                   value={ctForm.contact_email} 
                   onChange={e => setCtForm(f => ({ ...f, contact_email: e.target.value }))} 
+                />
+                <input 
+                  className="flex-1 min-w-[150px] h-11 px-4 py-2 bg-white dark:bg-gray-950 border border-gray-200 dark:border-gray-700 rounded-xl text-sm shadow-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-violet-500/50 focus:border-violet-500 transition-all" 
+                  placeholder="Contact phone" type="tel"
+                  value={ctForm.contact_phone} 
+                  onChange={e => setCtForm(f => ({ ...f, contact_phone: e.target.value }))} 
                 />
                 <button 
                   className="h-11 px-6 inline-flex items-center justify-center gap-2 bg-violet-600 text-white text-sm font-bold rounded-xl hover:bg-violet-700 transition-all shadow-md hover:shadow-lg disabled:opacity-50" 
@@ -644,10 +690,14 @@ export default function PQMSettingsPage() {
                 ) : (
                   contractors.map((c: any) => (
                     <div key={c.id} className="flex flex-col sm:flex-row sm:items-center justify-between p-4 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-xl shadow-sm hover:shadow-md transition-shadow group">
-                      <div className="flex-1 grid grid-cols-1 sm:grid-cols-3 gap-4">
+                      <div className="flex-1 grid grid-cols-1 sm:grid-cols-5 gap-4">
                         <div className="flex flex-col">
                           <span className="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-1">Company Name</span>
                           <span className="text-sm font-bold text-gray-900 dark:text-white">{c.name}</span>
+                        </div>
+                        <div className="flex flex-col">
+                          <span className="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-1">Project Name</span>
+                          <span className="text-sm text-gray-600 dark:text-gray-300">{c.project_name || activeProjectName || <span className="italic opacity-50">N/A</span>}</span>
                         </div>
                         <div className="flex flex-col">
                           <span className="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-1">Contact Person</span>
@@ -656,6 +706,10 @@ export default function PQMSettingsPage() {
                         <div className="flex flex-col">
                           <span className="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-1">Contact Email</span>
                           <span className="text-sm text-gray-600 dark:text-gray-300">{c.contact_email || <span className="italic opacity-50">N/A</span>}</span>
+                        </div>
+                        <div className="flex flex-col">
+                          <span className="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-1">Contact Phone</span>
+                          <span className="text-sm text-gray-600 dark:text-gray-300">{c.contact_phone || <span className="italic opacity-50">N/A</span>}</span>
                         </div>
                       </div>
                       <div className="flex items-center gap-2 mt-4 sm:mt-0 opacity-0 group-hover:opacity-100 transition-opacity justify-end">
@@ -679,6 +733,12 @@ export default function PQMSettingsPage() {
                 )}
               </div>
             </SectionCard>
+          </div>
+        )}
+        {/* ── Project Team ── */}
+        {activeTab === "project_team" && (
+          <div className="animate-in fade-in slide-in-from-bottom-2 duration-300 flex flex-col gap-6">
+            <ProjectTeamPage />
           </div>
         )}
       </div>

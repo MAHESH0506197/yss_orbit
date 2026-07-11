@@ -135,8 +135,7 @@ export function NCApprovalChainWidget({
               <span style={{ fontSize: '12px', color: '#374151' }}>
                 {t('pqm.approval.approver', 'Approver')}:{' '}
                 <code style={{ fontSize: '11px', color: '#6B7280' }}>
-                  {/* TODO: replace approver_id with user display name lookup */}
-                  {step.approver_id}
+                  {(step as any).approver_name || step.approver_id}
                 </code>
               </span>
             </div>

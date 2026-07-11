@@ -27,8 +27,11 @@ class DropdownOptionInlineSerializer(serializers.Serializer):
 
 
 class NCListSerializer(serializers.ModelSerializer):
-    priority = DropdownOptionInlineSerializer(read_only=True)
-    severity = DropdownOptionInlineSerializer(read_only=True)
+    priority = DropdownOptionInlineSerializer(read_only=True, allow_null=True)
+    severity = DropdownOptionInlineSerializer(read_only=True, allow_null=True)
+    project = DropdownOptionInlineSerializer(read_only=True, allow_null=True)
+    category = DropdownOptionInlineSerializer(read_only=True, allow_null=True)
+    contractor = DropdownOptionInlineSerializer(read_only=True, allow_null=True)
 
     class Meta:
         model = NonConformance
@@ -48,10 +51,33 @@ class NCDetailSerializer(serializers.ModelSerializer):
     attachments   = AttachmentSerializer(many=True, read_only=True)
     approval_steps = ApprovalStepSerializer(many=True, read_only=True)
     comments      = CommentSerializer(many=True, read_only=True)
-    priority = DropdownOptionInlineSerializer(read_only=True)
-    severity = DropdownOptionInlineSerializer(read_only=True)
-    location_description = DropdownOptionInlineSerializer(read_only=True)
-    reference_type = DropdownOptionInlineSerializer(read_only=True)
+    priority = DropdownOptionInlineSerializer(read_only=True, allow_null=True)
+    severity = DropdownOptionInlineSerializer(read_only=True, allow_null=True)
+    location_description = DropdownOptionInlineSerializer(read_only=True, allow_null=True)
+    reference_type = DropdownOptionInlineSerializer(read_only=True, allow_null=True)
+    project = DropdownOptionInlineSerializer(read_only=True, allow_null=True)
+    category = DropdownOptionInlineSerializer(read_only=True, allow_null=True)
+    sub_category = DropdownOptionInlineSerializer(read_only=True, allow_null=True)
+    contractor = DropdownOptionInlineSerializer(read_only=True, allow_null=True)
+
+    raised_by_name = serializers.SerializerMethodField()
+    assigned_to_name = serializers.SerializerMethodField()
+
+    def get_raised_by_name(self, obj):
+        from django.contrib.auth import get_user_model
+        User = get_user_model()
+        if obj.raised_by_id:
+            user = User.objects.filter(id=obj.raised_by_id).first()
+            return f"{user.first_name} {user.last_name}".strip() if user else None
+        return None
+
+    def get_assigned_to_name(self, obj):
+        from django.contrib.auth import get_user_model
+        User = get_user_model()
+        if obj.assigned_to_id:
+            user = User.objects.filter(id=obj.assigned_to_id).first()
+            return f"{user.first_name} {user.last_name}".strip() if user else None
+        return None
 
     class Meta:
         model = NonConformance
@@ -90,10 +116,13 @@ class NCCreateSerializer(serializers.ModelSerializer):
         fields = [
             "title", "description", "project", 
             "category", "sub_category", "contractor",
+            "location_details", "block", "zone",
+            "drawing_reference", "specification_reference", "standard_reference",
             "priority_id", "severity_id", "is_safety_critical",
             "location_description_id", "reference_type_id", "reference_description",
             "checklist_reference", "checklist_reference_text",
             "client_captured_at", "raised_date",
+            "site_quality_incharge_id", "project_incharge_id", "assigned_to_id", "target_closure_date",
         ]
 
     def validate_project(self, value):
@@ -123,11 +152,13 @@ class NCUpdateSerializer(serializers.ModelSerializer):
         fields = [
             "title", "description", "priority_id", "severity_id", "is_safety_critical",
             "category", "sub_category", "contractor",
+            "location_details", "block", "zone",
+            "drawing_reference", "specification_reference", "standard_reference",
             "location_description_id", "reference_type_id", "reference_description",
             "root_cause_description", "root_cause_category",
             "corrective_action", "preventive_action",
             "assigned_to_id", "site_incharge_id",
-            "site_quality_incharge_id", "project_incharge_id",
+            "site_quality_incharge_id", "project_incharge_id", "target_closure_date",
             "backcharge_amount", "backcharge_status",
         ]
 

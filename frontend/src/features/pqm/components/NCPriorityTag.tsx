@@ -43,7 +43,8 @@ interface NCPriorityTagProps {
 }
 
 export function NCPriorityTag({ priority, size = 'md' }: NCPriorityTagProps) {
-  const cfg = PRIORITY_CONFIG[priority] ?? PRIORITY_CONFIG['Low'];
+  const priorityStr = priority && typeof priority === 'object' ? (priority as any).name : String(priority || 'Low');
+  const cfg = PRIORITY_CONFIG[priorityStr] ?? PRIORITY_CONFIG['Low'];
   if (!cfg) return null;
   return (
     <span
@@ -62,10 +63,10 @@ export function NCPriorityTag({ priority, size = 'md' }: NCPriorityTagProps) {
         letterSpacing: '0.02em',
       }}
       role="img"
-      aria-label={`Priority: ${priority}`}
+      aria-label={`Priority: ${priorityStr}`}
     >
       {cfg.icon}
-      {priority}
+      {priorityStr}
     </span>
   );
 }

@@ -63,7 +63,7 @@ class NCService:
             original_target_closure_date=target_date,
             **{k: v for k, v in data.items()
                if k not in ("business_unit_id", "organization_id", "raised_by_id",
-                            "status", "nc_number", "created_by_id")},
+                            "status", "nc_number", "created_by_id", "target_closure_date")},
         )
         nc.save()
         return nc

@@ -407,12 +407,19 @@ def global_exception_handler(exc: Exception, context: dict[str, Any]) -> Respons
         drf_response["X-Correlation-Id"] = correlation_id
         return drf_response
 
-    # Unhandled exception — log and return 500
-    logger.exception(
-        "Unhandled exception",
-        extra={"correlation_id": correlation_id},
-        exc_info=exc,
-    )
+    # Unhandled exceptions
+    logger.exception("Unhandled exception")
+    try:
+        import traceback
+        import os
+        os.makedirs("scratch", exist_ok=True)
+        with open("scratch/500_traceback.log", "w") as f:
+            f.write(traceback.format_exc())
+    except Exception:
+        pass
+        
+    # Optional: Hide sensitive details in production
+    # But for development, we typically return the full traceback or standard 500
     response = Response(
         {
             "success": False,

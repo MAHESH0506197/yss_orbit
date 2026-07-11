@@ -208,7 +208,7 @@ export function Header() {
               </div>
               <div className="hidden lg:flex flex-col items-start min-w-[80px]">
                 <span className="text-sm font-semibold text-foreground leading-tight truncate">
-                  {`${firstName || ''} ${lastName || ''}`.trim() || username || t('header.user', 'User')}
+                  {`${firstName || ''} ${lastName || ''}`.trim() || (isSuperAdmin ? username : null) || t('header.user', 'User')}
                 </span>
                 <span className="text-[10px] font-medium text-muted-foreground leading-tight truncate uppercase tracking-wider">
                   {useAuthStore.getState().isSuperAdmin ? t('header.super_admin', 'Super Admin') : t('header.user', 'User')}
@@ -220,7 +220,7 @@ export function Header() {
             {isProfileOpen && (
               <div className="absolute right-0 mt-2 w-64 rounded-xl border border-border bg-popover shadow-xl z-50 overflow-hidden animate-in fade-in zoom-in-95 duration-200">
                 <div className="px-4 py-3 border-b border-border bg-muted/20">
-                  <p className="text-sm font-semibold text-foreground truncate">{`${firstName || ''} ${lastName || ''}`.trim() || username}</p>
+                  <p className="text-sm font-semibold text-foreground truncate">{`${firstName || ''} ${lastName || ''}`.trim() || (isSuperAdmin ? username : t('header.user', 'User'))}</p>
                   <p className="text-xs text-muted-foreground truncate">{email}</p>
                   {(selectedBusinessUnitId) && (
                     <p className="text-xs text-muted-foreground mt-2 truncate font-medium">

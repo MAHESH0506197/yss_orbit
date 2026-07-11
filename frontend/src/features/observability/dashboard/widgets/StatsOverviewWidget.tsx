@@ -1,4 +1,4 @@
-﻿import React from 'react';
+import React from 'react';
 import { useQuery } from '@tanstack/react-query';
 import { dashboardService } from '@/api/services/dashboardService';
 import { useTenantContext } from '@/store/context/TenantContext';
@@ -25,7 +25,7 @@ export const StatsOverviewWidget: React.FC = () => {
     { label: 'Total Users', value: data.totalUsers, icon: Users, iconColor: 'text-blue-600 dark:text-blue-400', iconBg: 'bg-blue-50 dark:bg-blue-500/10' },
     { label: 'Organizations', value: data.totalOrganizations, icon: Building2, iconColor: 'text-indigo-600 dark:text-indigo-400', iconBg: 'bg-indigo-50 dark:bg-indigo-500/10' },
     { label: 'Active Subs', value: data.activeSubscriptions, icon: CreditCard, iconColor: 'text-emerald-600 dark:text-emerald-400', iconBg: 'bg-emerald-50 dark:bg-emerald-500/10' },
-    { label: 'Total Revenue', value: `$${data.totalRevenue}`, icon: TrendingUp, iconColor: 'text-rose-600 dark:text-rose-400', iconBg: 'bg-rose-50 dark:bg-rose-500/10' },
+    { label: 'Business Units', value: data.totalBusinessUnits, icon: Building2, iconColor: 'text-rose-600 dark:text-rose-400', iconBg: 'bg-rose-50 dark:bg-rose-500/10' },
   ];
 
   return (
